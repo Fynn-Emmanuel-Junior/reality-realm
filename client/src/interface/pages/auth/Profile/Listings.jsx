@@ -1,7 +1,16 @@
-import React from 'react'
+import React, {useState} from 'react'
 import MainLayout from "../../../components/layouts/MainLayout"
 
 const Listings = () => {
+    const [files,setFiles] = useState([])
+    console.log(files) 
+
+    const handleImages =  (e) => {
+        e.preventDefault()
+
+
+    }
+
   return (
     <MainLayout>
         <main className='p-3 max-w-4xl mx-auto'>
@@ -118,8 +127,14 @@ const Listings = () => {
                             accept='images/*'
                             multiple 
                             className='p-3 border border-gray-600 rounded w-full'
-                        />
-                        <button className='p-3 text-green-600 border border-green-600 rounded hover:shadow-lg'> Upload </button>
+                            onChange={(e) => setFiles(e.target.files)}
+                        /> 
+                        <button 
+                            type='button'
+                            onClick={handleImages} 
+                            className='p-3 text-green-600 border border-green-600 rounded hover:shadow-lg'
+                        > 
+                        Upload </button>
                     </div>
                     <button className='bg-slate-700 uppercase text-white p-3 rounded-lg hover:opacity-95'> create listing </button>
                 </div>
