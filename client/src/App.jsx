@@ -5,7 +5,8 @@ import SignUp from './interface/pages/guest/SignUp/SignUp'
 import About from './interface/pages/auth/About/About'
 import Profile from './interface/pages/auth/Profile/Profile'
 import ProtectedRoutes from './interface/routes/ProtectedRoutes'
-import Listings from './interface/pages/auth/Profile/Listings'
+import Listings from './interface/pages/auth/Profile/listings/Listings'
+import ListingPage from './interface/pages/auth/Profile/listings/listingPage'
 
 
 const App = () => {
@@ -17,6 +18,7 @@ const App = () => {
       <Route element={<ProtectedRoutes />}>
         <Route path='/profile' element={<Profile />}/>
         <Route path='/create-listing' element={<Listings />}/>
+        <Route path='/create-listing/:id' element={<ListingPage />}/>
       </Route>
       <Route path='/about' element={<About />}/>
     </Routes>

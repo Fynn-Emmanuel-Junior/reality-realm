@@ -71,11 +71,9 @@ const auth = async (req,res) => {
         username: foundUser.username,
         email: foundUser.email,
     })
-    console.log('user login successful')
-
+   
    } else {
-    res.status(401).json({message: ' Unauthorized user'})
-    console.log('wrong credentials')
+        res.status(401).json({message: ' Unauthorized user'})
    }
     
 }
