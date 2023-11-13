@@ -51,7 +51,10 @@ const Listings = () => {
             })
             .catch((err)=> {
                setImageError('Image upload failed ( image size should be 2mb max)')
+               setLoading(false)
             })
+
+            
 
         }else {
             setImageError('Image upload max should be 6')
@@ -164,7 +167,6 @@ const Listings = () => {
                         placeholder="Name" 
                         id="name" 
                         className='border rounded-lg p-3 focus:outline-none'
-                        minLength={10}
                         maxLength={62}
                         required
                         onChange={handleChange}

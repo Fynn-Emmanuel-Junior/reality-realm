@@ -18,6 +18,8 @@ const Profile = () => {
   const [filePercentage,setFilePercentage] = useState(0)
   const [error,setError] = useState(false)
   const [updatemessage,setupdatemessage] = useState(false)
+  const [listingerror,setListingError] = useState(null)
+  const [listings,setListings] = useState([])
   const [formData,setformData] = useState({})
   
   // firebase image storgae rules to publish
@@ -124,6 +126,17 @@ const Profile = () => {
       }
     }
 
+    const showlistings = async () => {
+      try {
+          const res = await fetch(`/api/listings/get/${currentuser._id}`)
+          const data = await res.json()
+          setListings(data)
+          console.log(listings)
+      } catch (err) {
+          setListingError('Error showing listings')
+      }
+  }
+
 
 
   return (
@@ -187,6 +200,31 @@ const Profile = () => {
         <div className='flex justify-between mt-5'>
           <span onClick={handleDelete} className='text-red-700 cursor-pointer'> Delete account </span>
           <span onClick={handleSignout} className='text-red-700 cursor-pointer'> Sign out </span>
+        </div>
+        <div>
+          <button  onClick={showlistings} className="text-green-700 text-sm w-full cursor-pointer p-3">
+            Show listings
+          </button>
+          {
+            listings && listings.length > 0 && 
+              listings.map(listing => (
+                <div key={listing._id} className="flex justify-between items-center gap-2 my-7 border border-gray-300 p-2">
+                  <Link to={`/create-listing/${listing._id}`} className="flex items-center gap-3">
+                    <img src={listing.imageurls[0]} alt="listing cover" className="w-16 h-16 object-cover" />
+                    <p className="truncate font-semibold hover:underline">{listing.name}</p>
+                  </Link>  
+                  <div className="flex flex-col gap-2">
+                    <button className="text-red-700 lowercase"> Delete </button>
+                    <button className="text-green-700 lowercase"> Edit </button>
+                  </div>
+                </div>  
+              ))
+          }
+          <p className="text-red-700 text-sm text-center">
+            {
+              listingerror && listingerror
+            }
+          </p>
         </div>
         <div className='text-green-700 my-3'>
           {
