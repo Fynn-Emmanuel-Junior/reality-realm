@@ -24,7 +24,16 @@ const getAllListings = async(req,res) => {
     }
 }
 
+const updatelisting = async (req,res) => {
+
+}
+
+const deletelisting = async(req,res) => {
+
+}
+
 export {
     createListings,
-    getAllListings
+    getAllListings,
+    deletelisting
 }
