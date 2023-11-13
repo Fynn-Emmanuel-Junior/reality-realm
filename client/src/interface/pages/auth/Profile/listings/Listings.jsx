@@ -23,7 +23,7 @@ const Listings = () => {
         regularPrice: 0,
         discountPrice: 0,
         imageurls: [],
-        userRef: user.username
+        userRef: user._id
     })
     const [imageError,setImageError] = useState(null)
     const [loading,setLoading] = useState(false)

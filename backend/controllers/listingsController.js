@@ -10,6 +10,18 @@ const createListings = async (req,res) => {
     }
 }
 
+const getAllListings = async(req,res) => {
+    
+    try {
+        const listings = await ListingModel.findById({ userRef:req.user._id })
+        console.log(listings)
+        re.status(200).json(listings)
+    } catch(err) {
+        res.status(400).json({message: `cannot get listings:${err.message} `})
+    }
+}
+
 export {
-    createListings
+    createListings,
+    getAllListings
 }
