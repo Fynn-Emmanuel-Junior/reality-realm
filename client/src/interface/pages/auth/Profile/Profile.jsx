@@ -137,10 +137,10 @@ const Profile = () => {
       }
   }
 
-  const deletelisting = async (id) => {
+  const deletelisting = async (listingId) => {
     try {
-      const res = await fetch(`/api/listings/delete/${id}`)
-      const data = await res.json()
+       await fetch(`/api/listings/delete/${listingId}`)
+      
     } catch(err) {
       console.log(err.message)
     }
