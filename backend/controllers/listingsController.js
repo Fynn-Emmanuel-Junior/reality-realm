@@ -29,7 +29,12 @@ const updatelisting = async (req,res) => {
 }
 
 const deletelisting = async(req,res) => {
-
+    try {
+        const deletelisting = await ListingModel.deleteById(req.params.id)
+        res.status(200).json(deletelisting)
+    } catch(err) {
+        res.status(400).json({message: `cannot delete listing\n ${err.message}`})
+    }
 }
 
 export {

@@ -137,6 +137,15 @@ const Profile = () => {
       }
   }
 
+  const deletelisting = async (id) => {
+    try {
+      const res = await fetch(`/api/listings/delete/${id}`)
+      const data = await res.json()
+    } catch(err) {
+      console.log(err.message)
+    }
+  }
+
 
 
   return (
@@ -214,7 +223,7 @@ const Profile = () => {
                     <p className="truncate font-semibold hover:underline">{listing.name}</p>
                   </Link>  
                   <div className="flex flex-col gap-2">
-                    <button className="text-red-700 lowercase"> Delete </button>
+                    <button onClick={() => deletelisting(listing._id)} className="text-red-700 lowercase"> Delete </button>
                     <button className="text-green-700 lowercase"> Edit </button>
                   </div>
                 </div>  
