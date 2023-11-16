@@ -30,14 +30,15 @@ const updatelisting = async (req,res) => {
 
 const deletelisting = async(req,res) => {
     const listing = await ListingModel.findById(req.params.id)
+    console.log(listing)
 
     if(!listing) return res.status(404).json('No listing found')
 
     try {
-        await ListingModel.findByIdAndDelete(req.params.id)
+        await ListingModel.deleteOne({_id: listing._id})
         res.status(200).json('Listing has been deleted')
     } catch(err) {
-        res.status(400).json({message: `cannot delete listing\n ${err.message}`})
+        res.status(400).json({message: `cannot delete listing\n${err.message}`})
     }
 }
 

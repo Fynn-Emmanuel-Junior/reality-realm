@@ -49,7 +49,6 @@ const auth = async (req,res) => {
     const accessToken = jwt.sign(
         { "userId": foundUser._id },
         process.env.ACCESS_TOKEN_SECRET,
-        {expiresIn: "30d"}
 
     )
 
@@ -62,7 +61,6 @@ const auth = async (req,res) => {
             httpOnly: true , 
             sameSite: "None", 
             secure: true ,
-            maxAge: 30 * 24 * 60 * 60 * 1000
         }
     )
 
@@ -87,7 +85,6 @@ const google = async (req,res) => {
             const accesstoken = jwt.sign(
                 {"userId": user._id},
                 process.env.ACCESS_TOKEN_SECRET,
-                {expiresIn: "30d"}
             )
     
             const { password: pass , ...rest } = user._doc
@@ -99,7 +96,6 @@ const google = async (req,res) => {
                     httpOnly: true,
                     sameSite: "None",
                     secure: true,
-                    maxAge: 30 * 24 * 60 * 60 * 1000
                 }
             )
 
@@ -122,7 +118,6 @@ const google = async (req,res) => {
             const accesstoken = jwt.sign(
                 {"userId": newUser._id},
                 process.env.ACCESS_TOKEN_SECRET,
-                {expiresIn: "30d"}
             )
 
             const { password: pass , ...rest } = newUser._doc
@@ -134,7 +129,6 @@ const google = async (req,res) => {
                     httpOnly: true,
                     sameSite: "None",
                     secure: true,
-                    maxAge: 30 * 24 * 60 * 60 * 1000
                 }
             )
 

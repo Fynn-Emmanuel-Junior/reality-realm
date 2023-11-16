@@ -60,11 +60,9 @@ const Profile = () => {
             .then((downloadURL) => {
               setformData({...formData,avatar: downloadURL});
               }
-            )
-            .catch((error) => console.log(' Error in getting download URL' + error))
-            
-        }
-        
+          )
+            .catch((error) => console.log(' Error in getting download URL' + error))  
+        } 
       );
 
     }
@@ -139,15 +137,17 @@ const Profile = () => {
 
   const deletelisting = async (listingId) => {
     try {
-       await fetch(`/api/listings/delete/${listingId}`)
-      
+         await fetch(`/api/listings/delete/${listingId}`, {
+          method: 'DELETE',
+        })
+
+        setListings((prev) => prev.filter((listing) => listing._id !== listingId))
     } catch(err) {
-      console.log(err.message)
+      console.log(`Cannot delete listing`)
     }
   }
 
-
-
+  
   return (
     <MainLayout>
       <div className="max-w-lg p-3 mx-auto">
@@ -168,7 +168,7 @@ const Profile = () => {
             />
             <p className="text-sm self-center">
               {
-                error ? <span> Error occurred when uploading image  ( images must be less than 2MB)</span> 
+                error ? <span className='text-red-600'> Error occurred when uploading image  ( images must be less than 2MB)</span> 
                 : filePercentage > 0 && filePercentage < 100 ? <span className="text-green-700">  {`Uploading ${filePercentage} ...`} </span>
                 : filePercentage == 100 ? <span className="text-green-700"> Image uploaded succcessfully </span> : ''
               }
@@ -215,19 +215,19 @@ const Profile = () => {
             Show listings
           </button>
           {
-            listings && listings.length > 0 && 
+            listings ? 
               listings.map(listing => (
                 <div key={listing._id} className="flex justify-between items-center gap-2 my-7 border border-gray-300 p-2">
                   <Link to={`/create-listing/${listing._id}`} className="flex items-center gap-3">
                     <img src={listing.imageurls[0]} alt="listing cover" className="w-16 h-16 object-cover" />
-                    <p className="truncate font-semibold hover:underline">{listing.name}</p>
+                    <p className="font-semibold hover:underline">{listing.name}</p>
                   </Link>  
                   <div className="flex flex-col gap-2">
                     <button onClick={() => deletelisting(listing._id)} className="text-red-700 lowercase"> Delete </button>
                     <button className="text-green-700 lowercase"> Edit </button>
                   </div>
                 </div>  
-              ))
+              )) : ''
           }
           <p className="text-red-700 text-sm text-center">
             {
