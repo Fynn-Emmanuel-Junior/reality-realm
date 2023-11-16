@@ -56,9 +56,23 @@ const deletelisting = async(req,res) => {
     }
 }
 
+const getListing = async(req,res) => {
+    try {
+        const listing = await ListingModel.findById(req.params.id) 
+
+        if(!listing) return res.status(404).json('No listing found')
+
+        res.status(200).json(listing) 
+        
+    } catch(err) {
+        res.status(400).json({message: `No listing found\n${err.message}`})
+    }
+}
+
 export {
     createListings,
     getAllListings,
     deletelisting,
-    updatelisting
+    updatelisting,
+    getListing
 }

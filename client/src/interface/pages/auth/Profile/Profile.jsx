@@ -6,12 +6,13 @@ import { updateUserSuccess,updateUserStart,deleteUserSucess,signOut } from "../.
 import { useRef,useState,useEffect } from "react"
 import { getDownloadURL, getStorage,ref, uploadBytesResumable } from 'firebase/storage'
 import { app } from '../../../../utilis/firebase'
-import { Link } from "react-router-dom"
+import { Link, useNavigate } from "react-router-dom"
 
 const Profile = () => {
   const currentuser = useSelector(selectCurrentUser)
   const loading = useSelector(selectLoading)
   const dispatch = useDispatch()
+  const navigate = useNavigate()
   
   const fileRef = useRef(null)
   const [file,setFile] = useState(undefined)
@@ -224,7 +225,7 @@ const Profile = () => {
                   </Link>  
                   <div className="flex flex-col gap-2">
                     <button onClick={() => deletelisting(listing._id)} className="text-red-700 lowercase"> Delete </button>
-                    <button className="text-green-700 lowercase"> Edit </button>
+                    <button onClick={() => navigate(`/edit-listing/${listing._id}`)} className="text-green-700 lowercase"> Edit </button>
                   </div>
                 </div>  
               )) : ''

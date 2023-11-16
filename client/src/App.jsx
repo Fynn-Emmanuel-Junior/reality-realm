@@ -5,8 +5,9 @@ import SignUp from './interface/pages/guest/SignUp/SignUp'
 import About from './interface/pages/auth/About/About'
 import Profile from './interface/pages/auth/Profile/Profile'
 import ProtectedRoutes from './interface/routes/ProtectedRoutes'
-import Listings from './interface/pages/auth/Profile/listings/Listings'
+import Listings from './interface/pages/auth/Profile/listings/CreateListings'
 import ListingPage from './interface/pages/auth/Profile/listings/listingPage'
+import UpdateListing from './interface/pages/auth/Profile/listings/UpdateListing'
 
 
 const App = () => {
@@ -19,6 +20,7 @@ const App = () => {
         <Route path='/profile' element={<Profile />}/>
         <Route path='/create-listing' element={<Listings />}/>
         <Route path='/create-listing/:id' element={<ListingPage />}/>
+        <Route path='/edit-listing/:id' element={<UpdateListing />}/>
       </Route>
       <Route path='/about' element={<About />}/>
     </Routes>

@@ -1,12 +1,12 @@
-import React, {useState} from 'react'
+import React, {useEffect, useState} from 'react'
 import MainLayout from "../../../../components/layouts/MainLayout"
 import { getDownloadURL, getStorage, ref, uploadBytesResumable } from 'firebase/storage'
 import { app } from '../../../../../utilis/firebase'
 import { selectCurrentUser } from '../../../../../logic/ReduxStore/features/users/usersSlice'
 import { useSelector } from 'react-redux'
-import { useNavigate } from 'react-router-dom'
+import { useNavigate, useParams } from 'react-router-dom'
 
-const Listings = () => {
+const UpdateListing = () => {
     const navigate = useNavigate()
     const [files,setFiles] = useState([])
     const user = useSelector(selectCurrentUser)
@@ -29,6 +29,25 @@ const Listings = () => {
     const [loading,setLoading] = useState(false)
     const [error,setError] = useState(null)
     const [success,setSuccess] = useState(null)
+
+    const {id} = useParams()
+    
+    useEffect(() => {
+        const fetchlisting = async () => {
+
+            const res = await fetch(`/api/listings/getlisting/${id}`)
+
+            const data = await res.json()
+
+            console.log(data)
+
+            setFormData(data)
+
+        }
+
+        fetchlisting()
+
+    },[])
     
 
     const handleImages =  (e) => {
@@ -131,9 +150,9 @@ const Listings = () => {
             if(formData.imageurls.length < 1) return setError('You must upload at least one image')
             if(formData.regularPrice < formData.discountPrice) return setError('Discount Price must be less than Regular price')
 
-            const res = await fetch('/api/listings/create', 
+            const res = await fetch(`/api/listings/update/${id}`, 
                 {
-                    method: 'POST',
+                    method: 'PUT',
                     headers: {
                         'content-type': 'application/json'
                     },
@@ -142,9 +161,10 @@ const Listings = () => {
             )
     
             const data = await res.json()
-            console.log(data)
+            
+            
             setSuccess(false)
-            navigate(`/create-listing/${user._id}`)
+            navigate(`/create-listing/${id}`)
            
 
         } catch(err) {
@@ -154,12 +174,11 @@ const Listings = () => {
 
     }
 
-    console.log(formData)
 
   return (
     <MainLayout>
         <main className='p-3 max-w-4xl mx-auto'>
-            <h1 className='text-3xl font-semibold my-7 text-center'> Create a listing </h1>
+            <h1 className='text-3xl font-semibold my-7 text-center'> Edit listing </h1>
             <form onSubmit={handleSubmit} className='flex flex-col sm:flex-row gap-10'>
                 <div className='flex flex-col gap-4 flex-1'>
                     <input 
@@ -331,7 +350,7 @@ const Listings = () => {
                         </button>
                     </div>
                     {
-                        formData.imageurls.length > 0 && formData.imageurls.map((url,index) => (
+                        formData.imageurls && formData.imageurls.map((url,index) => (
                             <div key={index} className='flex justify-between items-center p-3 border border-slate-300'>
                                 <div className='w-60'>
                                     <img src={url} alt="listing image" className=' h-20 object-cover rounded-sm'/>
@@ -348,7 +367,7 @@ const Listings = () => {
                     }
                     <button  disabled={ loading || success } className='bg-slate-700 uppercase text-white p-3 rounded-lg hover:opacity-95'> 
                         {
-                            success ? 'Creating...' : 'Create listing'
+                            success ? 'Updating...' : 'Update listing'
                         } 
                     </button>
                     <p className='text-red-700'>
@@ -369,4 +388,4 @@ const Listings = () => {
   )
 }
 
-export default Listings
+export default UpdateListing
