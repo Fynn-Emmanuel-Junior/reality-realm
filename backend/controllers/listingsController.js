@@ -25,13 +25,27 @@ const getAllListings = async(req,res) => {
 }
 
 const updatelisting = async (req,res) => {
-
+    const listing = await ListingModel.findById(req.params.id)
+    
+    if(listing) {
+        try {
+            const updateListing = await ListingModel.findByIdAndUpdate(
+                req.params.id,
+                req.body,
+                {new: true}
+            )
+            res.status(200).json(updateListing)
+        } catch (err) {
+            res.status(400).json({message:`Error updating listing\n ${err.message}`})
+        }
+    } else {
+        res.status(404).json('No listing found')
+    }
 }
 
 const deletelisting = async(req,res) => {
     const listing = await ListingModel.findById(req.params.id)
-    console.log(listing)
-
+    
     if(!listing) return res.status(404).json('No listing found')
 
     try {
@@ -45,5 +59,6 @@ const deletelisting = async(req,res) => {
 export {
     createListings,
     getAllListings,
-    deletelisting
+    deletelisting,
+    updatelisting
 }
