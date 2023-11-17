@@ -31,20 +31,18 @@ const UpdateListing = () => {
     const [success,setSuccess] = useState(null)
 
     const {id} = useParams()
+
+    const fetchlisting = async () => {
+        const res = await fetch(`/api/listings/getlisting/${id}`)
+        const data = await res.json()
+
+        console.log(data)
+
+        setFormData(data)
+
+    }
     
     useEffect(() => {
-        const fetchlisting = async () => {
-
-            const res = await fetch(`/api/listings/getlisting/${id}`)
-
-            const data = await res.json()
-
-            console.log(data)
-
-            setFormData(data)
-
-        }
-
         fetchlisting()
 
     },[])
@@ -164,7 +162,7 @@ const UpdateListing = () => {
             
             
             setSuccess(false)
-            navigate(`/create-listing/${id}`)
+            navigate(`/listing/${id}`)
            
 
         } catch(err) {

@@ -144,7 +144,7 @@ const CreateListing = () => {
             const data = await res.json()
         
             setSuccess(false)
-            navigate(`/create-listing/${data._id}`)
+            navigate(`/listing/${data._id}`)
            
 
         } catch(err) {

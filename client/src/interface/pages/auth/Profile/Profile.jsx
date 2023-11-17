@@ -219,7 +219,7 @@ const Profile = () => {
             listings ? 
               listings.map(listing => (
                 <div key={listing._id} className="flex justify-between items-center gap-2 my-7 border border-gray-300 p-2">
-                  <Link to={`/create-listing/${listing._id}`} className="flex items-center gap-3">
+                  <Link to={`/listing/${listing._id}`} className="flex items-center gap-3">
                     <img src={listing.imageurls[0]} alt="listing cover" className="w-16 h-16 object-cover" />
                     <p className="font-semibold hover:underline">{listing.name}</p>
                   </Link>  
