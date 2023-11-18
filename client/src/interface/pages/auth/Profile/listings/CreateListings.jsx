@@ -5,6 +5,7 @@ import { app } from '../../../../../utilis/firebase'
 import { selectCurrentUser } from '../../../../../logic/ReduxStore/features/users/usersSlice'
 import { useSelector } from 'react-redux'
 import { useNavigate, useParams } from 'react-router-dom'
+import { TailSpin } from  'react-loader-spinner'
 
 const CreateListing = () => {
     const navigate = useNavigate()
@@ -125,7 +126,6 @@ const CreateListing = () => {
         e.preventDefault()
         setSuccess(true)
 
-        
         try {
 
             if(formData.imageurls.length < 1) return setError('You must upload at least one image')
@@ -142,6 +142,7 @@ const CreateListing = () => {
             )
     
             const data = await res.json()
+            console.log(data)
         
             setSuccess(false)
             navigate(`/listing/${data._id}`)
@@ -149,8 +150,10 @@ const CreateListing = () => {
 
         } catch(err) {
             setError(err.message)
+            setSuccess(false)
             console.log(err.message)
         }
+
 
     }
 
@@ -318,6 +321,7 @@ const CreateListing = () => {
                             accept='images/*'
                             multiple 
                             className='p-3 border border-gray-600 rounded w-full'
+                            required
                             onChange={(e) => setFiles(e.target.files)}
                         /> 
                         <button 
@@ -326,7 +330,16 @@ const CreateListing = () => {
                             className='p-3 text-green-600 border border-green-600 rounded hover:shadow-lg'
                         > 
                             {
-                                loading ? 'Uploading...' : 'Upload'
+                                loading ?
+                                <TailSpin 
+                                height="25"
+                                width="25"
+                                color="#4fa94d"
+                                ariaLabel="tail-spin-loading"
+                                radius="1"
+                                wrapperStyle={{}}
+                                wrapperClass=""    
+                                /> : 'Upload'
                             }
                         </button>
                     </div>
@@ -346,9 +359,21 @@ const CreateListing = () => {
                             </div>   
                         ))
                     }
-                    <button  disabled={ loading || success } className='bg-slate-700 uppercase text-white p-3 rounded-lg hover:opacity-95'> 
+                    <button className='bg-slate-700  uppercase text-white p-3 rounded-lg hover:opacity-95'> 
                         {
-                            success ? 'Creating...' : 'Create listing'
+                            success ? 
+                            <div className='flex gap-3  justify-center items-center'>
+                                <TailSpin 
+                                height="25"
+                                width="25"
+                                color="#ffffff"
+                                ariaLabel="tail-spin-loading"
+                                radius="1"
+
+                                />
+                               
+                            </div> : 'Create listing'
+                                 
                         } 
                     </button>
                     <p className='text-red-700'>

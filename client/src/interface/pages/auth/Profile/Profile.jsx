@@ -7,6 +7,8 @@ import { useRef,useState,useEffect } from "react"
 import { getDownloadURL, getStorage,ref, uploadBytesResumable } from 'firebase/storage'
 import { app } from '../../../../utilis/firebase'
 import { Link, useNavigate } from "react-router-dom"
+import { TailSpin } from "react-loader-spinner"
+
 
 const Profile = () => {
   const currentuser = useSelector(selectCurrentUser)
@@ -201,7 +203,17 @@ const Profile = () => {
               disabled={loading}
               className="bg-slate-700 rounded-lg text-white uppercase p-3 hover:opacity-95 disabled:opacity-80"
             > {
-                loading ? 'loading...' : 'update'
+                loading ? 
+                  <div className="flex justify-center items-center">
+                    <TailSpin 
+                      height="25"
+                      width="25"
+                      color="#white"
+                      ariaLabel="tail-spin-loading"
+                      radius="1"
+                    />
+                  </div>
+                : 'update'
               } </button>
             <Link className="bg-green-700 text-center rounded-lg text-white uppercase p-3 w-full" to={'/create-listing'}>
               Create Listing
@@ -221,7 +233,7 @@ const Profile = () => {
                 <div key={listing._id} className="flex justify-between items-center gap-2 my-7 border border-gray-300 p-2">
                   <Link to={`/listing/${listing._id}`} className="flex items-center gap-3">
                     <img src={listing.imageurls[0]} alt="listing cover" className="w-16 h-16 object-cover" />
-                    <p className="font-semibold hover:underline">{listing.name}</p>
+                    <p className="font-semibold hover:underline break-words w-80">{listing.name}</p>
                   </Link>  
                   <div className="flex flex-col gap-2">
                     <button onClick={() => deletelisting(listing._id)} className="text-red-700 lowercase"> Delete </button>

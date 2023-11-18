@@ -5,6 +5,7 @@ import { app } from '../../../../../utilis/firebase'
 import { selectCurrentUser } from '../../../../../logic/ReduxStore/features/users/usersSlice'
 import { useSelector } from 'react-redux'
 import { useNavigate, useParams } from 'react-router-dom'
+import { TailSpin } from 'react-loader-spinner'
 
 const UpdateListing = () => {
     const navigate = useNavigate()
@@ -365,7 +366,17 @@ const UpdateListing = () => {
                     }
                     <button  disabled={ loading || success } className='bg-slate-700 uppercase text-white p-3 rounded-lg hover:opacity-95'> 
                         {
-                            success ? 'Updating...' : 'Update listing'
+                            success ? 
+                                <div className='flex justify-center items-center'>
+                                    <TailSpin 
+                                        height="25"
+                                        width="25"
+                                        color="white"
+                                        ariaLabel="tail-spin-loading"
+                                        radius="1"
+                                    />
+                                </div> : 'Update listing'
+                            
                         } 
                     </button>
                     <p className='text-red-700'>

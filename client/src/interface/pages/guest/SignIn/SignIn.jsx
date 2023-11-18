@@ -2,8 +2,10 @@ import MainLayout from "../../../components/layouts/MainLayout"
 import { Link, useNavigate } from "react-router-dom"
 import { useState } from "react"
 import {useSelector,useDispatch} from 'react-redux'
+import { selectLoading } from "../../../../logic/ReduxStore/features/users/usersSlice"
 import { signInStart,signInFailure,signInSuccess } from "../../../../logic/ReduxStore/features/users/usersSlice"
 import OAuth from '../SignUp/OAuth'
+import { TailSpin } from "react-loader-spinner"
 
 const SignIn = () => {
 
@@ -13,9 +15,10 @@ const SignIn = () => {
   const [message,setMessage] = useState(false)
   const [exists,setExists] = useState(false)
   const [passwordExists,setPasswordExists] = useState(false)
-
-  
   const [formData,setFormData] = useState({})
+
+
+  const loading = useSelector(selectLoading)
 
 
   const handleChange = (e) => {
@@ -30,7 +33,7 @@ const SignIn = () => {
 
   const handleSubmit = async (e) => {
     e.preventDefault()
-
+  
     if(formData.password == '' || formData.email == '') {
       setExists(false)
       setMessage(true)
@@ -38,7 +41,7 @@ const SignIn = () => {
     
     if(formData.email && formData.password) {
       setMessage(false)      
-      // dispatch(signInStart())
+      dispatch(signInStart())
       
       const res = await fetch('/api/users/auth',
         { 
@@ -52,24 +55,25 @@ const SignIn = () => {
 
       const data = await res.json()
 
+      dispatch(signInFailure())
+
       if(data.message === 'user not found' ){
-        setTimeout(() => {
-          setExists(true)
-        },500)
- 
+       
         setPasswordExists(false)
-        setExists(false)
-        dispatch(signInFailure(data))
+        setExists(true)
+      
+        dispatch(signInFailure())
 
         
       } else if(data.message === ' Unauthorized user'){
 
         setPasswordExists(true)
         setExists(false)
-        dispatch(signInFailure(data))
+        dispatch(signInFailure())
         
       } else{
         setPasswordExists(false)
+        dispatch(signInFailure())
         dispatch(signInSuccess(data))
         setExists(false)
         navigate('/')
@@ -77,6 +81,8 @@ const SignIn = () => {
       }
 
     
+    } else {
+      dispatch(signInFailure())
     }
 
     
@@ -128,12 +134,24 @@ const SignIn = () => {
             <button
               // disabled={loading} 
               className="bg-slate-700 p-3 text-white rounded-lg uppercase hover:opacity-95 disabled:opacity-80"> 
-                Sign in
+              
+               {
+                loading ? 
+                <div className="flex justify-center items-center">
+                    <TailSpin 
+                    height="25"
+                    width="25"
+                    color="#ffffff"
+                    ariaLabel="tail-spin-loading"
+                    radius="1"
+                    />
+                </div> : 'Sign in'
+               }
             </button>
             <OAuth />
         </form>
         <div className="flex gap-2 mt-5">
-          <p> Don't have an account </p>
+          <p> Don't have an account ? </p>
           <Link to='/signup'> 
             <span className="text-blue-700"> Sign Up </span>
            </Link>

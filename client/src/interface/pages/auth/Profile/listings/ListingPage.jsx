@@ -3,6 +3,7 @@ import { useParams } from 'react-router-dom'
 import {Swiper,SwiperSlide} from 'swiper/react'
 import SwiperCore from 'swiper'
 import {Navigation} from 'swiper/modules'
+import { FaMapMarkerAlt } from "react-icons/fa";
 import 'swiper/css/bundle'
 import MainLayout from '../../../../components/layouts/MainLayout'
 
@@ -59,8 +60,16 @@ const ListingPage = () => {
                 </SwiperSlide>
               ))
             }
-
           </Swiper>
+          <div className='sm:max-w-4xl  my-10  mx-auto'>
+            <p className='font-semibold text-2xl'>
+              <span> {listing.name } - <span>${listing.regularPrice || listing.discountPrice}</span></span>
+            </p>
+            <p className='flex justify-start items-center mt-8 gap-2 text-slate-600 my-2 text-sm'>
+              <FaMapMarkerAlt className='text-green-700' size={25}/>
+              <span className='text-base'>  {listing.address} </span>
+            </p>
+          </div>
         </> : ''
       }
       </main>
