@@ -16,9 +16,8 @@ const SignIn = () => {
   const [exists,setExists] = useState(false)
   const [passwordExists,setPasswordExists] = useState(false)
   const [formData,setFormData] = useState({})
-
-
-  const loading = useSelector(selectLoading)
+  const [loading,setLoading] = useState(false)
+ 
 
 
   const handleChange = (e) => {
@@ -28,7 +27,6 @@ const SignIn = () => {
         [e.target.id]: e.target.value
       }
     )
-
   }
 
   const handleSubmit = async (e) => {
@@ -41,8 +39,8 @@ const SignIn = () => {
     
     if(formData.email && formData.password) {
       setMessage(false)      
-      dispatch(signInStart())
-      
+      setLoading(true)
+       
       const res = await fetch('/api/users/auth',
         { 
           method: 'POST',
@@ -55,37 +53,29 @@ const SignIn = () => {
 
       const data = await res.json()
 
-      dispatch(signInFailure())
-
       if(data.message === 'user not found' ){
        
         setPasswordExists(false)
         setExists(true)
-      
-        dispatch(signInFailure())
-
-        
+        setLoading(false)
+    
       } else if(data.message === ' Unauthorized user'){
 
         setPasswordExists(true)
         setExists(false)
-        dispatch(signInFailure())
-        
+        setLoading(false)
+       
       } else{
+       
         setPasswordExists(false)
-        dispatch(signInFailure())
         dispatch(signInSuccess(data))
         setExists(false)
-        navigate('/')
-          
+        setLoading(false)
+        navigate('/')  
       }
-
-    
     } else {
-      dispatch(signInFailure())
+      setLoading(false)
     }
-
-    
   }
 
 
@@ -113,7 +103,7 @@ const SignIn = () => {
               name="email"
               onChange={handleChange}
             />
-             {
+            {
               message ? <div className="text-red-600 text-sm">
                 please fill all fields
               </div> : ''
@@ -137,17 +127,17 @@ const SignIn = () => {
               
                {
                 loading ? 
-                <div className="flex justify-center items-center">
-                    <TailSpin 
-                    height="25"
-                    width="25"
-                    color="#ffffff"
-                    ariaLabel="tail-spin-loading"
-                    radius="1"
-                    />
-                </div> : 'Sign in'
+                  <div className="flex justify-center items-center">
+                      <TailSpin 
+                        height="25"
+                        width="25"
+                        color="#ffffff"
+                        ariaLabel="tail-spin-loading"
+                        radius="1"
+                      />
+                  </div> : 'Sign in'
                }
-            </button>
+            </button> 
             <OAuth />
         </form>
         <div className="flex gap-2 mt-5">

@@ -23,7 +23,7 @@ const listingSchema = new mongoose.Schema({
     parking: {
         type: Boolean,
     },
-    Offer: {
+    offer: {
         type: Boolean,  
     },
     bathrooms: {

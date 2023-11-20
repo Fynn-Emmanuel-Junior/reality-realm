@@ -37,8 +37,6 @@ const UpdateListing = () => {
         const res = await fetch(`/api/listings/getlisting/${id}`)
         const data = await res.json()
 
-        console.log(data)
-
         setFormData(data)
 
     }
@@ -170,9 +168,7 @@ const UpdateListing = () => {
             setError(err.message)
             console.log(err.message)
         }
-
     }
-
 
   return (
     <MainLayout>
@@ -312,7 +308,6 @@ const UpdateListing = () => {
                                         min={50} 
                                         max={100000}
                                         className='focus:outline-none border border-gray-300 p-1 text-center'
-                                        required
                                         onChange={handleChange}
                                         value={formData.discountPrice}
                                     />
@@ -344,7 +339,15 @@ const UpdateListing = () => {
                             className='p-3 text-green-600 border border-green-600 rounded hover:shadow-lg'
                         > 
                             {
-                                loading ? 'Uploading...' : 'Upload'
+                                loading ? 
+                                    <TailSpin 
+                                        height="25"
+                                        width="25"
+                                        color="green"
+                                        ariaLabel="tail-spin-loading"
+                                        radius="1"
+                                    />
+                                : 'Upload'
                             }
                         </button>
                     </div>

@@ -135,11 +135,9 @@ const google = async (req,res) => {
             res.status(200).json(rest)
         }
 
-    }catch(err) {
+    } catch (err) {
         res.status(401).json({message: 'could not sign in using google'})
     }
-    
-
 }
 
 const update = async (req,res) => {
