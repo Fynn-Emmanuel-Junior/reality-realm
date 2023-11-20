@@ -5,7 +5,8 @@ import {
     google,
     update,
     deleteUser,
-    signout
+    signout,
+    getUser
 } from '../../controllers/userController.js'
 import { authMiddleware } from "../../middlewares/authMiddleware.js";
 
@@ -18,6 +19,8 @@ router.post('/google',google)
 router.put('/update',authMiddleware, update)
 router.delete('/delete',authMiddleware,deleteUser)
 router.get('/signout',signout)
+router.get('/:id',authMiddleware,getUser)
+
 
 
 export default router

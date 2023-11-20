@@ -1,21 +1,28 @@
 import React , {useEffect,useState}from 'react'
-import { useParams } from 'react-router-dom'
+import { useParams,useNavigate } from 'react-router-dom'
+import {useSelector} from 'react-redux'
+import { selectCurrentUser } from '../../../../../logic/ReduxStore/features/users/usersSlice'
 import {Swiper,SwiperSlide} from 'swiper/react'
 import SwiperCore from 'swiper'
 import {Navigation} from 'swiper/modules'
 import { FaBath, FaBed, FaChair, FaMapMarkerAlt, FaParking } from "react-icons/fa";
 import 'swiper/css/bundle'
 import MainLayout from '../../../../components/layouts/MainLayout'
+import Contact from '../../../../components/customs/Contact'
 
 
 const ListingPage = () => {
   SwiperCore.use([Navigation])
 
   const {id} = useParams()
+  const navigate = useNavigate()
+
+  const user = useSelector(selectCurrentUser)
   
   const [listing,setlisting] = useState({})
   const [loading,setLoading] = useState(true)
   const [error,setError] = useState(false)
+  const [contact,setContact] = useState(false)
 
 
   useEffect(() => {
@@ -28,8 +35,8 @@ const ListingPage = () => {
         const res = await fetch(`/api/listings/getlisting/${id}`)
     
         const data = await res.json()
-        console.log(data)
-        
+    
+      
         setlisting(data)
         setLoading(false)
         
@@ -43,7 +50,12 @@ const ListingPage = () => {
     fetchlisting()
   },[])
 
-  console.log(listing.Offer)
+  const handleSignin = () => {
+    if(!user) return navigate('/signin')
+
+    if(user) return setContact(true)
+
+  }
 
   return (
     <MainLayout>
@@ -106,6 +118,11 @@ const ListingPage = () => {
                 </li>
                 
             </ul>
+            <button 
+              className='bg-slate-700 text-white uppercase rounded-lg hover:opacity-95 p-3'
+              onClick={handleSignin}
+            > Contact landlord </button>
+            {contact && <Contact listing={listing}/>}
           </div>
           
         </> : ''

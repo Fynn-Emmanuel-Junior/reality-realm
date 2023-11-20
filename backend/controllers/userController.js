@@ -192,6 +192,20 @@ const signout = async (req,res) => {
     }
 }
 
+const getUser = async (req,res) => {
+    try {
+        const user = await UserModel.findById(req.params.id)
+
+        if(!user) return res.status(204).json({message: 'No user found'})
+
+        const {password: pass , ...rest} = user._doc
+
+        res.status(200).json(rest)
+    } catch(err) {
+        res.status(400).json({message: 'Failed to get user'})
+    }
+}
+
 
 export {
     register,
@@ -199,5 +213,6 @@ export {
     google,
     update,
     deleteUser,
-    signout
+    signout,
+    getUser
 }
