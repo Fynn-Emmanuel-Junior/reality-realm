@@ -47,7 +47,8 @@ const SignUp = () => {
         {
           method: 'POST',
           headers: {
-            'content-type': 'application/json'
+            'content-type': 'application/json',
+            WithCredentials: true
           },
           body: JSON.stringify(formData)
         }
@@ -93,6 +94,7 @@ const SignUp = () => {
               className="border p-3  rounded-lg focus:outline-none"
               id="username"
               name="username"
+              required
               onChange={handleChange}
             />
             <>
@@ -108,6 +110,7 @@ const SignUp = () => {
               className="border p-3  rounded-lg focus:outline-none"
               id="email"
               name="email"
+              required
               onChange={handleChange}
             />
             {

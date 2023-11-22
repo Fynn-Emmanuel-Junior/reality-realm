@@ -69,10 +69,19 @@ const getListing = async(req,res) => {
     }
 }
 
+const getListings = async (req,res) => {
+    try {
+
+    } catch(err) {
+        
+    }
+}
+
 export {
     createListings,
     getAllListings,
     deletelisting,
     updatelisting,
-    getListing
+    getListing,
+    getListings
 }

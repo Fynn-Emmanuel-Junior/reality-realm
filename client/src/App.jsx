@@ -8,7 +8,7 @@ import ProtectedRoutes from './interface/routes/ProtectedRoutes'
 import Listings from './interface/pages/auth/Profile/listings/CreateListings'
 import ListingPage from './interface/pages/auth/Profile/listings/ListingPage'
 import UpdateListing from './interface/pages/auth/Profile/listings/UpdateListing'
-
+import ErrorPage from './interface/pages/auth/404Page/ErrorPage'
 
 const App = () => {
   return (
@@ -23,6 +23,7 @@ const App = () => {
         <Route path='/edit-listing/:id' element={<UpdateListing />}/>
       </Route>
       <Route path='/about' element={<About />}/>
+      <Route path='*' element={<ErrorPage />} />
     </Routes>
   )
 }

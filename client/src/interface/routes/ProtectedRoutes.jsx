@@ -1,11 +1,12 @@
 import React from 'react'
-import { Outlet,Navigate } from 'react-router-dom'
+import { Outlet,Navigate,useLocation } from 'react-router-dom'
 import { useSelector } from 'react-redux'
 import { selectCurrentUser } from '../../logic/ReduxStore/features/users/usersSlice'
 
 const ProtectedRoutes = () => {
     const currentuser = useSelector(selectCurrentUser)
-  return  currentuser ? <Outlet /> : <Navigate to='/signin' />
+    const location = useLocation()
+  return  currentuser ? <Outlet /> : <Navigate to='/signin'  state={{from : location}} replace/>
 }
 
 export default ProtectedRoutes

@@ -23,11 +23,14 @@ const ListingPage = () => {
   const [loading,setLoading] = useState(true)
   const [error,setError] = useState(false)
   const [contact,setContact] = useState(false)
+  const [landlord,setLandlord] = useState(false)
 
 
   useEffect(() => {
+
+    setLandlord(true)
+
     const fetchlisting = async () => {
-      
       try {
         setLoading(true)
         setError(true)
@@ -54,6 +57,7 @@ const ListingPage = () => {
     if(!user) return navigate('/signin')
 
     if(user) return setContact(true)
+    setLandlord(false)
 
   }
 
@@ -91,7 +95,7 @@ const ListingPage = () => {
               </p>
               {listing.discountPrice && (
                 <p className='bg-green-900 w-full max-w-[200px] text-white text-center p-1 rounded-md'>
-                  ${listing.regularPrice - listing.discountPrice} OFF
+                  ${listing.regularPrice - listing.discountPrice} discount off
                 </p>
               )}
             </div>
@@ -118,11 +122,23 @@ const ListingPage = () => {
                 </li>
                 
             </ul>
-            <button 
-              className='bg-slate-700 text-white uppercase rounded-lg hover:opacity-95 p-3'
-              onClick={handleSignin}
-            > Contact landlord </button>
-            {contact && <Contact listing={listing}/>}
+
+            {/* landlord ? (<button className='bg-slate-700 text-white uppercase rounded-lg hover:opacity-95 p-3' onClick={handleSignin}>  contact landlord
+               </button>)  
+                       ? ({ contact ? <Contact listing={listing}/>} : '')
+           
+             */}
+             <>
+              {
+                landlord && !contact ? <button className='bg-slate-700 text-white uppercase rounded-lg hover:opacity-95 p-3' onClick={handleSignin}>  contact landlord
+                </button>   : ''
+              }
+            
+            </>
+            <>
+              {contact && <Contact listing={listing}/>}
+            </>
+            
           </div>
           
         </> : ''
