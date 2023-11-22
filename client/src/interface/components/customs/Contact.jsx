@@ -33,7 +33,7 @@ const Contact = ({listing}) => {
     <>
         {
             landlord && 
-                <div className='flex flex-col gap-2'>
+                <div className='flex flex-col gap-2 transition ease-in-out delay-150 duration-300'>
                     <p>
                         Contact <span className='font-semibold'>{landlord.username}</span> {" "}
                             for  {" "}
