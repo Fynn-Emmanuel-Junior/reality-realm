@@ -93,7 +93,7 @@ const ListingPage = () => {
               <p className='bg-red-900 w-full max-w-[200px] text-white text-center p-1 rounded-md'>
                 {listing.type === 'rent' ? 'For Rent' : 'For Sale'}
               </p>
-              {listing.discountPrice && (
+              {listing.discountPrice > 0  && (
                 <p className='bg-green-900 w-full max-w-[200px] text-white text-center p-1 rounded-md'>
                   ${listing.regularPrice - listing.discountPrice} discount off
                 </p>

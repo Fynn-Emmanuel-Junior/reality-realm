@@ -84,21 +84,21 @@ const getListings = async (req,res) => {
         const order = req.query.order || 'desc'
 
 
-        if(offer === undefined || offer ==='false') { 
-            offer = {$in: [false,true]}
-        }
+        // if(offer === undefined || offer ==='false') { 
+        //     offer = {$in: [false,true]}
+        // }
 
-        if(furnished === undefined || furnished === 'false') {
-            furnished = {$in: [false,true]}
-        }
+        // if(furnished === undefined || furnished === 'false') {
+        //     furnished = {$in: [false,true]}
+        // }
 
-        if(parking === undefined || furnished === 'false') {
-            parking = {$in: [false,true]}
-        }
+        // if(parking === undefined || furnished === 'false') {
+        //     parking = {$in: [false,true]}
+        // }
 
-        if(type === undefined || type === 'all') {
-            type = {$in: ['sale','rent']}
-        }
+        // if(type === undefined || type === 'all') {
+        //     type = {$in: ['sale','rent']}
+        // }
 
 
         const listings = await ListingModel.find({
@@ -111,10 +111,10 @@ const getListings = async (req,res) => {
             {[sort]: order}
         ).limit(limit).skip(startIndex)
 
-        return res.staus(200).json(listings)
+        return res.status(200).json(listings)
 
     } catch(err) {
-        res.staus(404).json('No listings found') 
+        res.status(404).json('No listings found') 
     }
 }
 

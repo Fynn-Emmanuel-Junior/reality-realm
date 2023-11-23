@@ -23,7 +23,7 @@ const App = () => {
         <Route path='/edit-listing/:id' element={<UpdateListing />}/>
       </Route>
       <Route path='/about' element={<About />}/>
-      <Route path='*' element={<ErrorPage />} />
+      {/* <Route path='*' element={<ErrorPage />} /> */}
     </Routes>
   )
 }

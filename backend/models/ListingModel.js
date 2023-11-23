@@ -46,7 +46,7 @@ const listingSchema = new mongoose.Schema({
         type: String,
     }
 
-}, {timestamp: true})
+}, {timestamps: true})
 
 const ListingModel = mongoose.model('Listing',listingSchema);
 

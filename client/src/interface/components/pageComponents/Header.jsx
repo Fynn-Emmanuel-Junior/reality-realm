@@ -1,10 +1,30 @@
 import {FaSearch} from 'react-icons/fa'
-import { Link } from 'react-router-dom'
+import { Link,useNavigate } from 'react-router-dom'
 import {useSelector} from 'react-redux'
 import { selectCurrentUser } from '../../../logic/ReduxStore/features/users/usersSlice'
+import { useEffect, useState } from 'react'
 
 const Header = () => {
     const currentuser = useSelector(selectCurrentUser)
+    const [searchquery,setSearchQuery] = useState('')
+    const navigate = useNavigate()
+
+    const handleSubmit = (e) => {
+        e.preventDefault()
+
+        const urlparams = new URLSearchParams(window.location.search)
+        urlparams.set('searchquery',searchquery)
+
+        const searchTerm = searchquery.toString()
+        navigate(`/search?${searchTerm}`)
+    }
+
+    useEffect(() => {
+        const urlparams = new URLSearchParams(window.location.search)
+        const searchTerm = urlparams.get('searchquery',searchquery)
+
+        setSearchQuery(searchTerm)
+    },[location.search])
 
   return (
     <header className="bg-slate-200 shadow-md">
@@ -15,15 +35,19 @@ const Header = () => {
                     <span className="text-slate-700"> Realm </span>
                 </h1>
             </Link>
-            <form className="bg-slate-100 p-3 rounded-lg flex items-center gap-3">
+            <form onSubmit={handleSubmit} className="bg-slate-100 p-3 rounded-lg flex items-center gap-3">
                 <input 
                     type="text"  
                     placeholder="Search..."
-                    className="bg-transparent focus:outline-none w-32 sm:w-64 text-sm sm:text-base" 
+                    className="bg-transparent focus:outline-none w-32 sm:w-64 text-sm sm:text-base"
+                    value={searchquery} 
+                    onChange={(e) => setSearchQuery(e.target.value)}
                 />
-                <FaSearch 
-                    className='text-slate-700'
-                />
+                <button type='submit'>
+                    <FaSearch 
+                        className='text-slate-700'
+                    />
+                </button>
             </form>
             <ul className='flex justify-between items-center gap-4'>
                 <Link to='/'>
