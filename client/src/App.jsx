@@ -9,6 +9,7 @@ import Listings from './interface/pages/auth/Profile/listings/CreateListings'
 import ListingPage from './interface/pages/auth/Profile/listings/ListingPage'
 import UpdateListing from './interface/pages/auth/Profile/listings/UpdateListing'
 import ErrorPage from './interface/pages/auth/404Page/ErrorPage'
+import SearchPage from './interface/pages/auth/Search/SearchPage'
 
 const App = () => {
   return (
@@ -17,6 +18,7 @@ const App = () => {
       <Route path='/signin' element={<SignIn />}/>
       <Route path='/signup' element={<SignUp />}/>
       <Route path='/listing/:id' element={<ListingPage />}/>
+      <Route path='search' element={<SearchPage />}/>
       <Route element={<ProtectedRoutes />}>
         <Route path='/profile' element={<Profile />}/>
         <Route path='/create-listing' element={<Listings />}/>

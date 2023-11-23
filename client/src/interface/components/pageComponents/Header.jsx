@@ -20,11 +20,18 @@ const Header = () => {
     }
 
     useEffect(() => {
-        const urlparams = new URLSearchParams(window.location.search)
-        const searchTerm = urlparams.get('searchquery',searchquery)
+        const urlparams = new URLSearchParams(location.search)
+        const searchTermUrl = urlparams.get('searchquery')
 
-        setSearchQuery(searchTerm)
+        if(searchTermUrl) {
+            setSearchQuery(searchTermUrl)
+        } else {
+            console.log('No search term found')
+        }
+  
     },[location.search])
+
+    console.log(searchquery)
 
   return (
     <header className="bg-slate-200 shadow-md">
@@ -43,7 +50,7 @@ const Header = () => {
                     value={searchquery} 
                     onChange={(e) => setSearchQuery(e.target.value)}
                 />
-                <button type='submit'>
+                <button>
                     <FaSearch 
                         className='text-slate-700'
                     />

@@ -34,7 +34,7 @@ const Profile = () => {
   */
 
     useEffect(() => {
-      if(file) {
+        if(file) {
         handleFileUpload(file);
       }
     },[file])
@@ -50,21 +50,20 @@ const Profile = () => {
 
         // Listen to the percentage of file upload
         uploadTask.on('state_changed', (snapshot) => {
-          const progress = (snapshot.bytesTransferred / snapshot.totalBytes) * 100 
-          setFilePercentage(Math.round(progress))
+            const progress = (snapshot.bytesTransferred / snapshot.totalBytes) * 100 
+            setFilePercentage(Math.round(progress))
         },
         (error) => {
-          setError(true)
+            setError(true)
         },
 
         // download image and pass it to the file state for upload
         () => {
-          getDownloadURL(uploadTask.snapshot.ref)
+        getDownloadURL(uploadTask.snapshot.ref)
             .then((downloadURL) => {
-              setformData({...formData,avatar: downloadURL});
-              }
-          )
-            .catch((error) => console.log(' Error in getting download URL' + error))  
+                setformData({...formData,avatar: downloadURL});
+                }
+            ).catch((error) => console.log(' Error in getting download URL' + error))  
         } 
       );
 
@@ -83,11 +82,11 @@ const Profile = () => {
 
       const res = await fetch('/api/users/update', 
         {
-          method: 'PUT',
-          headers: {
-            'content-type': 'application/json'
-          },
-          body: JSON.stringify(formData)
+            method: 'PUT',
+            headers: {
+                'content-type': 'application/json'
+            },
+            body: JSON.stringify(formData)
         }
       )
       
@@ -104,7 +103,7 @@ const Profile = () => {
     const handleDelete = async () => {
       try {
         const res = await fetch('/api/users/delete', {
-          method: 'DELETE'
+            method: 'DELETE'
         })
 
         const data = await res.json()
@@ -129,12 +128,12 @@ const Profile = () => {
 
     const showlistings = async () => {
       try {
-          const res = await fetch(`/api/listings/get/${currentuser._id}`)
-          const data = await res.json()
-          setListings(data)
-          console.log(listings)
+            const res = await fetch(`/api/listings/get/${currentuser._id}`)
+            const data = await res.json()
+            setListings(data)
+            console.log(listings)
       } catch (err) {
-          setListingError('Error showing listings')
+            setListingError('Error showing listings')
       }
   }
 
@@ -157,17 +156,17 @@ const Profile = () => {
         <h1 className="text-3xl font-semibold text-center my-7"> Profile </h1>
         <form className='flex flex-col gap-4' onSubmit={handleSubmit}>
             <input 
-              type="file"  
-              ref={fileRef} 
-              hidden 
-              accept="image/*"
-              onChange={(e) => setFile(e.target.files[0])}
+                type="file"  
+                ref={fileRef} 
+                hidden 
+                accept="image/*"
+                onChange={(e) => setFile(e.target.files[0])}
             />
             <img 
-              src={formData.avatar || currentuser.avatar} 
-              alt="profile" 
-              className="rounded-full h-24 w-24 object-cover  self-center mt-2 cursor-pointer"
-              onClick={() => fileRef.current.click()}
+                src={formData.avatar || currentuser.avatar} 
+                alt="profile" 
+                className="rounded-full h-24 w-24 object-cover  self-center mt-2 cursor-pointer"
+                onClick={() => fileRef.current.click()}
             />
             <p className="text-sm self-center">
               {
@@ -177,27 +176,27 @@ const Profile = () => {
               }
             </p>
             <input 
-              type="text" 
-              placeholder='username'
-              className="border rounded-lg p-3 focus:outline-none"
-              defaultValue={currentuser.username}
-              id="username"
-              onChange={handleChange}
+                type="text" 
+                placeholder='username'
+                className="border rounded-lg p-3 focus:outline-none"
+                defaultValue={currentuser.username}
+                id="username"
+                onChange={handleChange}
             />
             <input 
-              type="email" 
-              placeholder="email"
-              className="border rounded-lg p-3 focus:outline-none"
-              defaultValue={currentuser.email}
-              id="email"
-              onChange={handleChange}
+                type="email" 
+                placeholder="email"
+                className="border rounded-lg p-3 focus:outline-none"
+                defaultValue={currentuser.email}
+                id="email"
+                onChange={handleChange}
             />
             <input 
-              type="password" 
-              placeholder='password'
-              className="border rounded-lg p-3 focus:outline-none"
-              id="password"
-              onChange={handleChange}
+                type="password" 
+                placeholder='password'
+                className="border rounded-lg p-3 focus:outline-none"
+                id="password"
+                onChange={handleChange}
             />
             <button 
               disabled={loading}
@@ -206,22 +205,22 @@ const Profile = () => {
                 loading ? 
                   <div className="flex justify-center items-center">
                     <TailSpin 
-                      height="25"
-                      width="25"
-                      color="#white"
-                      ariaLabel="tail-spin-loading"
-                      radius="1"
+                        height="25"
+                        width="25"
+                        color="#white"
+                        ariaLabel="tail-spin-loading"
+                        radius="1"
                     />
                   </div>
                 : 'update'
               } </button>
             <Link className="bg-green-700 text-center rounded-lg text-white uppercase p-3 w-full" to={'/create-listing'}>
-              Create Listing
+                Create Listing
             </Link>  
         </form>
         <div className='flex justify-between mt-5'>
-          <span onClick={handleDelete} className='text-red-700 cursor-pointer'> Delete account </span>
-          <span onClick={handleSignout} className='text-red-700 cursor-pointer'> Sign out </span>
+            <span onClick={handleDelete} className='text-red-700 cursor-pointer'> Delete account </span>
+            <span onClick={handleSignout} className='text-red-700 cursor-pointer'> Sign out </span>
         </div>
         <div>
           <button  onClick={showlistings} className="text-green-700 text-sm w-full cursor-pointer p-3">
