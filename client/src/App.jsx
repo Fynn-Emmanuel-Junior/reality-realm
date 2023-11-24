@@ -6,10 +6,10 @@ import About from './interface/pages/auth/About/About'
 import Profile from './interface/pages/auth/Profile/Profile'
 import ProtectedRoutes from './interface/routes/ProtectedRoutes'
 import Listings from './interface/pages/auth/Profile/listings/CreateListings'
-import ListingPage from './interface/pages/auth/Profile/listings/ListingPage'
+import Listing from './interface/pages/auth/Profile/listings/Listing'
 import UpdateListing from './interface/pages/auth/Profile/listings/UpdateListing'
 import ErrorPage from './interface/pages/auth/404Page/ErrorPage'
-import SearchPage from './interface/pages/auth/Search/SearchPage'
+import Search from './interface/pages/auth/Search/Search'
 
 const App = () => {
   return (
@@ -17,8 +17,8 @@ const App = () => {
       <Route path='/' element={<Home />}/>
       <Route path='/signin' element={<SignIn />}/>
       <Route path='/signup' element={<SignUp />}/>
-      <Route path='/listing/:id' element={<ListingPage />}/>
-      <Route path='search' element={<SearchPage />}/>
+      <Route path='/listing/:id' element={<Listing />}/>
+      <Route path='search' element={<Search />}/>
       <Route element={<ProtectedRoutes />}>
         <Route path='/profile' element={<Profile />}/>
         <Route path='/create-listing' element={<Listings />}/>

@@ -75,46 +75,43 @@ const getListings = async (req,res) => {
         const startIndex = parseInt(req.query.startIndex) || 0
 
         let offer = req.query.offer
-        let furnished = req.query. furnished
-        let parking = req.query. parking
-        let type = req.query. type
+        let furnished = req.query.furnished
+        let parking = req.query.parking
+        let type = req.query.type
 
         const searchTerm = req.query.searchTerm || ''
         const  sort = req.query.sort || 'createdAt'
         const order = req.query.order || 'desc'
 
+        if(offer === undefined || offer === 'false') {
+            offer = {$in: [false,true]}
+        }
 
-        // if(offer === undefined || offer ==='false') { 
-        //     offer = {$in: [false,true]}
-        // }
+        if(furnished === undefined || furnished === 'false') {
+            furnished = {$in: [false,true]}
+        }
 
-        // if(furnished === undefined || furnished === 'false') {
-        //     furnished = {$in: [false,true]}
-        // }
+        if(parking === undefined || parking === 'false') {
+            parking = {$in: [false,true]}
+        }
 
-        // if(parking === undefined || furnished === 'false') {
-        //     parking = {$in: [false,true]}
-        // }
-
-        // if(type === undefined || type === 'all') {
-        //     type = {$in: ['sale','rent']}
-        // }
-
+        if(type === undefined || type === 'all') {
+            type = {$in: ['sell','rent']}
+        }
 
         const listings = await ListingModel.find({
-            name: { $regex: searchTerm,$options: 'i'},
+            name: {$regex: searchTerm,$options: 'i'},
             offer,
             furnished,
-            parking,
-            type
-        }).sort(
-            {[sort]: order}
-        ).limit(limit).skip(startIndex)
-
+            parking
+        })
+            .sort({[sort]: order})
+            .limit(limit)
+            .skip()
         return res.status(200).json(listings)
 
     } catch(err) {
-        res.status(404).json('No listings found') 
+        res.status(404).json(`No listings found\n${err.message}`) 
     }
 }
 

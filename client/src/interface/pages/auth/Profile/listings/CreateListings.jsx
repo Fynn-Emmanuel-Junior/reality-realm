@@ -9,8 +9,9 @@ import { TailSpin } from  'react-loader-spinner'
 
 const CreateListing = () => {
     const navigate = useNavigate()
-    const [files,setFiles] = useState([])
     const user = useSelector(selectCurrentUser)
+    
+    const [files,setFiles] = useState([])
     const [formData,setFormData] = useState({
         name: '',
         description: '',
@@ -156,8 +157,6 @@ const CreateListing = () => {
 
 
     }
-
-    console.log(formData)
 
   return (
     <MainLayout>
@@ -332,13 +331,13 @@ const CreateListing = () => {
                             {
                                 loading ?
                                 <TailSpin 
-                                height="25"
-                                width="25"
-                                color="#4fa94d"
-                                ariaLabel="tail-spin-loading"
-                                radius="1"
-                                wrapperStyle={{}}
-                                wrapperClass=""    
+                                    height="25"
+                                    width="25"
+                                    color="#4fa94d"
+                                    ariaLabel="tail-spin-loading"
+                                    radius="1"
+                                    wrapperStyle={{}}
+                                    wrapperClass=""    
                                 /> : 'Upload'
                             }
                         </button>
@@ -364,12 +363,11 @@ const CreateListing = () => {
                             success ? 
                             <div className='flex gap-3  justify-center items-center'>
                                 <TailSpin 
-                                height="25"
-                                width="25"
-                                color="#ffffff"
-                                ariaLabel="tail-spin-loading"
-                                radius="1"
-
+                                    height="25"
+                                    width="25"
+                                    color="#ffffff"
+                                    ariaLabel="tail-spin-loading"
+                                    radius="1"
                                 />
                                
                             </div> : 'Create listing'

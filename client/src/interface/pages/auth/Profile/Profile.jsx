@@ -115,27 +115,28 @@ const Profile = () => {
     }
 
     const handleSignout = async (req,res) => {
-      try {
+      try{
         const res = await fetch('/api/users/signout')
         const data = await res.json()
        
         dispatch(signOut())
 
-      } catch(err) {
+      } catch(err){
         console.log(err.message)
       }
     }
 
     const showlistings = async () => {
-      try {
+      try{
             const res = await fetch(`/api/listings/get/${currentuser._id}`)
             const data = await res.json()
             setListings(data)
             console.log(listings)
-      } catch (err) {
+        } catch(err){
             setListingError('Error showing listings')
-      }
-  }
+            console.log(err.message)
+        }
+    }
 
   const deletelisting = async (listingId) => {
     try {
@@ -229,12 +230,12 @@ const Profile = () => {
           {
             listings ? 
               listings.map(listing => (
-                <div key={listing._id} className="flex justify-between items-center gap-2 my-7 border border-gray-300 p-2">
-                  <Link to={`/listing/${listing._id}`} className="flex items-center gap-3">
+                <div key={listing._id} className="flex justify-between items-center gap-2 my-7 border border-gray-300 p-2 max-w-3xl">
+                  <Link to={`/listing/${listing._id}`} className="flex items-center gap-3 flex-wrap flex-1 ">
                     <img src={listing.imageurls[0]} alt="listing cover" className="w-16 h-16 object-cover" />
                     <p className="font-semibold hover:underline break-words w-80">{listing.name}</p>
                   </Link>  
-                  <div className="flex flex-col gap-2">
+                  <div className="flex flex-col gap-2 ">
                     <button onClick={() => deletelisting(listing._id)} className="text-red-700 lowercase"> Delete </button>
                     <button onClick={() => navigate(`/edit-listing/${listing._id}`)} className="text-green-700 lowercase"> Edit </button>
                   </div>

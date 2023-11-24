@@ -6,32 +6,29 @@ import { useEffect, useState } from 'react'
 
 const Header = () => {
     const currentuser = useSelector(selectCurrentUser)
-    const [searchquery,setSearchQuery] = useState('')
+    const [searchTerm,setSearchTerm] = useState('')
     const navigate = useNavigate()
 
     const handleSubmit = (e) => {
         e.preventDefault()
 
         const urlparams = new URLSearchParams(window.location.search)
-        urlparams.set('searchquery',searchquery)
+        urlparams.set('searchTerm',searchTerm)
 
-        const searchTerm = searchquery.toString()
-        navigate(`/search?${searchTerm}`)
+        const searchquery = urlparams.toString()
+        navigate(`/search?${searchquery}`)
     }
 
     useEffect(() => {
         const urlparams = new URLSearchParams(location.search)
-        const searchTermUrl = urlparams.get('searchquery')
+        const searchTermUrl = urlparams.get('searchTerm')
 
         if(searchTermUrl) {
-            setSearchQuery(searchTermUrl)
-        } else {
-            console.log('No search term found')
-        }
+            setSearchTerm(searchTermUrl)
+        } 
   
     },[location.search])
 
-    console.log(searchquery)
 
   return (
     <header className="bg-slate-200 shadow-md">
@@ -47,8 +44,8 @@ const Header = () => {
                     type="text"  
                     placeholder="Search..."
                     className="bg-transparent focus:outline-none w-32 sm:w-64 text-sm sm:text-base"
-                    value={searchquery} 
-                    onChange={(e) => setSearchQuery(e.target.value)}
+                    value={searchTerm} 
+                    onChange={(e) => setSearchTerm(e.target.value)}
                 />
                 <button>
                     <FaSearch 

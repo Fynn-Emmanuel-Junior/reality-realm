@@ -11,7 +11,7 @@ import MainLayout from '../../../../components/layouts/MainLayout'
 import Contact from '../../../../components/customs/Contact'
 
 
-const ListingPage = () => {
+const Listing = () => {
   SwiperCore.use([Navigation])
 
   const {id} = useParams()
@@ -38,12 +38,10 @@ const ListingPage = () => {
         const res = await fetch(`/api/listings/getlisting/${id}`)
     
         const data = await res.json()
-    
-      
+  
         setlisting(data)
         setLoading(false)
-        
-        
+  
       } catch(err) {
         setError(true)
         setLoading(false)
@@ -51,6 +49,7 @@ const ListingPage = () => {
     }
     
     fetchlisting()
+    
   },[])
 
   const handleSignin = () => {
@@ -149,4 +148,4 @@ const ListingPage = () => {
   )
 }
 
-export default ListingPage
+export default Listing
