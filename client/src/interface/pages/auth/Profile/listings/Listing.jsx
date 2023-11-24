@@ -49,7 +49,7 @@ const Listing = () => {
     }
     
     fetchlisting()
-    
+
   },[])
 
   const handleSignin = () => {
@@ -121,12 +121,6 @@ const Listing = () => {
                 </li>
                 
             </ul>
-
-            {/* landlord ? (<button className='bg-slate-700 text-white uppercase rounded-lg hover:opacity-95 p-3' onClick={handleSignin}>  contact landlord
-               </button>)  
-                       ? ({ contact ? <Contact listing={listing}/>} : '')
-           
-             */}
              <>
               {
                 landlord && !contact ? <button className='bg-slate-700 text-white uppercase rounded-lg hover:opacity-95 p-3' onClick={handleSignin}>  contact landlord

@@ -130,7 +130,7 @@ const CreateListing = () => {
         try {
 
             if(formData.imageurls.length < 1) return setError('You must upload at least one image')
-            if(formData.regularPrice < formData.discountPrice) return setError('Discount Price must be less than Regular price')
+            if(+formData.regularPrice < +formData.discountPrice) return setError('Discount Price must be less than Regular price')
 
             const res = await fetch('/api/listings/create', 
                 {

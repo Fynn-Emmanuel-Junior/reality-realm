@@ -108,6 +108,7 @@ const getListings = async (req,res) => {
             .sort({[sort]: order})
             .limit(limit)
             .skip()
+            
         return res.status(200).json(listings)
 
     } catch(err) {

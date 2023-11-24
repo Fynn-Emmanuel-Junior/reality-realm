@@ -3,6 +3,7 @@ import MainLayout from '../../../components/layouts/MainLayout'
 import CustomButton from '../../../components/customs/CustomButton'
 import {useNavigate} from 'react-router-dom'
 import {Circles} from 'react-loader-spinner'
+import ListingItem from '../../../components/pageComponents/SearchComponents/ListingItem'
 
 const Search = () => {
     const navigate = useNavigate()
@@ -144,7 +145,7 @@ const Search = () => {
                         />
                     </div>
                     <div className='flex gap-2 items-center flex-wrap'>
-                        <label htmlFor="type" className='font-semibold'>Type:</label>
+                        <label className='font-semibold'>Type:</label>
                         <div className='flex gap-2'>
                             <input 
                                 type="checkbox"  
@@ -210,7 +211,7 @@ const Search = () => {
                         </div>
                     </div>
                     <div className='flex items-center gap-3'>
-                        <label htmlFor="Sort" className='font-semibold'>Sort:</label>
+                        <label htmlFor="sort_order" className='font-semibold'>Sort:</label>
                         <select 
                             id="sort_order"
                             className='border rounded-lg p-3 focus:outline-none w-full'
@@ -226,26 +227,35 @@ const Search = () => {
                     <CustomButton text={'Search'}/>  
                 </form>
             </aside>
-            <section>
-                <h1 className='text-2xl font-semibold border-b p-3 mt-5 text-slate-700'> Listing results: </h1>
-                <>
+            <section className='flex-1'>
+                <h1 className='text-base font-semibold border-b p-3 mt-5 text-slate-700'> Listing results: </h1>
+                <div className='p-7 flex flex-wrap gap-4'>
                     {
-                        loading ? 
+                        !loading && listings.length == 0 && (
+                            <p className='text-xl text-slate-700 text-center'> No listings found!</p>
+                        )
+                    }
+                    {
+                        loading && 
+                        <div className='flex justify-center w-full gap-3'> 
                             <Circles 
-                                height="50"
-                                width="50"
-                                color="#4fa94d"
+                                height="30"
+                                width="30"
+                                color="#252B48"
                                 ariaLabel="circles-loading"
                                 visible={true}
-                            /> : 
-                            <div>
-                                <p>we are back again</p>
-                            </div>
+                            />
+                            <span className='text-slate-700 text-xl'> Loading...</span>
+                        </div>
                     }
-                </>
+                    {
+                        !loading && listings && listings.map(listing => <ListingItem key={listing._id} listing={listing}/>)
+                    }
+
+                </div>
             </section>
         </main>
-    </MainLayout>
+    </MainLayout> 
   )
 }
 
