@@ -4,8 +4,8 @@ import dotenv from 'dotenv'
 import cors from 'cors'
 import cookieParser from 'cookie-parser'
 dotenv.config()
-import  usersRoutes  from './backend/routes/api/usersRoutes.js'
-import listingsRoutes from './backend/routes/api/listingsRoutes.js'
+import  usersRoutes  from './routes/api/usersRoutes.js'
+import listingsRoutes from './routes/api/listingsRoutes.js'
 import path from 'path'
 
 const __dirname = path.resolve()
