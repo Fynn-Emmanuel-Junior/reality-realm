@@ -6,6 +6,10 @@ import cookieParser from 'cookie-parser'
 dotenv.config()
 import  usersRoutes  from './backend/routes/api/usersRoutes.js'
 import listingsRoutes from './backend/routes/api/listingsRoutes.js'
+import path from 'path'
+
+const __dirname = path.resolve()
+
 const app = express()
 
 const database = process.env.DATABASE_URI
@@ -22,6 +26,12 @@ app.use(cookieParser())
 //Routes
 app.use('/api/users',usersRoutes)
 app.use('/api/listings',listingsRoutes)
+
+app.use(express.static(path.join(__dirname,'/client/dist')))
+
+app.get("*", (req,res) => {
+    res.sendFile(path.join(__dirname,'client','dist','index.html'))
+})
 
 
 // error handling
