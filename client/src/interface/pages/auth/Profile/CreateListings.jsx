@@ -1,16 +1,17 @@
-import React, {useEffect, useState} from 'react'
-import MainLayout from "../../../../components/layouts/MainLayout"
+import React, {useState} from 'react'
+import MainLayout from "../../../components/layouts/MainLayout"
 import { getDownloadURL, getStorage, ref, uploadBytesResumable } from 'firebase/storage'
-import { app } from '../../../../../utilis/firebase'
-import { selectCurrentUser } from '../../../../../logic/ReduxStore/features/users/usersSlice'
+import { app } from '../../../../utilis/firebase'
+import { selectCurrentUser } from '../../../../logic/ReduxStore/features/users/usersSlice'
 import { useSelector } from 'react-redux'
 import { useNavigate, useParams } from 'react-router-dom'
-import { TailSpin } from 'react-loader-spinner'
+import { TailSpin } from  'react-loader-spinner'
 
-const UpdateListing = () => {
+const CreateListing = () => {
     const navigate = useNavigate()
-    const [files,setFiles] = useState([])
     const user = useSelector(selectCurrentUser)
+    
+    const [files,setFiles] = useState([])
     const [formData,setFormData] = useState({
         name: '',
         description: '',
@@ -30,21 +31,6 @@ const UpdateListing = () => {
     const [loading,setLoading] = useState(false)
     const [error,setError] = useState(null)
     const [success,setSuccess] = useState(null)
-
-    const {id} = useParams()
-
-    const fetchlisting = async () => {
-        const res = await fetch(`/api/listings/getlisting/${id}`)
-        const data = await res.json()
-
-        setFormData(data)
-
-    }
-    
-    useEffect(() => {
-        fetchlisting()
-
-    },[])
     
 
     const handleImages =  (e) => {
@@ -141,15 +127,14 @@ const UpdateListing = () => {
         e.preventDefault()
         setSuccess(true)
 
-        
         try {
 
             if(formData.imageurls.length < 1) return setError('You must upload at least one image')
-            if(formData.regularPrice < formData.discountPrice) return setError('Discount Price must be less than Regular price')
+            if(+formData.regularPrice < +formData.discountPrice) return setError('Discount Price must be less than Regular price')
 
-            const res = await fetch(`/api/listings/update/${id}`, 
+            const res = await fetch('/api/listings/create', 
                 {
-                    method: 'PUT',
+                    method: 'POST',
                     headers: {
                         'content-type': 'application/json'
                     },
@@ -158,22 +143,25 @@ const UpdateListing = () => {
             )
     
             const data = await res.json()
-            
-            
+            console.log(data)
+        
             setSuccess(false)
-            navigate(`/listing/${id}`)
+            navigate(`/listing/${data._id}`)
            
 
         } catch(err) {
             setError(err.message)
+            setSuccess(false)
             console.log(err.message)
         }
+
+
     }
 
   return (
     <MainLayout>
         <main className='p-3 max-w-4xl mx-auto'>
-            <h1 className='text-3xl font-semibold my-7 text-center'> Edit listing </h1>
+            <h1 className='text-3xl font-semibold my-7 text-center'> Create a listing </h1>
             <form onSubmit={handleSubmit} className='flex flex-col sm:flex-row gap-10'>
                 <div className='flex flex-col gap-4 flex-1'>
                     <input 
@@ -308,6 +296,7 @@ const UpdateListing = () => {
                                         min={50} 
                                         max={100000}
                                         className='focus:outline-none border border-gray-300 p-1 text-center'
+                                        required
                                         onChange={handleChange}
                                         value={formData.discountPrice}
                                     />
@@ -331,6 +320,7 @@ const UpdateListing = () => {
                             accept='images/*'
                             multiple 
                             className='p-3 border border-gray-600 rounded w-full'
+                            required
                             onChange={(e) => setFiles(e.target.files)}
                         /> 
                         <button 
@@ -339,20 +329,21 @@ const UpdateListing = () => {
                             className='p-3 text-green-600 border border-green-600 rounded hover:shadow-lg'
                         > 
                             {
-                                loading ? 
-                                    <TailSpin 
-                                        height="25"
-                                        width="25"
-                                        color="green"
-                                        ariaLabel="tail-spin-loading"
-                                        radius="1"
-                                    />
-                                : 'Upload'
+                                loading ?
+                                <TailSpin 
+                                    height="25"
+                                    width="25"
+                                    color="#4fa94d"
+                                    ariaLabel="tail-spin-loading"
+                                    radius="1"
+                                    wrapperStyle={{}}
+                                    wrapperClass=""    
+                                /> : 'Upload'
                             }
                         </button>
                     </div>
                     {
-                        formData.imageurls && formData.imageurls.map((url,index) => (
+                        formData.imageurls.length > 0 && formData.imageurls.map((url,index) => (
                             <div key={index} className='flex justify-between items-center p-3 border border-slate-300'>
                                 <div className='w-60'>
                                     <img src={url} alt="listing image" className=' h-20 object-cover rounded-sm'/>
@@ -367,19 +358,20 @@ const UpdateListing = () => {
                             </div>   
                         ))
                     }
-                    <button  disabled={ loading || success } className='bg-slate-700 uppercase text-white p-3 rounded-lg hover:opacity-95'> 
+                    <button className='bg-slate-700  uppercase text-white p-3 rounded-lg hover:opacity-95'> 
                         {
                             success ? 
-                                <div className='flex justify-center items-center'>
-                                    <TailSpin 
-                                        height="25"
-                                        width="25"
-                                        color="white"
-                                        ariaLabel="tail-spin-loading"
-                                        radius="1"
-                                    />
-                                </div> : 'Update listing'
-                            
+                            <div className='flex gap-3  justify-center items-center'>
+                                <TailSpin 
+                                    height="25"
+                                    width="25"
+                                    color="#ffffff"
+                                    ariaLabel="tail-spin-loading"
+                                    radius="1"
+                                />
+                               
+                            </div> : 'Create listing'
+                                 
                         } 
                     </button>
                     <p className='text-red-700'>
@@ -400,4 +392,4 @@ const UpdateListing = () => {
   )
 }
 
-export default UpdateListing
+export default CreateListing

@@ -1,7 +1,7 @@
-import MainLayout from "../../components/layouts/MainLayout"
+import MainLayout from "../../../components/layouts/MainLayout"
 import { Link } from "react-router-dom"
 import { useState,useEffect } from "react"
-import ListingItem from "../../components/pageComponents/SearchComponents/ListingItem"
+import ListingItem from "../../../components/pageComponents/SearchComponents/ListingItem"
 import {Swiper,SwiperSlide} from 'swiper/react'
 import SwiperCore from 'swiper'
 import 'swiper/css/bundle'

@@ -1,14 +1,14 @@
 import React , {useEffect,useState}from 'react'
 import { useParams,useNavigate } from 'react-router-dom'
 import {useSelector} from 'react-redux'
-import { selectCurrentUser } from '../../../../../logic/ReduxStore/features/users/usersSlice'
+import { selectCurrentUser } from '../../../../logic/ReduxStore/features/users/usersSlice'
 import {Swiper,SwiperSlide} from 'swiper/react'
 import SwiperCore from 'swiper'
 import {Navigation} from 'swiper/modules'
 import { FaBath, FaBed, FaChair, FaMapMarkerAlt, FaParking } from "react-icons/fa";
 import 'swiper/css/bundle'
-import MainLayout from '../../../../components/layouts/MainLayout'
-import Contact from '../../../../components/customs/Contact'
+import MainLayout from '../../../components/layouts/MainLayout'
+import Contact from '../../../components/customs/Contact'
 
 
 const Listing = () => {

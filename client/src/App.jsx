@@ -1,15 +1,15 @@
 import { Routes , Route } from 'react-router-dom'
-import Home from './interface/pages/Home/Home'
+import Home from './interface/pages/guest/Home/Home'
 import SignIn from './interface/pages/guest/SignIn/SignIn'
 import SignUp from './interface/pages/guest/SignUp/SignUp'
-import About from './interface/pages/About/About'
+import About from './interface/pages/guest/About/About'
 import Profile from './interface/pages/auth/Profile/Profile'
 import ProtectedRoutes from './interface/routes/ProtectedRoutes'
-import Listings from './interface/pages/auth/Profile/listings/CreateListings'
-import Listing from './interface/pages/auth/Profile/listings/Listing'
-import UpdateListing from './interface/pages/auth/Profile/listings/UpdateListing'
-import ErrorPage from './interface/pages/404Page/ErrorPage'
-import Search from './interface/pages/Search/Search'
+import Listings from './interface/pages/auth/Profile/CreateListings'
+import Listing from './interface/pages/guest/listing/Listing'
+import UpdateListing from './interface/pages/auth/Profile/UpdateListing'
+import ErrorPage from './interface/pages/guest/404Page/ErrorPage'
+import Search from './interface/pages/guest/Search/Search'
 
 const App = () => {
   return (
