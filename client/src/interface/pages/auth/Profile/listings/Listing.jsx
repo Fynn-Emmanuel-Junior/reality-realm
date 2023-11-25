@@ -62,7 +62,7 @@ const Listing = () => {
 
   return (
     <MainLayout>
-      <main> 
+      <main className=''> 
       {
         listing && listing.imageurls ? <>
           <Swiper navigation>

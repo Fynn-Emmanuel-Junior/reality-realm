@@ -7,15 +7,15 @@ const Card = ({listing}) => {
   return (
     <div className='overflow-hidden rounded-lg w-full m-2 sm:w-[310px]'>
         <Link to={`/listing/${listing._id}`}>
-            <img src={listing.imageurls[0]} alt="listing cover"  className='h-[300px] sm:h-[250px] w-full object-cover hover:scale-105 transition-scale duration-500 rounded-lg'/> 
-            <div className='p-3 flex flex-col gap-2 w-full'>
-                <p className='truncate text-base font-semibold text-slate-700'>{listing.name}</p>
+            <img src={listing.imageurls[0]} alt="listing cover"  className='h-[300px] sm:h-[280px] w-full object-cover rounded-xl'/> 
+            <div className='p-3 flex flex-col gap-1 w-full'>
+                <p className='truncate text-base font-semibold text-slate-900'>{listing.name}</p>
                 <div className='flex items-center gap-1'>
                     <MdLocationOn className='h-4 w-4 text-green-700'/>
-                    <p className='truncate text-slate-700 text-sm'>{listing.address}</p>
+                    <p className='truncate text-sm'>{listing.address}</p>
                 </div>
-                <p className='text-sm text-gray-600 truncate overflow-x-hidden'>{listing.description}</p>
-				<p className='text-slate-500 font-semibold'> 
+                {/* <p className='text-sm text-gray-600 truncate overflow-x-hidden'>{listing.description}</p> */}
+				<p className='text-slate-900 text-sm font-semibold'> 
 					$
 					{
 						listing.offer ? listing.discountPrice.toLocaleString('en-US') : listing.regularPrice.toLocaleString('en-US')

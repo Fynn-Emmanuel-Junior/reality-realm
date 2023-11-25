@@ -20,6 +20,7 @@ const Search = () => {
 
     const [loading,setLoading] = useState(false)
     const [listings,setListings] = useState([])
+    const [showMore,setShowMore] = useState(false)
 
     useEffect(() => {
         const urlparams = new URLSearchParams(window.location.search)
@@ -70,7 +71,12 @@ const Search = () => {
                 const res = await fetch(`/api/listings/get?${searchQuery}`)
                 const data = await res.json()
 
-                console.log(data)
+                if(data.length > 8) {
+                    setShowMore(true)
+                } else {
+                    setShowMore(false)
+                }
+                
                 setListings(data)
                 setLoading(false)
                 
@@ -127,18 +133,39 @@ const Search = () => {
 
     }
 
+    const onShowMoreClick = async () => {
+        const numoflistings = listings.length
+        const startIndex = numoflistings
+        const urlparams = new URLSearchParams(window.location.search)
+        urlparams.set('startIndex',startIndex)
+
+        const searchquery = urlparams.toString()
+
+        const res = await fetch(`/api/listings/get/?${searchquery}`)
+        const data = await res.json()
+
+        if(data.length < 9) {
+            setShowMore(false)
+        }
+
+        setListings([...listings,...data])
+
+    }
+
+    console.log(listings)
+
   return (
     <MainLayout>
         <main className='flex flex-col md:flex-row'>
             <aside className='p-7 border-b-2 md:min-h-screen md:border-b-0 md:border-r-2'>
-                <form onSubmit={handleSubmit} className='flex flex-col gap-8'>
+                <form onSubmit={handleSubmit} className='flex flex-col gap-8 text-sm'>
                     <div className='flex items-center gap-2'>
                         <label htmlFor="searchTerm" className='whitespace-nowrap font-semibold'>Search Term: </label>
                         <input 
                             type="text"
                             name="searchTerm" 
                             id="searchTerm"  
-                            className='border rounded-lg p-3 w-full focus:outline-none'
+                            className='border rounded-lg p-3 w-full focus:outline-border-1'
                             placeholder='Search...'
                             value={sidebarParams.searchTerm}
                             onChange={handleChange}
@@ -228,7 +255,7 @@ const Search = () => {
                 </form>
             </aside>
             <section className='flex-1'>
-                <h1 className='text-base font-semibold border-b p-3 mt-5 text-slate-700'> Listing results: </h1>
+                <h1 className='font-semibold text-xs p-3 mt-5 text-slate-700'> Listing results: </h1>
                 <div className='p-7 flex flex-wrap gap-4'>
                     {
                         !loading && listings.length == 0 && (
@@ -251,7 +278,18 @@ const Search = () => {
                     {
                         !loading && listings && listings.map(listing => <ListingItem key={listing._id} listing={listing}/>)
                     }
-
+                    
+                        {
+                            showMore && (
+                                <button 
+                                    onClick={onShowMoreClick}
+                                    className='text-slate-900 underline p-7 text-center w-full font-semibold'
+                                >
+                                    Show more
+                                </button>
+                            )
+                        }
+                    
                 </div>
             </section>
         </main>
