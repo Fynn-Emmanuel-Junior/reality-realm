@@ -77,7 +77,7 @@ const getListings = async (req,res) => {
         let offer = req.query.offer
         let furnished = req.query.furnished
         let parking = req.query.parking
-        let type = req.query.type
+        let typeOfPlace = req.query.typeOfPlace
 
         const searchTerm = req.query.searchTerm || ''
         const  sort = req.query.sort || 'createdAt'
@@ -95,15 +95,24 @@ const getListings = async (req,res) => {
             parking = {$in: [false,true]}
         }
 
-        if(type === undefined || type === 'all') {
-            type = {$in: ['sell','rent']}
+        if(typeOfPlace === undefined || typeOfPlace === 'all') {
+            typeOfPlace = {$in: ['sell','rent']}
+        }
+
+        if(typeOfPlace === 'sell') {
+            typeOfPlace = {$in: ['sell']}
+        }
+
+        if(typeOfPlace === 'rent') {
+            typeOfPlace = {$in: ['rent']}
         }
 
         const listings = await ListingModel.find({
             name: {$regex: searchTerm,$options: 'i'},
             offer,
             furnished,
-            parking
+            parking,
+            typeOfPlace
         })
             .sort({[sort]: order})
             .limit(limit)

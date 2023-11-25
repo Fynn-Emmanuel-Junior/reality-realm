@@ -10,7 +10,7 @@ const Search = () => {
 
     const [sidebarParams,setSidebarParams] = useState({
         searchTerm: '',
-        type: 'all',
+        typeOfPlace: 'all',
         offer: false,
         furnished: false,
         parking: false,
@@ -25,7 +25,7 @@ const Search = () => {
     useEffect(() => {
         const urlparams = new URLSearchParams(window.location.search)
         const searchTermUrl = urlparams.get('searchTerm')
-        const typeUrl = urlparams.get('type')
+        const typeUrl = urlparams.get('typeOfPlace')
         const offerUrl = urlparams.get('offer')
         const furnishedUrl = urlparams.get('furnished')
         const parkingUrl = urlparams.get('parking')
@@ -53,7 +53,7 @@ const Search = () => {
         ) {
             setSidebarParams({
                 searchTerm: searchTermUrl || '',
-                type: typeUrl || 'all',
+                typeOfPlace: typeUrl || 'all',
                 parking: parkingUrl === 'true' ? true : false,
                 furnished: furnishedUrl === 'true' ? true : false,
                 offer: offerUrl === 'true' ? true : false,
@@ -92,7 +92,7 @@ const Search = () => {
 
     const handleChange = (e) => {
         if(e.target.id === 'all' || e.target.id === 'rent' || e.target.id === 'sell') {
-            setSidebarParams({...sidebarParams,type: e.target.id})
+            setSidebarParams({...sidebarParams,typeOfPlace: e.target.id})
         }
 
         if(e.target.id === 'searchTerm') {
@@ -121,7 +121,7 @@ const Search = () => {
         const urlparams = new URLSearchParams()
 
         urlparams.set('searchTerm',sidebarParams.searchTerm)
-        urlparams.set('type',sidebarParams.type)
+        urlparams.set('typeOfPlace',sidebarParams.typeOfPlace)
         urlparams.set('offer',sidebarParams.offer)
         urlparams.set('furnished',sidebarParams.furnished)
         urlparams.set('parking',sidebarParams.parking)
@@ -165,7 +165,7 @@ const Search = () => {
                             type="text"
                             name="searchTerm" 
                             id="searchTerm"  
-                            className='border rounded-lg p-3 w-full focus:outline-border-1'
+                            className='border rounded-lg p-3 w-full focus:outline-none focus:border-slate-800'
                             placeholder='Search...'
                             value={sidebarParams.searchTerm}
                             onChange={handleChange}
@@ -179,7 +179,7 @@ const Search = () => {
                                 id='all' 
                                 className='w-5' 
                                 onChange={handleChange}
-                                checked={sidebarParams.type === 'all'}
+                                checked={sidebarParams.typeOfPlace === 'all'}
                             /> 
                             <span>Rent & Sale</span>
                         </div>
@@ -189,7 +189,7 @@ const Search = () => {
                                 id='rent' 
                                 className='w-5'
                                 onChange={handleChange}
-                                checked={sidebarParams.type === 'rent'}
+                                checked={sidebarParams.typeOfPlace === 'rent'}
                             /> 
                             <span>Rent</span>
                         </div>
@@ -199,7 +199,7 @@ const Search = () => {
                                 id='sell' 
                                 className='w-5'
                                 onChange={handleChange}
-                                checked={sidebarParams.type === 'sell'}
+                                checked={sidebarParams.typeOfPlace === 'sell'}
                             /> 
                             <span>Sale</span>
                         </div>
