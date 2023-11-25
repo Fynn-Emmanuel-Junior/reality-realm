@@ -1,9 +1,9 @@
 import React, { useState,useEffect } from 'react'
-import MainLayout from '../../../components/layouts/MainLayout'
-import CustomButton from '../../../components/customs/CustomButton'
+import MainLayout from '../../components/layouts/MainLayout'
+import CustomButton from '../../components/customs/CustomButton'
 import {useNavigate} from 'react-router-dom'
 import {Circles} from 'react-loader-spinner'
-import ListingItem from '../../../components/pageComponents/SearchComponents/ListingItem'
+import ListingItem from '../../components/pageComponents/SearchComponents/ListingItem'
 
 const Search = () => {
     const navigate = useNavigate()
