@@ -2,9 +2,10 @@ import React from 'react'
 import Card from './Card'
 
 const ListingItem = ({listing}) => {
+
   return (
     <div>
-       <Card listing={listing}/>
+		<Card listing={listing} />
     </div>
   )
 }

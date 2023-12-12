@@ -3,6 +3,7 @@ import { app } from '../../../../utilis/firebase'
 import { signInSuccess } from '../../../../logic/ReduxStore/features/users/usersSlice'
 import { useDispatch } from 'react-redux'
 import { useNavigate } from 'react-router-dom'
+import google from '../../../assets/google.png'
 // import { useState } from 'react'
 
 const OAuth = () => {
@@ -39,13 +40,17 @@ const OAuth = () => {
     }
 
     return (
-        <button 
-            type='button' 
-            className='bg-red-700 text-white p-3 uppercase rounded-lg'
-            onClick={handleGoogleClick}
-        >
-            continue with google
-        </button>
+        <div className='border border-slate-900 p-1.5 sm:p-2 xl:p-2 uppercase rounded-3xl w-full'>
+            <button 
+                type='button' 
+                className='flex gap-1 items-center mx-auto'
+                onClick={handleGoogleClick}
+            >
+                <img src={google} alt="google icon"  className='w-6 sm:w-7 xl:w-6 '/>
+                <p className='text-base'>Continue with google</p>
+            </button>
+
+        </div>
     )
 }
 

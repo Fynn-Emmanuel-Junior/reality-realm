@@ -1,79 +1,76 @@
-import UserModel from "../models/UserModel.js";
+import UserModel from "../models/UserModel.js"
 import bcrypt from 'bcryptjs'
 import jwt from 'jsonwebtoken'
+import {
+    registerUserValidation,
+    userLoginValidation
+} from '../validations/Uservalidation.js'
 
 
 const register = async (req,res) => {
+    const {error} = registerUserValidation(req.body)
     const { username, email , password } = req.body
-
+    
     const CheckIfEmailExists = await UserModel.findOne({email})
     if(CheckIfEmailExists) return res.status(409).json({message: "User already exists"})
-
+    
     const salt = await bcrypt.genSalt(10)
-
     const hashedPassword = await bcrypt.hash(password,salt)
-
-
+    
     try {
-            const user = await UserModel.create({
-                username,
-                email,
-                password: hashedPassword
-            })
-        
+        const user = await UserModel.create({
+            username,
+            email,
+            password: hashedPassword
+        })
             console.log('user created suucessfully')
-
             res.status(201).json({
                 _id: user._id,
                 username: user.username,
                 email: user.email,
             })
-            
+                
         } catch(error) {
             res.status(401).json({message: error.message})
-        }
+        }   
 }
 
 
 const auth = async (req,res) => {
+    // const  {error} = userLoginValidation(req.body)
+    // if(error) return res.status(400).json({message: error.message})
+
     const { email, password } = req.body
-
     const foundUser = await UserModel.findOne({email})
-
     if(!foundUser) return res.status(404).json({message: 'user not found'})
     
     const match = await bcrypt.compare(password,foundUser.password)
 
-   if(match) {
-        
-    const accessToken = jwt.sign(
-        { "userId": foundUser._id },
-        process.env.ACCESS_TOKEN_SECRET,
+   if(match) { 
+        const accessToken = jwt.sign(
+            { "userId": foundUser._id },
+            process.env.ACCESS_TOKEN_SECRET,
+        )
 
-    )
+        res.cookie(
+            'jwt',
+            accessToken,
+            {
+                httpOnly: true , 
+                sameSite: "None", 
+                secure: true ,
+            }
+        )
 
-    // Save token in a cookie
-
-    res.cookie(
-        'jwt',
-        accessToken,
-        {
-            httpOnly: true , 
-            sameSite: "None", 
-            secure: true ,
-        }
-    )
-
-    res.status(200).json({
-        _id: foundUser._id,
-        username: foundUser.username,
-        email: foundUser.email,
-    })
+        res.status(200).json({
+            _id: foundUser._id,
+            username: foundUser.username,
+            email: foundUser.email,
+        })
    
-   } else {
-        res.status(401).json({message: ' Unauthorized user'})
-   }
-    
+    } else {
+            res.status(401).json({message: ' Unauthorized user'})
+    }   
 }
 
 

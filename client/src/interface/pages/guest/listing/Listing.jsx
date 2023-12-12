@@ -2,17 +2,11 @@ import React , {useEffect,useState}from 'react'
 import { useParams,useNavigate } from 'react-router-dom'
 import {useSelector} from 'react-redux'
 import { selectCurrentUser } from '../../../../logic/ReduxStore/features/users/usersSlice'
-import {Swiper,SwiperSlide} from 'swiper/react'
-import SwiperCore from 'swiper'
-import {Navigation} from 'swiper/modules'
 import { FaBath, FaBed, FaChair, FaMapMarkerAlt, FaParking } from "react-icons/fa";
 import 'swiper/css/bundle'
 import MainLayout from '../../../components/layouts/MainLayout'
-import Contact from '../../../components/customs/Contact'
-
 
 const Listing = () => {
-  SwiperCore.use([Navigation])
 
   const {id} = useParams()
   const navigate = useNavigate()
@@ -65,17 +59,6 @@ const Listing = () => {
       <main className=''> 
       {
         listing && listing.imageurls ? <>
-          <Swiper navigation>
-            {
-              listing.imageurls.map((url,index) => (
-                <SwiperSlide key={index}>
-                  <div className=' w-full h-[400px]'>
-                    <img src={url} alt="" className='w-full h-full object-cover ' />
-                  </div>
-                </SwiperSlide>
-              ))
-            }
-          </Swiper>
           <div className='flex flex-col max-w-4xl mx-auto p-3 my-7 gap-4'>
             <p className='text-2xl font-semibold'>
               {listing.name} - ${' '}
@@ -121,16 +104,7 @@ const Listing = () => {
                 </li>
                 
             </ul>
-             <>
-              {
-                landlord && !contact ? <button className='bg-slate-700 text-white uppercase rounded-lg hover:opacity-95 p-3' onClick={handleSignin}>  contact landlord
-                </button>   : ''
-              }
             
-            </>
-            <>
-              {contact && <Contact listing={listing}/>}
-            </>
             
           </div>
           

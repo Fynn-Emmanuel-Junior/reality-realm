@@ -2,8 +2,11 @@ import React, { useState,useEffect } from 'react'
 import MainLayout from '../../../components/layouts/MainLayout'
 import CustomButton from '../../../components/customs/CustomButton'
 import {useNavigate} from 'react-router-dom'
-import {Circles} from 'react-loader-spinner'
-import ListingItem from '../../../components/pageComponents/SearchComponents/ListingItem'
+// import {Circles} from 'react-loader-spinner'
+import { CiSearch } from 'react-icons/ci'
+import ListingItem from '../../../components/pageComponents/Search/ListingItem'
+import SearchNavBar from '../../../components/pageComponents/Search/SearchNavBar'
+import Navbar from '../../../components/pageComponents/smallScreens/Navbar'
 
 const Search = () => {
     const navigate = useNavigate()
@@ -31,16 +34,6 @@ const Search = () => {
         const parkingUrl = urlparams.get('parking')
         const sortUrl = urlparams.get('sort')
         const orderUrl = urlparams.get('order')
-
-        console.log(
-            searchTermUrl,
-            typeUrl,
-            offerUrl,
-            parkingUrl,
-            furnishedUrl,
-            sortUrl,
-            orderUrl
-        )
 
         if (
             searchTermUrl ||
@@ -152,20 +145,20 @@ const Search = () => {
 
     }
 
-    console.log(listings)
-
   return (
-    <MainLayout>
-        <main className='flex flex-col md:flex-row'>
-            <aside className='p-7 border-b-2 md:min-h-screen md:border-b-0 md:border-r-2'>
+    <>
+        <Navbar />
+        <SearchNavBar />
+        <main className='flex flex-col md:flex-row lg:mt-6'>
+            <aside className='p-7 border-b-2 md:min-h-screen md:border-b-0'>
                 <form onSubmit={handleSubmit} className='flex flex-col gap-8 text-sm'>
                     <div className='flex items-center gap-2'>
-                        <label htmlFor="searchTerm" className='whitespace-nowrap font-semibold'>Search Term: </label>
+                        {/* <label htmlFor="searchTerm" className='whitespace-nowrap font-semibold'>Search Term: </label> */}
                         <input 
                             type="text"
                             name="searchTerm" 
                             id="searchTerm"  
-                            className='border rounded-lg p-3 w-full focus:outline-none focus:border-slate-800'
+                            className='border border-slate-700 rounded-lg p-3 w-full focus:outline-none focus:border-slate-800'
                             placeholder='Search...'
                             value={sidebarParams.searchTerm}
                             onChange={handleChange}
@@ -258,11 +251,11 @@ const Search = () => {
                 <h1 className='font-semibold text-xs p-3 mt-5 text-slate-700'> Listing results: </h1>
                 <div className='p-7 flex flex-wrap gap-4'>
                     {
-                        !loading && listings.length == 0 && (
+                         !loading && listings.length == 0 && (
                             <p className='text-xl text-slate-700 text-center'> No listings found!</p>
                         )
                     }
-                    {
+                    {/* {
                         loading && 
                         <div className='flex justify-center w-full gap-3'> 
                             <Circles 
@@ -274,10 +267,12 @@ const Search = () => {
                             />
                             <span className='text-slate-700 text-xl'> Loading...</span>
                         </div>
-                    }
-                    {
-                        !loading && listings && listings.map(listing => <ListingItem key={listing._id} listing={listing}/>)
-                    }
+                    } */}
+                    <div className="flex items-center overflow-hidden  flex-wrap gap-3 w-[90%]  md:w-[95%] md:grid md:grid-cols-1 lg:w-full lg:grid-cols-2  xl:grid-cols-3 mx-auto">
+                        {
+                            listings && listings.map(listing => <ListingItem key={listing._id} listing={listing}/>)
+                        }
+                    </div>
                     
                         {
                             showMore && (
@@ -293,7 +288,7 @@ const Search = () => {
                 </div>
             </section>
         </main>
-    </MainLayout> 
+    </> 
   )
 }
 

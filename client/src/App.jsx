@@ -10,15 +10,18 @@ import Listing from './interface/pages/guest/listing/Listing'
 import UpdateListing from './interface/pages/auth/Profile/UpdateListing'
 import ErrorPage from './interface/pages/guest/404Page/ErrorPage'
 import Search from './interface/pages/guest/Search/Search'
+import Contact from './interface/pages/guest/Contact/Contact'
+import AccountLayout from './interface/components/pageComponents/AccountLayout'
 
 const App = () => {
   return (
     <Routes>
       <Route path='/' element={<Home />}/>
       <Route path='/signin' element={<SignIn />}/>
-      <Route path='/signup' element={<SignUp />}/>
+		  <Route path='/signup' element={<SignUp />}/>
       <Route path='/listing/:id' element={<Listing />}/>
       <Route path='/search' element={<Search />}/>
+	    <Route path='/contact' element={<Contact />}/>
       <Route element={<ProtectedRoutes />}>
         <Route path='/profile' element={<Profile />}/>
         <Route path='/create-listing' element={<Listings />}/>
