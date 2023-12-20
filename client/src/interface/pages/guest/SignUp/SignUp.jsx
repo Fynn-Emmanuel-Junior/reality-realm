@@ -128,7 +128,7 @@ const SignUp = () => {
 					<input 
 						type="text" 
 						placeholder="username"
-						className="border border-emerald-950  text-sm p-2 sm:p-3 pl-5 rounded-3xl focus:outline-none"
+						className="border border-emerald-950  text-sm p-3 pl-5 rounded-3xl focus:outline-none"
 						id="username"
 						name="username"
 						onChange={handleChange}

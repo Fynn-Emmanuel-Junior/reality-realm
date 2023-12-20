@@ -11,12 +11,12 @@ import {
 
 const router = express.Router()
 
-router.get('/get/:id',authMiddleware,getAllListings)
 router.post('/create',authMiddleware,createListings)
 router.delete('/delete/:id',authMiddleware,deletelisting)
 router.put('/update/:id',authMiddleware,updatelisting)
 router.get('/getlisting/:id',getListing)
 router.get('/get',getListings)
+router.get('/get-all-listings',getAllListings)
 
 
 export default router

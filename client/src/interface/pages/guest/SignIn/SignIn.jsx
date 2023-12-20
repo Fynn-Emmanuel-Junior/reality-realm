@@ -134,7 +134,7 @@ const SignIn = () => {
 							please fill all fields
 						</div> : ''
 					} 
-					<div className="w-full flex items-center justify-center border border-emerald-950 rounded-3xl  p-3 px-5 ">
+					<div className="w-full flex items-center justify-center border border-emerald-950 rounded-3xl  p-3 pl-5 ">
 						<input 
 							type={showpassword ? 'text' : 'password'} 
 							placeholder="password"

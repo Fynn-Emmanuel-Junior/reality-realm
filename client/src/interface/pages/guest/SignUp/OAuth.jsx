@@ -40,7 +40,7 @@ const OAuth = () => {
     }
 
     return (
-        <div className='border border-slate-900 p-1.5 sm:p-2 xl:p-2 uppercase rounded-3xl w-full'>
+        <div className='border border-slate-900 p-1.5 sm:p-2 xl:p-[10px] uppercase rounded-3xl w-full'>
             <button 
                 type='button' 
                 className='flex gap-1 items-center mx-auto'

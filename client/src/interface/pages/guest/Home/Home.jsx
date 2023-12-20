@@ -12,7 +12,7 @@ const Home = () => {
     useEffect(() => {
             const fetchlistings = async () => {
                 try {
-                    const res = await fetch('/api/listings/get')
+                    const res = await fetch('/api/listings/get-all-listings')
                     const data = await res.json()
 
                     setListings(data)

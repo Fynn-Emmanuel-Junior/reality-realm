@@ -12,7 +12,7 @@ const createListings = async (req,res) => {
 
 const getAllListings = async(req,res) => {
         try {
-            const listings = await ListingModel.find()
+            const listings = await ListingModel.find().sort({createdAt: -1})
             res.status(200).json(listings)
         } catch(err) {
             res.status(401).json({message: `cannot get listings:${err.message}`})
