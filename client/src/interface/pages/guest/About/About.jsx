@@ -1,17 +1,19 @@
 import AboutLayout from '../../../components/layouts/AboutLayout'
 import Footer from '../../../components/pageComponents/Footer'
-import bg from '../../../assets/bg3 (1).jpg'
+import bg from '../../../assets/about2.jpg'
+import bg1 from '../../../assets/about1.jpg'
+import bg2 from '../../../assets/about3.jpg'
 
 
 const About = () => {
   return (
     <AboutLayout>
 		<section className='flex flex-col lg:flex-row lg:justify-between items-center w-screen xl:w-11/12'>
-			<div className='w-3/6 h-auto'>
+			<div className='w-3/6 h-[80vh]'>
 				<img 
 					src={bg} 
 					alt="cover-image" 
-					className='w-full object-cover'
+					className='w-full h-full object-cover'
 				/>
 			</div>
 			<div className='w-[45%]'>
@@ -29,21 +31,21 @@ const About = () => {
 					Our mission is to help our clients achieve their real estate goals by providing expert advice, personalized service, and a deep understanding of the local market. Whether you are looking to buy, sell, or rent a property, we are here to help you every step of the way.
 				</p>
 				</div>
-				<div className='w-3/6 h-auto'>
+				<div className='w-3/6 h-[80vh]'>
 					<img 
-						src={bg} 
+						src={bg2} 
 						alt="cover-image" 
-						className='w-full object-cover'
+						className='w-full h-full object-cover'
 					/>
 				</div>
 			</section>
 		</div>
 		<section className='flex justify-between items-center w-screen xl:w-11/12 mt-20'>
-			<div className='w-3/6 h-auto'>
+			<div className='w-3/6 h-[80vh]'>
 				<img 
-					src={bg} 
+					src={bg1} 
 					alt="cover-image" 
-					className='w-full object-cover'
+					className='w-full h-full object-cover'
 				/>
 			</div>
 			<div className='w-[45%]'>
