@@ -6,9 +6,13 @@ import { Link } from 'react-router-dom';
 import { CiSearch } from "react-icons/ci";
 import { useState } from 'react'
 import Menu from '../pageComponents/Menu';
-import AccountLayout from '../pageComponents/AccountLayout'
+import { useSelector } from 'react-redux'
+import { selectCurrentUser } from '../../../logic/ReduxStore/features/users/usersSlice';
+import profile from '../../assets/profile.png'
+
 
 const MainLayout = ({children}) => {
+	const user = useSelector(selectCurrentUser)
 	const [open,setOpen] = useState(false)
 	
 	const handleOpen = () => {
@@ -51,10 +55,14 @@ const MainLayout = ({children}) => {
 								About
 							</Link>
 							<Link to='/signin'>
-								Sign in
+								{
+									user ? '' : 'Sign in'
+								}
 							</Link>
 							<Link to='/profile'>
-								Profile
+								{
+									user ? <img src={profile} alt='profile_img' width={50} height={50} /> : 'Profile'
+								}
 							</Link>
 						</div>
 					</div>
@@ -70,10 +78,16 @@ const MainLayout = ({children}) => {
 					<div className='lg:hidden lg:text-3xl  xxs:text-base sm:text-xl md:text-2xl'>
 						<HiOutlineMenu onClick={handleOpen}/>
 					</div>
-					<p className='lg:hidden text-sm sm:text-lg font-bold md:text-2xl'>RealityRealm</p>
+					<p className='lg:hidden text-sm sm:text-lg font-bold md:text-2xl'>
+						<Link to='/'>
+							RealityRealm
+						</Link>
+					</p>
 					<div className='lg:hidden text-[10px] sm:text-sm uppercase md:text-lg'>
-						<Link to='/signin'>
-							sign in
+						<Link to='/profile'>
+							{
+								user ? <img src={profile} alt='profile_img' width={50} height={50} /> : 'Sign in'
+							}
 						</Link>
 					</div>
 				</div>

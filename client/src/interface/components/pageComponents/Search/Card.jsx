@@ -4,6 +4,7 @@ import {MdLocationOn} from 'react-icons/md'
 import Carousel from '../../customs/Carousel'
 import Skeleton from 'react-loading-skeleton'
 import 'react-loading-skeleton/dist/skeleton.css'
+import { TailSpin } from 'react-loader-spinner'
 
 
 const Card = ({listing}) => {
@@ -20,7 +21,18 @@ const Card = ({listing}) => {
 			{
 				loading ? (
 					<div>
-						<Skeleton width={300} height={250}/>
+						<TailSpin
+							visible={true}
+							height="60"
+							width="60"
+							color="#000000"
+							ariaLabel="tail-spin-loading"
+							radius="0.5"
+							wrapperStyle={{
+								opacity: '75%'
+							}}
+							wrapperClass=""
+						/>
 					</div>		
 				) : (
 					<Carousel images={listing.imageurls} id={listing._id}/>
@@ -30,37 +42,24 @@ const Card = ({listing}) => {
             <div className='flex flex-col w-full text-xs xs:text-sm sm:text-base'>
 						<>
 							{
-								loading ? (
-									<div>
-										<Skeleton width={50} height={15}/>
-									</div>
-								) : (
-									<p className='truncate font-semibold text-slate-900'>{listing.name}</p>
-								)
+								!loading && <p className='truncate font-semibold text-slate-900'>{listing.name}</p>
+						
 							}
 						</>
 					
 						<>
 							{
-								loading ? (
-									<div>
-										<Skeleton width={90} height={15}/>
-									</div>
-								) : (
+								!loading && 
 									<div className='flex items-center'>
 										<MdLocationOn className='h-4 w-4 text-green-700'/>
 										<p className='truncate text-sm'>{listing.address}</p>
                 					</div>
-								)
+								
 							}
 						</>
 						<>
 							{
-								loading ? (
-									<div>
-										<Skeleton width={120} height={15}/>
-									</div>
-								) : (
+								!loading &&
 									<p className='text-slate-900  font-semibold'> 
 										$
 										{
@@ -70,7 +69,7 @@ const Card = ({listing}) => {
 											listing.typeOfPlace === 'rent' && '/month'
 										}		
 									</p>
-								)
+								
 							}
 						</>
             </div>

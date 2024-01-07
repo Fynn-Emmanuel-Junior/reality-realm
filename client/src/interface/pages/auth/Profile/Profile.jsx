@@ -8,6 +8,7 @@ import { getDownloadURL, getStorage,ref, uploadBytesResumable } from 'firebase/s
 import { app } from '../../../../utilis/firebase'
 import { Link, useNavigate } from "react-router-dom"
 import { TailSpin } from "react-loader-spinner"
+import AboutLayout from '../../../components/layouts/AboutLayout'
 
 
 const Profile = () => {
@@ -152,9 +153,9 @@ const Profile = () => {
 
   
   return (
-    <MainLayout>
+    <AboutLayout>
       <div className="max-w-lg p-3 mx-auto">
-        <h1 className="text-3xl font-semibold text-center my-7"> Profile </h1>
+        <h1 className="text-3xl font-semibold text-center"> Profile </h1>
         <form className='flex flex-col gap-4' onSubmit={handleSubmit}>
             <input 
                 type="file"  
@@ -166,7 +167,7 @@ const Profile = () => {
             <img 
                 src={formData.avatar || currentuser.avatar} 
                 alt="profile" 
-                className="rounded-full h-24 w-24 object-cover  self-center mt-2 cursor-pointer"
+                className="rounded-full h-24 w-24 object-cover self-center mt-2 cursor-pointer"
                 onClick={() => fileRef.current.click()}
             />
             <p className="text-sm self-center">
@@ -254,7 +255,7 @@ const Profile = () => {
           }
         </div>
       </div>
-    </MainLayout>
+    </AboutLayout>
   )
 }
 

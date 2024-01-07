@@ -1,7 +1,10 @@
 import React,{useState} from 'react'
 import {Link} from 'react-router-dom'
+import { selectCurrentUser } from '../../../../logic/ReduxStore/features/users/usersSlice'
+import {useSelector} from 'react-redux'
 
 const SearchNavBar = () => {
+    const currentuser = useSelector(selectCurrentUser)
     const [open,setOpen] = useState(false)
 	
 	const handleOpen = () => {
@@ -9,9 +12,9 @@ const SearchNavBar = () => {
 	}
   
   return (
-    <nav>
+    <nav className='lg:sticky lg:top-0 w-screen  lg:p-4 lg:z-30 lg:bg-white'>
         <div className='hidden lg:inline'>
-            <div className='lg:w-3/5 mt-5 flex justify-between items-center ml-6'>
+            <div className='lg:w-3/5 mt-5 lg:mt-0 flex justify-between items-center ml-6'>
                 <Link to='/'>
                     <p className='text-3xl font-bold text-slate-800 cursor-pointer'>RealityRealm</p>
                 </Link>
@@ -38,9 +41,11 @@ const SearchNavBar = () => {
                             </Link>	
                         </div>
                         <div className='cursor-pointer'>
-                            <Link to='/signin'>
+                            {
+                                !currentuser && <Link to='/signin'>
                                 Signin
                             </Link>	
+                            }
                         </div>
                     </div>
                 </div>

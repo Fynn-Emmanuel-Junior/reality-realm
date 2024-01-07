@@ -1,10 +1,12 @@
 import React , {useEffect,useState}from 'react'
 import { useParams,useNavigate } from 'react-router-dom'
-import {useSelector} from 'react-redux'
+import { useSelector } from 'react-redux'
 import { selectCurrentUser } from '../../../../logic/ReduxStore/features/users/usersSlice'
-import { FaBath, FaBed, FaChair, FaMapMarkerAlt, FaParking } from "react-icons/fa";
-import 'swiper/css/bundle'
-import MainLayout from '../../../components/layouts/MainLayout'
+import SearchNavBar from '../../../components/pageComponents/Search/SearchNavBar'
+import Navbar from '../../../components/pageComponents/smallScreens/Navbar'
+import { MdOutlineArrowForwardIos } from "react-icons/md";
+import { CiSearch } from "react-icons/ci";
+import Card from '../../../components/pageComponents/listing/Card'
 
 const Listing = () => {
 
@@ -54,65 +56,43 @@ const Listing = () => {
 
   }
 
+  console.log(listing)
+
   return (
-    <MainLayout>
-      <main className=''> 
-      {
-        listing && listing.imageurls ? <>
-          <div className='flex flex-col max-w-4xl mx-auto p-3 my-7 gap-4'>
-            <p className='text-2xl font-semibold'>
-              {listing.name} - ${' '}
-              {listing.Offer
-                ? listing.discountPrice.toLocaleString('en-US')
-                : listing.regularPrice.toLocaleString('en-US')}
-              {listing.type === 'rent' && ' / month'}
-            </p>
-            <p className='flex items-center gap-2 text-slate-600  text-sm'>
-              <FaMapMarkerAlt className='text-green-700' />
-              {listing.address}
-            </p>
-            <div className='flex gap-4'>
-              <p className='bg-red-900 w-full max-w-[200px] text-white text-center p-1 rounded-md'>
-                {listing.type === 'rent' ? 'For Rent' : 'For Sale'}
-              </p>
-              {listing.discountPrice > 0  && (
-                <p className='bg-green-900 w-full max-w-[200px] text-white text-center p-1 rounded-md'>
-                  ${listing.regularPrice - listing.discountPrice} discount off
-                </p>
-              )}
-            </div>
-            <p className='text-slate-800'>
-              <span className='font-semibold text-black'>Description - </span>
-              {listing.description}
-            </p>
-            <ul className='text-green-700 text-sm font-semibold flex gap-4 sm:gap-6 flex-wrap'>
-                <li className='flex items-center gap-2 text-green-700 text-sm font-semibold'> 
-                  <FaBed className='text-lg'/>
-                  {listing.bedrooms > 1 ? `${listing.bedrooms} beds` : `${listing.bedrooms} bed` }
-                </li>
-                <li className='flex items-center gap-2 text-green-700 text-sm font-semibold'> 
-                  <FaBath className='text-lg'/>
-                  {listing.bathrooms > 1 ? `${listing.bathrooms} baths` : `${listing.bedrooms} bath` }
-                </li>
-                <li className='flex items-center gap-2 text-green-700 text-sm font-semibold'> 
-                  <FaParking className='text-lg'/>
-                  {listing.parking ? 'Parking spot' : 'No Parking' }
-                </li>
-                <li className='flex items-center gap-2 text-green-700 text-sm font-semibold'> 
-                  <FaChair className='text-lg'/>
-                  {listing.furnished ? 'Furnished' : 'Unfurnished' }
-                </li>
-                
-            </ul>
-            
-            
-          </div>
-          
-        </> : ''
-      }
-      
-      </main>
-    </MainLayout>
+    <> 
+		<SearchNavBar />
+		<Navbar />
+		<main className='w-screen lg:w-11/12 md:mx-auto'>
+			<div className='flex flex-col lg:flex-row lg:justify-between'>
+				<div className='flex items-center gap-3'>
+					<p className='text-blue-950 font-bold text-xl'> Explore </p>
+					<span>
+						<MdOutlineArrowForwardIos />
+					</span>
+					<span> {listing.name} </span>
+				</div>
+				<div className='border border-blue-950 flex items-center p-3 w-screen lg:w-1/3 rounded-xl'>
+					<input 
+						type='text'
+						id='search'
+						name='searchTerm'
+						placeholder='Search...'
+						className='focus:outline-none w-full'
+					/>
+					<CiSearch />
+				</div>
+			</div>
+			<div className='flex flex-col lg:flex-row'>
+				<section className=''>
+					<Card listing={listing}/>
+				</section>
+				<section className='flex-1'>
+
+				</section>
+			</div>
+		</main>       
+    </>
+    
   )
 }
 
