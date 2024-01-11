@@ -7,7 +7,8 @@
     "dev": "vite",
     "build": "vite build",
     "lint": "eslint . --ext js,jsx --report-unused-disable-directives --max-warnings 0",
-    "preview": "vite preview"
+    "preview": "vite preview",
+    "serve": "tailwindcss build ./src/index.css"
   },
   "dependencies": {
     "@reduxjs/toolkit": "^1.9.7",
@@ -16,8 +17,10 @@
     "react-dom": "^18.2.0",
     "react-icons": "^4.12.0",
     "react-loader-spinner": "^5.4.5",
+    "react-loading-skeleton": "^3.3.1",
     "react-redux": "^8.1.3",
     "react-router-dom": "^6.17.0",
+    "react-spinners": "^0.13.8",
     "redux-persist": "^6.0.0",
     "swiper": "^11.0.4"
   },

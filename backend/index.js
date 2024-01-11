@@ -16,7 +16,7 @@ const database = process.env.DATABASE_URI
 
 const PORT = process.env.PORT || 3500
 
-// Middlewares
+// Middlewares 
 app.use(express.json())
 app.use(express.urlencoded({ extended: true }))
 app.use(cors())
@@ -35,19 +35,15 @@ app.get("*", (req,res) => {
 
 
 // error handling
-
 // app.use((err,req,res,next) => {
 //     const statuscode = err.statuscode || 500
 //     const message = err.message
-
 //     return res.status(statuscode).json({
 //         success: false,
 //         statuscode,
 //         message
 //     })
 // })
-
-
 
 app.listen(PORT, async () => {
     await mongoose.connect(database)

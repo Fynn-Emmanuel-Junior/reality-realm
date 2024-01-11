@@ -2,8 +2,11 @@ import React, { useState,useEffect } from 'react'
 import MainLayout from '../../../components/layouts/MainLayout'
 import CustomButton from '../../../components/customs/CustomButton'
 import {useNavigate} from 'react-router-dom'
-import {Circles} from 'react-loader-spinner'
-import ListingItem from '../../../components/pageComponents/SearchComponents/ListingItem'
+import { CiSearch } from 'react-icons/ci'
+import ListingItem from '../../../components/pageComponents/Search/ListingItem'
+import SearchNavBar from '../../../components/pageComponents/Search/SearchNavBar'
+import Navbar from '../../../components/pageComponents/smallScreens/Navbar'
+import Footer from '../../../components/pageComponents/Footer'
 
 const Search = () => {
     const navigate = useNavigate()
@@ -31,16 +34,6 @@ const Search = () => {
         const parkingUrl = urlparams.get('parking')
         const sortUrl = urlparams.get('sort')
         const orderUrl = urlparams.get('order')
-
-        console.log(
-            searchTermUrl,
-            typeUrl,
-            offerUrl,
-            parkingUrl,
-            furnishedUrl,
-            sortUrl,
-            orderUrl
-        )
 
         if (
             searchTermUrl ||
@@ -152,92 +145,94 @@ const Search = () => {
 
     }
 
-    console.log(listings)
-
   return (
-    <MainLayout>
-        <main className='flex flex-col md:flex-row'>
-            <aside className='p-7 border-b-2 md:min-h-screen md:border-b-0 md:border-r-2'>
-                <form onSubmit={handleSubmit} className='flex flex-col gap-8 text-sm'>
+    <>
+        <Navbar />
+        <SearchNavBar />
+        <main className='flex flex-col lg:flex-row border'>
+            <aside className='p-7 border-b-2 lg:border-r-2  md:border-b-0 w-auto sticky top-0  lg:top-[80px] lg:fixed z-30 lg:z-0 bg-white lg:max-w-[50%]'>
+                <form onSubmit={handleSubmit}>
                     <div className='flex items-center gap-2'>
-                        <label htmlFor="searchTerm" className='whitespace-nowrap font-semibold'>Search Term: </label>
-                        <input 
-                            type="text"
-                            name="searchTerm" 
-                            id="searchTerm"  
-                            className='border rounded-lg p-3 w-full focus:outline-none focus:border-slate-800'
-                            placeholder='Search...'
-                            value={sidebarParams.searchTerm}
-                            onChange={handleChange}
-                        />
+                        {/* <label htmlFor="searchTerm" className='whitespace-nowrap font-semibold'>Search Term: </label> */}
+                            <input 
+                                type="text"
+                                name="searchTerm" 
+                                id="searchTerm"  
+                                className='border border-slate-700 rounded-lg p-3 w-full focus:outline-none focus:border-slate-800'
+                                placeholder='Search...'
+                                value={sidebarParams.searchTerm}
+                                onChange={handleChange}
+                            />
                     </div>
-                    <div className='flex gap-2 items-center flex-wrap'>
-                        <label className='font-semibold'>Type:</label>
-                        <div className='flex gap-2'>
-                            <input 
-                                type="checkbox"  
-                                id='all' 
-                                className='w-5' 
-                                onChange={handleChange}
-                                checked={sidebarParams.typeOfPlace === 'all'}
-                            /> 
-                            <span>Rent & Sale</span>
+                    <div className='flex flex-col md:flex-row lg:flex-col gap-8 text-sm mt-5'>
+                        <div className='flex gap-2 items-center flex-wrap'>
+                            <label className='font-semibold'>Type:</label>
+                            <div className='flex gap-2'>
+                                <input
+                                    type="checkbox"  
+                                    id='all' 
+                                    className='w-5' 
+                                    onChange={handleChange}
+                                    checked={sidebarParams.typeOfPlace === 'all'}
+                                /> 
+                                <span>Rent & Sale</span>
+                            </div>
+                            <div className='flex gap-2'>
+                                <input 
+                                    type="checkbox"  
+                                    id='rent' 
+                                    className='w-5'
+                                    onChange={handleChange}
+                                    checked={sidebarParams.typeOfPlace === 'rent'}
+                                /> 
+                                <span>Rent</span>
+                            </div>
+                            <div className='flex gap-2'>
+                                <input 
+                                    type="checkbox"  
+                                    id='sell' 
+                                    className='w-5'
+                                    onChange={handleChange}
+                                    checked={sidebarParams.typeOfPlace === 'sell'}
+                                /> 
+                                <span>Sale</span>
+                            </div>
+                            <div className='flex gap-2'>
+                                <input 
+                                    type="checkbox"  
+                                    id='offer' 
+                                    className='w-5'
+                                    onChange={handleChange}
+                                    checked={sidebarParams.offer}
+                                /> 
+                                <span>Offer</span>
+                            </div>
                         </div>
-                        <div className='flex gap-2'>
-                            <input 
-                                type="checkbox"  
-                                id='rent' 
-                                className='w-5'
-                                onChange={handleChange}
-                                checked={sidebarParams.typeOfPlace === 'rent'}
-                            /> 
-                            <span>Rent</span>
-                        </div>
-                        <div className='flex gap-2'>
-                            <input 
-                                type="checkbox"  
-                                id='sell' 
-                                className='w-5'
-                                onChange={handleChange}
-                                checked={sidebarParams.typeOfPlace === 'sell'}
-                            /> 
-                            <span>Sale</span>
-                        </div>
-                        <div className='flex gap-2'>
-                            <input 
-                                type="checkbox"  
-                                id='offer' 
-                                className='w-5'
-                                onChange={handleChange}
-                                checked={sidebarParams.offer}
-                            /> 
-                            <span>Offer</span>
+                        <div className='flex gap-2 items-center flex-wrap'>
+                            <label htmlFor="type" className='font-semibold'>Amenities:</label>
+                            <div className='flex gap-2'>
+                                <input 
+                                    type="checkbox"  
+                                    id='parking' 
+                                    className='w-5'
+                                    onChange={handleChange}
+                                    checked={sidebarParams.parking}
+                                /> 
+                                <span>Parking</span>
+                            </div>
+                            <div className='flex gap-2'>
+                                <input 
+                                    type="checkbox"  
+                                    id='furnished' 
+                                    className='w-5'
+                                    onChange={handleChange}
+                                    checked={sidebarParams.furnished}
+                                /> 
+                                <span>Furnished</span>
+                            </div>
                         </div>
                     </div>
-                    <div className='flex gap-2 items-center flex-wrap'>
-                        <label htmlFor="type" className='font-semibold'>Amenities:</label>
-                        <div className='flex gap-2'>
-                            <input 
-                                type="checkbox"  
-                                id='parking' 
-                                className='w-5'
-                                onChange={handleChange}
-                                checked={sidebarParams.parking}
-                            /> 
-                            <span>Parking</span>
-                        </div>
-                        <div className='flex gap-2'>
-                            <input 
-                                type="checkbox"  
-                                id='furnished' 
-                                className='w-5'
-                                onChange={handleChange}
-                                checked={sidebarParams.furnished}
-                            /> 
-                            <span>Furnished</span>
-                        </div>
-                    </div>
-                    <div className='flex items-center gap-3'>
+                    <div className='flex items-center gap-3  mt-5'>
                         <label htmlFor="sort_order" className='font-semibold'>Sort:</label>
                         <select 
                             id="sort_order"
@@ -250,19 +245,23 @@ const Search = () => {
                             <option value="createdAt_desc">latest</option>
                             <option value="createdAt_asc">oldest</option>
                         </select>
+                    </div>
+                    <div className='w-full mt-5'>
+                        <button className='bg-slate-700 text-white text-base  rounded-lg hover:opacity-95 p-3 w-full'>
+                            Search
+                        </button> 
                     </div> 
-                    <CustomButton text={'Search'}/>  
                 </form>
             </aside>
-            <section className='flex-1'>
+            <section className='lg:w-[70%] xl:w-4/5 lg:ml-[40%] xl:ml-[30%] lg:flex lg:flex-col lg:self-end'>
                 <h1 className='font-semibold text-xs p-3 mt-5 text-slate-700'> Listing results: </h1>
                 <div className='p-7 flex flex-wrap gap-4'>
                     {
-                        !loading && listings.length == 0 && (
+                         !loading && listings.length == 0 && (
                             <p className='text-xl text-slate-700 text-center'> No listings found!</p>
                         )
                     }
-                    {
+                    {/* {
                         loading && 
                         <div className='flex justify-center w-full gap-3'> 
                             <Circles 
@@ -274,10 +273,12 @@ const Search = () => {
                             />
                             <span className='text-slate-700 text-xl'> Loading...</span>
                         </div>
-                    }
-                    {
-                        !loading && listings && listings.map(listing => <ListingItem key={listing._id} listing={listing}/>)
-                    }
+                    } */}
+                    <div className="flex items-center flex-wrap gap-3 w-[90%]  md:w-[95%] md:grid md:grid-cols-2 lg:w-full lg:grid-cols-2  xl:grid-cols-3 mx-auto">
+                        {
+                            listings && listings.map(listing => <ListingItem key={listing._id} listing={listing}/>)
+                        }
+                    </div>
                     
                         {
                             showMore && (
@@ -293,7 +294,9 @@ const Search = () => {
                 </div>
             </section>
         </main>
-    </MainLayout> 
+       <Footer />
+           
+    </> 
   )
 }
 
