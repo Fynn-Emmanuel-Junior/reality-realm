@@ -7,24 +7,24 @@ import 'react-loading-skeleton/dist/skeleton.css'
 import { TailSpin } from 'react-loader-spinner'
 
 
-const Card = ({listing}) => {
-	const [loading,setLoading] = useState(true)
+const Card = ({listing,loading}) => {
+	// const [loading,setLoading] = useState(true)
 
-	useEffect(() => {
-		setTimeout(() => {
-			setLoading(false)
-		},2000)
-	})
+	// useEffect(() => {
+	// 	setTimeout(() => {
+	// 		setLoading(false)
+	// 	},2000)
+	// })
   return (
     <div className='flex flex-col items-center '>
         <div  className='rounded-lg m-2 '>
 			{
 				loading ? (
-					<div>
+					<div className='m-14'>
 						<TailSpin
 							visible={true}
-							height="60"
-							width="60"
+							height="40"
+							width="40"
 							color="#000000"
 							ariaLabel="tail-spin-loading"
 							radius="0.5"

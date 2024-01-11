@@ -13,7 +13,6 @@ const Menu = ({open,setOpen}) => {
             open && (
 
     <div className='absolute top-0 left-0 z-10 bg-white w-screen h-screen lg:hidden'>
-        
             <div className='w-screen h-screen'>
                 <div className='border-b-2'>
                     <div className='w-4/5 xxs:w-[72%] md:w-2/3 flex justify-between items-center p-2 sm:p-3 md:p-6'> 

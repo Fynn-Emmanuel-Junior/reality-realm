@@ -19,6 +19,11 @@ const Navbar = () => {
         <div>
             <HiOutlineMenu className=" text-xl sm:text-3xl md:text-5xl lg:hidden" onClick={handleOpen}/>
         </div>
+        <div className='font-semibold text-3xl'>
+            <Link to='/'>
+                Reality-Realm
+            </Link>
+        </div>
         <div>
             <Link to='/signin' className='font-semibold md:text-2xl md-x:text-3xl'> Signin </Link>
         </div>

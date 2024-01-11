@@ -7,6 +7,8 @@ import Navbar from '../../../components/pageComponents/smallScreens/Navbar'
 import { MdOutlineArrowForwardIos } from "react-icons/md";
 import { CiSearch } from "react-icons/ci";
 import Card from '../../../components/pageComponents/listing/Card'
+import Footer from '../../../components/pageComponents/Footer'
+import { TailSpin } from 'react-loader-spinner'
 
 const Listing = () => {
 
@@ -82,15 +84,21 @@ const Listing = () => {
 					<CiSearch />
 				</div>
 			</div>
-			<div className='flex flex-col lg:flex-row'>
+			<div className='flex flex-col lg:flex-row lg:mt-10'>
 				<section className=''>
 					<Card listing={listing}/>
 				</section>
 				<section className='flex-1'>
-
+          <div>
+            <p>{listing.name}</p>
+            <p>{listing.address}</p>
+          </div>
 				</section>
 			</div>
-		</main>       
+		</main>  
+    <div className='my-10'>
+      <Footer />
+    </div>     
     </>
     
   )

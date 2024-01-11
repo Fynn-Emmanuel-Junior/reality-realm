@@ -3,8 +3,12 @@ import { HiOutlineMenu } from "react-icons/hi";
 import { Link } from 'react-router-dom';
 import { useState } from 'react'
 import Menu from '../pageComponents/Menu';
+import { selectCurrentUser } from '../../../logic/ReduxStore/features/users/usersSlice';
+import { useSelector } from 'react-redux'
+import profile from '../../assets/profile.png'
 
 const MainLayout = ({children}) => {
+	const user = useSelector(selectCurrentUser)
 	const [open,setOpen] = useState(false)
 	
 	const handleOpen = () => {
@@ -41,11 +45,14 @@ const MainLayout = ({children}) => {
 							<Link to='/about'>
 								About
 							</Link>
-							<Link to='/signin'>
+							{
+								user ?  '' : <Link to='/signin'>
 								Sign in
 							</Link>
+							}
+							
 							<Link to='/profile'>
-								Profile
+								{ user  ? <img src={profile} alt='profile_img' width={50} height={50} /> : 'profile'}
 							</Link>
 						</div>
 					</div>

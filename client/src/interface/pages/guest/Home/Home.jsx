@@ -3,10 +3,17 @@ import { Link } from "react-router-dom"
 import { useState,useEffect } from "react"
 import ListingItem from "../../../components/pageComponents/Search/ListingItem"
 import Footer from "../../../components/pageComponents/Footer"
+import { selectStatus ,selectListings,selectError} from "../../../../logic/ReduxStore/features/listings/listingsSlice"
+import {useSelector,useDispatch} from 'react-redux'
+import { fetchListings } from "../../../../logic/ReduxStore/features/listings/listingsSlice"
 
 const Home = () => {
-
+    // const listings = useSelector(selectListings)
+    // const loading = useSelector(selectStatus)
+    // const error = useSelector(selectError)
+    // const dispatch = useDispatch()
     const [listings,setListings] = useState([])
+    const [loading,setLoading] = useState(true)
     const [error,setError] = useState(false)
     
     useEffect(() => {
@@ -16,6 +23,9 @@ const Home = () => {
                     const data = await res.json()
 
                     setListings(data)
+                    setTimeout(() => {
+                        setLoading(false)
+                    },2000)
                 } catch(err) {
                     console.log(err.message)
                     setLoading(false)
@@ -23,6 +33,8 @@ const Home = () => {
             }
 
             fetchlistings()
+
+            // dispatch(fetchListings())
     },[])
 
   return (
@@ -33,7 +45,7 @@ const Home = () => {
                     <div className="flex items-center  flex-wrap gap-3 w-[90%]  md:w-[95%] md:grid md:grid-cols-2 lg:w-full lg:grid-cols-3 xl:w-[90%] xl:grid-cols-4 mx-auto">
                         {
                             listings.map(listing => (
-                                <ListingItem key={listing._id} listing={listing}/>
+                                <ListingItem key={listing._id} listing={listing} loading={loading}/>
                             ))
                         }        
                     </div>   

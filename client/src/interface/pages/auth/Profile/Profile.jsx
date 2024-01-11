@@ -9,7 +9,7 @@ import { app } from '../../../../utilis/firebase'
 import { Link, useNavigate } from "react-router-dom"
 import { TailSpin } from "react-loader-spinner"
 import AboutLayout from '../../../components/layouts/AboutLayout'
-
+import profile from '../../../assets/profile.png'
 
 const Profile = () => {
   const currentuser = useSelector(selectCurrentUser)
@@ -165,10 +165,12 @@ const Profile = () => {
                 onChange={(e) => setFile(e.target.files[0])}
             />
             <img 
-                src={formData.avatar || currentuser.avatar} 
+                src={profile || currentuser.avatar} 
                 alt="profile" 
-                className="rounded-full h-24 w-24 object-cover self-center mt-2 cursor-pointer"
+                className="rounded-full object-cover self-center mt-2 cursor-pointer"
                 onClick={() => fileRef.current.click()}
+                width={150}
+                height={150}
             />
             <p className="text-sm self-center">
               {

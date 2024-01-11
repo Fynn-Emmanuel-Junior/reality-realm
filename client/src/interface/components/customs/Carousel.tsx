@@ -58,8 +58,7 @@ const Carousel = ({images,id}) => {
                     <FiChevronRight size={20}/>
                 </button>
             }
-        </>
-                    
+        </>           
         <div className='absolute bottom-4 right-0 left-0'>
             <div className='flex justify-center items-center gap-2'>
                 {
