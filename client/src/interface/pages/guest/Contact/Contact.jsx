@@ -29,7 +29,7 @@ const Contact = () => {
 					<p className='text-center'> Prefer to email? Send us an email and we'll get back to you soon </p>
 					<div className='flex flex-col items-center'>
 						<div className='flex items-center gap-4 text-blue-900'>
-							<button> Send Email </button>
+							<Link href='mailto:fynn.emmanuel100@gmail.com'> Send Email </Link>
 							<FaArrowRightLong />
 						</div>
 					</div>
@@ -46,7 +46,7 @@ const Contact = () => {
 				</div>
 			</section>
 		</div>
-		<div className='mt-20 mb-5'>
+		<div className='mt-20'>
 			<Footer />
 		</div>
     </ContactLayout>
