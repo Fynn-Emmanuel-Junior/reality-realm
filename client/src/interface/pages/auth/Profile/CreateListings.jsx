@@ -155,8 +155,6 @@ const CreateListing = () => {
             setSuccess(false)
             console.log(err.message)
         }
-
-
     }
 
   return (
@@ -389,7 +387,7 @@ const CreateListing = () => {
                 </div>
             </form>
         </main>
-        <footer className='my-5'>
+        <footer className='mt-5'>
             <Footer />
         </footer>
 

@@ -68,7 +68,7 @@ const MainLayout = ({children}) => {
 					<div className='lg:hidden lg:text-3xl  xxs:text-base sm:text-xl md:text-2xl'>
 						<HiOutlineMenu onClick={handleOpen}/>
 					</div>
-					<p className='lg:hidden text-sm sm:text-lg font-bold md:text-2xl'>RealityRealm</p>
+					<p className='lg:hidden text-sm sm:text-lg font-bold md:text-2xl'> RealityRealm </p>
 					<div className='lg:hidden text-[10px] sm:text-sm uppercase md:text-lg'>
 						<Link to='/signin'>
 							sign in
@@ -77,6 +77,8 @@ const MainLayout = ({children}) => {
 				</div>
 			</div>
 		</header>
+		<div className='lg:bg-black lg:h-2 lg:w-full'/>
+		
         <div className='mt-20 xl:mt-40'>
             {children}
         </div>

@@ -52,7 +52,7 @@ const Home = () => {
                 </div>
             </div>
         </MainLayout>
-        <div className="my-10">
+        <div className="mt-5">
             <Footer />
         </div>
     </div>
