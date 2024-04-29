@@ -162,14 +162,14 @@ const CreateListing = () => {
   return (
     <AboutLayout>
         <main className='p-3 max-w-4xl mx-auto'>
-            <h1 className='text-3xl font-semibold mb-5 text-center'> Create a listing </h1>
+            <h1 className='text-3xl font-semibold mb-7 text-center'> Create a listing </h1>
             <form onSubmit={handleSubmit} className='flex flex-col sm:flex-row gap-10'>
                 <div className='flex flex-col gap-4 flex-1'>
                     <input 
                         type="text" 
                         placeholder="Name" 
                         id="name" 
-                        className='border rounded-lg p-3 focus:outline-none'
+                        className='border border-teal-500 rounded-lg p-3 focus:outline-none'
                         maxLength={62}
                         required
                         onChange={handleChange}
@@ -179,7 +179,7 @@ const CreateListing = () => {
                         type="textarea" 
                         placeholder="Description"  
                         id="description" 
-                        className='border rounded-lg p-3 focus:outline-none resize-none'
+                        className='border border-teal-500 rounded-lg p-3 focus:outline-none resize-none'
                         required
                         onChange={handleChange}
                         value={formData.description}
@@ -188,7 +188,7 @@ const CreateListing = () => {
                         type="text" 
                         placeholder="Address"  
                         id="address"  
-                        className='border rounded-lg p-3 focus:outline-none'
+                        className='border border-teal-500 rounded-lg p-3 focus:outline-none'
                         required
                         onChange={handleChange}
                         value={formData.address}
