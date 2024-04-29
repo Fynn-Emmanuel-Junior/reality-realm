@@ -1,11 +1,12 @@
-import React, {useState} from 'react'
-import MainLayout from "../../../components/layouts/MainLayout"
+import  {useState} from 'react'
 import { getDownloadURL, getStorage, ref, uploadBytesResumable } from 'firebase/storage'
 import { app } from '../../../../utilis/firebase'
 import { selectCurrentUser } from '../../../../logic/ReduxStore/features/users/usersSlice'
 import { useSelector } from 'react-redux'
-import { useNavigate, useParams } from 'react-router-dom'
+import { useNavigate } from 'react-router-dom'
 import { TailSpin } from  'react-loader-spinner'
+import AboutLayout from '../../../components/layouts/AboutLayout'
+import Footer from '../../../components/pageComponents/Footer'
 
 const CreateListing = () => {
     const navigate = useNavigate()
@@ -159,7 +160,7 @@ const CreateListing = () => {
     }
 
   return (
-    <MainLayout>
+    <AboutLayout>
         <main className='p-3 max-w-4xl mx-auto'>
             <h1 className='text-3xl font-semibold my-7 text-center'> Create a listing </h1>
             <form onSubmit={handleSubmit} className='flex flex-col sm:flex-row gap-10'>
@@ -388,7 +389,9 @@ const CreateListing = () => {
                 </div>
             </form>
         </main>
-    </MainLayout>
+        <Footer />
+
+    </AboutLayout>
   )
 }
 
