@@ -1,4 +1,5 @@
 import PropTypes from 'prop-types'
+import { useEffect } from 'react';
 import { HiOutlineMenu } from "react-icons/hi";
 import { Link } from 'react-router-dom';
 import { useState } from 'react'
@@ -10,15 +11,34 @@ import profile from '../../assets/profile.png'
 const MainLayout = ({children}) => {
 	const user = useSelector(selectCurrentUser)
 	const [open,setOpen] = useState(false)
+
+	const [isSticky, setIsSticky] = useState(false);
 	
 	const handleOpen = () => {
 		setOpen(true)
 	}
 
+	useEffect(() => {
+		const handleScroll = () => {
+		const offset = window.scrollY;
+		if (offset > 200) { // Adjust the value according to your needs
+			setIsSticky(true);
+		} else {
+			setIsSticky(false);
+		}
+		};
+	
+		window.addEventListener('scroll', handleScroll);
+	
+		return () => {
+			window.removeEventListener('scroll', handleScroll);
+		};
+	}, [])
+
   return (
     <div className='font-sansSerif'>
         <header className='flex flex-col'>
-			<div className='hidden z-20 lg:inline bg-white text-black absolute top-0 left-0 w-full'>
+			<div className={`bg-[#EAEAEA] hidden z-20 lg:inline text-black ${isSticky ? 'fixed top-0 left-0 transition duration-1000 ease-in-out' : 'absolute top-0 left-0 '} w-full`}>
 				<div className='flex justify-between items-center px-3 py-5 lg:w-[98%] xl:w-[95%] 2xl:w-10/12 mx-auto'>
 					<div className='flex gap-3 justify-between items-center xl:p-2  text-base'>
 						<div className='cursor-pointer'>
@@ -77,8 +97,6 @@ const MainLayout = ({children}) => {
 				</div>
 			</div>
 		</header>
-		<div className='lg:bg-black lg:h-2 lg:w-full'/>
-		
         <div className='mt-20 xl:mt-40'>
             {children}
         </div>
