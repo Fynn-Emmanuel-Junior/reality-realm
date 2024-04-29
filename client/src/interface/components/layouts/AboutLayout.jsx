@@ -16,7 +16,7 @@ const MainLayout = ({children}) => {
 	}
 
   return (
-    <div className='font-sansSerif '>
+    <div className='font-sansSerif'>
         <header className='flex flex-col'>
 			<div className='hidden z-20 lg:inline bg-white text-black absolute top-0 left-0 w-full'>
 				<div className='flex justify-between items-center px-3 py-5 lg:w-[98%] xl:w-[95%] 2xl:w-10/12 mx-auto'>
