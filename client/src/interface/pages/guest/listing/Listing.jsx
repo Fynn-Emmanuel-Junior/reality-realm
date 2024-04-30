@@ -44,6 +44,7 @@ const Listing = () => {
   
       } catch(err) {
         setError(true)
+        console.log(err.message)
         setLoading(false)
       }
     }

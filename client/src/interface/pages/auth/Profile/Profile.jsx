@@ -133,7 +133,7 @@ const Profile = () => {
 
     const showlistings = async () => {
       try{
-            const res = await fetch(`${uri}/listings/get/${currentuser._id}`)
+            const res = await fetch(`${uri}/listings/get-user-listings/${currentuser._id}`)
             const data = await res.json()
             setListings(data)
             console.log(listings)
