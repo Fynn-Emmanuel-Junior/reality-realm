@@ -161,7 +161,7 @@ const CreateListing = () => {
     <AboutLayout>
         <main className='p-3 max-w-4xl mx-auto'>
             <h1 className='text-3xl font-semibold mb-7 text-center'> Create a listing </h1>
-            <form onSubmit={handleSubmit} className='flex flex-col sm:flex-row gap-10'>
+            <form onSubmit={handleSubmit} className='flex flex-col lg::flex-row gap-10'>
                 <div className='flex flex-col gap-4 flex-1'>
                     <input 
                         type="text" 
