@@ -18,7 +18,7 @@ router.put('/update/:id',authMiddleware,updatelisting)
 router.get('/getlisting/:id',getListing)
 router.get('/get',getListings)
 router.get('/get-all-listings',getAllListings)
-router.get('get-user-listings/:id',authMiddleware,getUserListings)
+router.get('/get-user-listings/:id',authMiddleware,getUserListings)
 
 
 export default router
