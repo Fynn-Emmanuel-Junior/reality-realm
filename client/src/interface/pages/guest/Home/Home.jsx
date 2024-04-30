@@ -17,7 +17,7 @@ const Home = () => {
     const [loading,setLoading] = useState(true)
     const [error,setError] = useState(false)
     
-    const [loadmore,setLoadmore] = useState(false)
+    const [loadmore,setLoadmore] = useState(true)
     const [text,setText] = useState(false)
 
 
@@ -54,6 +54,10 @@ const Home = () => {
            if(data) {
             setListings([...listings,...data])
 
+            if(data.length < 4) {
+                setLoadmore(false)
+            }
+
             setTimeout(() => {
                 setText(false)
             },100)
@@ -65,7 +69,8 @@ const Home = () => {
 
         } catch(err) {
             console.log(err.message)
-            
+            setText(false)
+
         }
     }
 
@@ -83,11 +88,26 @@ const Home = () => {
                     </div>   
                 </div>
             </div>
-            <div className='flex flex-col items-center mt-5 mb-10'>
-                <div className="flex flex-col items-center w-1/3 lg:w-1/4 bg-slate-700 rounded-lg text-white uppercase p-3 hover:opacity-95 disabled:opacity-80 cursor-pointer">
-                    <button> Load more </button>
-                </div>
-            </div>   
+          {
+            loadmore &&   <div className='flex flex-col items-center mt-5 mb-10'>
+            <div className="flex flex-col items-center w-1/3 lg:w-1/4 bg-slate-700 rounded-lg text-white uppercase p-3 hover:opacity-95 disabled:opacity-80 cursor-pointer">
+                <button
+                    onClick={showmore}
+                > 
+                    {
+                        text ? <div className='flex justify-center items-center'>
+                        <span className='mr-2'>Loading more</span>
+                        <Circles
+                            height="20"
+                            width="20" 
+                            color="#ffffff"
+                            visible={true}
+                        /> </div> : 'Loading more'
+                    } 
+                </button>
+            </div>
+        </div> 
+          } 
         </MainLayout>
         <div className="mt-5">
             <Footer />
