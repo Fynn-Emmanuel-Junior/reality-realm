@@ -24,8 +24,8 @@ app.use(cookieParser())
 
 
 //Routes
-app.use('/api/users',usersRoutes)
-app.use('/api/listings',listingsRoutes)
+app.use('/users',usersRoutes)
+app.use('/listings',listingsRoutes)
 
 // app.use(express.static(path.join(__dirname,'/client/dist')))
 

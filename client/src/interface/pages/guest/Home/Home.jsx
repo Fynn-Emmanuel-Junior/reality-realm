@@ -26,7 +26,7 @@ const Home = () => {
     useEffect(() => {
             const fetchlistings = async () => {
                 try {
-                    const res = await fetch(`/api/listings/get-all-listings?limit=16`)
+                    const res = await fetch(`${uri}/listings/get-all-listings`)
                     const data = await res.json()
 
                     setListings(data)
@@ -50,7 +50,7 @@ const Home = () => {
         setText(true)
 
         try {
-            const res = await fetch(`/api/listings/get-all-listings?startIndex=${startIndex}&&limit=4`)
+            const res = await fetch(`${uri}/listings/get-all-listings?startIndex=${startIndex}&&limit=4`)
             const data = await res.json()
 
            if(data) {
