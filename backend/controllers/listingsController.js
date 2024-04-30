@@ -128,9 +128,9 @@ const getListings = async (req,res) => {
     }
 }
 
-const getUserListings = (req, res) => {
+const getUserListings = async (req, res) => {
     try {
-        const listings = ListingModel.findById({userRef: req.user._id})
+        const listings = await ListingModel.findById({userRef: req.user._id})
         res.status(200).json(listings)
     } catch(err) {
         res.status(400).json({message: err.message})
