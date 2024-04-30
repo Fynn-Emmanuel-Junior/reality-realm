@@ -8,6 +8,8 @@ import { selectStatus ,selectListings,selectError} from "../../../../logic/Redux
 import {useSelector,useDispatch} from 'react-redux'
 import { fetchListings } from "../../../../logic/ReduxStore/features/listings/listingsSlice"
 
+const uri = 'https://reality-realm-server.onrender.com'
+
 const Home = () => {
     // const listings = useSelector(selectListings)
     // const loading = useSelector(selectStatus)
@@ -48,7 +50,7 @@ const Home = () => {
         setText(true)
 
         try {
-            const res = await fetch(`api/listings/get-all-listings?startIndex=${startIndex}&&limit=4`)
+            const res = await fetch(`/api/listings/get-all-listings?startIndex=${startIndex}&&limit=4`)
             const data = await res.json()
 
            if(data) {
