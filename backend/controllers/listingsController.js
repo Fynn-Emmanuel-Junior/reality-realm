@@ -131,7 +131,7 @@ const getListings = async (req,res) => {
 const getUserListings = async (req, res) => {
     console.log(req.params.id)
     try {
-        const listings = await ListingModel.findById({userRef: req.user._id})
+        const listings = await ListingModel.find({userRef: req.user._id})
         res.status(200).json(listings)
     } catch(err) {
         res.status(400).json({message: err.message})
