@@ -8,6 +8,8 @@ import { HiOutlineMenu } from "react-icons/hi"
 import bg from '../../../assets/bg2.jpg'
 import Menu from "../../../components/pageComponents/Menu"
 
+const uri = 'https://reality-realm-server.onrender.com'
+
 
 const SignUp = () => {
 
@@ -59,7 +61,7 @@ const SignUp = () => {
       setLoading(true)
       
       
-      const res = await fetch('/api/users/register',
+      const res = await fetch(`${uri}/users/register`,
         {
           method: 'POST',
           headers: {

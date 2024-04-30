@@ -8,6 +8,8 @@ import SearchNavBar from '../../../components/pageComponents/Search/SearchNavBar
 import Navbar from '../../../components/pageComponents/smallScreens/Navbar'
 import Footer from '../../../components/pageComponents/Footer'
 
+const uri = 'https://reality-realm-server.onrender.com'
+
 const Search = () => {
     const navigate = useNavigate()
 
@@ -61,7 +63,7 @@ const Search = () => {
             const searchQuery = urlparams.toString()
         
             try {
-                const res = await fetch(`/api/listings/get?${searchQuery}`)
+                const res = await fetch(`${uri}/listings/get?${searchQuery}`)
                 const data = await res.json()
 
                 if(data.length > 8) {
@@ -134,7 +136,7 @@ const Search = () => {
 
         const searchquery = urlparams.toString()
 
-        const res = await fetch(`/api/listings/get/?${searchquery}`)
+        const res = await fetch(`${uri}/listings/get/?${searchquery}`)
         const data = await res.json()
 
         if(data.length < 9) {

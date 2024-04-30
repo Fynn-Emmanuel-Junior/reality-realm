@@ -9,6 +9,8 @@ import bg from '../../../assets/bg2.jpg'
 import { HiOutlineMenu } from "react-icons/hi"
 import Menu from "../../../components/pageComponents/Menu"
 
+const uri = 'https://reality-realm-server.onrender.com'
+
 const SignIn = () => {
 
 	const navigate = useNavigate()
@@ -53,7 +55,7 @@ const SignIn = () => {
 		setMessage(false)      
 		setLoading(true)
 		
-		const res = await fetch('/api/users/auth',
+		const res = await fetch(`${uri}/users/auth`,
 			{ 
 			method: 'POST',
 			headers: {

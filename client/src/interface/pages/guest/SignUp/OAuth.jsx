@@ -6,6 +6,8 @@ import { useNavigate } from 'react-router-dom'
 import google from '../../../assets/google.png'
 // import { useState } from 'react'
 
+const uri = 'https://reality-realm-server.onrender.com'
+
 const OAuth = () => {
     const dispatch = useDispatch()
     const navigate = useNavigate()
@@ -17,7 +19,7 @@ const OAuth = () => {
 
             const result = await signInWithPopup(auth,provider)
 
-            const res = await fetch('/api/users/google', {
+            const res = await fetch(`${uri}/users/google`, {
                 method: 'POST',
                 headers: {
                     'content-type': 'application/json'

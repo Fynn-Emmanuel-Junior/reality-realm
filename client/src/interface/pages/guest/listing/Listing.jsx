@@ -10,6 +10,8 @@ import Card from '../../../components/pageComponents/listing/Card'
 import Footer from '../../../components/pageComponents/Footer'
 import { TailSpin } from 'react-loader-spinner'
 
+const uri = 'https://reality-realm-server.onrender.com'
+
 const Listing = () => {
 
   const {id} = useParams()
@@ -33,7 +35,7 @@ const Listing = () => {
         setLoading(true)
         setError(true)
 
-        const res = await fetch(`/api/listings/getlisting/${id}`)
+        const res = await fetch(`${uri}/listings/getlisting/${id}`)
     
         const data = await res.json()
   

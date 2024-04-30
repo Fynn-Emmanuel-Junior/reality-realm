@@ -7,6 +7,8 @@ import { useSelector } from 'react-redux'
 import { useNavigate, useParams } from 'react-router-dom'
 import { TailSpin } from 'react-loader-spinner'
 
+const uri = 'https://reality-realm-server.onrender.com'
+
 const UpdateListing = () => {
     const navigate = useNavigate()
     const [files,setFiles] = useState([])
@@ -34,7 +36,7 @@ const UpdateListing = () => {
     const {id} = useParams()
 
     const fetchlisting = async () => {
-        const res = await fetch(`/api/listings/getlisting/${id}`)
+        const res = await fetch(`${uri}/listings/getlisting/${id}`)
         const data = await res.json()
 
         setFormData(data)
@@ -147,7 +149,7 @@ const UpdateListing = () => {
             if(formData.imageurls.length < 1) return setError('You must upload at least one image')
             if(formData.regularPrice < formData.discountPrice) return setError('Discount Price must be less than Regular price')
 
-            const res = await fetch(`/api/listings/update/${id}`, 
+            const res = await fetch(`${uri}/listings/update/${id}`, 
                 {
                     method: 'PUT',
                     headers: {
