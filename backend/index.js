@@ -8,7 +8,7 @@ import  usersRoutes  from './routes/api/usersRoutes.js'
 import listingsRoutes from './routes/api/listingsRoutes.js'
 import path from 'path'
 
-const __dirname = path.resolve()
+const __dirname = path.resolve() 
 
 const app = express()
 
@@ -18,7 +18,7 @@ const PORT = process.env.PORT || 3500
 
 // Middlewares 
 app.use(express.json())
-app.use(express.urlencoded({ extended: true }))
+app.use(express.urlencoded({ extended: true })) 
 app.use(cors())
 app.use(cookieParser())
 
@@ -27,11 +27,11 @@ app.use(cookieParser())
 app.use('/api/users',usersRoutes)
 app.use('/api/listings',listingsRoutes)
 
-app.use(express.static(path.join(__dirname,'/client/dist')))
+// app.use(express.static(path.join(__dirname,'/client/dist')))
 
-app.get("*", (req,res) => {
-    res.sendFile(path.join(__dirname,'client','dist','index.html'))
-})
+// app.get("*", (req,res) => {
+//     res.sendFile(path.join(__dirname,'client','dist','index.html'))
+// })
 
 
 // error handling

@@ -13,6 +13,8 @@ import profile from '../../../assets/profile.png'
 
 const Profile = () => {
   const currentuser = useSelector(selectCurrentUser)
+  console.log(currentuser)
+
   const loading = useSelector(selectLoading)
   const dispatch = useDispatch()
   const navigate = useNavigate()

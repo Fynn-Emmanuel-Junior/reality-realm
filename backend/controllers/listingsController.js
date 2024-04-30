@@ -12,8 +12,15 @@ const createListings = async (req,res) => {
 
 const getAllListings = async(req,res) => {
         try {
-            const listings = await ListingModel.find().sort({createdAt: -1})
+            const limit = parseInt(req.query.limit) || 9
+            const startIndex = parseInt(req.query.startIndex) || 0
+
+            const listings = await ListingModel.find()
+                                                .sort({createdAt: -1})
+                                                .limit(limit)
+                                                .skip(startIndex)
             res.status(200).json(listings)
+
         } catch(err) {
             res.status(401).json({message: `cannot get listings:${err.message}`})
         }
