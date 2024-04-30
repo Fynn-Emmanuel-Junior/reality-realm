@@ -2,9 +2,13 @@ import React,{useState} from 'react'
 import { HiOutlineMenu } from 'react-icons/hi'
 import { Link } from 'react-router-dom'
 import Menu from '../../pageComponents/Menu'
+import { useSelector } from 'react-redux'
+import { selectCurrentUser } from '../../../../logic/ReduxStore/features/users/usersSlice'
 
 const Navbar = () => {
     const [open,setOpen] = useState(false)
+
+    const user = useSelector(selectCurrentUser)
 	
 	const handleOpen = () => {
 		setOpen(true)
@@ -25,7 +29,9 @@ const Navbar = () => {
             </Link>
         </div>
         <div>
-            <Link to='/signin' className='font-semibold md:text-2xl md-x:text-3xl'> Signin </Link>
+          {
+            user ? '' :  <Link to='/signin' className='font-semibold md:text-2xl md-x:text-3xl'> Signin </Link>
+          }
         </div>
     </nav>
   )

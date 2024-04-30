@@ -43,8 +43,14 @@ const Carousel = ({images,id}) => {
         <Link to={`/listing/${id}`} className='relative flex transition-transform ease-out duration-500' style= {{transform: `translateX(-${current*100}%)`}}>
             {
                 images.map((image,index) => (
-                    <img key={index} src={image} alt='listing-images' className='w-full object-full rounded-xl'/>
-                    ))
+                    <img 
+                        key={index} 
+                        src={image} 
+                        height={100}
+                        alt='listing-images' 
+                        className='w-full object-full rounded-xl'
+                    />
+                ))
             }
         </Link>
         {

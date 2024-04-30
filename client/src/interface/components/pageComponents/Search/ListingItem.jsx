@@ -5,7 +5,7 @@ const ListingItem = ({listing,loading}) => {
 
   return (
     <div>
-		    <Card listing={listing} loading={loading}/>
+		<Card listing={listing} loading={loading}/>
     </div>
   )
 }

@@ -26,7 +26,6 @@ const Card = ({listing,loading}) => {
 							height="40"
 							width="40"
 							color="#000000"
-							ariaLabel="tail-spin-loading"
 							radius="0.5"
 							wrapperStyle={{
 								opacity: '75%'
@@ -42,7 +41,7 @@ const Card = ({listing,loading}) => {
             <div className='flex flex-col w-full text-xs xs:text-sm sm:text-base'>
 						<>
 							{
-								!loading && <p className='truncate font-semibold text-slate-900'>{listing.name}</p>
+								!loading && <p className='truncate font-semibold text-sm text-slate-900 mt-2'>{listing.name}</p>
 						
 							}
 						</>
@@ -60,7 +59,7 @@ const Card = ({listing,loading}) => {
 						<>
 							{
 								!loading &&
-									<p className='text-slate-900  font-semibold'> 
+									<p className='text-slate-900 text-sm  font-semibold'> 
 										$
 										{
 											listing.offer ? listing.discountPrice.toLocaleString('en-US') : listing.regularPrice.toLocaleString('en-US')

@@ -4,11 +4,46 @@ import bg from '../../assets/bg3 (1).jpg'
 import { HiOutlineMenu } from "react-icons/hi";
 import { Link } from 'react-router-dom';
 import { CiSearch } from "react-icons/ci";
-import { useState } from 'react'
+import { useState,useEffect } from 'react'
 import Menu from '../pageComponents/Menu';
 import { useSelector } from 'react-redux'
 import { selectCurrentUser } from '../../../logic/ReduxStore/features/users/usersSlice';
 import profile from '../../assets/profile.png'
+
+
+function AutoDeleteParagraph({ text, delay }) {
+	const [displayedText, setDisplayedText] = useState('');
+	const [isVisible, setIsVisible] = useState(true);
+  
+	useEffect(() => {
+	  const interval = setInterval(() => {
+		if (isVisible) {
+		  setIsVisible(false);
+		  setTimeout(() => {
+			setDisplayedText('');
+		  }, delay);
+		} else {
+		  if (displayedText.length < text.length) {
+			setDisplayedText((prevText) => text.slice(0, prevText.length + 1));
+		  } else {
+			setIsVisible(true);
+		  }
+		}
+	  }, delay + 1000); // Adjust the total interval time (delay + additional time between repeats)
+  
+	  return () => {
+		clearInterval(interval);
+	  };
+	}, [isVisible, displayedText, text, delay]);
+  
+	return (
+	  <div>
+		{isVisible && <h1 className="text-white font-medium xxs:text-xs xs:text-base md:text-2xl text-center">{text}</h1>
+		}
+		{!isVisible && <h1 className="text-white font-medium xxs:text-xs xs:text-base md:text-2xl text-center">{displayedText}</h1>}
+	  </div>
+	);
+  }
 
 
 const MainLayout = ({children}) => {
@@ -18,6 +53,7 @@ const MainLayout = ({children}) => {
 	const handleOpen = () => {
 		setOpen(true)
 	}
+
 
   return (
     <div className='font-sansSerif '>
@@ -91,11 +127,12 @@ const MainLayout = ({children}) => {
 						</Link>
 					</div>
 				</div>
-				<div className='w-full xxs:mt-[5%] xs:mb-[8%] md:mt-[10%] lg:mt-[45%] xl:mt-[13%]'>
+				<div className='w-full xxs:mt-[5%] xs:mb-[8%] md:mt-[10%] lg:mt-[50%] xl:mt-[20%]'>
 					<div className='md-x:mb-3'>
-						<h1 className="text-white font-medium xxs:text-xs xs:text-base md:text-2xl text-center">
+						{/* <h1 className="text-white font-medium xxs:text-xs xs:text-base md:text-2xl text-center">
 							Find your next perfect place with ease
-						</h1>
+						</h1> */}
+						<AutoDeleteParagraph text={'Find your next perfect place with ease'} delay={2}/>
 					</div>
 					<div className='flex mt-2  bg-white w-5/6 lg:w-4/6 xl:w-3/6 justify-between items-center p-2 xs:p-3 mx-auto'>
 						<input 

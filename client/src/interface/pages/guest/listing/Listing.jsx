@@ -96,7 +96,7 @@ const Listing = () => {
 				</section>
 			</div>
 		</main>  
-    <div className='my-10'>
+    <div className='mt-10'>
       <Footer />
     </div>     
     </>
