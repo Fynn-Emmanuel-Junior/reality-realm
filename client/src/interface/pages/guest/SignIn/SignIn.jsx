@@ -55,7 +55,7 @@ const SignIn = () => {
 		setMessage(false)      
 		setLoading(true)
 		
-		const res = await fetch(`${uri}/users/auth`,
+		const res = await fetch(`http://localhost:3500/users/auth`,
 			{ 
 			method: 'POST',
 			headers: {

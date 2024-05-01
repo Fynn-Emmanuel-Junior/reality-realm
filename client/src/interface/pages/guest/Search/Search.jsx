@@ -63,7 +63,7 @@ const Search = () => {
             const searchQuery = urlparams.toString()
         
             try {
-                const res = await fetch(`${uri}/listings/get?${searchQuery}`)
+                const res = await fetch(`http://localhost:3500/listings/get?${searchQuery}`)
                 const data = await res.json()
 
                 if(data.length > 8) {
@@ -136,7 +136,7 @@ const Search = () => {
 
         const searchquery = urlparams.toString()
 
-        const res = await fetch(`${uri}/listings/get/?${searchquery}`)
+        const res = await fetch(`http://localhost:3500/listings/get/?${searchquery}`)
         const data = await res.json()
 
         if(data.length < 9) {

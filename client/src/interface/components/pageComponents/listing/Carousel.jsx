@@ -49,7 +49,7 @@ const Carousel = ({images,id}) => {
                         height={100}
                         alt='listing-images' 
                         className='w-full object-full rounded-xl'
-                    />
+                    /> 
                 ))
             }
         </Link>

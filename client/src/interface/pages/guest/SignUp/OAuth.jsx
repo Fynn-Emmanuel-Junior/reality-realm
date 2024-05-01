@@ -19,7 +19,7 @@ const OAuth = () => {
 
             const result = await signInWithPopup(auth,provider)
 
-            const res = await fetch(`${uri}/users/google`, {
+            const res = await fetch(`http://localhost:3500/users/google`, {
                 method: 'POST',
                 headers: {
                     'content-type': 'application/json'

@@ -19,23 +19,7 @@ const Card = ({listing,loading}) => {
     <div className='flex flex-col items-center '>
         <div  className='rounded-lg m-2 '>
 			{
-				loading ? (
-					<div className='m-14'>
-						<TailSpin
-							visible={true}
-							height="40"
-							width="40"
-							color="#000000"
-							radius="0.5"
-							wrapperStyle={{
-								opacity: '75%'
-							}}
-							wrapperClass=""
-						/>
-					</div>		
-				) : (
-					<Carousel images={listing.imageurls} id={listing._id}/>
-				)
+				<Carousel images={listing.imageurls} id={listing._id}/>
 			}
 			
             <div className='flex flex-col w-full text-xs xs:text-sm sm:text-base'>

@@ -102,9 +102,7 @@ const MainLayout = ({children}) => {
         <div className='mt-20 xl:mt-40'>
             {children}
         </div>
-		<div>
-			<Footer />
-		</div>
+		
     </div>
   )
 }

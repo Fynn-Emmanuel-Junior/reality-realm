@@ -35,7 +35,7 @@ const Listing = () => {
         setLoading(true)
         setError(true)
 
-        const res = await fetch(`${uri}/listings/getlisting/${id}`)
+        const res = await fetch(`http://localhost:3500/listings/getlisting/${id}`)
     
         const data = await res.json()
   

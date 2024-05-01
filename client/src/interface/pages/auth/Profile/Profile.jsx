@@ -85,7 +85,7 @@ const Profile = () => {
       e.preventDefault()
       dispatch(updateUserStart())
 
-      const res = await fetch(`${uri}/api/users/update`, 
+      const res = await fetch(`http://localhost:3500/api/users/update`, 
         {
             method: 'PUT',
             headers: {
@@ -107,7 +107,7 @@ const Profile = () => {
 
     const handleDelete = async () => {
       try {
-        const res = await fetch(`${uri}/users/delete`, {
+        const res = await fetch(`http://localhost:3500/users/delete`, {
             method: 'DELETE'
         })
 
@@ -121,7 +121,7 @@ const Profile = () => {
 
     const handleSignout = async (req,res) => {
       try{
-        const res = await fetch(`${uri}/users/signout`)
+        const res = await fetch(`http://localhost:3500/users/signout`)
         const data = await res.json()
        
         dispatch(signOut())
@@ -133,7 +133,7 @@ const Profile = () => {
 
     const showlistings = async () => {
       try{
-            const res = await fetch(`${uri}/listings/get-user-listings/${currentuser._id}`)
+            const res = await fetch(`http://localhost:3500/listings/get-user-listings/${currentuser._id}`)
             const data = await res.json()
             setListings(data)
             console.log(listings)
@@ -145,7 +145,7 @@ const Profile = () => {
 
   const deletelisting = async (listingId) => {
     try {
-         await fetch(`${uri}/listings/delete/${listingId}`, {
+         await fetch(`http://localhost:3500/listings/delete/${listingId}`, {
           method: 'DELETE',
         })
 

@@ -61,7 +61,7 @@ const SignUp = () => {
       setLoading(true)
       
       
-      const res = await fetch(`${uri}/users/register`,
+      const res = await fetch(`http://localhost:3500/users/register`,
         {
           method: 'POST',
           headers: {
