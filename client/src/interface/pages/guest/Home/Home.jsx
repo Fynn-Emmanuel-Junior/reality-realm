@@ -81,7 +81,7 @@ const Home = () => {
         <MainLayout>
             <div className="w-full font-sansSerif">
                 <div className='w-full mt-5'>
-                    <div className="flex items-center  flex-wrap gap-3 w-[90%]  md:w-[95%] md:grid md:grid-cols-2 lg:w-full lg:grid-cols-3 xl:w-[90%] xl:grid-cols-4 mx-auto">
+                    <div className="flex items-center  flex-wrap gap-3 w-[90%]  md:w-[95%] md:grid md:grid-cols-2 lg:w-full lg:grid-cols-3 xl:w-[95%] xl:grid-cols-4 mx-auto">
                         {
                             listings.map(listing => (
                                 <ListingItem key={listing._id} listing={listing} loading={loading}/>

@@ -7,6 +7,7 @@ import Menu from '../pageComponents/Menu';
 import { selectCurrentUser } from '../../../logic/ReduxStore/features/users/usersSlice';
 import { useSelector } from 'react-redux'
 import profile from '../../assets/profile.png'
+import Footer from '../pageComponents/Footer';
 
 const MainLayout = ({children}) => {
 	const user = useSelector(selectCurrentUser)
@@ -101,6 +102,9 @@ const MainLayout = ({children}) => {
         <div className='mt-20 xl:mt-40'>
             {children}
         </div>
+		<div>
+			<Footer />
+		</div>
     </div>
   )
 }
