@@ -32,9 +32,9 @@ const Home = () => {
                     const data = await res.json()
 
                     setListings(data)
-                    setTimeout(() => {
+                     setTimeout(() => {
                         setLoading(false)
-                    },1000)
+                    },3000)
                 } catch(err) {
                     console.log(err.message)
                     setLoading(false)
@@ -82,13 +82,117 @@ const Home = () => {
         <MainLayout>
             <div className="w-full font-sansSerif">
                 <div className='w-full mt-5'>
-                    <div className="flex items-center  flex-wrap gap-3 w-[90%]  md:w-[95%] md:grid md:grid-cols-2 lg:w-full lg:grid-cols-3 xl:w-[95%] xl:grid-cols-4 mx-auto">
+                    {
+                        loading ? <div className="animate-pulse flex items-center  flex-wrap gap-7 w-[90%]  md:w-[95%] md:grid md:grid-cols-2 lg:w-full lg:grid-cols-3 xl:w-[95%] xl:grid-cols-4 mx-auto">
+                        <div className="w-full h-fulll">
+                            <div className="w-full h-60 bg-stone-200 rounded-2xl"/>  
+                            <div className="bg-stone-200 w-2/3 h-5 mt-2 rounded-md"/> 
+                            <div className="bg-stone-200 w-1/3 h-5 mt-1 rounded-md"/> 
+                            <div className="bg-stone-200 w-2/3 h-5 mt-1 rounded-md"/> 
+                        </div>
+                        <div className="w-full h-fulll">
+                            <div className="w-full h-60 bg-stone-200 rounded-2xl"/>  
+                            <div className="bg-stone-200 w-2/3 h-5 mt-2 rounded-md"/> 
+                            <div className="bg-stone-200 w-1/3 h-5 mt-1 rounded-md"/> 
+                            <div className="bg-stone-200 w-2/3 h-5 mt-1 rounded-md"/> 
+                        </div>
+                        <div className="w-full h-fulll">
+                            <div className="w-full h-60 bg-stone-200 rounded-2xl"/>  
+                            <div className="bg-stone-200 w-2/3 h-5 mt-2 rounded-md"/> 
+                            <div className="bg-stone-200 w-1/3 h-5 mt-1 rounded-md"/> 
+                            <div className="bg-stone-200 w-2/3 h-5 mt-1 rounded-md"/> 
+                        </div>
+                        <div className="w-full h-fulll">
+                            <div className="w-full h-60 bg-stone-200 rounded-2xl"/>  
+                            <div className="bg-stone-200 w-2/3 h-5 mt-2 rounded-md"/> 
+                            <div className="bg-stone-200 w-1/3 h-5 mt-1 rounded-md"/> 
+                            <div className="bg-stone-200 w-2/3 h-5 mt-1 rounded-md"/> 
+                        </div>
+
+                        <div className="w-full h-fulll">
+                            <div className="w-full h-60 bg-stone-200 rounded-2xl"/>  
+                            <div className="bg-stone-200 w-2/3 h-5 mt-2 rounded-md"/> 
+                            <div className="bg-stone-200 w-1/2 h-5 mt-1 rounded-md"/> 
+                            <div className="bg-stone-200 w-2/3 h-5 mt-1 rounded-md"/> 
+                        </div>
+                        <div className="w-full h-fulll">
+                            <div className="w-full h-60 bg-stone-200 rounded-2xl"/>  
+                            <div className="bg-stone-200 w-2/3 h-5 mt-2 rounded-md"/> 
+                            <div className="bg-stone-200 w-1/2 h-5 mt-1 rounded-md"/> 
+                            <div className="bg-stone-200 w-2/3 h-5 mt-1 rounded-md"/> 
+                        </div>
+                        <div className="w-full h-fulll">
+                            <div className="w-full h-60 bg-stone-200 rounded-2xl"/>  
+                            <div className="bg-stone-200 w-2/3 h-5 mt-2 rounded-md"/> 
+                            <div className="bg-stone-200 w-1/2 h-5 mt-1 rounded-md"/> 
+                            <div className="bg-stone-200 w-2/3 h-5 mt-1 rounded-md"/> 
+                        </div>
+                        <div className="w-full h-fulll">
+                            <div className="w-full h-60 bg-stone-200 rounded-2xl"/>  
+                            <div className="bg-stone-200 w-2/3 h-5 mt-2 rounded-md"/> 
+                            <div className="bg-stone-200 w-1/2 h-5 mt-1 rounded-md"/> 
+                            <div className="bg-stone-200 w-2/3 h-5 mt-1 rounded-md"/> 
+                        </div>
+
+                        <div className="w-full h-fulll">
+                            <div className="w-full h-60 bg-stone-200 rounded-2xl"/>  
+                            <div className="bg-stone-200 w-2/3 h-5 mt-2 rounded-md"/> 
+                            <div className="bg-stone-200 w-1/2 h-5 mt-1 rounded-md"/> 
+                            <div className="bg-stone-200 w-2/3 h-5 mt-1 rounded-md"/> 
+                        </div>
+                        <div className="w-full h-fulll">
+                            <div className="w-full h-60 bg-stone-200 rounded-2xl"/>  
+                            <div className="bg-stone-200 w-2/3 h-5 mt-2 rounded-md"/> 
+                            <div className="bg-stone-200 w-1/2 h-5 mt-1 rounded-md"/> 
+                            <div className="bg-stone-200 w-2/3 h-5 mt-1 rounded-md"/> 
+                        </div>
+                        <div className="w-full h-fulll">
+                            <div className="w-full h-60 bg-stone-200 rounded-2xl"/>  
+                            <div className="bg-stone-200 w-2/3 h-5 mt-2 rounded-md"/> 
+                            <div className="bg-stone-200 w-1/2 h-5 mt-1 rounded-md"/> 
+                            <div className="bg-stone-200 w-2/3 h-5 mt-1 rounded-md"/> 
+                        </div>
+                        <div className="w-full h-fulll">
+                            <div className="w-full h-60 bg-stone-200 rounded-2xl"/>  
+                            <div className="bg-stone-200 w-2/3 h-5 mt-2 rounded-md"/> 
+                            <div className="bg-stone-200 w-1/2 h-5 mt-1 rounded-md"/> 
+                            <div className="bg-stone-200 w-2/3 h-5 mt-1 rounded-md"/> 
+                        </div>
+
+                        <div className="w-full h-fulll">
+                            <div className="w-full h-60 bg-stone-200 rounded-2xl"/>  
+                            <div className="bg-stone-200 w-2/3 h-5 mt-2 rounded-md"/> 
+                            <div className="bg-stone-200 w-1/2 h-5 mt-1 rounded-md"/> 
+                            <div className="bg-stone-200 w-2/3 h-5 mt-1 rounded-md"/> 
+                        </div>
+                        <div className="w-full h-fulll">
+                            <div className="w-full h-60 bg-stone-200 rounded-2xl"/>  
+                            <div className="bg-stone-200 w-2/3 h-5 mt-2 rounded-md"/> 
+                            <div className="bg-stone-200 w-1/2 h-5 mt-1 rounded-md"/> 
+                            <div className="bg-stone-200 w-2/3 h-5 mt-1 rounded-md"/> 
+                        </div>
+                        <div className="w-full h-fulll">
+                            <div className="w-full h-60 bg-stone-200 rounded-2xl"/>  
+                            <div className="bg-stone-200 w-2/3 h-5 mt-2 rounded-md"/> 
+                            <div className="bg-stone-200 w-1/2 h-5 mt-1 rounded-md"/> 
+                            <div className="bg-stone-200 w-2/3 h-5 mt-1 rounded-md"/> 
+                        </div>
+                        <div className="w-full h-fulll">
+                            <div className="w-full h-60 bg-stone-200 rounded-2xl"/>  
+                            <div className="bg-stone-200 w-2/3 h-5 mt-2 rounded-md"/> 
+                            <div className="bg-stone-200 w-1/2 h-5 mt-1 rounded-md"/> 
+                            <div className="bg-stone-200 w-2/3 h-5 mt-1 rounded-md"/> 
+                        </div>
+                       
+                    </div>  :   <div className="flex items-center  flex-wrap gap-7 w-[90%]  md:w-[95%] md:grid md:grid-cols-2 lg:w-full lg:grid-cols-3 xl:w-[95%] xl:grid-cols-4 mx-auto">
                         {
                             listings.map(listing => (
                                 <ListingItem key={listing._id} listing={listing} loading={loading}/> 
                             ))
                         }        
-                    </div>   
+                    </div>
+                    }
+                      
                 </div>
             </div>
           {
