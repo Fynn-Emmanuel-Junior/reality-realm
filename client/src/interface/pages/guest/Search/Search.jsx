@@ -162,7 +162,7 @@ const Search = () => {
                                 type="text"
                                 name="searchTerm" 
                                 id="searchTerm"  
-                                className='border border-slate-700 rounded-lg p-3 w-full focus:outline-teal-500 focus:border-slate-800'
+                                className='border border-slate-700 rounded-lg p-3 w-full focus:outline-none focus:border-teal-500'
                                 placeholder='Search...'
                                 value={sidebarParams.searchTerm}
                                 onChange={handleChange}
