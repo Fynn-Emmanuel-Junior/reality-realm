@@ -9,7 +9,7 @@ const About = () => {
   return (
     <AboutLayout>
 		<section className='flex flex-col xl:flex-row xl:justify-between items-center w-screen xl:w-11/12'>
-			<div className='w-screen mx-auto xl:w-3/6 h-[50vh] xl:h-[80vh]'>
+			<div className='w-11/12 mx-auto xl:w-3/6 h-[50vh] xl:h-[80vh]'>
 				<img 
 					src={bg} 
 					alt="cover-image" 
@@ -31,7 +31,7 @@ const About = () => {
 						Our mission is to help our clients achieve their real estate goals by providing expert advice, personalized service, and a deep understanding of the local market. Whether you are looking to buy, sell, or rent a property, we are here to help you every step of the way.
 				</p>
 				</div>
-				<div className='w-screen mx-auto xl:w-3/6 h-[50vh] xl:h-[80vh]'>
+				<div className='w-11/12 mx-auto xl:w-3/6 h-[50vh] xl:h-[80vh]'>
 					<img 
 						src={bg2} 
 						alt="cover-image" 
@@ -41,7 +41,7 @@ const About = () => {
 			</section>
 		</div>
 		<section className='mt-20 flex flex-col xl:flex-row xl:justify-between items-center w-screen xl:w-11/12'>
-			<div className='w-screen mx-auto xl:w-3/6 h-[50vh] xl:h-[80vh]'>
+			<div className='w-11/12 mx-auto xl:w-3/6 h-[50vh] xl:h-[80vh]'>
 				<img 
 					src={bg1} 
 					alt="cover-image" 

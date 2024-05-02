@@ -117,7 +117,7 @@ const Home = () => {
                 </button>
             </div>
         </div> 
-          } 
+        } 
         </MainLayout>
     </div>
   )

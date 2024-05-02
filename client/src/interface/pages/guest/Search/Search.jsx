@@ -9,7 +9,8 @@ import Navbar from '../../../components/pageComponents/smallScreens/Navbar'
 import Footer from '../../../components/pageComponents/Footer'
 import SearchSkeleton from '../../../components/customs/SearchSkeleton'
 import { selectMenu } from '../../../../logic/ReduxStore/features/menu/menuSlice'
-import { useSelector } from 'react-redux'
+import { useSelector,useDispatch } from 'react-redux'
+import { setMenu } from '../../../../logic/ReduxStore/features/menu/menuSlice'
 
 const uri = 'https://reality-realm-server.onrender.com'
 
@@ -17,6 +18,7 @@ const Search = () => {
     const navigate = useNavigate()
 
     const menu = useSelector(selectMenu)
+    const dispatch = useDispatch()
 
     const [sidebarParams,setSidebarParams] = useState({
         searchTerm: '',
@@ -33,6 +35,8 @@ const Search = () => {
     const [showMore,setShowMore] = useState(false)
 
     useEffect(() => {
+        dispatch(setMenu(false))
+
         const urlparams = new URLSearchParams(window.location.search)
         const searchTermUrl = urlparams.get('searchTerm')
         const typeUrl = urlparams.get('typeOfPlace')

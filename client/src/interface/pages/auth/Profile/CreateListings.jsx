@@ -389,10 +389,6 @@ const CreateListing = () => {
                 </div>
             </form>
         </main>
-        <footer className='mt-5'>
-            <Footer />
-        </footer>
-
     </AboutLayout>
   )
 }

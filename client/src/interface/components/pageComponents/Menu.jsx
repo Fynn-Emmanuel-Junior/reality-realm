@@ -20,7 +20,7 @@ const Menu = ({open,setOpen}) => {
         {
             open && (
 
-    <div className={`border border-red-600 top-0 left-0  ${menu ? 'z-50 fixed': 'z-10 absolute'} bg-white w-screen h-screen lg:hidden z-30`}>
+    <div className={`top-0 left-0  ${menu ? 'z-50 fixed': '-z-20 absolute'} bg-white w-screen h-screen lg:hidden z-30`}>
             <div className='w-screen h-screen'>
                 <div className='border-b-2'>
                     <div className='w-4/5 xxs:w-[72%] md:w-2/3 flex justify-between items-center p-2 sm:p-3 md:p-6'> 
