@@ -5,6 +5,7 @@ import Menu from '../../pageComponents/Menu'
 import { useSelector,useDispatch } from 'react-redux'
 import { selectCurrentUser } from '../../../../logic/ReduxStore/features/users/usersSlice'
 import { setMenu } from '../../../../logic/ReduxStore/features/menu/menuSlice'
+import { selectMenu } from '../../../../logic/ReduxStore/features/menu/menuSlice'
 
 const Navbar = () => {
     const [open,setOpen] = useState(false)
@@ -12,13 +13,15 @@ const Navbar = () => {
 	const dispatch = useDispatch()
 
     const user = useSelector(selectCurrentUser)
+    const menu = useSelector(selectMenu)
+    console.log(menu)
 	
 	const handleOpen = () => {
 		setOpen(true)
 		dispatch(setMenu(true))
 	}
   return (
-    <nav className='lg:hidden text-black flex justify-between items-center pt-2 w-11/12 mx-auto pb-2 bg-white z-30 sticky top-0'> 
+    <nav className={`lg:hidden text-black flex justify-between items-center pt-2 ${menu ? 'w-full' : 'w-11/12 '}  mx-auto pb-2 bg-white z-30 sticky top-0`}> 
         <>
 			{
 				open && <Menu open={open} setOpen={setOpen}/>

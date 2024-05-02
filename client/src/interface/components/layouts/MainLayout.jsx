@@ -6,9 +6,11 @@ import { Link } from 'react-router-dom';
 import { CiSearch } from "react-icons/ci";
 import { useState,useEffect } from 'react'
 import Menu from '../pageComponents/Menu';
-import { useSelector } from 'react-redux'
+import { useSelector,useDispatch } from 'react-redux'
 import { selectCurrentUser } from '../../../logic/ReduxStore/features/users/usersSlice';
 import profile from '../../assets/profile.png'
+import { setMenu } from '../../../logic/ReduxStore/features/menu/menuSlice';
+import Footer from '../pageComponents/Footer';
 
 
 function AutoDeleteParagraph({ text, delay }) {
@@ -50,10 +52,14 @@ const MainLayout = ({children}) => {
 	const user = useSelector(selectCurrentUser)
 	const [open,setOpen] = useState(false)
 
+	const dispatch = useDispatch()
+
 	const [isSticky, setIsSticky] = useState(false);
 	
 	const handleOpen = () => {
 		setOpen(true)
+
+		dispatch(setMenu(true))
 	}
 
 	useEffect(() => {
@@ -168,6 +174,9 @@ const MainLayout = ({children}) => {
 		</header>
         <div>
             {children}
+        </div>
+		<div className="mt-5">
+            <Footer />
         </div>
     </div>
   )

@@ -157,7 +157,7 @@ const Search = () => {
         <Navbar />
         <SearchNavBar />
         <main className='flex flex-col lg:flex-row border'>
-            <aside className={`p-7 border-b-2 lg:border-r-2  md:border-b-0 w-auto sticky top-0  lg:top-[80px] lg:fixed ${menu ? '-z-40': 'z-[25]'} lg:z-0 bg-white lg:max-w-[30%]`}>
+            <aside className={`p-7 border-b-2 lg:border-r-2  md:border-b-0 w-auto sticky top-0  lg:top-[80px] lg:fixed ${menu ? '-z-40': 'z-[30]'} lg:z-0 bg-white lg:max-w-[30%]`}>
                 <form onSubmit={handleSubmit}>
                     <div className='flex items-center gap-2'>
                         {/* <label htmlFor="searchTerm" className='whitespace-nowrap font-semibold'>Search Term: </label> */}
