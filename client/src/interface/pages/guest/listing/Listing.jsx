@@ -10,6 +10,7 @@ import Card from '../../../components/pageComponents/listing/Card'
 import Footer from '../../../components/pageComponents/Footer'
 import { TailSpin } from 'react-loader-spinner'
 
+
 const uri = 'https://reality-realm-server.onrender.com'
 
 const Listing = () => {
@@ -45,7 +46,7 @@ const Listing = () => {
       } catch(err) {
         setError(true)
         console.log(err.message)
-        setLoading(false)
+        setLoading(true)
       }
     }
     

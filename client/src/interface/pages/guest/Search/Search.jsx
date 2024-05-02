@@ -7,6 +7,8 @@ import ListingItem from '../../../components/pageComponents/Search/ListingItem'
 import SearchNavBar from '../../../components/pageComponents/Search/SearchNavBar'
 import Navbar from '../../../components/pageComponents/smallScreens/Navbar'
 import Footer from '../../../components/pageComponents/Footer'
+import Skeleton from '../../../components/customs/Skeleton'
+import SearchSkeleton from '../../../components/customs/SearchSkeleton'
 
 const uri = 'https://reality-realm-server.onrender.com'
 
@@ -76,7 +78,7 @@ const Search = () => {
                 setLoading(false)
                 
             } catch(err) {
-                setLoading(false)
+                setLoading(true)
                 console.log(`something went wrong\n${err.message}`)
             }
         }
@@ -152,7 +154,7 @@ const Search = () => {
         <Navbar />
         <SearchNavBar />
         <main className='flex flex-col lg:flex-row border'>
-            <aside className='p-7 border-b-2 lg:border-r-2  md:border-b-0 w-auto sticky top-0  lg:top-[80px] lg:fixed z-30 lg:z-0 bg-white lg:max-w-[50%]'>
+            <aside className='p-7 border-b-2 lg:border-r-2  md:border-b-0 w-auto sticky top-0  lg:top-[80px] lg:fixed z-30 lg:z-0 bg-white lg:max-w-[45%]'>
                 <form onSubmit={handleSubmit}>
                     <div className='flex items-center gap-2'>
                         {/* <label htmlFor="searchTerm" className='whitespace-nowrap font-semibold'>Search Term: </label> */}
@@ -160,7 +162,7 @@ const Search = () => {
                                 type="text"
                                 name="searchTerm" 
                                 id="searchTerm"  
-                                className='border border-slate-700 rounded-lg p-3 w-full focus:outline-none focus:border-slate-800'
+                                className='border border-slate-700 rounded-lg p-3 w-full focus:outline-teal-500 focus:border-slate-800'
                                 placeholder='Search...'
                                 value={sidebarParams.searchTerm}
                                 onChange={handleChange}
@@ -255,27 +257,17 @@ const Search = () => {
                     </div> 
                 </form>
             </aside>
-            <section className='lg:w-[70%] xl:w-4/5 lg:ml-[40%] xl:ml-[30%] lg:flex lg:flex-col lg:self-end'>
-                <h1 className='font-semibold text-xs p-3 mt-5 text-slate-700'> Listing results: </h1>
-                <div className='p-7 flex flex-wrap gap-4'>
+            <section className='lg:w-[70%] xl:w-[75%] lg:ml-[40%] xl:ml-[30%] lg:flex lg:flex-col lg:self-end'>
+                <h1 className='font-semibold text-xs p-3 mt-5 text-slate-700 lg:ml-3'> Listing results: </h1>
+                <div className='p-7 flex flex-wrap gap-4 border border-red-600 overflow-scroll lg:mb-10'>
                     {
-                         !loading && listings.length == 0 && (
+                        !loading && listings.length == 0 && (
                             <p className='text-xl text-slate-700 text-center'> No listings found!</p>
                         )
                     }
-                    {/* {
-                        loading && 
-                        <div className='flex justify-center w-full gap-3'> 
-                            <Circles 
-                                height="30"
-                                width="30"
-                                color="#252B48"
-                                ariaLabel="circles-loading"
-                                visible={true}
-                            />
-                            <span className='text-slate-700 text-xl'> Loading...</span>
-                        </div>
-                    } */}
+                    {
+                        loading && <SearchSkeleton />
+                    }
                     <div className="flex items-center flex-wrap gap-3 w-[90%]  md:w-[95%] md:grid md:grid-cols-2 lg:w-full lg:grid-cols-2  xl:grid-cols-3 mx-auto">
                         {
                             listings && listings.map(listing => <ListingItem key={listing._id} listing={listing}/>)
@@ -296,7 +288,9 @@ const Search = () => {
                 </div>
             </section>
         </main>
-       <Footer />
+        <div className='lg:sticky'>
+            <Footer />
+        </div>
            
     </> 
   )

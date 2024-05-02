@@ -35,10 +35,10 @@ const Home = () => {
                     setListings(data)
                      setTimeout(() => {
                         setLoading(false)
-                    },3000)
+                    },500)
                 } catch(err) {
                     console.log(err.message)
-                    setLoading(false)
+                    setLoading(true)
                 }
             }
 
