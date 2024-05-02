@@ -126,7 +126,7 @@ const SignIn = () => {
 					<input 
 						type="text" 
 						placeholder="email"
-						className="border border-emerald-950  text-base p-3 pl-5 rounded-3xl focus:outline-none"
+						className="border border-emerald-950  text-base p-3 pl-5 rounded-3xl focus:outline-none focus:border-teal-600"
 						id="email"
 						name="email"
 						onChange={handleChange}
@@ -140,7 +140,7 @@ const SignIn = () => {
 						<input 
 							type={showpassword ? 'text' : 'password'} 
 							placeholder="password"
-							className="w-full focus:outline-none"
+							className="w-full focus:outline-none focus:border-teal-600"
 							id="password"
 							name="password"
 							onChange={handleChange}
