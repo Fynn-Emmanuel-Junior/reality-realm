@@ -7,13 +7,16 @@ import ListingItem from '../../../components/pageComponents/Search/ListingItem'
 import SearchNavBar from '../../../components/pageComponents/Search/SearchNavBar'
 import Navbar from '../../../components/pageComponents/smallScreens/Navbar'
 import Footer from '../../../components/pageComponents/Footer'
-import Skeleton from '../../../components/customs/Skeleton'
 import SearchSkeleton from '../../../components/customs/SearchSkeleton'
+import { selectMenu } from '../../../../logic/ReduxStore/features/menu/menuSlice'
+import { useSelector } from 'react-redux'
 
 const uri = 'https://reality-realm-server.onrender.com'
 
 const Search = () => {
     const navigate = useNavigate()
+
+    const menu = useSelector(selectMenu)
 
     const [sidebarParams,setSidebarParams] = useState({
         searchTerm: '',
@@ -154,7 +157,7 @@ const Search = () => {
         <Navbar />
         <SearchNavBar />
         <main className='flex flex-col lg:flex-row border'>
-            <aside className='p-7 border-b-2 lg:border-r-2  md:border-b-0 w-auto sticky top-0  lg:top-[80px] lg:fixed z-30 lg:z-0 bg-white lg:max-w-[45%]'>
+            <aside className={`p-7 border-b-2 lg:border-r-2  md:border-b-0 w-auto sticky top-0  lg:top-[80px] lg:fixed ${menu ? '-z-40': 'z-[25]'} lg:z-0 bg-white lg:max-w-[30%]`}>
                 <form onSubmit={handleSubmit}>
                     <div className='flex items-center gap-2'>
                         {/* <label htmlFor="searchTerm" className='whitespace-nowrap font-semibold'>Search Term: </label> */}
@@ -257,8 +260,8 @@ const Search = () => {
                     </div> 
                 </form>
             </aside>
-            <section className='lg:w-[70%] xl:w-[75%] lg:ml-[40%] xl:ml-[30%] lg:flex lg:flex-col lg:self-end'>
-                <h1 className='font-semibold text-xs p-3 mt-5 text-slate-700 lg:ml-3'> Listing results: </h1>
+            <section className='lg:w-[75%] xl:w-[75%] lg:ml-[30%] xl:ml-[30%] lg:flex lg:flex-col lg:self-end'>
+                <h1 className='font-semibold text-xs p-3 mt-5 text-slate-700 lg:pl-3'> Listing results: </h1>
                 <div className='p-7 flex flex-wrap gap-4 lg:mb-10'>
                     {
                         loading && <SearchSkeleton />

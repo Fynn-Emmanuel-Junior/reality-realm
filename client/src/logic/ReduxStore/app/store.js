@@ -1,12 +1,14 @@
 import { configureStore,combineReducers } from '@reduxjs/toolkit'
 import userReducer from '../features/users/usersSlice'
+import menuReducer from '../features/menu/menuSlice'
 import listingsReducer from '../features/listings/listingsSlice'
 import {persistReducer,persistStore} from 'redux-persist'
 import storage from 'redux-persist/lib/storage'
 
 const rootReducer = combineReducers({
     users: userReducer,
-    listings: listingsReducer
+    listings: listingsReducer,
+    menu: menuReducer
 })
 
 const persistConfig =  {
