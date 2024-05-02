@@ -10,6 +10,7 @@ import { Link, useNavigate } from "react-router-dom"
 import { TailSpin } from "react-loader-spinner"
 import AboutLayout from '../../../components/layouts/AboutLayout'
 import profile from '../../../assets/profile.png'
+import Footer from "../../../components/pageComponents/Footer"
 
 const uri = 'https://reality-realm-server.onrender.com'
 
@@ -186,7 +187,7 @@ const Profile = () => {
             <input 
                 type="text" 
                 placeholder='username'
-                className="border rounded-lg p-3 focus:outline-none"
+                className="border rounded-lg p-3 focus:outline-none focus:border-teal-500"
                 defaultValue={currentuser.username}
                 id="username"
                 onChange={handleChange}
@@ -194,7 +195,7 @@ const Profile = () => {
             <input 
                 type="email" 
                 placeholder="email"
-                className="border rounded-lg p-3 focus:outline-none"
+                className="border rounded-lg p-3 focus:outline-none focus:border-teal-500"
                 defaultValue={currentuser.email}
                 id="email"
                 onChange={handleChange}
@@ -202,7 +203,7 @@ const Profile = () => {
             <input 
                 type="password" 
                 placeholder='password'
-                className="border rounded-lg p-3 focus:outline-none"
+                className="border rounded-lg p-3 focus:outline-none focus:border-teal-500"
                 id="password"
                 onChange={handleChange}
             />
@@ -261,6 +262,7 @@ const Profile = () => {
           }
         </div>
       </div>
+     
     </AboutLayout>
   )
 }
