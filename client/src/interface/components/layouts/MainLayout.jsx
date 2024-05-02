@@ -11,6 +11,7 @@ import { selectCurrentUser } from '../../../logic/ReduxStore/features/users/user
 import profile from '../../assets/profile.png'
 import { setMenu } from '../../../logic/ReduxStore/features/menu/menuSlice';
 import Footer from '../pageComponents/Footer';
+import { selectMenu } from '../../../logic/ReduxStore/features/menu/menuSlice';
 
 
 function AutoDeleteParagraph({ text, delay }) {
@@ -53,6 +54,7 @@ const MainLayout = ({children}) => {
 	const [open,setOpen] = useState(false)
 
 	const dispatch = useDispatch()
+	const menu = useSelector(selectMenu)
 
 	const [isSticky, setIsSticky] = useState(false);
 	

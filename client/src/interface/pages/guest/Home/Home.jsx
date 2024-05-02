@@ -5,9 +5,10 @@ import ListingItem from "../../../components/pageComponents/Search/ListingItem"
 import Footer from "../../../components/pageComponents/Footer"
 import { Circles } from 'react-loader-spinner'
 import { selectStatus ,selectListings,selectError} from "../../../../logic/ReduxStore/features/listings/listingsSlice"
-import {useSelector,useDispatch} from 'react-redux'
+import {useSelector} from 'react-redux'
 import { fetchListings } from "../../../../logic/ReduxStore/features/listings/listingsSlice"
 import Skeleton from "../../../components/customs/Skeleton"
+import { selectMenu } from "../../../../logic/ReduxStore/features/menu/menuSlice"
 
 
 
@@ -24,6 +25,9 @@ const Home = () => {
     
     const [loadmore,setLoadmore] = useState(true)
     const [text,setText] = useState(false)
+
+    const menu = useSelector(selectMenu)
+    console.log(menu)
 
 
     useEffect(() => {
