@@ -259,12 +259,7 @@ const Search = () => {
             </aside>
             <section className='lg:w-[70%] xl:w-[75%] lg:ml-[40%] xl:ml-[30%] lg:flex lg:flex-col lg:self-end'>
                 <h1 className='font-semibold text-xs p-3 mt-5 text-slate-700 lg:ml-3'> Listing results: </h1>
-                <div className='p-7 flex flex-wrap gap-4 border border-red-600 overflow-scroll lg:mb-10'>
-                    {
-                        !loading && listings.length == 0 && (
-                            <p className='text-xl text-slate-700 text-center'> No listings found!</p>
-                        )
-                    }
+                <div className='p-7 flex flex-wrap gap-4 overflow-scroll lg:mb-10'>
                     {
                         loading && <SearchSkeleton />
                     }
