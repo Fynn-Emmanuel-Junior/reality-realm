@@ -169,7 +169,7 @@ const CreateListing = () => {
                         type="text" 
                         placeholder="Name" 
                         id="name" 
-                        className='border border-teal-500 rounded-lg p-3 focus:outline-none'
+                        className='border  rounded-lg p-3 focus:outline-none focus:border-teal-500'
                         maxLength={62}
                         required
                         onChange={handleChange}
@@ -179,7 +179,7 @@ const CreateListing = () => {
                         type="textarea" 
                         placeholder="Description"  
                         id="description" 
-                        className='border border-teal-500 rounded-lg p-3 focus:outline-none resize-none'
+                        className='border  rounded-lg p-3 focus:outline-none resize-none focus:border-teal-500'
                         required
                         onChange={handleChange}
                         value={formData.description}
@@ -188,7 +188,7 @@ const CreateListing = () => {
                         type="text" 
                         placeholder="Address"  
                         id="address"  
-                        className='border border-teal-500 rounded-lg p-3 focus:outline-none'
+                        className='border rounded-lg p-3 focus:outline-none focus:border-teal-500'
                         required
                         onChange={handleChange}
                         value={formData.address}
