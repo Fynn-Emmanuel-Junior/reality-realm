@@ -92,9 +92,9 @@ const MainLayout = ({children}) => {
 					</div>
 					<p className='lg:hidden text-sm sm:text-lg font-bold md:text-2xl'> RealityRealm </p>
 					<div className='lg:hidden text-[10px] sm:text-sm uppercase md:text-lg'>
-						<Link to='/signin'>
-							{ user  ? <img src={profile} alt='profile_img' width={50} height={50} /> : 'Signin'}
-						</Link>
+						<div>
+							{ user  ? <img src={profile} alt='profile_img' width={50} height={50} /> : <Link to='/signin'> Sign in</Link>}
+						</div>
 					</div>
 				</div>
 			</div>
