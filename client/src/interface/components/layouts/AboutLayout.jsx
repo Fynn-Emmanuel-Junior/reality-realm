@@ -59,8 +59,8 @@ const MainLayout = ({children}) => {
 							</Link>	
 						</div>
 					</div>
-					<Link to='/'>
-						<p className='hidden lg:inline text-3xl font-bold text-slate-800 cursor-pointer'>RealityRealm</p>
+					<Link to='/' className='hidden lg:inline text-3xl font-bold text-slate-800 cursor-pointer'>
+						RealityRealm
 					</Link>
 					<div className='hidden lg:inline  text-base'>
 						<div className='flex gap-3 justify-between items-center'>
@@ -90,7 +90,7 @@ const MainLayout = ({children}) => {
 					<div className='lg:hidden lg:text-3xl  xxs:text-base sm:text-xl md:text-2xl'>
 						<HiOutlineMenu onClick={handleOpen}/>
 					</div>
-					<p className='lg:hidden text-sm sm:text-lg font-bold md:text-2xl'> RealityRealm </p>
+					<Link to='/' className='lg:hidden text-sm sm:text-lg font-bold md:text-2xl'> RealityRealm </Link>
 					<div className='lg:hidden text-[10px] sm:text-sm uppercase md:text-lg'>
 						<div>
 							{ user  ? <img src={profile} alt='profile_img' width={50} height={50} /> : <Link to='/signin'> Sign in</Link>}
