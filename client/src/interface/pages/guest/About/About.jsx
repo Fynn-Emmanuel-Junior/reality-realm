@@ -1,11 +1,23 @@
+import { useEffect } from 'react'
 import AboutLayout from '../../../components/layouts/AboutLayout'
 import Footer from '../../../components/pageComponents/Footer'
 import bg from '../../../assets/about2.jpg'
 import bg1 from '../../../assets/about1.jpg'
 import bg2 from '../../../assets/about3.jpg'
+import { useDispatch,useSelector } from 'react-redux'
+import { setMenu } from '../../../../logic/ReduxStore/features/menu/menuSlice'
+import { selectMenu } from '../../../../logic/ReduxStore/features/menu/menuSlice'
 
 
 const About = () => {
+	const dispatch = useDispatch()
+	const menu = useSelector(selectMenu)
+
+	console.log(menu)
+
+	useEffect(() => {
+		dispatch(setMenu(true))
+	},[])
   return (
     <AboutLayout>
 		<section className='flex flex-col xl:flex-row xl:justify-between items-center w-screen xl:w-11/12'>
