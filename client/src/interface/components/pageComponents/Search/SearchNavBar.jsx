@@ -12,7 +12,7 @@ const SearchNavBar = () => {
 	}
   
   return (
-    <nav className='lg:sticky lg:top-0 w-full  lg:p-4 lg:z-30 lg:bg-white'>
+    <nav className='lg:sticky lg:top-0 w-full  lg:p-4 lg:z-30 lg:bg-white border-black border-b-[1px] border-opacity-20'>
         <div className='hidden lg:inline'>
             <div className='lg:w-3/5 mt-5 lg:mt-0 flex justify-between items-center ml-6'>
                 <Link to='/'>

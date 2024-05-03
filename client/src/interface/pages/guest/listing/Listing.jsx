@@ -23,13 +23,10 @@ const Listing = () => {
   const [listing,setlisting] = useState({})
   const [loading,setLoading] = useState(true)
   const [error,setError] = useState(false)
-  const [contact,setContact] = useState(false)
-  const [landlord,setLandlord] = useState(false)
+ 
 
 
   useEffect(() => {
-
-    setLandlord(true)
 
     const fetchlisting = async () => {
       try {
@@ -53,14 +50,6 @@ const Listing = () => {
     fetchlisting()
 
   },[])
-
-  const handleSignin = () => {
-    if(!user) return navigate('/signin')
-
-    if(user) return setContact(true)
-    setLandlord(false)
-
-  }
 
   console.log(listing)
 
