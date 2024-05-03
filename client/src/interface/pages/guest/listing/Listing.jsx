@@ -58,40 +58,12 @@ const Listing = () => {
 		<SearchNavBar />
 		<Navbar />
 		<main className='w-screen lg:w-11/12 md:mx-auto'>
-			<div className='flex flex-col lg:flex-row lg:justify-between'>
-				<div className='flex items-center gap-3'>
-					<p className='text-blue-950 font-bold text-xl'> Explore </p>
-					<span>
-						<MdOutlineArrowForwardIos />
-					</span>
-					<span> {listing.name} </span>
-				</div>
-				<div className='border border-blue-950 flex items-center p-3 w-screen lg:w-1/3 rounded-xl'>
-					<input 
-						type='text'
-						id='search'
-						name='searchTerm'
-						placeholder='Search...'
-						className='focus:outline-none w-full'
-					/>
-					<CiSearch />
-				</div>
-			</div>
-			<div className='flex flex-col lg:flex-row lg:mt-10'>
-				<section className=''>
-					<Card listing={listing}/>
-				</section>
-				<section className='flex-1'>
-          <div>
-            <p>{listing.name}</p>
-            <p>{listing.address}</p>
-          </div>
-				</section>
-			</div>
+			<h2 className='text-2xl font-medium m-5'>{listing.name}</h2>
+		
 		</main>  
-    <div className='mt-10'>
-      <Footer />
-    </div>     
+		<div className='mt-10'>
+		<Footer />
+		</div>     
     </>
     
   )
