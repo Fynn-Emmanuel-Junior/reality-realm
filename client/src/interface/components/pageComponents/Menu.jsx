@@ -1,4 +1,3 @@
-import React from 'react'
 import { MdClose } from "react-icons/md"
 import { Link } from 'react-router-dom'
 import { useSelector,useDispatch } from 'react-redux'
