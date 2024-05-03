@@ -1,8 +1,10 @@
-import React, {useState} from 'react'
+import React, {useState,useEffect} from 'react'
 import {Link} from 'react-router-dom'
 import ContactLayout from '../../../components/layouts/ContactLayout'
 import Footer from '../../../components/pageComponents/Footer'
 import { FaArrowRightLong } from "react-icons/fa6";
+import { useDispatch } from 'react-redux';
+import { setMenu } from '../../../../logic/ReduxStore/features/menu/menuSlice';
 
 const Contact = () => {
 	const [open,setOpen] = useState(false)
@@ -10,6 +12,12 @@ const Contact = () => {
 	const handleOpen = () => {
 		setOpen(true)
 	}
+
+	const dispatch = useDispatch()
+
+	useEffect(() => {
+		dispatch(setMenu(true))
+	},[])
   return (
     <ContactLayout>
 		<div className='flex flex-col items-center'>
