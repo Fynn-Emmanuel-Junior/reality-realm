@@ -22,10 +22,10 @@ const MainLayout = ({children}) => {
   return (
     <div className='font-sansSerif '>
         <header className='flex flex-col'>
-			<div className='w-full xxs:h-[200px] sm:h-[250px] md:h-[350px]'>
+			<div className='w-full xxs:h-[200px] xs:h-[260px] sm:h-[250px] md:h-[350px]'>
 				<img src={bg} alt="bg-cover"  className='w-full h-full object-cover'/>
 			</div>
-			<div className='bg-black w-full xxs:h-[200px] sm:h-[250px] md:h-[350px] absolute top-0 left-0 opacity-70'>
+			<div className='bg-black w-full xxs:h-[200px] xs:h-[260px] sm:h-[250px] md:h-[350px] absolute top-0 left-0 opacity-70'>
 			</div>
 			<div className='hidden z-20 lg:inline text-white absolute top-0 left-0 w-full'>
 				<div className='flex justify-between items-center px-3 py-5 lg:w-[98%] xl:w-[95%] 2xl:w-10/12 mx-auto'>
@@ -73,7 +73,7 @@ const MainLayout = ({children}) => {
 					open && <Menu open={open} setOpen={setOpen}/>
 				}
 			</>
-			<div className='w-[95%] md:mx-auto absolute top-[14%] xs:top-[10.5%] sm:top-[18%] md:top-[15%] md-x:top-[13%] lg:top-[5%] xl:top-[20%] left-[50%] -translate-x-2/4 -translate-y-2/4'>
+			<div className='w-[95%] md:mx-auto absolute top-[13%] xs:top-[18%] xs-m:top-[13%] sm:top-[18%] md:top-[15%] md-x:top-[13%] lg:top-[5%] xl:top-[20%] left-[50%] -translate-x-2/4 -translate-y-2/4'>
 				<div className=' text-white flex justify-between items-center'>
 					<div className='lg:hidden lg:text-3xl  xxs:text-base sm:text-xl md:text-2xl'>
 						<HiOutlineMenu onClick={handleOpen}/>
