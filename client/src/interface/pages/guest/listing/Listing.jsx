@@ -58,7 +58,31 @@ const Listing = () => {
 		<SearchNavBar />
 		<Navbar />
 		<main className='w-screen lg:w-11/12 md:mx-auto'>
-			<h2 className='text-2xl font-medium m-5'>{listing.name}</h2>
+      <div>
+        {
+        	loading ? <div className='w-11/12 mx-auto'>
+				<div className='w-11/12 md:w-[40%] flex flex-col items-center'>
+				<div className="w-full  h-8 animate-pulse bg-stone-200 rounded-md my-5"/>	
+			</div>
+
+			<div className='md:flex  animate-pulse'>
+				<div className='w-full md:w-7/12 h-40 bg-stone-200 animate-pulse mt-3 rounded-lg md:rounded-l-lg' />
+				<div className='md:grid md:grid-cols-2 animate-pulse'>
+					<div className='bg-stone-200 rounded-l-lg'/>
+					<div className='bg-stone-200 rounded-l-lg'/>
+					<div className='bg-stone-200 rounded-l-lg'/>
+					<div className='bg-stone-200 rounded-l-lg'/>
+				</div>
+
+
+			</div>
+			
+
+			
+			</div>  : <h2 className='text-2xl font-medium m-5'>{listing.name}</h2>
+        }
+      </div>
+			
 		
 		</main>  
 		<div className='mt-10'>
