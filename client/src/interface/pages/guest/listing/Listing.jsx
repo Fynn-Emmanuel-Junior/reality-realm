@@ -60,7 +60,7 @@ const Listing = () => {
 		<main className='w-screen lg:w-11/12 md:mx-auto'>
       <div>
         {
-        	loading ? <div className='w-11/12 mx-auto'>
+        	loading ? <div className='w-11/12 mx-auto mt-10'>
 				<div className='w-11/12 md:w-[40%] flex flex-col items-center'>
 				<div className="w-full  h-8 animate-pulse bg-stone-200 rounded-md my-5"/>	
 			</div>
@@ -82,8 +82,8 @@ const Listing = () => {
 
 				</div>
 				<div>
-					<div className='animate-pulse bg-stone-200 w-60 h-40' />
-					<div className='animate-pulse bg-stone-200 w-60 h-40 mt-20' />
+					<div className='animate-pulse bg-stone-200 w-60 h-60 rounded-lg' />
+					<div className='animate-pulse bg-stone-200 w-60 h-60 rounded-lg mt-20' />
 				</div>
 
 			</div>
