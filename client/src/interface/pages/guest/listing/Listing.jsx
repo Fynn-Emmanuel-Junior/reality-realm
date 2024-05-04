@@ -9,6 +9,7 @@ import { CiSearch } from "react-icons/ci";
 import Card from '../../../components/pageComponents/listing/Card'
 import Footer from '../../../components/pageComponents/Footer'
 import { TailSpin } from 'react-loader-spinner'
+import ListingSkeleton from '../../../components/customs/ListingSkeleton'
 
 
 const uri = 'https://reality-realm-server.onrender.com'
@@ -60,42 +61,16 @@ const Listing = () => {
 		<main className='w-screen lg:w-11/12 md:mx-auto'>
       <div>
         {
-        	loading ? <div className='w-11/12 mx-auto mt-10'>
-				<div className='w-11/12 md:w-[40%] flex flex-col items-center'>
-				<div className="w-full  h-8 animate-pulse bg-stone-200 rounded-md my-5"/>	
-			</div>
-
-			<div className='md:flex md:items-center md:justify-center md:gap-3 animate-pulse'>
-				<div className='w-full md:w-7/12 h-44 bg-stone-200 animate-pulse  rounded-lg md:rounded-l-lg' />
-				<div className='hidden md:w-5/12 md:h-44 md:grid md:grid-cols-2 md:gap-2 animate-pulse'>
-					<div className='bg-stone-200 rounded-l-lg h-20'/>
-					<div className='bg-stone-200 rounded-l-lg h-20'/>
-					<div className='bg-stone-200 rounded-l-lg h-20'/>
-					<div className='bg-stone-200 rounded-l-lg h-20'/>
-				</div>
-			</div>
-
-			<div className='hidden md:flex md:justify-center mt-7'>
-				<div className='animate-pulse w-full border-black border-b-[1px] border-opacity-20 pb-2'>
-					<div className='bg-stone-200 rounded-sm w-80 h-7'/>
-					<div className='bg-stone-200 rounded-sm w-64 h-7 mt-2 '/>
-
-				</div>
-				<div>
-					<div className='animate-pulse bg-stone-200 w-60 h-60 rounded-lg' />
-					<div className='animate-pulse bg-stone-200 w-60 h-60 rounded-lg mt-20' />
-				</div>
-
-			</div>
-
-			</div>  : <h2 className='text-2xl font-medium m-5'>{listing.name}</h2>
+        	loading ? <ListingSkeleton />  : <h2 className='text-2xl font-medium m-5'> {listing.name} </h2>
         }
       </div>
 			
 		
 		</main>  
 		<div className='mt-10'>
-		<Footer />
+		{
+			!loading && <Footer />
+		}
 		</div>     
     </>
     
