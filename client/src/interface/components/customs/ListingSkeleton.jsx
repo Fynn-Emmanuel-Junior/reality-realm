@@ -35,6 +35,10 @@ const ListingSkeleton = () => {
             <div className='bg-stone-200 rounded-sm w-80 h-7'/>
             <div className='bg-stone-200 rounded-sm w-64 h-7 mt-2 '/>
         </div>
+        <div className='animate-pulse w-full border-black border-b-[1px] border-opacity-20 h-20 mt-5'>
+            <div className='bg-stone-200 rounded-sm w-80 h-7'/>
+            <div className='bg-stone-200 rounded-sm w-64 h-7 mt-2 '/>
+        </div>
     </div>
     
     <div>
