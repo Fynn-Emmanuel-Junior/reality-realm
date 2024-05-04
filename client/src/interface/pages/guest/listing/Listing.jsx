@@ -82,10 +82,8 @@ const Listing = () => {
 
 				</div>
 				<div>
-					<div className='animate-pulse bg-stone-200 w-60 h-20' />
-
-				
-
+					<div className='animate-pulse bg-stone-200 w-60 h-40' />
+					<div className='animate-pulse bg-stone-200 w-60 h-40 mt-20' />
 				</div>
 
 			</div>
