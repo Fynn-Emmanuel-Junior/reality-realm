@@ -16,6 +16,24 @@ const ListingSkeleton = () => {
         <div className='bg-stone-200 rounded-l-lg h-20'/>
     </div>
 </div>
+{/* small screen skeleton loader */}
+
+<div className='flex flex-col items-center md:hidden mt-5'>
+    <div className='bg-stone-200 animate-pulse w-full h-10 rounded-md mt-3'/>
+    <div className='bg-stone-200 animate-pulse w-full h-10 rounded-md mt-3'/>
+    <div className='bg-stone-200 animate-pulse w-full h-60 rounded-md mt-3'/>
+
+    <div className='bg-stone-200 animate-pulse w-full h-10 rounded-md mt-8'/>
+    <div className='bg-stone-200 animate-pulse w-full h-10 rounded-md mt-3'/>
+    <div className='bg-stone-200 animate-pulse w-full h-60 rounded-md mt-3'/>
+
+    <div className='bg-stone-200 animate-pulse w-full h-10 rounded-md mt-8'/>
+    <div className='bg-stone-200 animate-pulse w-full h-10 rounded-md mt-3'/>
+    <div className='bg-stone-200 animate-pulse w-full h-60 rounded-md mt-3'/>
+
+
+
+</div>
 
 <div className='hidden md:flex md:justify-center md:gap-5 mt-7'>
     <div className='w-full'>
