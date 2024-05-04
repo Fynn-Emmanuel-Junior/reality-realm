@@ -65,20 +65,31 @@ const Listing = () => {
 				<div className="w-full  h-8 animate-pulse bg-stone-200 rounded-md my-5"/>	
 			</div>
 
-			<div className='md:flex  animate-pulse'>
-				<div className='w-full md:w-7/12 h-40 bg-stone-200 animate-pulse mt-3 rounded-lg md:rounded-l-lg' />
-				<div className='md:grid md:grid-cols-2 animate-pulse'>
-					<div className='bg-stone-200 rounded-l-lg'/>
-					<div className='bg-stone-200 rounded-l-lg'/>
-					<div className='bg-stone-200 rounded-l-lg'/>
-					<div className='bg-stone-200 rounded-l-lg'/>
+			<div className='md:flex md:items-center md:justify-center md:gap-3 animate-pulse'>
+				<div className='w-full md:w-7/12 h-44 bg-stone-200 animate-pulse  rounded-lg md:rounded-l-lg' />
+				<div className='hidden md:w-5/12 md:h-44 md:grid md:grid-cols-2 md:gap-2 animate-pulse'>
+					<div className='bg-stone-200 rounded-l-lg h-20'/>
+					<div className='bg-stone-200 rounded-l-lg h-20'/>
+					<div className='bg-stone-200 rounded-l-lg h-20'/>
+					<div className='bg-stone-200 rounded-l-lg h-20'/>
+				</div>
+			</div>
+
+			<div className='hidden md:flex md:justify-center mt-7'>
+				<div className='animate-pulse w-full border-black border-b-[1px] border-opacity-20 pb-2'>
+					<div className='bg-stone-200 rounded-sm w-80 h-7'/>
+					<div className='bg-stone-200 rounded-sm w-64 h-7 mt-2 '/>
+
+				</div>
+				<div>
+					<div className='animate-pulse bg-stone-200 w-60 h-20' />
+
+				
+
 				</div>
 
-
 			</div>
-			
 
-			
 			</div>  : <h2 className='text-2xl font-medium m-5'>{listing.name}</h2>
         }
       </div>
