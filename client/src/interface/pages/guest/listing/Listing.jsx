@@ -1,4 +1,4 @@
-import React , {useEffect,useState}from 'react'
+import React , {useEffect,useState,useRef}from 'react'
 import { useParams,useNavigate } from 'react-router-dom'
 import { useSelector } from 'react-redux'
 import { selectCurrentUser } from '../../../../logic/ReduxStore/features/users/usersSlice'
@@ -10,6 +10,8 @@ import Card from '../../../components/pageComponents/listing/Card'
 import Footer from '../../../components/pageComponents/Footer'
 import { TailSpin } from 'react-loader-spinner'
 import ListingSkeleton from '../../../components/customs/ListingSkeleton'
+import useEmblaCarousel from 'embla-carousel-react'
+import Carousel from '../../../components/pageComponents/smallScreens/Carousel'
 
 
 const uri = 'https://reality-realm-server.onrender.com'
@@ -18,6 +20,9 @@ const Listing = () => {
 
   const {id} = useParams()
   const navigate = useNavigate()
+
+  //carousel 
+  const [emblaRef] = useEmblaCarousel()
 
   const user = useSelector(selectCurrentUser)
   
@@ -37,6 +42,7 @@ const Listing = () => {
         const res = await fetch(`http://localhost:3500/listings/getlisting/${id}`)
     
         const data = await res.json()
+		console.log(data)
   
         setlisting(data)
         setLoading(false)
@@ -52,7 +58,8 @@ const Listing = () => {
 
   },[])
 
-  console.log(listing)
+  console.log(listing.imageurls)
+
 
   return (
     <> 
@@ -64,6 +71,11 @@ const Listing = () => {
         	loading ? <ListingSkeleton />  : <h2 className='text-2xl font-medium m-5'> {listing.name} </h2>
         }
       </div>
+	  {/* Small Screens  */}
+	  <div className='md:hidden border border-red-600 flex'>
+		<Carousel images={listing.imageurls}/> 
+    	{/* <Card listing={listing}/> */}
+	  </div>
 			
 		
 		</main>  
