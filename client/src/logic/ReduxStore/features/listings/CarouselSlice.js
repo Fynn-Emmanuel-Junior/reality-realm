@@ -14,4 +14,8 @@ const ImageSlice = createSlice({
     }
 })
 
+export const {setImages} = ImageSlice.actions
+
+export const selectImages = (state) => state.images.images
+
 export default ImageSlice.reducer
