@@ -81,12 +81,16 @@ const Listing = () => {
 						<h2 className='text-3xl font-medium'> {listing.name} </h2>
 						<div className='flex items-center gap-1 mt-3'>
 							<div> 
-								<IoLocationOutline size={20} color='#228B22'/>
+								<IoLocationOutline size={25} color='#228B22'/>
 							</div>
 							<p>{listing.address}</p>
-							<div>
-
+						</div>
+						<div>
+							<div className='flex items-center gap-1'>
+								<BiBath size={20}/>
+								<span>{listing.bathrooms}</span>
 							</div>
+
 						</div>
 					</div>
 				</div>
