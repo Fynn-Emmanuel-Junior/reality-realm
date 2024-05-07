@@ -17,15 +17,8 @@ const Card = ({listing}) => {
   return (
     <div className='flex flex-col items-center '>
         <div  className='rounded-lg m-2 '>
-			{
-				loading ? (
-					<div>
-						<Skeleton width={800} height={700}/>
-					</div>		
-				) : (
-					<Carousel images={listing.imageurls} id={listing._id}/>
-				)
-			}
+			<Carousel images={listing.imageurls} id={listing._id}/>
+
         </div>
     </div>
   )

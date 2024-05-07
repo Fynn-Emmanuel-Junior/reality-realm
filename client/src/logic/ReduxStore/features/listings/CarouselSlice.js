@@ -4,6 +4,7 @@ const initialState = {
     images: []
 }
 
+
 const ImageSlice = createSlice({
     name: 'images',
     initialState,

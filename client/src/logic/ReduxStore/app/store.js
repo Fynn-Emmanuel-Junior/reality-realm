@@ -2,13 +2,17 @@ import { configureStore,combineReducers } from '@reduxjs/toolkit'
 import userReducer from '../features/users/usersSlice'
 import menuReducer from '../features/menu/menuSlice'
 import listingsReducer from '../features/listings/listingsSlice'
+import listingReducer from '../features/listings/listingSlice'
+import ImageReducer from '../features/listings/CarouselSlice'
 import {persistReducer,persistStore} from 'redux-persist'
 import storage from 'redux-persist/lib/storage'
 
 const rootReducer = combineReducers({
     users: userReducer,
     listings: listingsReducer,
-    menu: menuReducer
+    menu: menuReducer,
+    images: ImageReducer,
+    listing: listingReducer
 })
 
 const persistConfig =  {
