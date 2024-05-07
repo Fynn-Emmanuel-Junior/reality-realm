@@ -11,7 +11,7 @@ import Footer from '../../../components/pageComponents/Footer'
 import ListingSkeleton from '../../../components/customs/ListingSkeleton'
 import { setImages } from '../../../../logic/ReduxStore/features/listings/CarouselSlice'
 import { selectImages } from '../../../../logic/ReduxStore/features/listings/CarouselSlice'
-import { IoLocationOutline } from "react-icons/io5";
+import { IoLocationOutline,IoBedOutline } from "react-icons/io5";
 import { BiBath } from "react-icons/bi";
 
 
@@ -85,12 +85,15 @@ const Listing = () => {
 							</div>
 							<p>{listing.address}</p>
 						</div>
-						<div>
+						<div className='mt-2 flex items-center gap-3 '> 
 							<div className='flex items-center gap-1'>
-								<BiBath size={20}/>
-								<span>{listing.bathrooms}</span>
+								<BiBath size={25}/>
+								<span className='text-base'>{listing.bathrooms}</span>
 							</div>
-
+							<div className='flex items-center gap-1'>
+								<IoBedOutline size={25}/>
+								<span className='text-base'>{listing.bedrooms}</span>
+							</div>
 						</div>
 					</div>
 				</div>
