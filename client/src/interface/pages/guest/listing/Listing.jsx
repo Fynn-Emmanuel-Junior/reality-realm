@@ -10,6 +10,8 @@ import { setImages } from '../../../../logic/ReduxStore/features/listings/Carous
 import { selectImages } from '../../../../logic/ReduxStore/features/listings/CarouselSlice'
 import { IoLocationOutline,IoBedOutline } from "react-icons/io5";
 import { BiBath } from "react-icons/bi";
+import { LiaUserAstronautSolid } from "react-icons/lia";
+import { GrElevator } from "react-icons/gr";
 
 
 const uri = 'https://reality-realm-server.onrender.com'
@@ -73,7 +75,7 @@ const Listing = () => {
 	  			</div>
 				<div className='flex flex-col md:hidden'>
 					<div className='w-11/12 mx-auto'>
-						<h2 className='text-3xl font-medium text-slate-700'> {listing.name} </h2>
+						<h2 className='text-3xl font-medium'> {listing.name} </h2>
 						<h3 className='m-2'> {listing.description} </h3>
 						<div className='flex items-center gap-1 mt-3'>
 							<div> 
@@ -95,7 +97,18 @@ const Listing = () => {
 						<div className='border border-black border-b-[1px] mt-3 border-opacity-30'/>
 
 						<div>
-							<h2 className='text-2xl font-medium my-3 text-slate-700'> Amenities </h2>
+							<h2 className='text-2xl font-medium my-3'> Amenities </h2>
+							<div className='grid grid-cols-2 gap-3'>
+								<div className='border border-blue-900 p-5 rounded-lg '>
+									<LiaUserAstronautSolid size={25} />
+									<h3> Doorman </h3>
+								</div>
+								<div className='border border-blue-900 p-5 rounded-lg flex flex-col gap-3'>
+									<GrElevator size={25} />
+									<h3> Elevator </h3>
+								</div>
+							</div>
+
 						</div>
 					</div>
 				</div>
