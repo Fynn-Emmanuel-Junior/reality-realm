@@ -13,6 +13,7 @@ import { BiBath } from "react-icons/bi";
 import { LiaUserAstronautSolid } from "react-icons/lia";
 import { GrElevator } from "react-icons/gr";
 import { GiKitchenKnives } from "react-icons/gi";
+import { BsHouseDoor } from "react-icons/bs";
 
 
 const uri = 'https://reality-realm-server.onrender.com'
@@ -99,23 +100,23 @@ const Listing = () => {
 
 						<div>
 							<h2 className='text-2xl font-medium my-3'> Amenities </h2>
-							<div className='grid grid-cols-2 gap-3'>
-								<div className='border border-blue-900 p-5 rounded-lg '>
-									<LiaUserAstronautSolid size={25} />
+							<div className='flex gap-3 w-full'>
+								<div  className='border p-5 rounded-xl flex gap-3 w-1/2'>
+									<LiaUserAstronautSolid size={25} className='text-blue-900'/>
 									<h3> Doorman </h3>
 								</div>
-								<div className='border border-blue-900 p-5 rounded-lg flex flex-col gap-3'>
-									<GrElevator size={25} />
+								<div  className='border p-5 rounded-xl flex gap-3 w-1/2'>
+									<GrElevator size={25} className='text-blue-900'/>
 									<h3> Elevator </h3>
 								</div>
 							</div>
 							<div className='grid grid-cols-2 gap-3 mt-4'>
-								<div className='border border-blue-900 p-5 rounded-lg '>
+								<div className='p-5 rounded-lg flex gap-3'>
 									<GiKitchenKnives size={25}/>
 									<h3> Doorman </h3>
 								</div>
-								<div className='border border-blue-900 p-5 rounded-lg flex flex-col gap-3'>
-									<GrElevator size={25} />
+								<div className='p-5 rounded-lg flex gap-3'>
+									<BsHouseDoor size={25}/>
 									<h3> Elevator </h3>
 								</div>
 							</div>
