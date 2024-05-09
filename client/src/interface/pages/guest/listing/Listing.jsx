@@ -68,8 +68,6 @@ const Listing = () => {
       <div>
         {
         	loading ? <ListingSkeleton />  : <div>
-				<h2 className='hidden md:inline text-2xl font-medium m-5'> {listing.name} </h2>
-
 				<div className='w-11/12 mx-auto md:hidden'>
     				<Card listing={listing}/>
 	  			</div>
@@ -87,13 +85,18 @@ const Listing = () => {
 								<BiBath size={25}/>
 								<span className='text-base'>{listing.bathrooms}</span>
 							</div>
+							<div className='bg-black w-3 h-3 rounded-full'></div>
 							<div className='flex items-center gap-1'>
 								<IoBedOutline size={25}/>
 								<span className='text-base'>{listing.bedrooms}</span>
 							</div>
 						</div>
+						<div className=''>
+							{listing.description}
+						</div>
 					</div>
 				</div>
+				<div className='border border-b-[1px]'/>
 			</div>
         }
       </div>
