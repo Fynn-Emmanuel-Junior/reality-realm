@@ -30,6 +30,8 @@ const Profile = () => {
   const [listingerror,setListingError] = useState(null)
   const [listings,setListings] = useState([])
   const [formData,setformData] = useState({})
+
+  console.log(formData)
   
   // firebase image storgae rules to publish
   /*  

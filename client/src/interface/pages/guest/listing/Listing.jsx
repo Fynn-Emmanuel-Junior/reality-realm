@@ -16,6 +16,7 @@ import { GiKitchenKnives } from "react-icons/gi";
 import { BsHouseDoor } from "react-icons/bs";
 import { MdOutlineLocalLaundryService } from "react-icons/md";
 import { CiLock } from "react-icons/ci";
+import profile from '../../../assets/profile.png'
 
 
 const uri = 'https://reality-realm-server.onrender.com'
@@ -24,6 +25,9 @@ const Listing = () => {
 
   const {id} = useParams()
   const navigate = useNavigate()
+
+  const [user,setUser] = useState({})
+  console.log(user)
 
   //carousel 
   const dispatch = useDispatch()
@@ -58,8 +62,21 @@ const Listing = () => {
         setLoading(true)
       }
     }
+
+	const fetchUser = async () => {
+		try {
+			const res = await fetch(`http://localhost:3500/users/${listing.userRef}`)	
+			const data = await res.json()
+
+			setUser(data)
+
+		} catch(err) {
+			console.log(err.message)
+		}
+	}
     
     fetchlisting()
+	fetchUser()
 
   },[])
 
@@ -133,6 +150,23 @@ const Listing = () => {
 							</div>
 						</div>
 						<div className='border border-black border-b-[0.5px] my-5 border-opacity-20'/>
+
+						<div>
+							{
+								user ? <img 
+									src={user.avatar} 
+									width={100} 
+									height={100}
+									className="rounded-full object-cover self-center mt-2 cursor-pointer"
+								/> : <img 
+									src={profile} 
+									alt='picture_profile'
+									width={100} 
+									height={100}
+									className="rounded-full object-cover self-center mt-2 cursor-pointer"
+								/>
+							}
+						</div>
 
 					</div>
 				</div>	
