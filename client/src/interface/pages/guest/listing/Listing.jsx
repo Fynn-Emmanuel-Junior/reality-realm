@@ -14,6 +14,7 @@ import { LiaUserAstronautSolid } from "react-icons/lia";
 import { GrElevator } from "react-icons/gr";
 import { GiKitchenKnives } from "react-icons/gi";
 import { BsHouseDoor } from "react-icons/bs";
+import { MdOutlineLocalLaundryService } from "react-icons/md";
 
 
 const uri = 'https://reality-realm-server.onrender.com'
@@ -96,7 +97,7 @@ const Listing = () => {
 								<span className='text-base'>{listing.bedrooms}</span>
 							</div>
 						</div>
-						<div className='border border-black border-b-[1px] mt-3 border-opacity-30'/>
+						<div className='border border-black border-b-[0.5px] my-5 border-opacity-20'/>
 
 						<div>
 							<h2 className='text-2xl font-medium my-3'> Amenities </h2>
@@ -117,7 +118,16 @@ const Listing = () => {
 								</div>
 								<div className='p-5 rounded-lg flex gap-3'>
 									<BsHouseDoor size={25}/>
-									<h3> Elevator </h3>
+									<h3> Furnished </h3>
+								</div>
+							</div><div className='grid grid-cols-2 gap-3 mt-4'>
+								<div className='p-5 rounded-lg flex gap-3'>
+									<MdOutlineLocalLaundryService size={25}/>
+									<h3> Laundry Service </h3>
+								</div>
+								<div className='p-5 rounded-lg flex gap-3'>
+									<BsHouseDoor size={25}/>
+									<h3> Furnished </h3>
 								</div>
 							</div>
 
