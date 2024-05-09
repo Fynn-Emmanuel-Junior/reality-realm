@@ -73,7 +73,7 @@ const Listing = () => {
 	  			</div>
 				<div className='flex flex-col md:hidden'>
 					<div className='w-11/12 mx-auto'>
-						<h2 className='text-3xl font-medium'> {listing.name} </h2>
+						<h2 className='text-3xl font-medium text-slate-700'> {listing.name} </h2>
 						<h3 className='m-2'> {listing.description} </h3>
 						<div className='flex items-center gap-1 mt-3'>
 							<div> 
@@ -95,7 +95,7 @@ const Listing = () => {
 						<div className='border border-black border-b-[1px] mt-3 border-opacity-30'/>
 
 						<div>
-							<h2 className='text-2xl font-medium my-4'> More Information </h2>
+							<h2 className='text-2xl font-medium my-3 text-slate-700'> Amenities </h2>
 						</div>
 					</div>
 				</div>
