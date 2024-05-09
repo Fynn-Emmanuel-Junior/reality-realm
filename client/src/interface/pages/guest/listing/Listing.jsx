@@ -12,6 +12,7 @@ import { IoLocationOutline,IoBedOutline } from "react-icons/io5";
 import { BiBath } from "react-icons/bi";
 import { LiaUserAstronautSolid } from "react-icons/lia";
 import { GrElevator } from "react-icons/gr";
+import { GiKitchenKnives } from "react-icons/gi";
 
 
 const uri = 'https://reality-realm-server.onrender.com'
@@ -108,11 +109,20 @@ const Listing = () => {
 									<h3> Elevator </h3>
 								</div>
 							</div>
+							<div className='grid grid-cols-2 gap-3 mt-4'>
+								<div className='border border-blue-900 p-5 rounded-lg '>
+									<GiKitchenKnives size={25}/>
+									<h3> Doorman </h3>
+								</div>
+								<div className='border border-blue-900 p-5 rounded-lg flex flex-col gap-3'>
+									<GrElevator size={25} />
+									<h3> Elevator </h3>
+								</div>
+							</div>
 
 						</div>
 					</div>
-				</div>
-				
+				</div>	
 			</div>
         }
       </div>
