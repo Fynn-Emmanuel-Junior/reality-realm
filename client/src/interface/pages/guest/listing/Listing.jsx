@@ -15,6 +15,7 @@ import { GrElevator } from "react-icons/gr";
 import { GiKitchenKnives } from "react-icons/gi";
 import { BsHouseDoor } from "react-icons/bs";
 import { MdOutlineLocalLaundryService } from "react-icons/md";
+import { CiLock } from "react-icons/ci";
 
 
 const uri = 'https://reality-realm-server.onrender.com'
@@ -112,26 +113,27 @@ const Listing = () => {
 								</div>
 							</div>
 							<div className='grid grid-cols-2 gap-3 mt-4'>
-								<div className='p-5 rounded-lg flex gap-3'>
-									<GiKitchenKnives size={25}/>
+								<div className='p-5 rounded-lg flex gap-3 border'>
+									<GiKitchenKnives size={25} className='text-blue-900'/>
 									<h3> Doorman </h3>
 								</div>
-								<div className='p-5 rounded-lg flex gap-3'>
-									<BsHouseDoor size={25}/>
+								<div className='p-5 rounded-lg flex gap-3 border'>
+									<BsHouseDoor size={25} className='text-blue-900'/>
 									<h3> Furnished </h3>
 								</div>
 							</div><div className='grid grid-cols-2 gap-3 mt-4'>
-								<div className='p-5 rounded-lg flex gap-3'>
-									<MdOutlineLocalLaundryService size={25}/>
+								<div className='p-5 rounded-lg flex gap-3 border'>
+									<MdOutlineLocalLaundryService size={25} className='text-blue-900'/>
 									<h3> Laundry Service </h3>
 								</div>
-								<div className='p-5 rounded-lg flex gap-3'>
-									<BsHouseDoor size={25}/>
-									<h3> Furnished </h3>
+								<div className='p-5 rounded-lg flex gap-3 border'>
+									<CiLock size={25} className='text-blue-900'/>
+									<h3> Storage available </h3>
 								</div>
 							</div>
-
 						</div>
+						<div className='border border-black border-b-[0.5px] my-5 border-opacity-20'/>
+
 					</div>
 				</div>	
 			</div>

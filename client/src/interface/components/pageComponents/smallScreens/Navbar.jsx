@@ -21,7 +21,7 @@ const Navbar = () => {
 		dispatch(setMenu(true))
 	}
   return (
-    <nav className={`lg:hidden  border-black border-b-[1px] border-opacity-20 text-black flex justify-between items-center pt-2 ${menu ? 'w-full' : 'w-11/12 '}  mx-auto pb-2 bg-white z-30 sticky top-0`}> 
+    <nav className={`lg:hidden  border-black border-b-[1px] border-opacity-20 text-black flex justify-between items-center pt-2 ${menu ? 'w-full' : 'w-full '}  mx-auto pb-2 bg-white z-30 sticky top-0`}> 
         <>
 			{
 				open && <Menu open={open} setOpen={setOpen}/>
