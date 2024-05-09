@@ -1,11 +1,8 @@
 import React , {useEffect,useState}from 'react'
 import { useParams,useNavigate } from 'react-router-dom'
 import { useSelector,useDispatch } from 'react-redux'
-import { selectCurrentUser } from '../../../../logic/ReduxStore/features/users/usersSlice'
 import SearchNavBar from '../../../components/pageComponents/Search/SearchNavBar'
 import Navbar from '../../../components/pageComponents/smallScreens/Navbar'
-import { MdOutlineArrowForwardIos } from "react-icons/md";
-import { CiSearch } from "react-icons/ci";
 import Card from '../../../components/pageComponents/listing/Card'
 import Footer from '../../../components/pageComponents/Footer'
 import ListingSkeleton from '../../../components/customs/ListingSkeleton'
