@@ -8,7 +8,7 @@ import Footer from '../../../components/pageComponents/Footer'
 import ListingSkeleton from '../../../components/customs/ListingSkeleton'
 import { setImages } from '../../../../logic/ReduxStore/features/listings/CarouselSlice'
 import { selectImages } from '../../../../logic/ReduxStore/features/listings/CarouselSlice'
-import { IoLocationOutline,IoBedOutline } from "react-icons/io5";
+import { IoLocationOutline,IoBedOutline,IoShieldCheckmarkOutline } from "react-icons/io5";
 import { BiBath } from "react-icons/bi";
 import { LiaUserAstronautSolid } from "react-icons/lia";
 import { GrElevator } from "react-icons/gr";
@@ -18,6 +18,7 @@ import { MdOutlineLocalLaundryService } from "react-icons/md";
 import { CiLock } from "react-icons/ci";
 import profile from '../../../assets/profile.png'
 import { GoSponsorTiers } from "react-icons/go";
+import { LuParkingCircle } from "react-icons/lu";
 
 
 const uri = 'https://reality-realm-server.onrender.com'
@@ -169,7 +170,7 @@ const Listing = () => {
 						</div>
 						<div className='border border-black border-b-[0.2px] my-5 border-opacity-10'/>
 
-						<div>
+						<div className='flex flex-col gap-3'>
 							<div className='flex items-start gap-3 mt-7'>
 								<GoSponsorTiers size={25}/>
 								<div>
@@ -178,21 +179,27 @@ const Listing = () => {
 								</div>
 							</div>
 							<div className='flex items-start gap-3 mt-5'>
-								<GoSponsorTiers size={25}/>
+								<LuParkingCircle size={25}/>
 								<div>
 									<h2 className='font-medium'> Park for free </h2>
 									<h3> This is one of the few places in the area with free parking </h3>
 								</div>
 							</div>
 							<div className='flex items-start gap-3 mt-5'>
-								<GoSponsorTiers size={25}/>
+								<IoShieldCheckmarkOutline size={25}/>
 								<div>
-									<h2 className='font-medium'>{user.username || 'Fynn'} is a superhost</h2>
-									<h3>Superhosts are experienced, highly rated Hosts.</h3>
+									<h2 className='font-medium'> Self check-in</h2>
+									<h3> You can with the building staff </h3>
 								</div>
 							</div>
 						</div>
 						<div className='border border-black border-b-[0.2px] my-5 border-opacity-10'/>
+
+						<div className='bg-[#F0EFE9] p-5 rounded-xl'>
+							<p className='leading-7'>
+								Truly, all you need is your luggage as you kick back and relax in this stylish studio that offers extra space and comfort as complimentary
+							</p>
+						</div>
 
 					</div>
 				</div>	
