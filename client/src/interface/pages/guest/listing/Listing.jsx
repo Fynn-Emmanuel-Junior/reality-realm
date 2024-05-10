@@ -98,23 +98,31 @@ const Listing = () => {
 	  			</div>
 				<div className='flex flex-col md:hidden'>
 					<div className='w-11/12 mx-auto'>
-						<h2 className='text-3xl font-medium'> {listing.name} <span className='m-2 text-lg'> {listing.description} </span> </h2>
-						<div className='flex items-center gap-1 mt-3'>
-							<div> 
-								<IoLocationOutline size={25} color='#228B22'/>
+						<h2 className='text-3xl font-medium'> {listing.name} <span className='text-lg'> {listing.description} </span> </h2>
+						<h3 className='font-medium text-lg'>Entire serviced Apartment in Accra, Ghana</h3>
+
+						<div className='flex items-center gap-3 mt-3'>
+							<div className='flex items-center gap-1 mt-3'>
+								<div> 
+									<IoLocationOutline size={25} color='#228B22'/>
+								</div>
+								<p>{listing.address}</p>
 							</div>
-							<p>{listing.address}</p>
+							<div className='mt-2 flex items-center gap-3 '> 
+								<div className='flex items-center gap-1'>
+									<BiBath size={25}/>
+									<span className='text-base'>{listing.bathrooms}</span>
+								</div>
+								<div className='bg-black w-3 h-3 rounded-full'></div>
+								<div className='flex items-center gap-1'>
+									<IoBedOutline size={25}/>
+									<span className='text-base'>{listing.bedrooms}</span>
+								</div>
+							</div>
 						</div>
-						<div className='mt-2 flex items-center gap-3 '> 
-							<div className='flex items-center gap-1'>
-								<BiBath size={25}/>
-								<span className='text-base'>{listing.bathrooms}</span>
-							</div>
-							<div className='bg-black w-3 h-3 rounded-full'></div>
-							<div className='flex items-center gap-1'>
-								<IoBedOutline size={25}/>
-								<span className='text-base'>{listing.bedrooms}</span>
-							</div>
+
+						<div>
+							
 						</div>
 						<div className='border border-black border-b-[0.5px] my-5 border-opacity-20'/>
 
