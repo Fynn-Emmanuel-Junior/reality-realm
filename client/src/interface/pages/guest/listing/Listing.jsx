@@ -17,6 +17,7 @@ import { BsHouseDoor } from "react-icons/bs";
 import { MdOutlineLocalLaundryService } from "react-icons/md";
 import { CiLock } from "react-icons/ci";
 import profile from '../../../assets/profile.png'
+import { GoSponsorTiers } from "react-icons/go";
 
 
 const uri = 'https://reality-realm-server.onrender.com'
@@ -96,8 +97,7 @@ const Listing = () => {
 	  			</div>
 				<div className='flex flex-col md:hidden'>
 					<div className='w-11/12 mx-auto'>
-						<h2 className='text-3xl font-medium'> {listing.name} </h2>
-						<h3 className='m-2'> {listing.description} </h3>
+						<h2 className='text-3xl font-medium'> {listing.name} <span className='m-2 text-lg'> {listing.description} </span> </h2>
 						<div className='flex items-center gap-1 mt-3'>
 							<div> 
 								<IoLocationOutline size={25} color='#228B22'/>
@@ -155,17 +155,42 @@ const Listing = () => {
 							{
 								user ? <img 
 									src={user.avatar} 
-									width={100} 
-									height={100}
+									width={80} 
+									height={80}
 									className="rounded-full object-cover self-center mt-2 cursor-pointer"
 								/> : <img 
 									src={profile} 
 									alt='picture_profile'
-									width={100} 
-									height={100}
+									width={80} 
+									height={80}
 									className="rounded-full object-cover self-center mt-2 cursor-pointer"
 								/>
 							}
+						</div>
+						<div className='border border-black border-b-[0.2px] my-5 border-opacity-10'/>
+
+						<div>
+							<div className='flex items-start gap-3'>
+								<GoSponsorTiers size={25}/>
+								<div>
+									<h2 className='font-medium'>{user.username || 'Fynn'} is a superhost</h2>
+									<h3>Superhosts are experienced, highly rated Hosts.</h3>
+								</div>
+							</div>
+							<div className='flex items-start gap-3'>
+								<GoSponsorTiers size={25}/>
+								<div>
+									<h2 className='font-medium'>{user.username || 'Fynn'} is a superhost</h2>
+									<h3>Superhosts are experienced, highly rated Hosts.</h3>
+								</div>
+							</div>
+							<div className='flex items-start gap-3'>
+								<GoSponsorTiers size={25}/>
+								<div>
+									<h2 className='font-medium'>{user.username || 'Fynn'} is a superhost</h2>
+									<h3>Superhosts are experienced, highly rated Hosts.</h3>
+								</div>
+							</div>
 						</div>
 
 					</div>
