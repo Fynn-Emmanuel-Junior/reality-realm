@@ -170,21 +170,21 @@ const Listing = () => {
 						<div className='border border-black border-b-[0.2px] my-5 border-opacity-10'/>
 
 						<div>
-							<div className='flex items-start gap-3'>
+							<div className='flex items-start gap-3 mt-7'>
 								<GoSponsorTiers size={25}/>
 								<div>
 									<h2 className='font-medium'>{user.username || 'Fynn'} is a superhost</h2>
 									<h3>Superhosts are experienced, highly rated Hosts.</h3>
 								</div>
 							</div>
-							<div className='flex items-start gap-3'>
+							<div className='flex items-start gap-3 mt-5'>
 								<GoSponsorTiers size={25}/>
 								<div>
-									<h2 className='font-medium'>{user.username || 'Fynn'} is a superhost</h2>
-									<h3>Superhosts are experienced, highly rated Hosts.</h3>
+									<h2 className='font-medium'> Park for free </h2>
+									<h3> This is one of the few places in the area with free parking </h3>
 								</div>
 							</div>
-							<div className='flex items-start gap-3'>
+							<div className='flex items-start gap-3 mt-5'>
 								<GoSponsorTiers size={25}/>
 								<div>
 									<h2 className='font-medium'>{user.username || 'Fynn'} is a superhost</h2>
@@ -192,6 +192,7 @@ const Listing = () => {
 								</div>
 							</div>
 						</div>
+						<div className='border border-black border-b-[0.2px] my-5 border-opacity-10'/>
 
 					</div>
 				</div>	
