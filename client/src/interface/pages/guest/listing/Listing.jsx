@@ -111,7 +111,7 @@ const Listing = () => {
 							<div className='mt-2 flex items-center gap-3 '> 
 								<div className='flex items-center gap-1'>
 									<BiBath size={25}/>
-									<span className='text-base'>{listing.bath}</span>
+									<span className='text-base'>{listing.bathrooms}</span>
 								</div>
 								<div className='bg-black w-3 h-3 rounded-full'></div>
 								<div className='flex items-center gap-1'>
