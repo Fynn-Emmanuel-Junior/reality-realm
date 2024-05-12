@@ -116,7 +116,7 @@ const Listing = () => {
 								<div className='bg-black w-3 h-3 rounded-full'></div>
 								<div className='flex items-center gap-1'>
 									<IoBedOutline size={25}/>
-									<span className='text-base'>{listing.bedr}</span>
+									<span className='text-base'>{listing.bedrooms}</span>
 								</div>
 							</div>
 						</div>
