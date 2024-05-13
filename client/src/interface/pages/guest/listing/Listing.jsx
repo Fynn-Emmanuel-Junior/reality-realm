@@ -236,7 +236,11 @@ const Listing = () => {
 								<p> Smoke alarm </p>
 							</div>
 						</div>
-						<div className='border border-black border-b-[0.5px] my-5 border-opacity-20'/>
+						
+						<div className='bg-pink-800'>
+
+							<button> Make payment</button>
+						</div>
 
 					</div>
 				</div>	
