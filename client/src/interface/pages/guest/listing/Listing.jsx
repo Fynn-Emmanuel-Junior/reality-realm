@@ -219,6 +219,11 @@ const Listing = () => {
 							<div>
 								<h3> House rules </h3>
 							</div>
+							<div>
+								<p> Check-in after 2:00PM</p>
+								
+
+							</div>
 						</div>
 
 					</div>
