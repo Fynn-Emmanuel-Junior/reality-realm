@@ -233,8 +233,7 @@ const Listing = () => {
 							</div>
 							<div>
 								<p> No carbonmonoxiode alarm</p>
-								<p>Check out after 11:00AM</p>
-								<p> 2 guests Maximum</p>
+								<p> Smoke alarm </p>
 							</div>
 						</div>
 						<div className='border border-black border-b-[0.5px] my-5 border-opacity-20'/>
