@@ -219,7 +219,7 @@ const Listing = () => {
 							<div>
 								<h3> House rules </h3>
 							</div>
-							<div>
+							<div className='flex flex-col gap-3'>
 								<p> Check-in after 2:00PM</p>
 								<p>Check out after 11:00AM</p>
 								<p> 2 guests Maximum</p>
