@@ -165,18 +165,21 @@ const Listing = () => {
 							{
 								user ? <img 
 									src={user.avatar} 
-									width={80} 
-									height={80}
+									width={60} 
+									height={60}
 									className="rounded-full object-cover self-center mt-2 cursor-pointer"
 								/> : <img 
 									src={profile} 
 									alt='picture_profile'
-									width={80} 
-									height={80}
+									width={60} 
+									height={60}
 									className="rounded-full object-cover self-center mt-2 cursor-pointer"
 								/>
 							}
-							<p className='font-medium'> hosted by {user.username || 'Fynn Emmanuel Junior'} </p>
+							<div>
+								<p className='font-medium'> Hosted by {user.username || 'Fynn Emmanuel Junior'} </p>
+								<p> 3 years of hosting </p>
+							</div>
 						</div>
 						<div className='border border-black border-b-[0.2px] my-5 border-opacity-10'/>
 
