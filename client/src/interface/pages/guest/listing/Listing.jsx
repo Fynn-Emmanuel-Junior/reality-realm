@@ -227,6 +227,18 @@ const Listing = () => {
 						</div>
 						<div className='border border-black border-b-[0.5px] my-5 border-opacity-20'/>
 
+						<div>
+							<div>
+								<h3> House rules </h3>
+							</div>
+							<div>
+								<p> Check-in after 2:00PM</p>
+								<p>Check out after 11:00AM</p>
+								<p> 2 guests Maximum</p>
+							</div>
+						</div>
+						<div className='border border-black border-b-[0.5px] my-5 border-opacity-20'/>
+
 					</div>
 				</div>	
 			</div>
