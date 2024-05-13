@@ -71,6 +71,7 @@ const Listing = () => {
 			const data = await res.json()
 
 			setUser(data)
+			console.log(data)
 
 		} catch(err) {
 			console.log(err.message)
@@ -160,7 +161,7 @@ const Listing = () => {
 						</div>
 						<div className='border border-black border-b-[0.5px] my-5 border-opacity-20'/>
 
-						<div>
+						<div className='flex gap-3'>
 							{
 								user ? <img 
 									src={user.avatar} 
@@ -175,6 +176,7 @@ const Listing = () => {
 									className="rounded-full object-cover self-center mt-2 cursor-pointer"
 								/>
 							}
+							<p className='font-medium'> hosted by {user.username || 'Fynn Emmanuel Junior'} </p>
 						</div>
 						<div className='border border-black border-b-[0.2px] my-5 border-opacity-10'/>
 
