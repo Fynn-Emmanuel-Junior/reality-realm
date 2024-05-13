@@ -122,12 +122,9 @@ const Listing = () => {
 							</div>
 						</div>
 						<div>
-							{listing.typeOfPlace == 'sell' ?  <p className='font-medium'> For sale : ${listing.regularPrice}</p>: <p>Rent : <span> ${listing.regularPrice} per month </span></p>}
+							{listing.typeOfPlace == 'sell' ?  <p className='font-medium'> For sale : ${listing.regularPrice}</p>: <p className='font-medium'> Rent : <span> ${listing.regularPrice} per month </span></p>}
 						</div>
 
-						<div>
-							
-						</div>
 						<div className='border border-black border-b-[0.5px] my-5 border-opacity-20'/>
 
 						<div>
@@ -215,6 +212,13 @@ const Listing = () => {
 							<p className='leading-7'>
 								Truly, all you need is your luggage as you kick back and relax in this stylish studio that offers extra space and comfort as complimentary
 							</p>
+						</div>
+						<div className='border border-black border-b-[0.5px] my-5 border-opacity-20'/>
+
+						<div>
+							<div>
+								<h3> House rules </h3>
+							</div>
 						</div>
 
 					</div>
