@@ -221,8 +221,7 @@ const Listing = () => {
 							</div>
 							<div>
 								<p> Check-in after 2:00PM</p>
-								
-
+								<p>Check out after 11:00AM</p>
 							</div>
 						</div>
 
