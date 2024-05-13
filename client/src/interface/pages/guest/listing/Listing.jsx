@@ -231,7 +231,7 @@ const Listing = () => {
 							<div>
 								<h3> Safety & property </h3>
 							</div>
-							<div>
+							<div className='flex flex-col gap-3'>
 								<p> No carbonmonoxiode alarm</p>
 								<p> Smoke alarm </p>
 							</div>
