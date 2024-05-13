@@ -121,6 +121,9 @@ const Listing = () => {
 								</div>
 							</div>
 						</div>
+						<div>
+							{listing.typeOfPlace == 'sell' ?  <p className='font-medium'> For sale : ${listing.regularPrice}</p>: <p>Rent : <span> ${listing.regularPrice} per month </span></p>}
+						</div>
 
 						<div>
 							
@@ -176,7 +179,7 @@ const Listing = () => {
 									className="rounded-full object-cover self-center mt-2 cursor-pointer"
 								/>
 							}
-							<div>
+							<div className='mt-3'>
 								<p className='font-medium'> Hosted by {user.username || 'Fynn Emmanuel Junior'} </p>
 								<p> 3 years of hosting </p>
 							</div>
