@@ -222,6 +222,7 @@ const Listing = () => {
 							<div>
 								<p> Check-in after 2:00PM</p>
 								<p>Check out after 11:00AM</p>
+								<p> 2 guests Maximum</p>
 							</div>
 						</div>
 
