@@ -225,6 +225,7 @@ const Listing = () => {
 								<p> 2 guests Maximum</p>
 							</div>
 						</div>
+						<div className='border border-black border-b-[0.5px] my-5 border-opacity-20'/>
 
 					</div>
 				</div>	
