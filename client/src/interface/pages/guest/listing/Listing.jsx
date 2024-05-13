@@ -215,7 +215,7 @@ const Listing = () => {
 						</div>
 						<div className='border border-black border-b-[0.5px] my-5 border-opacity-20'/>
 
-						<div>
+						<div className='flex flex-col gap-3'>
 							<div>
 								<h3> House rules </h3>
 							</div>
