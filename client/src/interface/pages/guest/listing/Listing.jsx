@@ -232,7 +232,7 @@ const Listing = () => {
 								<h3> Safety & property </h3>
 							</div>
 							<div>
-								<p> Check-in after 2:00PM</p>
+								<p> No carbonmonoxiode alarm</p>
 								<p>Check out after 11:00AM</p>
 								<p> 2 guests Maximum</p>
 							</div>
