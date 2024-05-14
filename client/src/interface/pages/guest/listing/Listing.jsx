@@ -41,6 +41,13 @@ const Listing = () => {
   const [listing,setlisting] = useState({})
   const [loading,setLoading] = useState(true)
   const [error,setError] = useState(false)
+
+  //date
+  const [selectedDate, setSelectedDate] = useState(null);
+
+  const handleDateChange = (date) => {
+    setSelectedDate(date);
+  };
  
 
 
