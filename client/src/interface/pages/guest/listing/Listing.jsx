@@ -250,6 +250,23 @@ const Listing = () => {
 
 						<div>
 							<h3 className='font-medium text-2xl'> Select date for appointment </h3>
+							<div className='flex flex-col gap-3'>
+								<h2>Select Appointment Date:</h2>
+								<DatePicker
+									selected={selectedDate}
+									onChange={handleDateChange}
+									dateFormat="MM/dd/yyyy"
+									minDate={new Date()}
+									isClearable
+									showYearDropdown
+									scrollableMonthYearDropdown
+									className='border border-black w-full focus:outline-none focus:border-teal-600'
+								/>
+								{selectedDate && (
+									<p>You selected: {selectedDate.toLocaleDateString()}</p>
+								)}
+							</div>
+
 						</div>
 
 						
