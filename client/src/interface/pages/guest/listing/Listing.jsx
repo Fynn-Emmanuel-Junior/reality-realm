@@ -19,6 +19,9 @@ import { CiLock } from "react-icons/ci";
 import profile from '../../../assets/profile.png'
 import { GoSponsorTiers } from "react-icons/go";
 import { LuParkingCircle } from "react-icons/lu";
+import DatePicker from 'react-datepicker';
+import 'react-datepicker/dist/react-datepicker.css';
+
 
 
 const uri = 'https://reality-realm-server.onrender.com'
@@ -236,6 +239,12 @@ const Listing = () => {
 								<p> Smoke alarm </p>
 							</div>
 						</div>
+						<div className='border border-black border-b-[0.5px] my-5 border-opacity-20'/>
+
+						<div>
+							<h3 className='font-medium text-2xl'> Select date for appointment </h3>
+						</div>
+
 						
 						<div className='bg-pink-800 p-3 mt-5 rounded-md'>
 							<div className='flex flex-col items-center'>
