@@ -217,7 +217,7 @@ const Listing = () => {
 
 						<div className='flex flex-col gap-3'>
 							<div>
-								<h3> House rules </h3>
+								<h3 className='font-medium text-2xl'> House rules </h3>
 							</div>
 							<div className='flex flex-col gap-3'>
 								<p> Check-in after 2:00PM</p>
@@ -229,7 +229,7 @@ const Listing = () => {
 
 						<div className='flex flex-col gap-3'>
 							<div>
-								<h3> Safety & property </h3>
+								<h3 className='font-medium text-2xl'> Safety & property </h3>
 							</div>
 							<div className='flex flex-col gap-3'>
 								<p> No carbonmonoxiode alarm</p>
@@ -237,9 +237,10 @@ const Listing = () => {
 							</div>
 						</div>
 						
-						<div className='bg-pink-800'>
-
-							<button> Make payment</button>
+						<div className='bg-pink-800 p-3 mt-5'>
+							<div className='flex flex-col items-center'>
+								<button className='text-white'> Book appointement</button>
+							</div>
 						</div>
 
 					</div>
