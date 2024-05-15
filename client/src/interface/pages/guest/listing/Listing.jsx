@@ -242,8 +242,7 @@ const Listing = () => {
 								<h3 className='font-medium text-2xl'> Safety & property </h3>
 							</div>
 							<div className='flex flex-col gap-3'>
-								<p> No carbonmonoxiode alarm</p>
-								<p> Smoke alarm </p>
+								
 							</div>
 						</div>
 						<div className='border border-black border-b-[0.5px] my-5 border-opacity-20'/>
