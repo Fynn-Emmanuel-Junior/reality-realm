@@ -103,10 +103,10 @@ const Listing = () => {
 		<main className='w-screen lg:w-11/12 md:mx-auto'>
       <div>
         {
-        	loading ? <ListingSkeleton />  : <div>
+        loading ? <ListingSkeleton />  : <div>
 				<div className='w-11/12 mx-auto md:hidden'>
-    				<Card listing={listing}/>
-	  			</div>
+			<Card listing={listing}/>
+				</div>
 				<div className='flex flex-col md:hidden'>
 					<div className='w-11/12 mx-auto'>
 						<h2 className='text-3xl font-medium'> {listing.name} <span className='text-lg'> {listing.description} </span> </h2>
@@ -260,7 +260,7 @@ const Listing = () => {
 									isClearable
 									showYearDropdown
 									scrollableMonthYearDropdown
-									className='border border-black w-full focus:outline-none focus:border-teal-600'
+									className='border border-teal-600 w-full focus:outline-none rounded-sm'
 								/>
 								{selectedDate && (
 									<p>You selected: {selectedDate.toLocaleDateString()}</p>
@@ -281,9 +281,8 @@ const Listing = () => {
 			</div>
         }
       </div>
-	  {/* Small Screens  */}
-	  
-			
+	{/* Small Screens  */}
+	
 		
 		</main>  
 		<div className='mt-10'>
