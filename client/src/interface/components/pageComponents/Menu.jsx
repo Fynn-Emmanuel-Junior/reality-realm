@@ -54,6 +54,11 @@ const Menu = ({open,setOpen}) => {
                                 Profile 
                             </Link>
                         </div>
+                        <div className='border-b-2 p-2 sm:p-3 md:p-6'>
+                            <Link to='/profile' className={`${location.pathname === '/profile'? 'text-blue-600' : 'text-slate-900'}`}>
+                                Notifications 
+                            </Link>
+                        </div>
                     </div>
                 </div>
             </div>
