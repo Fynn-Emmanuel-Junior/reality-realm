@@ -1,5 +1,5 @@
-const nodemailer = require('nodemailer');
-import AppointmentModel from '../models/AppointmentModel';
+import nodemailer from 'nodemailer';
+import AppointmentModel from '../models/AppointmentModel.js';
 
 export const bookAppointment = async (req, res) => {
     try {

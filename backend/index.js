@@ -6,6 +6,7 @@ import cookieParser from 'cookie-parser'
 dotenv.config()
 import  usersRoutes  from './routes/api/usersRoutes.js'
 import listingsRoutes from './routes/api/listingsRoutes.js'
+import appointmentRoutes from  './routes/api/appointmentRoutes.js'
 // import path from 'path'
 
 // const __dirname = path.resolve() 
@@ -26,6 +27,7 @@ app.use(cookieParser())
 //Routes
 app.use('/users',usersRoutes)
 app.use('/listings',listingsRoutes)
+app.use('/appointment',appointmentRoutes)
 
 // app.use(express.static(path.join(__dirname,'/client/dist')))
 
@@ -39,7 +41,7 @@ app.use('/listings',listingsRoutes)
 //     const statuscode = err.statuscode || 500
 //     const message = err.message
 //     return res.status(statuscode).json({
-//         success: false,
+//         success: false, 
 //         statuscode,
 //         message
 //     })
