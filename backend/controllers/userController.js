@@ -37,8 +37,6 @@ const register = async (req,res) => {
 
 
 const auth = async (req,res) => {
-    // const  {error} = userLoginValidation(req.body)
-    // if(error) return res.status(400).json({message: error.message})
 
     const { email, password } = req.body
     const foundUser = await UserModel.findOne({email})
