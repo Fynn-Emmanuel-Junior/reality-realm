@@ -3,8 +3,8 @@ import AppointmentModel from '../models/AppointmentModel.js';
 
 export const bookAppointment = async (req, res) => {
     try {
-        const { appointmentDate } = req.body;
-        const userEmail = req.user.email;
+        const { appointmentDate,email,id } = req.body;
+        const userEmail = email;
 
         if (!appointmentDate) {
             return res.status(400).json({ message: 'Appointment date is required' });
@@ -14,6 +14,7 @@ export const bookAppointment = async (req, res) => {
           const newAppointment = new AppointmentModel({
             userEmail,
             appointmentDate,
+            userId: id
         });
 
         await newAppointment.save();
@@ -36,9 +37,20 @@ export const bookAppointment = async (req, res) => {
 
         await transporter.sendMail(mailOptions);
 
-        res.status(200).json({ message: 'Appointment booked and confirmation email sent' });
+        res.status(200).json({ 
+            statusCode : 200,
+            message: 'Appointment booked and confirmation email sent' 
+        });
     } catch (err) {
         res.status(400).json({ message: err.message });
     }
 };
+
+export const getNotificationsByUser = async(req,res) => {
+    try {
+
+    } catch(err) {
+        res.status(400).json({message: err.message})
+    }
+}
 

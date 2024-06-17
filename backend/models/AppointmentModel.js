@@ -10,6 +10,9 @@ const appointmentSchema = new mongoose.Schema({
         type: Date,
         required: true,
     },
+    userId: {
+        type: String,
+    }
 },{timestamps: true})
 
 const AppointmentModel = mongoose.model('Appointment', appointmentSchema);
