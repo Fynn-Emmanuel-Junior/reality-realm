@@ -1,15 +1,13 @@
 import UserModel from "../models/UserModel.js"
 import bcrypt from 'bcryptjs'
 import jwt from 'jsonwebtoken'
-import {
-    registerUserValidation,
-    userLoginValidation
-} from '../validations/Uservalidation.js'
-
+import validator from 'validator'
 
 const register = async (req,res) => {
-    const {error} = registerUserValidation(req.body)
     const { username, email , password } = req.body
+
+    if(!validator.isEmail(email)) return res.status(404).json({message: 'Email is not valid'})
+    if(!validator.isStrongPassword(password)) return res.status(404).json({message: 'Password is not strong enough'})
     
     const CheckIfEmailExists = await UserModel.findOne({email})
     if(CheckIfEmailExists) return res.status(409).json({message: "User already exists"})
@@ -23,7 +21,6 @@ const register = async (req,res) => {
             email,
             password: hashedPassword
         })
-            console.log('user created suucessfully')
             res.status(201).json({
                 _id: user._id,
                 username: user.username,
@@ -37,11 +34,10 @@ const register = async (req,res) => {
 
 
 const auth = async (req,res) => {
-
     const { email, password } = req.body
     const foundUser = await UserModel.findOne({email})
     if(!foundUser) return res.status(404).json({message: 'user not found'})
-    
+
     const match = await bcrypt.compare(password,foundUser.password)
 
    if(match) { 
@@ -50,21 +46,19 @@ const auth = async (req,res) => {
             process.env.ACCESS_TOKEN_SECRET,
         )
 
-        res.cookie(
-            'jwt',
-            accessToken,
-            {
-                httpOnly: true , 
-                sameSite: "None", 
-                secure: true ,
-            }
-        )
+        console.log(accessToken)
+
+        res.cookie('jwt', accessToken, {
+            httpOnly: true,
+            sameSite: 'None',
+            secure: process.env.NODE_ENV === 'production', // Set secure to true in production
+        });
 
         res.status(200).json({
             _id: foundUser._id,
             username: foundUser.username,
             email: foundUser.email,
-        })
+        });
    
     } else {
             res.status(401).json({message: ' Unauthorized user'})
