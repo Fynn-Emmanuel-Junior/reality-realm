@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react';
-import { useParams } from 'react-router-dom';
+import { useParams,useNavigate } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 import { selectCurrentUser } from '../../../../logic/ReduxStore/features/users/usersSlice';
 import SearchNavBar from '../../../components/pageComponents/Search/SearchNavBar';
@@ -33,6 +33,7 @@ const Listing = () => {
   const [selectedDate, setSelectedDate] = useState(null);
   const [isBooking, setIsBooking] = useState(false); // State for booking status
   const [error, setError] = useState(""); // State for error message
+  const navigate = useNavigate()
 
   console.log(currentuser);
 
@@ -80,10 +81,22 @@ const Listing = () => {
     setError(""); // Clear any existing errors
     try {
       // Simulate an API call
-      await new Promise(resolve => setTimeout(resolve, 2000));
-      // Reset spinner after booking logic is complete
+     const response = await fetch(`/api/appointment`, {
+      method: 'post',
+      headers: {
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify({
+        id: currentuser._id,
+        email: currentuser.email,
+        appointmentDate: selectedDate
+      })
+     })
+      const data = await response.json()
+      if(data.statusCode == 200) {
+        navigate('/notifications')
+      }
       setIsBooking(false);
-      alert('Appointment booked successfully!');
     } catch (err) {
       console.log(err.message);
       setIsBooking(false);
