@@ -1,5 +1,5 @@
-const express = require('express');
 const nodemailer = require('nodemailer');
+import AppointmentModel from '../models/AppointmentModel';
 
 export const bookAppointment = async (req, res) => {
     try {
@@ -10,8 +10,13 @@ export const bookAppointment = async (req, res) => {
             return res.status(400).json({ message: 'Appointment date is required' });
         }
 
-        // Here, you would typically save the appointment details to a database
-        // For simplicity, we are skipping this step
+        // Save the appointment details to the database
+          const newAppointment = new AppointmentModel({
+            userEmail,
+            appointmentDate,
+        });
+
+        await newAppointment.save();
 
         // Send confirmation email to the user
         const transporter = nodemailer.createTransport({
