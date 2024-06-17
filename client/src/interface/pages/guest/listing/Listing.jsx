@@ -32,11 +32,13 @@ const Listing = () => {
   const [loading, setLoading] = useState(true);
   const [selectedDate, setSelectedDate] = useState(null);
   const [isBooking, setIsBooking] = useState(false); // State for booking status
+  const [error, setError] = useState(""); // State for error message
 
   console.log(currentuser);
 
   const handleDateChange = (date) => {
     setSelectedDate(date);
+    setError(""); // Clear error message when date changes
   };
 
   useEffect(() => {
@@ -69,7 +71,13 @@ const Listing = () => {
   }, []);
 
   const handleAppointment = async () => {
+    if (!selectedDate) {
+      setError('Please select an appointment date.');
+      return;
+    }
+
     setIsBooking(true);
+    setError(""); // Clear any existing errors
     try {
       // Simulate an API call
       await new Promise(resolve => setTimeout(resolve, 2000));
@@ -83,7 +91,7 @@ const Listing = () => {
   };
 
   return (
-    <> 
+    <>
       <SearchNavBar />
       <Navbar />
       <main className='w-screen lg:w-11/12 md:mx-auto'>
@@ -99,12 +107,12 @@ const Listing = () => {
                   <h3 className='font-medium text-lg'>Entire serviced Apartment in Accra, Ghana</h3>
                   <div className='flex items-center gap-3 mt-3'>
                     <div className='flex items-center gap-1 mt-3'>
-                      <div> 
+                      <div>
                         <IoLocationOutline size={25} color='#228B22' />
                       </div>
                       <p>{listing.address}</p>
                     </div>
-                    <div className='mt-2 flex items-center gap-3 '> 
+                    <div className='mt-2 flex items-center gap-3 '>
                       <div className='flex items-center gap-1'>
                         <BiBath size={25} />
                         <span className='text-base'>{listing.bathrooms}</span>
@@ -123,11 +131,11 @@ const Listing = () => {
                   <div>
                     <h2 className='text-2xl font-medium my-3'> Amenities </h2>
                     <div className='flex gap-3 w-full'>
-                      <div  className='border p-5 rounded-xl flex gap-3 w-1/2'>
+                      <div className='border p-5 rounded-xl flex gap-3 w-1/2'>
                         <LiaUserAstronautSolid size={25} className='text-blue-900' />
                         <h3> Doorman </h3>
                       </div>
-                      <div  className='border p-5 rounded-xl flex gap-3 w-1/2'>
+                      <div className='border p-5 rounded-xl flex gap-3 w-1/2'>
                         <GrElevator size={25} className='text-blue-900' />
                         <h3> Elevator </h3>
                       </div>
@@ -156,15 +164,15 @@ const Listing = () => {
                   <div className='border border-black border-b-[0.5px] my-5 border-opacity-20' />
                   <div className='flex gap-3'>
                     {
-                      user ? <img 
-                        src={user.avatar} 
-                        width={60} 
+                      user ? <img
+                        src={user.avatar}
+                        width={60}
                         height={60}
                         className="rounded-full object-cover self-center mt-2 cursor-pointer"
-                      /> : <img 
-                        src={profile} 
+                      /> : <img
+                        src={profile}
                         alt='picture_profile'
-                        width={60} 
+                        width={60}
                         height={60}
                         className="rounded-full object-cover self-center mt-2 cursor-pointer"
                       />
@@ -243,28 +251,31 @@ const Listing = () => {
                       {selectedDate && (
                         <p>You selected: {selectedDate.toLocaleDateString()}</p>
                       )}
+                      {error && (
+                        <p className='text-red-500'>{error}</p>
+                      )}
                     </div>
                   </div>
-                  <div className='bg-pink-800 p-3 mt-5 rounded-md'>
+                  <div className='bg-pink-800 p-3 mt-5 mb-10 rounded-md'>
                     <div className='flex flex-col items-center'>
-                      <button 
+                      <button
                         className='text-white'
                         onClick={handleAppointment}
                         disabled={isBooking}
-                      > 
+                      >
                         {isBooking ? <Rings height="30" width="30" color="white" /> : 'Book appointment'}
                       </button>
                     </div>
                   </div>
-                </div>  
-              </div>  
+                </div>
+              </div>
             </div>
           }
         </div>
         {!loading && <Footer />}
-      </main>  
+      </main>
     </>
-  )
+  );
 }
 
 export default Listing;

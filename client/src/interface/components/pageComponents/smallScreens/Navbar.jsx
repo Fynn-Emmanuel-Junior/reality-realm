@@ -14,7 +14,6 @@ const Navbar = () => {
 
     const user = useSelector(selectCurrentUser)
     const menu = useSelector(selectMenu)
-    console.log(menu)
 	
 	const handleOpen = () => {
 		setOpen(true)
