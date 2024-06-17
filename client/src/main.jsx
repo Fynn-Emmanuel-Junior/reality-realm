@@ -10,7 +10,6 @@ import { SkeletonTheme } from 'react-loading-skeleton'
 
 ReactDOM.createRoot(document.getElementById('root')).render(
   <React.StrictMode>
-    <SkeletonTheme>
       <Provider store={store}>
         <Router>
           <PersistGate loading={null} persistor={persistor}>
@@ -18,6 +17,5 @@ ReactDOM.createRoot(document.getElementById('root')).render(
           </PersistGate>
         </Router>
       </Provider>
-    </SkeletonTheme>
   </React.StrictMode>
 )
