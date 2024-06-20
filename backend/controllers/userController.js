@@ -21,11 +21,24 @@ const register = async (req,res) => {
             email,
             password: hashedPassword
         })
-            res.status(201).json({
-                _id: user._id,
-                username: user.username,
-                email: user.email,
-            })
+
+        const accessToken = jwt.sign(
+            { "userId": user._id },
+            process.env.ACCESS_TOKEN_SECRET,
+        )
+
+        res.cookie('jwt', accessToken, {
+            httpOnly: true,
+            sameSite: 'None',
+            secure: process.env.NODE_ENV !== 'development'
+        });
+
+        res.status(201).json({
+            _id: user._id,
+            username: user.username,
+            email: user.email,
+            statusCode: 201 
+        })
                 
         } catch(error) {
             res.status(401).json({message: error.message})
@@ -46,12 +59,10 @@ const auth = async (req,res) => {
             process.env.ACCESS_TOKEN_SECRET,
         )
 
-        console.log(accessToken)
-
         res.cookie('jwt', accessToken, {
             httpOnly: true,
             sameSite: 'None',
-            secure: process.env.NODE_ENV === 'production', // Set secure to true in production
+            secure: process.env.NODE_ENV !== 'development'
         });
 
         res.status(200).json({

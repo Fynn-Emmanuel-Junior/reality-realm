@@ -138,7 +138,7 @@ const getUserListings = async (req, res) => {
 }
 
 export {
-    createListings,
+    createListings, 
     getAllListings,
     deletelisting,
     updatelisting,

@@ -4,7 +4,6 @@ import AppointmentModel from '../models/AppointmentModel.js';
 export const bookAppointment = async (req, res) => {
     try {
         const { appointmentDate,email,id } = req.body;
-        const userEmail = email;
 
         if (!appointmentDate) {
             return res.status(400).json({ message: 'Appointment date is required' });
@@ -12,7 +11,7 @@ export const bookAppointment = async (req, res) => {
 
         // Save the appointment details to the database
           const newAppointment = new AppointmentModel({
-            userEmail,
+            userEmail: email,
             appointmentDate,
             userId: id
         });
