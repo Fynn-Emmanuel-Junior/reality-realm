@@ -6,7 +6,7 @@ import { useNavigate } from 'react-router-dom'
 import google from '../../../assets/google.png'
 // import { useState } from 'react'
 
-const uri = 'https://reality-realm-server.onrender.com'
+// const uri = 'https://reality-realm-server.onrender.com'
 
 const OAuth = () => {
     const dispatch = useDispatch()
@@ -42,7 +42,7 @@ const OAuth = () => {
     }
 
     return (
-        <div className='border border-slate-900 p-1.5 sm:p-2 xl:p-[10px] uppercase rounded-3xl w-full'>
+        <div className='border border-slate-900 p-3 sm:p-2 xl:p-[10px] uppercase rounded-xl md:rounded-3xl w-full'>
             <button 
                 type='button' 
                 className='flex gap-1 items-center mx-auto'

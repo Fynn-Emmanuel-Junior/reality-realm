@@ -8,7 +8,7 @@ import { HiOutlineMenu } from "react-icons/hi"
 import bg from '../../../assets/bg2.jpg'
 import Menu from "../../../components/pageComponents/Menu"
 
-const uri = 'https://reality-realm-server.onrender.com'
+// const uri = 'https://reality-realm-server.onrender.com'
 
 
 const SignUp = () => {
@@ -17,7 +17,7 @@ const SignUp = () => {
   
   const [loading,setLoading] = useState(false)
   const [message,setMessage] = useState(false)
-  const [exists,setExists] = useState(false)
+  const [exists,setExists] = useState(null)
   const [passwordExists,setPasswordExists] = useState(false)
   const [showpassword,setShowpassword] = useState(false)
   const [open,setOpen] = useState(false)
@@ -51,7 +51,6 @@ const SignUp = () => {
     e.preventDefault()
 
     if(formData.username == '' || formData.password == '' || formData.email == '') {
-      setExists(false)
       setLoading(false)
       setMessage(true)
     }
@@ -73,24 +72,13 @@ const SignUp = () => {
       )
 
       const data = await res.json()
-
-      if(data.message === 'User already exists') {
-
-        setTimeout(() => {
-          setExists(true)
-        },500)
-
+      if(data.statusCode == 201) {
         setExists(false)
         setLoading(false)
-
-        
+        navigate('/signin') 
       } else{
- 
-        setExists(false)
-        setLoading(false)
-        navigate('/signin')
-          
-
+		setExists(data.message)
+		setLoading(false) 
       }
     } 
   }
@@ -99,15 +87,15 @@ const SignUp = () => {
   return (
     <div className='relative'>
 		<div className='w-screen h-screen absolute top-0 left-0'>
-          	<img  src={bg} alt='background-cover' className='object-cover w-screen h-screen'/>
+           <img  src={bg} alt='background-cover' className='object-cover w-screen h-screen'/>
         </div>
-      	<div className="bg-white p-3 w-full xl:w-[50vw] h-screen absolute top-0 left-0 opacity-75 xl:opacity-90 md:flex md:flex-col md:justify-around">
-		  	<>
+       <div className="bg-white p-3 w-full xl:w-[50vw] h-screen absolute top-0 left-0 opacity-75 xl:opacity-90 md:flex md:flex-col md:justify-around">
+            <>
 				{
 					open && <Menu open={open} setOpen={setOpen}/>
 				}
 			</>
-		  	<div className="absolute top-5 md:top-10 md:left-10">
+			<div className="absolute top-5 md:top-10 md:left-10">
 				<HiOutlineMenu className=" text-xl sm:text-3xl md:text-5xl lg:hidden" onClick={handleOpen}/>
 			</div>
 			
@@ -119,7 +107,7 @@ const SignUp = () => {
 				<form onSubmit={handleSubmit} className="flex flex-col gap-4 mx-auto sm:max-w-sm  md:max-w-md md-x:max-w-xl lg:max-w-xl xl:max-w-lg">
 					<>
 						{
-							exists ? <div className="text-red-600"> User not found!</div> : ''
+							exists ? <div className="text-red-600"> {exists}</div> : ''
 						}
 					</>
 					<>
@@ -130,7 +118,7 @@ const SignUp = () => {
 					<input 
 						type="text" 
 						placeholder="username"
-						className="border border-emerald-950  text-sm p-3 pl-5 rounded-3xl focus:outline-none"
+						className="border border-emerald-950  text-sm p-3 pl-5 rounded-xl md:rounded-3xl focus:outline-none"
 						id="username"
 						name="username"
 						onChange={handleChange}
@@ -143,7 +131,7 @@ const SignUp = () => {
 					<input 
 						type="text" 
 						placeholder="email"
-						className="border border-emerald-950  text-sm p-2 sm:p-3 pl-5 rounded-3xl focus:outline-none"
+						className="border border-emerald-950  text-sm p-3 pl-5 rounded-xl md:rounded-3xl focus:outline-none"
 						id="email"
 						name="email"
 						onChange={handleChange}
@@ -153,7 +141,7 @@ const SignUp = () => {
 							please fill all fields
 						</div> : ''
 					} 
-					<div className="w-full flex items-center justify-center border border-emerald-950 rounded-3xl  p-2 sm:p-3 px-5 ">
+					<div className="w-full flex items-center justify-center border border-emerald-950 rounded-xl md:rounded-3xl  p-3 px-5 ">
 						<input 
 							type={showpassword ? 'text' : 'password'} 
 							placeholder="password"
@@ -175,7 +163,7 @@ const SignUp = () => {
 						<div className="flex flex-col gap-5">
 							<button
 							// disabled={loading} 
-								className="bg-slate-900 p-2 sm:p-3 text-white rounded-3xl uppercase hover:opacity-95 disabled:opacity-80"> 
+								className="bg-slate-900 p-3 text-white rounded-xl md:rounded-3xl hover:opacity-95 disabled:opacity-80"> 
 							
 							{
 								loading ? 
@@ -187,7 +175,7 @@ const SignUp = () => {
 										ariaLabel="tail-spin-loading"
 										radius="1"
 									/>
-								</div> : 'Log in'
+								</div> : 'Create Account'
 							}
 							</button> 
 							<OAuth />

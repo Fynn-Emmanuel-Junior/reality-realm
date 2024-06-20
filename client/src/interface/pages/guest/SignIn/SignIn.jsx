@@ -9,12 +9,12 @@ import bg from '../../../assets/bg2.jpg'
 import { HiOutlineMenu } from "react-icons/hi"
 import Menu from "../../../components/pageComponents/Menu"
 
-const uri = 'https://reality-realm-server.onrender.com'
+// const uri = 'https://reality-realm-server.onrender.com'
 
 const SignIn = () => {
 
 	const navigate = useNavigate()
-  	const dispatch = useDispatch()
+    const dispatch = useDispatch()
 
 	const [message,setMessage] = useState(false)
 	const [exists,setExists] = useState(false)
@@ -57,11 +57,12 @@ const SignIn = () => {
 		
 		const res = await fetch(`http://localhost:3500/users/auth`,
 			{ 
-			method: 'POST',
-			headers: {
-				'content-type': 'application/json'
-			},
-			body: JSON.stringify(formData)
+				method: 'POST',
+				headers: {
+					'content-type': 'application/json'
+				},
+				body: JSON.stringify(formData),
+				credentials: 'include'
 			}
 		)
 
@@ -96,15 +97,15 @@ const SignIn = () => {
   return (
     <div className='relative'>
 		<div className='w-screen h-screen absolute top-0 left-0'>
-          	<img  src={bg} alt='background-cover' className='object-cover w-screen h-screen'/>
+           <img  src={bg} alt='background-cover' className='object-cover w-screen h-screen'/>
         </div>
-      	<div className="bg-white p-3 w-full xl:w-[50vw] h-screen absolute top-0 left-0 opacity-75 xl:opacity-90 md:flex md:flex-col md:justify-around">
-		  	<>
+       <div className="bg-white p-3 w-full xl:w-[50vw] h-screen absolute top-0 left-0 opacity-75 xl:opacity-90 md:flex md:flex-col md:justify-around">
+			<>
 				{
 					open && <Menu open={open} setOpen={setOpen}/>
 				}
 			</>
-		  	<div className="absolute top-5 md:top-10 md:left-10">
+			<div className="absolute top-5 md:top-10 md:left-10">
 				<HiOutlineMenu className=" text-xl sm:text-3xl md:text-5xl lg:hidden" onClick={handleOpen}/>
 			</div>
 			<div className="mt-[15%] md:mt-0">
@@ -126,7 +127,7 @@ const SignIn = () => {
 					<input 
 						type="text" 
 						placeholder="email"
-						className="border border-emerald-950  text-base p-3 pl-5 rounded-3xl focus:outline-none focus:border-teal-600"
+						className="border border-emerald-950  text-base p-3 pl-5 rounded-xl md:rounded-3xl focus:outline-none focus:border-teal-600"
 						id="email"
 						name="email"
 						onChange={handleChange}
@@ -136,7 +137,7 @@ const SignIn = () => {
 							please fill all fields
 						</div> : ''
 					} 
-					<div className="w-full flex items-center justify-center border border-emerald-950 rounded-3xl  p-3 pl-5 ">
+					<div className="w-full flex items-center justify-center border border-emerald-950 rounded-xl md:rounded-3xl  p-3 pl-5 ">
 						<input 
 							type={showpassword ? 'text' : 'password'} 
 							placeholder="password"
@@ -146,7 +147,7 @@ const SignIn = () => {
 							onChange={handleChange}
 						/>
 						{
-							showpassword ? <FiEye onClick={handlePassword}/> : <FiEyeOff onClick={handlePassword}/>
+							showpassword ? <FiEyeOff onClick={handlePassword}/> : <FiEye onClick={handlePassword}/>
 						}
 					</div>
 					{
@@ -158,7 +159,7 @@ const SignIn = () => {
 						<div className="flex flex-col gap-5">
 							<button
 							// disabled={loading} 
-								className="bg-slate-900 p-3 text-white rounded-3xl uppercase hover:opacity-95 disabled:opacity-80"> 
+								className="bg-slate-900 p-3 text-white rounded-xl md:rounded-3xl uppercase hover:opacity-95 disabled:opacity-80"> 
 							
 							{
 								loading ? 
@@ -178,7 +179,7 @@ const SignIn = () => {
 					</div>
 				</form>
 			<div className="flex justify-center gap-2 mt-5">
-				<p> Don't have an account ? </p>
+				<p> {"Don't have an account ?"} </p>
 				<Link to='/signup'> 
 					<span className="text-blue-700"> Sign Up </span>
 				</Link>

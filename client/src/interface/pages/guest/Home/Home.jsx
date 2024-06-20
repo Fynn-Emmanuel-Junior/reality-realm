@@ -27,7 +27,6 @@ const Home = () => {
     const [text,setText] = useState(false)
 
     const menu = useSelector(selectMenu)
-    console.log(menu)
 
 
     useEffect(() => {

@@ -57,18 +57,7 @@ const Listing = () => {
       }
     };
 
-    const fetchUser = async () => {
-      try {
-        const res = await fetch(`http://localhost:3500/users/${listing.userRef}`);
-        const data = await res.json();
-        setUser(data);
-      } catch (err) {
-        console.log(err.message);
-      }
-    };
-
     fetchlisting();
-    fetchUser();
   }, []);
 
   const handleAppointment = async () => {
@@ -81,7 +70,7 @@ const Listing = () => {
     setError(""); // Clear any existing errors
     try {
       // Simulate an API call
-     const response = await fetch(`/api/appointment`, {
+     const response = await fetch(`http://localhost:3500/appointment`, {
       method: 'post',
       headers: {
         'Content-Type': 'application/json'
@@ -93,8 +82,10 @@ const Listing = () => {
       })
      })
       const data = await response.json()
-      if(data.statusCode == 200) {
+      if(data.statusCode == 200 && currentuser) {
         navigate('/notifications')
+      } else {
+        navigate('/signin')
       }
       setIsBooking(false);
     } catch (err) {
