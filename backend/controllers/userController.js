@@ -52,19 +52,23 @@ const auth = async (req, res) => {
         const refreshToken = jwt.sign(
             { "userId": foundUser._id },
             process.env.REFRESH_TOKEN_SECRET,
-        );
+            {
+                expiresIn: '1d',
+            },
+        )
 
-        res.cookie('jwt', accessToken, {
+        res.cookie('accessToken', accessToken, {
             httpOnly: true,
             sameSite: 'None',
             secure: false
         });
 
-        res.cookie('jwt', refreshToken, {
+        res.cookie('refreshToken', refreshToken, {
             httpOnly: true,
             sameSite: 'None',
             secure: false
         });
+
 
         res.status(200).json({
             _id: foundUser._id,
@@ -87,6 +91,14 @@ const google = async (req, res) => {
                 process.env.ACCESS_TOKEN_SECRET,
             );
 
+            const refreshToken = jwt.sign(
+                { "userId": foundUser._id },
+                process.env.REFRESH_TOKEN_SECRET,
+                {
+                    expiresIn: '1d',
+                },
+            );
+
             const { password: pass, ...rest } = user._doc;
 
             res.cookie(
@@ -98,6 +110,12 @@ const google = async (req, res) => {
                     secure: true,
                 }
             );
+
+            res.cookie('refreshToken', refreshToken, {
+                httpOnly: true,
+                sameSite: 'None',
+                secure: false
+            });
 
             res.status(200).json(rest);
 
@@ -120,11 +138,29 @@ const google = async (req, res) => {
                 process.env.ACCESS_TOKEN_SECRET,
             );
 
+            const refreshToken = jwt.sign(
+                { "userId": foundUser._id },
+                process.env.REFRESH_TOKEN_SECRET,
+                {
+                    expiresIn: '1d',
+                },
+            )
+
             const { password: pass, ...rest } = newUser._doc;
 
             res.cookie(
-                'jwt',
+                'accessToken',
                 accesstoken,
+                {
+                    httpOnly: true,
+                    sameSite: "None",
+                    secure: true,
+                }
+            );
+
+            res.cookie(
+                'refreshtoken',
+                refreshToken,
                 {
                     httpOnly: true,
                     sameSite: "None",
@@ -153,7 +189,6 @@ const update = async (req, res) => {
                 email: req.body.email,
                 password: req.body.password,
                 avatar: req.body.avatar
-
             }
         }, { new: true });
 
@@ -167,7 +202,6 @@ const update = async (req, res) => {
 };
 
 const deleteUser = async (req, res) => {
-
     if (req.user) {
         try {
             const deleteuser = await UserModel.findByIdAndDelete(req.user._id);
@@ -190,7 +224,7 @@ const signout = async (req, res) => {
     } catch (err) {
         res.status(401).json({ message: 'error in logging out user' });
     }
-};
+}; 
 
 const getUser = async (req, res) => {
     try {
@@ -206,7 +240,7 @@ const getUser = async (req, res) => {
     }
 };
 
-export const sendOtpController = async (req, res) => {
+const sendOtpController = async (req, res) => {
     const { email } = req.body;
 
     try {
@@ -222,7 +256,7 @@ export const sendOtpController = async (req, res) => {
 
         // Store hashed OTP and expiration time in the user document
         user.otp = hashedOtp;
-        user.otpExpires = Date.now() + 10 * 60 * 1000; // OTP valid for 10 minutes
+        user.otpExpires = Date.now() + 1 * 60 * 1000; // OTP valid for 1 minute
         await user.save();
 
         // Send OTP via email
@@ -238,7 +272,7 @@ export const sendOtpController = async (req, res) => {
             from: process.env.EMAIL_USER,
             to: email,
             subject: 'Your OTP Code',
-            text: `Your OTP code is ${otp}. It is valid for 10 minutes.`,
+            text: `Your OTP code is ${otp}. It is valid for 1 minute.`,
         };
 
         await transporter.sendMail(mailOptions);
@@ -249,7 +283,7 @@ export const sendOtpController = async (req, res) => {
     }
 };
 
-export const verifyOtpController = async (req, res) => {
+const verifyOtpController = async (req, res) => {
     const { email, otp } = req.body;
 
     try {
