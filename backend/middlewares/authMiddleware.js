@@ -4,11 +4,12 @@ import asyncHandler from 'express-async-handler';
 
 const authMiddleware = asyncHandler(async (req, res, next) => {
     const token = req.cookies.jwt;
-    console.log(token,'token')
+    console.log(token)
   
     if (token) {
         try {
             const decoded = jwt.verify(token, process.env.ACCESS_TOKEN_SECRET);
+            console.log(decoded);
             req.user = await UserModel.findById(decoded.userId).select('-password');
             next();
         } catch (err) {

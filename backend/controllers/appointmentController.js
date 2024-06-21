@@ -12,9 +12,9 @@ export const bookAppointment = async (req, res) => {
         // Save the appointment details to the database
           const newAppointment = await AppointmentModel.create({
             userEmail: email,
-            appointmentDate,
+            appointmentDate, 
             userId: id
-        });
+        }); 
         console.log(newAppointment);
 
         // Send confirmation email to the user
