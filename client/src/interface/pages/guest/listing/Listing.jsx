@@ -35,8 +35,6 @@ const Listing = () => {
   const [error, setError] = useState(""); // State for error message
   const navigate = useNavigate()
 
-  console.log(currentuser);
-
   const handleDateChange = (date) => {
     setSelectedDate(date);
     setError(""); // Clear error message when date changes
@@ -70,11 +68,12 @@ const Listing = () => {
     setError(""); // Clear any existing errors
     try {
       // Simulate an API call
-     const response = await fetch(`http://localhost:3500/appointment`, {
-      method: 'post',
+     const response = await fetch(`http://localhost:3500/appointment/book`, {
+      method: 'POST',
       headers: {
         'Content-Type': 'application/json'
       },
+      credentials: 'include',
       body: JSON.stringify({
         id: currentuser._id,
         email: currentuser.email,
@@ -82,11 +81,10 @@ const Listing = () => {
       })
      })
       const data = await response.json()
+      console.log(data);
       if(data.statusCode == 200 && currentuser) {
         navigate('/notifications')
-      } else {
-        navigate('/signin')
-      }
+      } 
       setIsBooking(false);
     } catch (err) {
       console.log(err.message);

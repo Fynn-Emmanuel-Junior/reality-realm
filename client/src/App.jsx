@@ -13,27 +13,26 @@ const UpdateListing = React.lazy(() => import('./interface/pages/auth/Profile/Up
 const ErrorPage = React.lazy(() => import('./interface/pages/guest/404Page/ErrorPage'))
 const Search = React.lazy(() => import('./interface/pages/guest/Search/Search'))
 const Contact = React.lazy(() => import('./interface/pages/guest/Contact/Contact'))
-const AccountLayout = React.lazy(() => import('./interface/components/pageComponents/AccountLayout'))
 
 
 const App = () => {
   return (
     <React.Suspense>
-    <Routes>
-      <Route path='/' element={<Home />}/>
-      <Route path='/signin' element={<SignIn />}/>
-     <Route path='/signup' element={<SignUp />}/>
-      <Route path='/listing/:id' element={<Listing />}/>
-      <Route path='/search' element={<Search />}/>
-     <Route path='/contact' element={<Contact />}/>
-      <Route element={<ProtectedRoutes />}>
-        <Route path='/profile' element={<Profile />}/>
-        <Route path='/create-listing' element={<Listings />}/>
-        <Route path='/edit-listing/:id' element={<UpdateListing />}/>
-      </Route>
-      <Route path='/about' element={<About />}/>
-      <Route path='*' element={<ErrorPage />} />
-    </Routes>
+      <Routes>
+        <Route path='/' element={<Home />}/>
+        <Route path='/signin' element={<SignIn />}/>
+      <Route path='/signup' element={<SignUp />}/>
+        <Route path='/listing/:id' element={<Listing />}/>
+        <Route path='/search' element={<Search />}/>
+      <Route path='/contact' element={<Contact />}/>
+        <Route element={<ProtectedRoutes />}>
+          <Route path='/profile' element={<Profile />}/>
+          <Route path='/create-listing' element={<Listings />}/>
+          <Route path='/edit-listing/:id' element={<UpdateListing />}/>
+        </Route>
+        <Route path='/about' element={<About />}/>
+        <Route path='*' element={<ErrorPage />} />
+      </Routes>
     </React.Suspense>
   )
 }
