@@ -7,6 +7,7 @@ dotenv.config();
 import usersRoutes from './routes/api/usersRoutes.js';
 import listingsRoutes from './routes/api/listingsRoutes.js';
 import appointmentRoutes from './routes/api/appointmentRoutes.js';
+import adminRoutes from './routes/api/adminRoutes.js';
 
 const app = express();
 
@@ -29,6 +30,7 @@ app.use(express.urlencoded({ extended: true }));
 app.use('/users', usersRoutes);
 app.use('/listings', listingsRoutes);
 app.use('/appointment', appointmentRoutes);
+app.use('/admin', adminRoutes);
  
 app.listen(PORT, async () => {
     await mongoose.connect(database)
