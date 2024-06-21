@@ -26,12 +26,13 @@ const register = async (req,res) => {
             { "userId": user._id },
             process.env.ACCESS_TOKEN_SECRET,
         )
-
+        
         res.cookie('jwt', accessToken, {
             httpOnly: true,
             sameSite: 'None',
-            secure: process.env.NODE_ENV !== 'development'
+            secure: process.env.NODE_ENV === 'production', // secure flag true only in production
         });
+
 
         res.status(201).json({
             _id: user._id,

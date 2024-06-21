@@ -10,13 +10,12 @@ export const bookAppointment = async (req, res) => {
         }
 
         // Save the appointment details to the database
-          const newAppointment = new AppointmentModel({
+          const newAppointment = await AppointmentModel.create({
             userEmail: email,
             appointmentDate,
             userId: id
         });
-
-        await newAppointment.save();
+        console.log(newAppointment);
 
         // Send confirmation email to the user
         const transporter = nodemailer.createTransport({
