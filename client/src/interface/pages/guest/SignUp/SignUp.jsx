@@ -1,4 +1,3 @@
-import MainLayout from "../../../components/layouts/MainLayout"
 import { Link, useNavigate } from "react-router-dom"
 import { useState } from "react"
 import OAuth from "./OAuth"
@@ -75,7 +74,7 @@ const SignUp = () => {
       if(data.statusCode == 201) {
         setExists(false)
         setLoading(false)
-        navigate('/signin') 
+        navigate('/otp') 
       } else{
 		setExists(data.message)
 		setLoading(false) 
