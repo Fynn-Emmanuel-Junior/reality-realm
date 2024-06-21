@@ -25,18 +25,44 @@ export const createAdminController = async (req, res) => {
             AdminKey: adminkey
         });
 
+        res.status(201).json({
+            statusCode: 201,
+            message: 'Admin created',
+        });
+    } catch (err) {
+        res.status(500).json({ message: `Cannot create admin: ${err.message}` });
+    }
+};
+
+export const loginAdminController = async (req, res) => {
+    const { email, password } = req.body;
+
+    // Validate email
+    if (!validator.isEmail(email)) return res.status(400).json({ message: 'Email is not valid' });
+
+    try {
+        // Check if the admin exists
+        const admin = await AdminModel.findOne({ email });
+        if (!admin) return res.status(401).json({ message: 'Invalid email or password' });
+
+        // Check if the password matches
+        const isPasswordValid = await bcrypt.compare(password, admin.password);
+        if (!isPasswordValid) return res.status(401).json({ message: 'Invalid email or password' });
+
+        // Generate access and refresh tokens
         const accessToken = jwt.sign(
-            { 'adminId': admin._id },
+            { adminId: admin._id },
             process.env.ACCESS_TOKEN_SECRET,
             { expiresIn: '10m' }
         );
 
         const refreshToken = jwt.sign(
-            { 'adminId': admin._id },
+            { adminId: admin._id },
             process.env.REFRESH_TOKEN_SECRET,
             { expiresIn: '1d' }
         );
 
+        // Set cookies for the tokens
         res.cookie('jwt', accessToken, {
             httpOnly: true,
             sameSite: 'None',
@@ -49,14 +75,17 @@ export const createAdminController = async (req, res) => {
             secure: process.env.NODE_ENV !== 'development'
         });
 
+        // Send the response
         const { _id,...rest } = admin;
 
-        res.status(201).json({
-            statusCode: 201,
-            message: 'Admin created',
+        res.status(200).json({
+            statusCode: 200,
+            message: 'Login successful',
             admin: { _id}
         });
     } catch (err) {
-        res.status(500).json({ message: `Cannot create admin: ${err.message}` });
+        res.status(500).json({ message: `Cannot login admin: ${err.message}` });
     }
 };
+
+
