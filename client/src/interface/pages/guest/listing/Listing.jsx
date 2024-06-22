@@ -21,7 +21,6 @@ import { GoSponsorTiers } from "react-icons/go";
 import { LuParkingCircle } from "react-icons/lu";
 import DatePicker from 'react-datepicker';
 import 'react-datepicker/dist/react-datepicker.css';
-import { Rings } from 'react-loader-spinner'; // Import the spinner
 import TopFooterContainer from '../../../components/pageComponents/TopFooterContainer'; // Import the new component
 
 const Listing = () => {
@@ -260,31 +259,31 @@ const Listing = () => {
                       )}
                     </div>
                   </div>
-                  <div className='bg-pink-800 p-3 mt-5 mb-10 rounded-md'>
-                    <div className='flex flex-col items-center'>
-                      <button
-                        className='text-white'
-                        onClick={handleAppointment}
-                        disabled={isBooking}
-                      >
-                        {isBooking ? <Rings height="30" width="30" color="white" /> : 'Book appointment'}
-                      </button>
-                    </div>
-                  </div>
                 </div>
               </div>
             </div>
           }
         </div>
+       <div className='mt-10'>
         {!loading && <Footer />}
-        {!loading && (
-          <TopFooterContainer>
-            <p>Your custom content here, above the footer.</p>
-          </TopFooterContainer>
-        )}
+       </div>
+        <TopFooterContainer>
+        <div className='flex items-center justify-between'>
+          <div>
+
+          </div>
+          <button
+            onClick={handleAppointment}
+            disabled={isBooking}
+            className='bg-pink-700 text-white py-2 px-4 rounded mt-4'
+          >
+            {isBooking ? 'Booking...' : 'Book Appointment'}
+          </button>
+        </div>
+      </TopFooterContainer>
       </main>
     </>
   );
-};
+}
 
 export default Listing;
