@@ -264,7 +264,8 @@ const Listing = () => {
             </div>
           }
         </div>
-       <div className='mt-10'>
+      </main>
+      <div className='mt-10'>
         {!loading && <Footer />}
        </div>
         <TopFooterContainer>
@@ -281,7 +282,6 @@ const Listing = () => {
           </button>
         </div>
       </TopFooterContainer>
-      </main>
     </>
   );
 }
