@@ -21,13 +21,13 @@ export const bookAppointment = async (req, res) => {
         const transporter = nodemailer.createTransport({
             service: 'gmail',
             auth: {
-                user: 'fynn.emmanuel100@gmail.com',
-                pass: 'Emoji@500'
+                user: process.env.EMAIL_USER,
+                pass: process.env.EMAIL_PASS
             }
         });
 
         const mailOptions = {
-            from: 'fynn.emmanuel100@gmail.com',
+            from: process.env.EMAIL_USER,
             to: userEmail,
             subject: 'Appointment Confirmation',
             text: `Your appointment is confirmed for ${appointmentDate}`

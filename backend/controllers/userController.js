@@ -159,7 +159,7 @@ const google = async (req, res) => {
             );
 
             res.cookie(
-                'refreshtoken',
+                'refreshToken',
                 refreshToken,
                 {
                     httpOnly: true,
@@ -318,7 +318,7 @@ const verifyOtpController = async (req, res) => {
         await user.save();
 
         // Set cookies for the tokens
-        res.cookie('jwt', accessToken, {
+        res.cookie('accessToken', accessToken, {
             httpOnly: true,
             sameSite: 'None',
             secure: process.env.NODE_ENV !== 'development',
