@@ -13,7 +13,6 @@ const Search = React.lazy(() => import('./interface/pages/guest/Search/Search'))
 const Contact = React.lazy(() => import('./interface/pages/guest/Contact/Contact'));
 const OtpPage = React.lazy(() => import('./interface/pages/guest/OtpPage/Otp'));
 
-
 const App = () => {
   return (
     <React.Suspense>

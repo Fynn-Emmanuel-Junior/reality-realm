@@ -1,32 +1,20 @@
 import MainLayout from "../../../components/layouts/MainLayout"
-import { Link } from "react-router-dom"
 import { useState,useEffect } from "react"
 import ListingItem from "../../../components/pageComponents/Search/ListingItem"
-import Footer from "../../../components/pageComponents/Footer"
 import { Circles } from 'react-loader-spinner'
-import { selectStatus ,selectListings,selectError} from "../../../../logic/ReduxStore/features/listings/listingsSlice"
 import {useSelector} from 'react-redux'
-import { fetchListings } from "../../../../logic/ReduxStore/features/listings/listingsSlice"
 import Skeleton from "../../../components/customs/Skeleton"
 import { selectMenu } from "../../../../logic/ReduxStore/features/menu/menuSlice"
 
-
-
-const uri = 'https://reality-realm-server.onrender.com'
+// const uri = 'https://reality-realm-server.onrender.com'
 
 const Home = () => {
-    // const listings = useSelector(selectListings)
-    // const loading = useSelector(selectStatus)
-    // const error = useSelector(selectError)
-    // const dispatch = useDispatch()
-    const [listings,setListings] = useState([])
-    const [loading,setLoading] = useState(true)
-    const [error,setError] = useState(false)
-    
-    const [loadmore,setLoadmore] = useState(true)
-    const [text,setText] = useState(false)
+    const [listings,setListings] = useState([]);
+    const [loading,setLoading] = useState(true);
+    const [loadmore,setLoadmore] = useState(true);
+    const [text,setText] = useState(false);
 
-    const menu = useSelector(selectMenu)
+    const menu = useSelector(selectMenu);
 
 
     useEffect(() => {
@@ -40,11 +28,10 @@ const Home = () => {
                         setLoading(false)
                     },500)
                 } catch(err) {
-                    console.log(err.message)
-                    setLoading(true)
+                    setLoading(false);
+                    throw new Error(err);
                 }
             }
-
             fetchlistings()
             
     },[])
@@ -105,13 +92,13 @@ const Home = () => {
                 > 
                     {
                         text ? <div className='flex justify-center items-center'>
-                        <span className='mr-2'>Loading more</span>
+                        <span className='mr-2'>Loading...</span>
                         <Circles
                             height="20"
                             width="20" 
                             color="#ffffff"
                             visible={true}
-                        /> </div> : 'View more listings'
+                        /> </div> : ' Load listings'
                     } 
                 </button>
             </div>

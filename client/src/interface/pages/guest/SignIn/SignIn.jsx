@@ -1,7 +1,7 @@
 import { Link, useNavigate } from "react-router-dom"
 import { useState } from "react"
 import {useDispatch} from 'react-redux'
-import { signInStart,signInFailure,signInSuccess } from "../../../../logic/ReduxStore/features/users/usersSlice"
+import {signInSuccess } from "../../../../logic/ReduxStore/features/users/usersSlice"
 import OAuth from '../SignUp/OAuth'
 import { TailSpin } from "react-loader-spinner"
 import { FiEye,FiEyeOff } from "react-icons/fi";
@@ -127,7 +127,7 @@ const SignIn = () => {
 					<input 
 						type="text" 
 						placeholder="email"
-						className="border border-emerald-950  text-base p-3 pl-5 rounded-xl md:rounded-3xl focus:outline-none focus:border-teal-600"
+						className="border border-emerald-950  text-base p-3 pl-5 rounded-xl  focus:outline-none focus:border-teal-600"
 						id="email"
 						name="email"
 						onChange={handleChange}
@@ -137,7 +137,7 @@ const SignIn = () => {
 							please fill all fields
 						</div> : ''
 					} 
-					<div className="w-full flex items-center justify-center border border-emerald-950 rounded-xl md:rounded-3xl  p-3 pl-5 ">
+					<div className="w-full flex items-center justify-center border border-emerald-950 rounded-xl p-3 pl-5 ">
 						<input 
 							type={showpassword ? 'text' : 'password'} 
 							placeholder="password"
@@ -159,7 +159,7 @@ const SignIn = () => {
 						<div className="flex flex-col gap-5">
 							<button
 							// disabled={loading} 
-								className="bg-slate-900 p-3 text-white rounded-xl md:rounded-3xl uppercase hover:opacity-95 disabled:opacity-80"> 
+								className="bg-slate-900 p-3 text-white rounded-xl uppercase hover:opacity-95 disabled:opacity-80"> 
 							
 							{
 								loading ? 

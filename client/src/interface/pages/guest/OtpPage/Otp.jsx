@@ -1,4 +1,4 @@
-import { useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { useState } from "react";
 import { TailSpin } from "react-loader-spinner";
 import { HiOutlineMenu } from "react-icons/hi";
@@ -80,13 +80,11 @@ const Otp = () => {
                 </div>
             
                 <div className="mt-[65%] sm:mt-[30%] md:mt-[-20%]  lg:mt-0">
-					<div className='flex flex-col items-center'>
-						<p className='w-2/5'>
-							<h1 className="font-bold text-3xl text-center cursor-pointer w-full"> RealityRealm </h1>
-						</p>
-					</div>
+                    <Link to='/'>
+                        <h1 className="font-bold text-3xl text-center cursor-pointer"> RealityRealm </h1>
+                    </Link>
                     <h2 className="text-xl text-center font-semibold mt-5 mb-6"> Verify your Email </h2>
-                    <form onSubmit={handleSubmit} className="flex flex-col gap-4 mx-auto sm:max-w-sm md:max-w-md md-x:max-w-xl lg:w-[400px]">
+                    <form onSubmit={handleSubmit} className="flex flex-col gap-4 mx-auto sm:max-w-sm md:max-w-md md-x:max-w-xl lg:max-w-xl xl:max-w-lg">
                         <input
                             type="text"
                             placeholder="Enter 4 digits Otp code"

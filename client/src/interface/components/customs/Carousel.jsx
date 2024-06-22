@@ -1,8 +1,8 @@
-import React,{useState} from 'react'
+import {useState} from 'react'
 import { FiChevronLeft,FiChevronRight } from "react-icons/fi";
 import { Link } from 'react-router-dom';
-import Skeleton from 'react-loading-skeleton';
 import 'react-loading-skeleton/dist/skeleton.css'
+import PropTypes from 'prop-types';
 
 const Carousel = ({images,id}) => {
     const [current,setCurrent] = useState(0)
@@ -63,13 +63,18 @@ const Carousel = ({images,id}) => {
             <div className='flex justify-center items-center gap-2'>
                 {
                     images.map((_,i) => (
-                        <div key={i} className={`transition-all w-2 h-2 bg-white rounded-full ${current == i ? 'p-2' : 'bg-opacity-60'}`} />
+                        <div key={i} className={`transition-all w-2 h-2 bg-white rounded-full ${current == i ? 'p-1' : 'bg-opacity-60'}`} />
                     ))
                 }
             </div>
         </div>	  
     </div>
-  )
-}
+  );
+};
+
+Carousel.propTypes = {
+    images: PropTypes.arrayOf(PropTypes.string).isRequired,
+    id: PropTypes.number.isRequired,
+};
 
 export default Carousel

@@ -51,58 +51,7 @@ const Skeleton = () => {
                             <div className="bg-stone-200 w-2/3 h-5 mt-2 rounded-md"/> 
                             <div className="bg-stone-200 w-1/2 h-5 mt-1 rounded-md"/> 
                             <div className="bg-stone-200 w-2/3 h-5 mt-1 rounded-md"/> 
-                        </div>
-
-                        <div className="w-full h-fulll">
-                            <div className="w-full h-60 bg-stone-200 rounded-2xl"/>  
-                            <div className="bg-stone-200 w-2/3 h-5 mt-2 rounded-md"/> 
-                            <div className="bg-stone-200 w-1/2 h-5 mt-1 rounded-md"/> 
-                            <div className="bg-stone-200 w-2/3 h-5 mt-1 rounded-md"/> 
-                        </div>
-                        <div className="w-full h-fulll">
-                            <div className="w-full h-60 bg-stone-200 rounded-2xl"/>  
-                            <div className="bg-stone-200 w-2/3 h-5 mt-2 rounded-md"/> 
-                            <div className="bg-stone-200 w-1/2 h-5 mt-1 rounded-md"/> 
-                            <div className="bg-stone-200 w-2/3 h-5 mt-1 rounded-md"/> 
-                        </div>
-                        <div className="w-full h-fulll">
-                            <div className="w-full h-60 bg-stone-200 rounded-2xl"/>  
-                            <div className="bg-stone-200 w-2/3 h-5 mt-2 rounded-md"/> 
-                            <div className="bg-stone-200 w-1/2 h-5 mt-1 rounded-md"/> 
-                            <div className="bg-stone-200 w-2/3 h-5 mt-1 rounded-md"/> 
-                        </div>
-                        <div className="w-full h-fulll">
-                            <div className="w-full h-60 bg-stone-200 rounded-2xl"/>  
-                            <div className="bg-stone-200 w-2/3 h-5 mt-2 rounded-md"/> 
-                            <div className="bg-stone-200 w-1/2 h-5 mt-1 rounded-md"/> 
-                            <div className="bg-stone-200 w-2/3 h-5 mt-1 rounded-md"/> 
-                        </div>
-
-                        <div className="w-full h-fulll">
-                            <div className="w-full h-60 bg-stone-200 rounded-2xl"/>  
-                            <div className="bg-stone-200 w-2/3 h-5 mt-2 rounded-md"/> 
-                            <div className="bg-stone-200 w-1/2 h-5 mt-1 rounded-md"/> 
-                            <div className="bg-stone-200 w-2/3 h-5 mt-1 rounded-md"/> 
-                        </div>
-                        <div className="w-full h-fulll">
-                            <div className="w-full h-60 bg-stone-200 rounded-2xl"/>  
-                            <div className="bg-stone-200 w-2/3 h-5 mt-2 rounded-md"/> 
-                            <div className="bg-stone-200 w-1/2 h-5 mt-1 rounded-md"/> 
-                            <div className="bg-stone-200 w-2/3 h-5 mt-1 rounded-md"/> 
-                        </div>
-                        <div className="w-full h-fulll">
-                            <div className="w-full h-60 bg-stone-200 rounded-2xl"/>  
-                            <div className="bg-stone-200 w-2/3 h-5 mt-2 rounded-md"/> 
-                            <div className="bg-stone-200 w-1/2 h-5 mt-1 rounded-md"/> 
-                            <div className="bg-stone-200 w-2/3 h-5 mt-1 rounded-md"/> 
-                        </div>
-                        <div className="w-full h-fulll">
-                            <div className="w-full h-60 bg-stone-200 rounded-2xl"/>  
-                            <div className="bg-stone-200 w-2/3 h-5 mt-2 rounded-md"/> 
-                            <div className="bg-stone-200 w-1/2 h-5 mt-1 rounded-md"/> 
-                            <div className="bg-stone-200 w-2/3 h-5 mt-1 rounded-md"/> 
-                        </div>
-                       
+                        </div>             
                     </div> 
   )
 }

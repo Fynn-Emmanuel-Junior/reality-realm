@@ -50,6 +50,11 @@ body{
     right: 0;
   }
   
+  .animate-message {
+    transition: opacity 0.3s ease-in-out;
+  }
+  
+  
 
 
 

@@ -1,4 +1,4 @@
-import React, {useState,useEffect} from 'react'
+import {useState,useEffect} from 'react'
 import {Link} from 'react-router-dom'
 import ContactLayout from '../../../components/layouts/ContactLayout'
 import Footer from '../../../components/pageComponents/Footer'
@@ -34,7 +34,7 @@ const Contact = () => {
 				</div>	
 				<div className='bg-[#f2ecd977] shadow-lg p-6 flex flex-col gap-4 rounded-2xl w-[300px] sm:w-[484px] lg:w-[300px]'>
 					<h3 className='text-slate-900 text-lg font-bold text-center'> Email Support </h3>
-					<p className='text-center'> Prefer to email? Send us an email and we'll get back to you soon </p>
+					<p className='text-center'> Prefer to email? Send us an email and {"we'll"} get back to you soon </p>
 					<div className='flex flex-col items-center'>
 						<div className='flex items-center gap-4 text-blue-900'>
 							<Link href='mailto:fynn.emmanuel100@gmail.com'> Send Email </Link>

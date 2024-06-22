@@ -1,0 +1,16 @@
+import React from 'react';
+import PropTypes from 'prop-types';
+
+const TopFooterContainer = ({ children }) => {
+  return (
+    <div className="md:hidden w-full bg-gray-100 p-4 shadow-md z-30 sticky bottom-0">
+      {children}
+    </div>
+  );
+};
+
+TopFooterContainer.propTypes = {
+  children: PropTypes.node.isRequired,
+};
+
+export default TopFooterContainer;

@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react';
-import { useParams,useNavigate } from 'react-router-dom';
+import { useParams, useNavigate } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 import { selectCurrentUser } from '../../../../logic/ReduxStore/features/users/usersSlice';
 import SearchNavBar from '../../../components/pageComponents/Search/SearchNavBar';
@@ -22,18 +22,19 @@ import { LuParkingCircle } from "react-icons/lu";
 import DatePicker from 'react-datepicker';
 import 'react-datepicker/dist/react-datepicker.css';
 import { Rings } from 'react-loader-spinner'; // Import the spinner
+import TopFooterContainer from '../../../components/pageComponents/TopFooterContainer'; // Import the new component
 
 const Listing = () => {
   const { id } = useParams();
   const [user, setUser] = useState({});
   const dispatch = useDispatch();
-  const currentuser = useSelector(selectCurrentUser);
-  const [listing, setlisting] = useState({});
+  const currentUser = useSelector(selectCurrentUser);
+  const [listing, setListing] = useState({});
   const [loading, setLoading] = useState(true);
   const [selectedDate, setSelectedDate] = useState(null);
   const [isBooking, setIsBooking] = useState(false); // State for booking status
   const [error, setError] = useState(""); // State for error message
-  const navigate = useNavigate()
+  const navigate = useNavigate();
 
   const handleDateChange = (date) => {
     setSelectedDate(date);
@@ -41,22 +42,23 @@ const Listing = () => {
   };
 
   useEffect(() => {
-    const fetchlisting = async () => {
+    setLoading(true);
+    const fetchListing = async () => {
       try {
         setLoading(true);
         const res = await fetch(`http://localhost:3500/listings/getlisting/${id}`);
         const data = await res.json();
-        setlisting(data);
+        setListing(data);
         dispatch(setImages(listing.imageurls));
         setLoading(false);
       } catch (err) {
-        console.log(err.message);
         setLoading(true);
+        throw new Error('Cannot fetch listing');
       }
     };
 
-    fetchlisting();
-  }, []);
+    fetchListing();
+  }, [id]);
 
   const handleAppointment = async () => {
     if (!selectedDate) {
@@ -68,27 +70,27 @@ const Listing = () => {
     setError(""); // Clear any existing errors
     try {
       // Simulate an API call
-     const response = await fetch(`http://localhost:3500/appointment/book`, {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json'
-      },
-      credentials: 'include',
-      body: JSON.stringify({
-        id: currentuser._id,
-        email: currentuser.email,
-        appointmentDate: selectedDate
-      })
-     })
-      const data = await response.json()
+      const response = await fetch(`http://localhost:3500/appointment/book`, {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        credentials: 'include',
+        body: JSON.stringify({
+          id: currentUser._id,
+          email: currentUser.email,
+          appointmentDate: selectedDate,
+        }),
+      });
+      const data = await response.json();
       console.log(data);
-      if(data.statusCode == 200 && currentuser) {
-        navigate('/notifications')
-      } 
+      if (data.statusCode === 200 && currentUser) {
+        navigate('/notifications');
+      }
       setIsBooking(false);
     } catch (err) {
-      console.log(err.message);
       setIsBooking(false);
+      throw new Error(err);
     }
   };
 
@@ -275,9 +277,14 @@ const Listing = () => {
           }
         </div>
         {!loading && <Footer />}
+        {!loading && (
+          <TopFooterContainer>
+            <p>Your custom content here, above the footer.</p>
+          </TopFooterContainer>
+        )}
       </main>
     </>
   );
-}
+};
 
 export default Listing;
