@@ -180,7 +180,6 @@ const google = async (req, res) => {
             res.json(accesstoken);
 
             const { password: pass, ...rest } = newUser._doc;
-
             res.status(200).json(rest);
         }
 
@@ -218,9 +217,8 @@ const deleteUser = async (req, res) => {
     if (req.user) {
         try {
             const deleteuser = await UserModel.findByIdAndDelete(req.user._id);
-            res.clearCookie('jwt');
             res.status(200).json(deleteuser);
-            console.log('user deleted');
+    
         } catch (err) {
             res.status(400).json({ message: err.message });
         }
