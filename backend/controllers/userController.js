@@ -245,12 +245,15 @@ const deleteUser = async (req, res) => {
 };
 
 const signout = async (req, res) => {
-    try {
-        res.clearCookie('jwt');
-        res.status(200).json({ message: 'user has been logout' });
-    } catch (err) {
-        res.status(401).json({ message: 'error in logging out user' });
-    }
+    const cookies = req.cookies;
+    if(!cookies.jwt) return res.sendStatus(204);
+  
+    res.clearCookie('jwt',{
+        httpOnly: true,
+        sameSite: 'None',
+        secure: false
+    });
+    res.status(200).json({ message: 'user has been logout' });
 }; 
 
 const getUser = async (req, res) => {
