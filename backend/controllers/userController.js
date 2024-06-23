@@ -4,6 +4,7 @@ import jwt from 'jsonwebtoken';
 import validator from 'validator';
 import crypto from 'crypto';
 import nodemailer from 'nodemailer';
+import asyncHandler from "express-async-handler";
 
 const register = async (req, res) => {
     const { username, email, password } = req.body;
@@ -56,11 +57,11 @@ const auth = async (req, res) => {
             { "userId": foundUser._id },
             process.env.REFRESH_TOKEN_SECRET,
             {
-                expiresIn: '3d',
+                expiresIn: '2d',
             },
         );
 
-        res.cookie('refreshToken', refreshToken, {
+        res.cookie('jwt', refreshToken, {
             httpOnly: true,
             sameSite: 'None',
             secure: false,
@@ -82,8 +83,23 @@ const auth = async (req, res) => {
 };
 
 const refresh = async(req,res) => {
+    const cookies = req.cookies;
 
-}
+    if(!cookies.jwt) return res.status(401).json({message: 'Invalid refresh token '});
+
+    const refreshToken = cookies.jwt;
+
+    jwt.verify(
+        refreshToken,
+        process.env.REFRESH_TOKEN_SECRET,
+        asyncHandler(async(err,decoded) => {
+            if(err) return res.status(403).json({message: 'Forbidden'});
+
+            const foundUser = await UserModel.findById(decoded.userId);
+            if(!foundUser) return res.status(401).json({message: 'Unauthorized user'});
+        })
+    );
+};
 
 const google = async (req, res) => {
     try {
