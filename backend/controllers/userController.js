@@ -47,27 +47,27 @@ const auth = async (req, res) => {
         const accessToken = jwt.sign(
             { "userId": foundUser._id },
             process.env.ACCESS_TOKEN_SECRET,
+            {
+                expiresIn: '15m'
+            }
         );
 
         const refreshToken = jwt.sign(
             { "userId": foundUser._id },
             process.env.REFRESH_TOKEN_SECRET,
             {
-                expiresIn: '1d',
+                expiresIn: '3d',
             },
-        )
-
-        res.cookie('accessToken', accessToken, {
-            httpOnly: true,
-            sameSite: 'None',
-            secure: false
-        });
+        );
 
         res.cookie('refreshToken', refreshToken, {
             httpOnly: true,
             sameSite: 'None',
-            secure: false
+            secure: false,
+            maxAge: 3*24*60*60*1000
         });
+
+        res.json({accessToken});
 
 
         res.status(200).json({
@@ -80,6 +80,10 @@ const auth = async (req, res) => {
         res.status(401).json({ message: 'Unauthorized user' });
     }
 };
+
+const refresh = async(req,res) => {
+
+}
 
 const google = async (req, res) => {
     try {

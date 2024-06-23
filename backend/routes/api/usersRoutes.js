@@ -8,7 +8,8 @@ import {
     signout,
     getUser,
     sendOtpController,
-    verifyOtpController
+    verifyOtpController,
+    refresh
 } from '../../controllers/userController.js';
 import { authMiddleware } from "../../middlewares/authMiddleware.js";
 
@@ -19,10 +20,11 @@ router.post('/register',register);
 router.post('/send',sendOtpController);
 router.post('/verify',verifyOtpController);
 router.post('/auth',auth);
+router.get('/refresh',refresh);
 router.post('/google',google);
 router.put('/update',authMiddleware, update);
 router.delete('/delete',authMiddleware,deleteUser);
-router.get('/signout',authMiddleware,signout);
+router.post('/signout',authMiddleware,signout);
 router.get('/:id',authMiddleware,getUser);
 
 
