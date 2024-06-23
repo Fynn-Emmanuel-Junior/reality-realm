@@ -3,21 +3,22 @@ import UserModel from '../models/UserModel.js';
 import asyncHandler from 'express-async-handler';
 
 const authMiddleware = asyncHandler(async (req, res, next) => {
-    const token = req.cookies.jwt;
-    console.log(token)
-  
-    if (token) {
-        try {
-            const decoded = jwt.verify(token, process.env.ACCESS_TOKEN_SECRET);
-            console.log(decoded);
-            req.user = await UserModel.findById(decoded.userId).select('-password');
-            next();
-        } catch (err) {
-            res.status(401).json({ message: "Invalid token" });
-        }
-    } else {
-        res.status(403).json({ message: 'No token found' });
+   const authHeader = req.headers.authorizationHeader || req.headers.Authorization;
+
+   if(!authHeader.startsWith('Bearer ')) return res.status(401).json({message: 'Unauthorized'});
+
+   const token = authHeader.split(' ')[1];
+
+   jwt.verify(
+    token,
+    process.env.ACCESS_TOKEN_SECRET,
+    (err,decoded) => {
+        if(err) return res.status(403).json({message: 'Forbidden'});
+        req.user = decoded.userId;
+
+        next();
     }
+   )
 });
 
 export { authMiddleware };

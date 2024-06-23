@@ -102,8 +102,9 @@ const refresh = async(req,res) => {
                 {"userId": foundUser._id},
                 process.env.ACCESS_TOKEN_SECRET,
                 {expiresIn: '15minutes'}
-
             )
+
+            res.json(accessToken);
         })
     );
 };
@@ -116,34 +117,26 @@ const google = async (req, res) => {
             const accesstoken = jwt.sign(
                 { "userId": user._id },
                 process.env.ACCESS_TOKEN_SECRET,
+                {expiresIn: '15minutes'}
             );
 
             const refreshToken = jwt.sign(
                 { "userId": foundUser._id },
                 process.env.REFRESH_TOKEN_SECRET,
                 {
-                    expiresIn: '1d',
+                    expiresIn: '2d',
                 },
             );
 
             const { password: pass, ...rest } = user._doc;
 
-            res.cookie(
-                'jwt',
-                accesstoken,
-                {
-                    httpOnly: true,
-                    sameSite: "None",
-                    secure: true,
-                }
-            );
-
-            res.cookie('refreshToken', refreshToken, {
+            res.cookie('jwt', refreshToken, {
                 httpOnly: true,
                 sameSite: 'None',
                 secure: false
             });
 
+            res.json(accesstoken)
             res.status(200).json(rest);
 
         } else {
@@ -163,37 +156,30 @@ const google = async (req, res) => {
             const accesstoken = jwt.sign(
                 { "userId": newUser._id },
                 process.env.ACCESS_TOKEN_SECRET,
+                {expiresIn: '15minutes'}
             );
 
             const refreshToken = jwt.sign(
                 { "userId": foundUser._id },
                 process.env.REFRESH_TOKEN_SECRET,
                 {
-                    expiresIn: '1d',
+                    expiresIn: '2d',
                 },
             )
 
-            const { password: pass, ...rest } = newUser._doc;
-
             res.cookie(
-                'accessToken',
-                accesstoken,
-                {
-                    httpOnly: true,
-                    sameSite: "None",
-                    secure: true,
-                }
-            );
-
-            res.cookie(
-                'refreshToken',
+                'jwt',
                 refreshToken,
                 {
                     httpOnly: true,
                     sameSite: "None",
-                    secure: true,
+                    secure: false,
                 }
             );
+
+            res.json(accesstoken);
+
+            const { password: pass, ...rest } = newUser._doc;
 
             res.status(200).json(rest);
         }
