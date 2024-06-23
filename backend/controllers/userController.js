@@ -49,7 +49,7 @@ const auth = async (req, res) => {
             { "userId": foundUser._id },
             process.env.ACCESS_TOKEN_SECRET,
             {
-                expiresIn: '15m'
+                expiresIn: '15minutes'
             }
         );
 
@@ -85,7 +85,7 @@ const auth = async (req, res) => {
 const refresh = async(req,res) => {
     const cookies = req.cookies;
 
-    if(!cookies.jwt) return res.status(401).json({message: 'Invalid refresh token '});
+    if(!cookies.jwt) return res.status(401).json({message: 'Forbidden'});
 
     const refreshToken = cookies.jwt;
 
@@ -97,6 +97,13 @@ const refresh = async(req,res) => {
 
             const foundUser = await UserModel.findById(decoded.userId);
             if(!foundUser) return res.status(401).json({message: 'Unauthorized user'});
+
+            const accessToken = jwt.sign(
+                {"userId": foundUser._id},
+                process.env.ACCESS_TOKEN_SECRET,
+                {expiresIn: '15minutes'}
+
+            )
         })
     );
 };
@@ -321,15 +328,15 @@ const verifyOtpController = async (req, res) => {
 
         // Generate JWT tokens
         const accessToken = jwt.sign(
-            { userId: user._id },
+            { "userId": user._id },
             process.env.ACCESS_TOKEN_SECRET,
-            { expiresIn: '10m' }
+            { expiresIn: '15m' }
         );
 
         const refreshToken = jwt.sign(
-            { userId: user._id },
+            { "userId": user._id },
             process.env.REFRESH_TOKEN_SECRET,
-            { expiresIn: '1d' }
+            { expiresIn: '2d' }
         );
 
         // Clear OTP fields in the user document
@@ -338,13 +345,8 @@ const verifyOtpController = async (req, res) => {
         await user.save();
 
         // Set cookies for the tokens
-        res.cookie('accessToken', accessToken, {
-            httpOnly: true,
-            sameSite: 'None',
-            secure: process.env.NODE_ENV !== 'development',
-        });
 
-        res.cookie('refreshToken', refreshToken, {
+        res.cookie('jwt', refreshToken, {
             httpOnly: true,
             sameSite: 'None',
             secure: process.env.NODE_ENV !== 'development',
@@ -365,5 +367,6 @@ export {
     signout,
     getUser,
     sendOtpController,
-    verifyOtpController
+    verifyOtpController,
+    refresh
 };
