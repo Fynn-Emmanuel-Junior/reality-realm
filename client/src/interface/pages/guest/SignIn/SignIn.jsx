@@ -83,6 +83,7 @@ const SignIn = () => {
 		} else{
 		
 			setPasswordExists(false)
+			localStorage.setItem('accessToken', data.AccessToken);
 			dispatch(signInSuccess(data))
 			setExists(false)
 			setLoading(false)

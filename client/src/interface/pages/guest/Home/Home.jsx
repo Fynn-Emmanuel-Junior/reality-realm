@@ -86,7 +86,7 @@ const Home = () => {
             </div>
           {
             loadmore &&   <div className='flex flex-col items-center mt-5 mb-10'>
-            <div className="flex flex-col items-center w-1/3 lg:w-1/4 bg-slate-700 rounded-lg text-white uppercase p-3 hover:opacity-95 disabled:opacity-80 cursor-pointer">
+            <div className="flex flex-col items-center w-1/3 lg:w-1/4 bg-pink-800 rounded-lg text-white uppercase p-3 hover:opacity-95 disabled:opacity-80 cursor-pointer">
                 <button
                     onClick={showmore}
                 > 

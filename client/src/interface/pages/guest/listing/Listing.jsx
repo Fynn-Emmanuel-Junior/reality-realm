@@ -60,6 +60,12 @@ const Listing = () => {
   }, [id]);
 
   const handleAppointment = async () => {
+    let token = currentUser.AccessToken;
+
+    if(!token) {
+       await fetch(`http://localhost:3500/users/refresh`);
+    }
+
     if (!selectedDate) {
       setError('Please select an appointment date.');
       return;
@@ -73,6 +79,7 @@ const Listing = () => {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
+          'Authorization': `Bearer ${token}`
         },
         credentials: 'include',
         body: JSON.stringify({
@@ -276,7 +283,7 @@ const Listing = () => {
           <button
             onClick={handleAppointment}
             disabled={isBooking}
-            className='bg-pink-700 text-white py-2 px-4 rounded mt-4'
+            className='bg-pink-700 text-white py-2 mb-3 px-4 rounded mt-4'
           >
             {isBooking ? 'Booking...' : 'Book Appointment'}
           </button>
