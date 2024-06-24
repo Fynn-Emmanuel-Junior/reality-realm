@@ -68,13 +68,11 @@ const auth = async (req, res) => {
             maxAge: 3*24*60*60*1000
         });
 
-        res.json({accessToken});
-
-
         res.status(200).json({
             _id: foundUser._id,
             username: foundUser.username,
             email: foundUser.email,
+            AccessToken: accessToken
         });
 
     } else {
@@ -104,7 +102,7 @@ const refresh = async(req,res) => {
                 {expiresIn: '15minutes'}
             )
 
-            res.json(accessToken);
+            res.json({AccessToken: accessToken});
         })
     );
 };
@@ -136,7 +134,7 @@ const google = async (req, res) => {
                 secure: false
             });
 
-            res.json(accesstoken)
+            res.json({AccessToken: accesstoken})
             res.status(200).json(rest);
 
         } else {
@@ -177,7 +175,7 @@ const google = async (req, res) => {
                 }
             );
 
-            res.json(accesstoken);
+            res.json({AccessToken: accesstoken});
 
             const { password: pass, ...rest } = newUser._doc;
             res.status(200).json(rest);
@@ -195,14 +193,14 @@ const update = async (req, res) => {
             req.body.password = await bcrypt.hash(req.body.password, salt);
         }
 
-        const user = await UserModel.findByIdAndUpdate(req.user._id, {
+        const user = await UserModel.findByIdAndUpdate(req.user,{
             $set: {
                 username: req.body.username,
                 email: req.body.email,
                 password: req.body.password,
                 avatar: req.body.avatar
             }
-        }, { new: true });
+        },{ new: true });
 
         const { password: pass, ...rest } = user._doc;
 
@@ -243,11 +241,9 @@ const signout = async (req, res) => {
 const getUser = async (req, res) => {
     try {
         const user = await UserModel.findById(req.params.id);
-
         if (!user) return res.status(204).json({ message: 'No user found' });
 
         const { password: pass, ...rest } = user._doc;
-
         res.status(200).json(rest);
     } catch (err) {
         res.status(400).json({ message: 'Failed to get user' });
@@ -338,6 +334,8 @@ const verifyOtpController = async (req, res) => {
             sameSite: 'None',
             secure: process.env.NODE_ENV !== 'development',
         });
+
+        res.json(accessToken);
 
         res.status(200).json({ message: 'OTP verified successfully' });
     } catch (err) {

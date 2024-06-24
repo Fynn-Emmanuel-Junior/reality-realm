@@ -3,7 +3,7 @@ import UserModel from '../models/UserModel.js';
 import asyncHandler from 'express-async-handler';
 
 const authMiddleware = asyncHandler(async (req, res, next) => {
-   const authHeader = req.headers.authorizationHeader || req.headers.Authorization;
+   const authHeader = req.headers.authorization || req.headers.Authorization;
 
    if(!authHeader.startsWith('Bearer ')) return res.status(401).json({message: 'Unauthorized'});
 
