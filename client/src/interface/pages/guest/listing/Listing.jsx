@@ -14,7 +14,7 @@ import { LiaUserAstronautSolid } from "react-icons/lia";
 import { GrElevator } from "react-icons/gr";
 import { GiKitchenKnives,GiPowerGenerator } from "react-icons/gi";
 import { BsHouseDoor } from "react-icons/bs";
-import { MdOutlineLocalLaundryService,MdOutlineMicrowave } from "react-icons/md";
+import { MdOutlineLocalLaundryService,MdOutlineMicrowave, MdOutlineStore } from "react-icons/md";
 import { CiLock } from "react-icons/ci";
 import { FaBottleWater } from "react-icons/fa6";
 import { TbAirConditioningDisabled,TbPool  } from "react-icons/tb";
@@ -186,8 +186,8 @@ const Listing = () => {
                         <h3> Swimming pool </h3>
                       </div>
                       <div className='p-5 rounded-lg flex gap-3 border'>
-                        <BsHouseDoor size={25} className='text-blue-900' />
-                        <h3> Furnished </h3>
+                        < MdOutlineStore size={25} className='text-blue-900' />
+                        <h3> Convenient store </h3>
                       </div>
                     </div>
                     <div className='grid grid-cols-2 gap-3 mt-4'>
