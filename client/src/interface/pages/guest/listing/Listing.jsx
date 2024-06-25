@@ -8,15 +8,18 @@ import Card from '../../../components/pageComponents/listing/Card';
 import Footer from '../../../components/pageComponents/Footer';
 import ListingSkeleton from '../../../components/customs/ListingSkeleton';
 import { setImages } from '../../../../logic/ReduxStore/features/listings/CarouselSlice';
-import { IoLocationOutline, IoBedOutline} from "react-icons/io5";
+import { IoLocationOutline, IoBedOutline,IoGolf} from "react-icons/io5";
 import { BiBath } from "react-icons/bi";
 import { LiaUserAstronautSolid } from "react-icons/lia";
 import { GrElevator } from "react-icons/gr";
-import { GiKitchenKnives } from "react-icons/gi";
+import { GiKitchenKnives,GiPowerGenerator } from "react-icons/gi";
 import { BsHouseDoor } from "react-icons/bs";
 import { MdOutlineLocalLaundryService } from "react-icons/md";
 import { CiLock } from "react-icons/ci";
+import { FaBottleWater } from "react-icons/fa6";
+import { TbAirConditioningDisabled,TbPool  } from "react-icons/tb";
 import { IoIosArrowBack, IoIosArrowForward } from "react-icons/io";
+import { LuRefrigerator } from "react-icons/lu";
 import DatePicker from 'react-datepicker';
 import 'react-datepicker/dist/react-datepicker.css';
 import TopFooterContainer from '../../../components/pageComponents/TopFooterContainer';
@@ -149,8 +152,48 @@ const Listing = () => {
                     </div>
                     <div className='grid grid-cols-2 gap-3 mt-4'>
                       <div className='p-5 rounded-lg flex gap-3 border'>
+                        <GiPowerGenerator size={25} className='text-blue-900' />
+                        <h3> Generator </h3>
+                      </div>
+                      <div className='p-5 rounded-lg flex gap-3 border'>
+                        <BsHouseDoor size={25} className='text-blue-900' />
+                        <h3> Furnished </h3>
+                      </div>
+                    </div>
+                    <div className='grid grid-cols-2 gap-3 mt-4'>
+                      <div className='p-5 rounded-lg flex gap-3 border'>
+                        <TbAirConditioningDisabled  size={25} className='text-blue-900' />
+                        <h3> Air Conditioning </h3>
+                      </div>
+                      <div className='p-5 rounded-lg flex gap-3 border'>
+                        <LuRefrigerator size={25} className='text-blue-900' />
+                        <h3> Refrigerator </h3>
+                      </div>
+                    </div>
+                    <div className='grid grid-cols-2 gap-3 mt-4'>
+                      <div className='p-5 rounded-lg flex gap-3 border'>
+                        <FaBottleWater  size={25} className='text-blue-900' />
+                        <h3> Water Reservoir </h3>
+                      </div>
+                      <div className='p-5 rounded-lg flex gap-3 border'>
+                        <BsHouseDoor size={25} className='text-blue-900' />
+                        <h3> Furnished </h3>
+                      </div>
+                    </div>
+                    <div className='grid grid-cols-2 gap-3 mt-4'>
+                      <div className='p-5 rounded-lg flex gap-3 border'>
+                        <TbPool  size={25} className='text-blue-900' />
+                        <h3> Swimming pool </h3>
+                      </div>
+                      <div className='p-5 rounded-lg flex gap-3 border'>
+                        <BsHouseDoor size={25} className='text-blue-900' />
+                        <h3> Furnished </h3>
+                      </div>
+                    </div>
+                    <div className='grid grid-cols-2 gap-3 mt-4'>
+                      <div className='p-5 rounded-lg flex gap-3 border'>
                         <GiKitchenKnives size={25} className='text-blue-900' />
-                        <h3> Doorman </h3>
+                        <h3> Kitchen </h3>
                       </div>
                       <div className='p-5 rounded-lg flex gap-3 border'>
                         <BsHouseDoor size={25} className='text-blue-900' />
