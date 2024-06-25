@@ -13,6 +13,9 @@ const listingSchema = new mongoose.Schema({
         type: String,
         required: true
     },
+    details: {
+        type: String
+    },
     typeOfPlace: {
         type: String,
         required: true
