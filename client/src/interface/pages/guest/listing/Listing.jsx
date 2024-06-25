@@ -19,11 +19,13 @@ import { CiLock } from "react-icons/ci";
 import profile from '../../../assets/profile.png';
 import { GoSponsorTiers } from "react-icons/go";
 import { LuParkingCircle } from "react-icons/lu";
-import { IoIosArrowBack } from "react-icons/io";
+import { IoIosArrowBack, IoIosArrowForward } from "react-icons/io";
 import DatePicker from 'react-datepicker';
 import 'react-datepicker/dist/react-datepicker.css';
-import TopFooterContainer from '../../../components/pageComponents/TopFooterContainer'; // Import the new component
-// import './listing.css'; // Import custom CSS for the bottom sheet
+import TopFooterContainer from '../../../components/pageComponents/TopFooterContainer';
+import Slider from "react-slick";
+import "slick-carousel/slick/slick.css";
+import "slick-carousel/slick/slick-theme.css";
 
 const Listing = () => {
   const { id } = useParams();
@@ -33,14 +35,14 @@ const Listing = () => {
   const [listing, setListing] = useState({});
   const [loading, setLoading] = useState(true);
   const [selectedDate, setSelectedDate] = useState(null);
-  const [isBooking, setIsBooking] = useState(false); // State for booking status
-  const [error, setError] = useState(""); // State for error message
-  const [showMore, setShowMore] = useState(false); // State for bottom sheet visibility
+  const [isBooking, setIsBooking] = useState(false);
+  const [error, setError] = useState("");
+  const [showMore, setShowMore] = useState(false);
   const navigate = useNavigate();
 
   const handleDateChange = (date) => {
     setSelectedDate(date);
-    setError(""); // Clear error message when date changes
+    setError("");
   };
 
   useEffect(() => {
@@ -65,8 +67,8 @@ const Listing = () => {
   const handleAppointment = async () => {
     let token = currentUser.AccessToken;
 
-    if(!token) {
-       await fetch(`http://localhost:3500/users/refresh`);
+    if (!token) {
+      await fetch(`http://localhost:3500/users/refresh`);
     }
 
     if (!selectedDate) {
@@ -75,9 +77,8 @@ const Listing = () => {
     }
 
     setIsBooking(true);
-    setError(""); // Clear any existing errors
+    setError("");
     try {
-      // Simulate an API call
       const response = await fetch(`http://localhost:3500/appointment/book`, {
         method: 'POST',
         headers: {
@@ -103,20 +104,52 @@ const Listing = () => {
     }
   };
 
+  const reviews = [
+    {
+      id: 1,
+      username: "John Doe",
+      profilePic: profile,
+      reviewText: "This place was amazing! Highly recommend.",
+      rating: 5,
+    },
+    {
+      id: 2,
+      username: "Jane Smith",
+      profilePic: profile,
+      reviewText: "Great stay, very comfortable and convenient location.",
+      rating: 4,
+    },
+    {
+      id: 3,
+      username: "Sam Wilson",
+      profilePic: profile,
+      reviewText: "Had a wonderful experience. The amenities were top-notch.",
+      rating: 5,
+    },
+  ];
+
+  const settings = {
+    dots: false,
+    infinite: true,
+    speed: 500,
+    slidesToShow: 1,
+    slidesToScroll: 1,
+  };
+
   return (
     <>
       <SearchNavBar />
       <Navbar />
       <main className='w-screen lg:w-11/12 md:mx-auto'>
         <div>
-          {
-            loading ? <ListingSkeleton /> : <div>
+          {loading ? <ListingSkeleton /> : (
+            <div>
               <div className='w-11/12 mx-auto md:hidden'>
                 <Card listing={listing} />
               </div>
               <div className='flex flex-col md:hidden'>
                 <div className='w-11/12 mx-auto'>
-                  <h2 className='text-3xl font-medium'> {listing.name} <span className='text-lg'> {listing.description} </span> </h2>
+                  <h2 className='text-3xl font-medium'>{listing.name} <span className='text-lg'>{listing.description}</span></h2>
                   <h3 className='font-medium text-lg'>Entire serviced Apartment in Accra, Ghana</h3>
                   <div className='flex items-center gap-3 mt-3'>
                     <div className='flex items-center gap-1 mt-3'>
@@ -138,7 +171,7 @@ const Listing = () => {
                     </div>
                   </div>
                   <div>
-                    {listing.typeOfPlace === 'sell' ?  <p className='font-medium'> For sale : ${listing.regularPrice}</p> : <p className='font-medium'> Rent : <span> ${listing.regularPrice} per month </span></p>}
+                    {listing.typeOfPlace === 'sell' ? <p className='font-medium'> For sale : ${listing.regularPrice}</p> : <p className='font-medium'> Rent : <span> ${listing.regularPrice} per month </span></p>}
                   </div>
                   <div className='border border-black border-b-[0.5px] my-5 border-opacity-20' />
                   <div>
@@ -200,17 +233,16 @@ const Listing = () => {
                     </div>
                   </div>
                   <div className='border border-black border-b-[0.2px] my-5 border-opacity-10' />
-                  {/* Listing details */}
                   <div className="listing-details">
-                      <p>
-                       {
-                        " Luxurious studio apartment with a private bathroom, kitchenette with workspace/dining area. The apartment is located in a sought after neighborhood close to the US Embassy in Accra. The apartment has modern amenities, high end fittings, contemporary decor including a chandelier that brightens up the apartment."
-                       } ......
-                      </p>
-                      {/* Show More button */}
-                      <div className="show-more-container">
-                        <button onClick={() => setShowMore(true)} className="show-more-btn">Show More</button>
-                      </div>
+                    <p>
+                      Luxurious studio apartment with a private bathroom, kitchenette with workspace/dining area. The apartment is located in a sought after neighborhood close to the US Embassy in Accra. The apartment has modern amenities, high end fittings, contemporary decor including a chandelier that brightens up the apartment.
+                      ......
+                    </p>
+                    <div className="show-more-container">
+                      <button onClick={() => setShowMore(true)} className="font-semibold underline">
+                        <span className='flex items-center'> Show more <IoIosArrowForward size={20} /></span>
+                      </button>
+                    </div>
                   </div>
                   <div className='border border-black border-b-[0.2px] my-5 border-opacity-10' />
                   <div className='bg-[#F0EFE9] p-5 rounded-xl'>
@@ -262,19 +294,42 @@ const Listing = () => {
                       )}
                     </div>
                   </div>
+                  <div className='border border-black border-b-[0.5px] my-5 border-opacity-20' />
+                  <div className="review-carousel">
+                    <h2 className='text-2xl font-medium'> Reviews </h2>
+                    <Slider {...settings}>
+                      {reviews.map(review => (
+                        <div key={review.id} className="review-slide">
+                          <div className="review-card mx-2">
+                            <div className="review-header flex items-center gap-3">
+                              <img src={review.profilePic} alt={`${review.username}'s profile`} className="profile-pic w-10 h-10 rounded-full" />
+                              <div>
+                                <h3 className="username font-medium">{review.username}</h3>
+                                <div className="rating flex items-center">
+                                  {Array.from({ length: review.rating }, (_, index) => (
+                                    <span key={index} className="text-yellow-500">★</span>
+                                  ))}
+                                </div>
+                              </div>
+                            </div>
+                            <p className="review-text mt-3">{review.reviewText}</p>
+                          </div>
+                        </div>
+                      ))}
+                    </Slider>
+                  </div>
                 </div>
               </div>
             </div>
-          }
+          )}
         </div>
       </main>
       <div className='mt-10'>
         {!loading && <Footer />}
-       </div>
-        <TopFooterContainer>
+      </div>
+      <TopFooterContainer>
         <div className='flex items-center justify-between'>
           <div>
-
           </div>
           <button
             onClick={handleAppointment}
@@ -285,7 +340,6 @@ const Listing = () => {
           </button>
         </div>
       </TopFooterContainer>
-      {/* Bottom Sheet */}
       <div className={`bottom-sheet ${showMore ? 'show' : ''}`}>
         <div className="bottom-sheet-content">
           <button onClick={() => setShowMore(false)}>
@@ -295,11 +349,6 @@ const Listing = () => {
             <h3 className='text-2xl font-semibold my-5'>
               About the space
             </h3>
-            Luxurious studio apartment with a private bathroom, kitchenette with workspace/dining area. The apartment is located in a sought after neighborhood close to the US Embassy in Accra. The apartment has modern amenities, high end fittings, contemporary decor including a chandelier that brightens up the apartment.
-            Luxurious studio apartment with a private bathroom, kitchenette with workspace/dining area. The apartment is located in a sought after neighborhood close to the US Embassy in Accra. The apartment has modern amenities, high end fittings, contemporary decor including a chandelier that brightens up the apartment.
-            Luxurious studio apartment with a private bathroom, kitchenette with workspace/dining area. The apartment is located in a sought after neighborhood close to the US Embassy in Accra. The apartment has modern amenities, high end fittings, contemporary decor including a chandelier that brightens up the apartment.
-            Luxurious studio apartment with a private bathroom, kitchenette with workspace/dining area. The apartment is located in a sought after neighborhood close to the US Embassy in Accra. The apartment has modern amenities, high end fittings, contemporary decor including a chandelier that brightens up the apartment.
-            Luxurious studio apartment with a private bathroom, kitchenette with workspace/dining area. The apartment is located in a sought after neighborhood close to the US Embassy in Accra. The apartment has modern amenities, high end fittings, contemporary decor including a chandelier that brightens up the apartment.
             Luxurious studio apartment with a private bathroom, kitchenette with workspace/dining area. The apartment is located in a sought after neighborhood close to the US Embassy in Accra. The apartment has modern amenities, high end fittings, contemporary decor including a chandelier that brightens up the apartment.
             Luxurious studio apartment with a private bathroom, kitchenette with workspace/dining area. The apartment is located in a sought after neighborhood close to the US Embassy in Accra. The apartment has modern amenities, high end fittings, contemporary decor including a chandelier that brightens up the apartment.
             Luxurious studio apartment with a private bathroom, kitchenette with workspace/dining area. The apartment is located in a sought after neighborhood close to the US Embassy in Accra. The apartment has modern amenities, high end fittings, contemporary decor including a chandelier that brightens up the apartment.

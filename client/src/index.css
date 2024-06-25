@@ -83,7 +83,7 @@ body{
     border-top-right-radius: 20px;
     overflow-y: auto;
     z-index: 1000;
-    max-height: 95%; /* Adjust this value as needed */
+    max-height: 100%; /* Adjust this value as needed */
     transition: transform 0.5s ease-out, bottom 0.4s ease-out;
   }
   
@@ -104,6 +104,40 @@ body{
     cursor: pointer;
     margin-bottom: 1rem;
   }
+
+  .review-carousel {
+    margin: 2rem 0;
+  }
+  
+  .review-card {
+    padding: 1rem;
+    border-radius: 8px;
+    background: #F0EFE9;
+  }
+  
+  .review-header {
+    display: flex;
+    align-items: center;
+  }
+  
+  .profile-pic {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+  }
+  
+  .username {
+    font-weight: 600;
+  }
+  
+  .rating span {
+    font-size: 1rem;
+  }
+  
+  .review-text {
+    margin-top: 0.5rem;
+  }
+  
   
   
 
