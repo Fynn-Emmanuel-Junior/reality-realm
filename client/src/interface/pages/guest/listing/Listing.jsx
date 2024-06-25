@@ -8,7 +8,7 @@ import Card from '../../../components/pageComponents/listing/Card';
 import Footer from '../../../components/pageComponents/Footer';
 import ListingSkeleton from '../../../components/customs/ListingSkeleton';
 import { setImages } from '../../../../logic/ReduxStore/features/listings/CarouselSlice';
-import { IoLocationOutline, IoBedOutline, IoShieldCheckmarkOutline } from "react-icons/io5";
+import { IoLocationOutline, IoBedOutline} from "react-icons/io5";
 import { BiBath } from "react-icons/bi";
 import { LiaUserAstronautSolid } from "react-icons/lia";
 import { GrElevator } from "react-icons/gr";
@@ -16,16 +16,10 @@ import { GiKitchenKnives } from "react-icons/gi";
 import { BsHouseDoor } from "react-icons/bs";
 import { MdOutlineLocalLaundryService } from "react-icons/md";
 import { CiLock } from "react-icons/ci";
-import profile from '../../../assets/profile.png';
-import { GoSponsorTiers } from "react-icons/go";
-import { LuParkingCircle } from "react-icons/lu";
 import { IoIosArrowBack, IoIosArrowForward } from "react-icons/io";
 import DatePicker from 'react-datepicker';
 import 'react-datepicker/dist/react-datepicker.css';
 import TopFooterContainer from '../../../components/pageComponents/TopFooterContainer';
-import Slider from "react-slick";
-import "slick-carousel/slick/slick.css";
-import "slick-carousel/slick/slick-theme.css";
 
 const Listing = () => {
   const { id } = useParams();
@@ -104,38 +98,6 @@ const Listing = () => {
     }
   };
 
-  const reviews = [
-    {
-      id: 1,
-      username: "John Doe",
-      profilePic: profile,
-      reviewText: "This place was amazing! Highly recommend.",
-      rating: 5,
-    },
-    {
-      id: 2,
-      username: "Jane Smith",
-      profilePic: profile,
-      reviewText: "Great stay, very comfortable and convenient location.",
-      rating: 4,
-    },
-    {
-      id: 3,
-      username: "Sam Wilson",
-      profilePic: profile,
-      reviewText: "Had a wonderful experience. The amenities were top-notch.",
-      rating: 5,
-    },
-  ];
-
-  const settings = {
-    dots: false,
-    infinite: true,
-    speed: 500,
-    slidesToShow: 1,
-    slidesToScroll: 1,
-  };
-
   return (
     <>
       <SearchNavBar />
@@ -207,31 +169,6 @@ const Listing = () => {
                       </div>
                     </div>
                   </div>
-                  <div className='border border-black border-b-[0.5px] my-5 border-opacity-20' />
-                  <div>
-                    <h2 className='text-2xl font-medium'> What this place offers</h2>
-                    <div className='flex items-start gap-3 mt-5'>
-                      <GoSponsorTiers size={25} />
-                      <div>
-                        <h2 className='font-medium'>{user.username || 'Fynn'} is a superhost</h2>
-                        <h3>Superhosts are experienced, highly rated Hosts.</h3>
-                      </div>
-                    </div>
-                    <div className='flex items-start gap-3 mt-5'>
-                      <LuParkingCircle size={25} />
-                      <div>
-                        <h2 className='font-medium'> Park for free </h2>
-                        <h3> This is one of the few places in the area with free parking </h3>
-                      </div>
-                    </div>
-                    <div className='flex items-start gap-3 mt-5'>
-                      <IoShieldCheckmarkOutline size={25} />
-                      <div>
-                        <h2 className='font-medium'> Self check-in</h2>
-                        <h3> You can with the building staff </h3>
-                      </div>
-                    </div>
-                  </div>
                   <div className='border border-black border-b-[0.2px] my-5 border-opacity-10' />
                   <div className="listing-details">
                     <p>
@@ -245,33 +182,6 @@ const Listing = () => {
                     </div>
                   </div>
                   <div className='border border-black border-b-[0.2px] my-5 border-opacity-10' />
-                  <div className='bg-[#F0EFE9] p-5 rounded-xl'>
-                    <p className='leading-7'>
-                      Truly, all you need is your luggage as you kick back and relax in this stylish studio that offers extra space and comfort as complimentary
-                    </p>
-                  </div>
-                  <div className='border border-black border-b-[0.5px] my-5 border-opacity-20' />
-                  <div className='flex flex-col gap-3'>
-                    <div>
-                      <h3 className='font-medium text-2xl'> House rules </h3>
-                    </div>
-                    <div className='flex flex-col gap-3'>
-                      <p> Check-in after 2:00PM</p>
-                      <p>Check out after 11:00AM</p>
-                      <p> 2 guests Maximum</p>
-                    </div>
-                  </div>
-                  <div className='border border-black border-b-[0.5px] my-5 border-opacity-20' />
-                  <div className='flex flex-col gap-3'>
-                    <div>
-                      <h3 className='font-medium text-2xl'> Safety & property </h3>
-                    </div>
-                    <div className='flex flex-col gap-3'>
-                      <p> No carbon monoxide alarm</p>
-                      <p> Smoke alarm </p>
-                    </div>
-                  </div>
-                  <div className='border border-black border-b-[0.5px] my-5 border-opacity-20' />
                   <div>
                     <h3 className='font-medium text-2xl'> Select date for appointment </h3>
                     <div className='flex flex-col gap-3'>
@@ -286,37 +196,10 @@ const Listing = () => {
                         scrollableMonthYearDropdown
                         className='border border-teal-600 w-full focus:outline-none rounded-sm'
                       />
-                      {selectedDate && (
-                        <p>You selected: {selectedDate.toLocaleDateString()}</p>
-                      )}
                       {error && (
                         <p className='text-red-500'>{error}</p>
                       )}
                     </div>
-                  </div>
-                  <div className='border border-black border-b-[0.5px] my-5 border-opacity-20' />
-                  <div className="review-carousel">
-                    <h2 className='text-2xl font-medium'> Reviews </h2>
-                    <Slider {...settings}>
-                      {reviews.map(review => (
-                        <div key={review.id} className="review-slide">
-                          <div className="review-card mx-2">
-                            <div className="review-header flex items-center gap-3">
-                              <img src={review.profilePic} alt={`${review.username}'s profile`} className="profile-pic w-10 h-10 rounded-full" />
-                              <div>
-                                <h3 className="username font-medium">{review.username}</h3>
-                                <div className="rating flex items-center">
-                                  {Array.from({ length: review.rating }, (_, index) => (
-                                    <span key={index} className="text-yellow-500">★</span>
-                                  ))}
-                                </div>
-                              </div>
-                            </div>
-                            <p className="review-text mt-3">{review.reviewText}</p>
-                          </div>
-                        </div>
-                      ))}
-                    </Slider>
                   </div>
                 </div>
               </div>
@@ -330,6 +213,14 @@ const Listing = () => {
       <TopFooterContainer>
         <div className='flex items-center justify-between'>
           <div>
+            <div>
+              {listing.typeOfPlace === 'sell' ? <p className='font-medium'> For sale : ${listing.regularPrice}</p> : <p className='font-medium'> Rent : <span> ${listing.regularPrice} per month </span></p>}
+              <div>
+              {selectedDate && (
+                <p>Appointment Date: {selectedDate.toLocaleDateString()}</p>
+              )}
+              </div>
+            </div>
           </div>
           <button
             onClick={handleAppointment}
