@@ -19,9 +19,11 @@ import { CiLock } from "react-icons/ci";
 import profile from '../../../assets/profile.png';
 import { GoSponsorTiers } from "react-icons/go";
 import { LuParkingCircle } from "react-icons/lu";
+import { IoIosArrowBack } from "react-icons/io";
 import DatePicker from 'react-datepicker';
 import 'react-datepicker/dist/react-datepicker.css';
 import TopFooterContainer from '../../../components/pageComponents/TopFooterContainer'; // Import the new component
+// import './listing.css'; // Import custom CSS for the bottom sheet
 
 const Listing = () => {
   const { id } = useParams();
@@ -33,6 +35,7 @@ const Listing = () => {
   const [selectedDate, setSelectedDate] = useState(null);
   const [isBooking, setIsBooking] = useState(false); // State for booking status
   const [error, setError] = useState(""); // State for error message
+  const [showMore, setShowMore] = useState(false); // State for bottom sheet visibility
   const navigate = useNavigate();
 
   const handleDateChange = (date) => {
@@ -122,7 +125,7 @@ const Listing = () => {
                       </div>
                       <p>{listing.address}</p>
                     </div>
-                    <div className='mt-2 flex items-center gap-3 '>
+                    <div className='mt-2 flex items-center gap-3'>
                       <div className='flex items-center gap-1'>
                         <BiBath size={25} />
                         <span className='text-base'>{listing.bathrooms}</span>
@@ -167,34 +170,14 @@ const Listing = () => {
                       </div>
                       <div className='p-5 rounded-lg flex gap-3 border'>
                         <CiLock size={25} className='text-blue-900' />
-                        <h3> Storage available </h3>
+                        <h3> Secure </h3>
                       </div>
                     </div>
                   </div>
                   <div className='border border-black border-b-[0.5px] my-5 border-opacity-20' />
-                  <div className='flex gap-3'>
-                    {
-                      user ? <img
-                        src={user.avatar}
-                        width={60}
-                        height={60}
-                        className="rounded-full object-cover self-center mt-2 cursor-pointer"
-                      /> : <img
-                        src={profile}
-                        alt='picture_profile'
-                        width={60}
-                        height={60}
-                        className="rounded-full object-cover self-center mt-2 cursor-pointer"
-                      />
-                    }
-                    <div className='mt-3'>
-                      <p className='font-medium'> Hosted by {user.username || 'Fynn Emmanuel Junior'} </p>
-                      <p> 3 years of hosting </p>
-                    </div>
-                  </div>
-                  <div className='border border-black border-b-[0.2px] my-5 border-opacity-10' />
-                  <div className='flex flex-col gap-3'>
-                    <div className='flex items-start gap-3 mt-7'>
+                  <div>
+                    <h2 className='text-2xl font-medium'> What this place offers</h2>
+                    <div className='flex items-start gap-3 mt-5'>
                       <GoSponsorTiers size={25} />
                       <div>
                         <h2 className='font-medium'>{user.username || 'Fynn'} is a superhost</h2>
@@ -215,6 +198,19 @@ const Listing = () => {
                         <h3> You can with the building staff </h3>
                       </div>
                     </div>
+                  </div>
+                  <div className='border border-black border-b-[0.2px] my-5 border-opacity-10' />
+                  {/* Listing details */}
+                  <div className="listing-details">
+                      <p>
+                       {
+                        " Luxurious studio apartment with a private bathroom, kitchenette with workspace/dining area. The apartment is located in a sought after neighborhood close to the US Embassy in Accra. The apartment has modern amenities, high end fittings, contemporary decor including a chandelier that brightens up the apartment."
+                       } ......
+                      </p>
+                      {/* Show More button */}
+                      <div className="show-more-container">
+                        <button onClick={() => setShowMore(true)} className="show-more-btn">Show More</button>
+                      </div>
                   </div>
                   <div className='border border-black border-b-[0.2px] my-5 border-opacity-10' />
                   <div className='bg-[#F0EFE9] p-5 rounded-xl'>
@@ -289,6 +285,27 @@ const Listing = () => {
           </button>
         </div>
       </TopFooterContainer>
+      {/* Bottom Sheet */}
+      <div className={`bottom-sheet ${showMore ? 'show' : ''}`}>
+        <div className="bottom-sheet-content">
+          <button onClick={() => setShowMore(false)}>
+            <IoIosArrowBack size={20} />
+          </button>
+          <p>
+            <h3 className='text-2xl font-semibold my-5'>
+              About the space
+            </h3>
+            Luxurious studio apartment with a private bathroom, kitchenette with workspace/dining area. The apartment is located in a sought after neighborhood close to the US Embassy in Accra. The apartment has modern amenities, high end fittings, contemporary decor including a chandelier that brightens up the apartment.
+            Luxurious studio apartment with a private bathroom, kitchenette with workspace/dining area. The apartment is located in a sought after neighborhood close to the US Embassy in Accra. The apartment has modern amenities, high end fittings, contemporary decor including a chandelier that brightens up the apartment.
+            Luxurious studio apartment with a private bathroom, kitchenette with workspace/dining area. The apartment is located in a sought after neighborhood close to the US Embassy in Accra. The apartment has modern amenities, high end fittings, contemporary decor including a chandelier that brightens up the apartment.
+            Luxurious studio apartment with a private bathroom, kitchenette with workspace/dining area. The apartment is located in a sought after neighborhood close to the US Embassy in Accra. The apartment has modern amenities, high end fittings, contemporary decor including a chandelier that brightens up the apartment.
+            Luxurious studio apartment with a private bathroom, kitchenette with workspace/dining area. The apartment is located in a sought after neighborhood close to the US Embassy in Accra. The apartment has modern amenities, high end fittings, contemporary decor including a chandelier that brightens up the apartment.
+            Luxurious studio apartment with a private bathroom, kitchenette with workspace/dining area. The apartment is located in a sought after neighborhood close to the US Embassy in Accra. The apartment has modern amenities, high end fittings, contemporary decor including a chandelier that brightens up the apartment.
+            Luxurious studio apartment with a private bathroom, kitchenette with workspace/dining area. The apartment is located in a sought after neighborhood close to the US Embassy in Accra. The apartment has modern amenities, high end fittings, contemporary decor including a chandelier that brightens up the apartment.
+            Luxurious studio apartment with a private bathroom, kitchenette with workspace/dining area. The apartment is located in a sought after neighborhood close to the US Embassy in Accra. The apartment has modern amenities, high end fittings, contemporary decor including a chandelier that brightens up the apartment.
+          </p>
+        </div>
+      </div>
     </>
   );
 }
