@@ -23,7 +23,6 @@ import TopFooterContainer from '../../../components/pageComponents/TopFooterCont
 
 const Listing = () => {
   const { id } = useParams();
-  const [user, setUser] = useState({});
   const dispatch = useDispatch();
   const currentUser = useSelector(selectCurrentUser);
   const [listing, setListing] = useState({});
