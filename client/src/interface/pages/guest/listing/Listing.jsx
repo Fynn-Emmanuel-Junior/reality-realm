@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { useParams, useNavigate } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 import { selectCurrentUser } from '../../../../logic/ReduxStore/features/users/usersSlice';
@@ -8,16 +8,16 @@ import Card from '../../../components/pageComponents/listing/Card';
 import Footer from '../../../components/pageComponents/Footer';
 import ListingSkeleton from '../../../components/customs/ListingSkeleton';
 import { setImages } from '../../../../logic/ReduxStore/features/listings/CarouselSlice';
-import { IoLocationOutline, IoBedOutline,IoGolf} from "react-icons/io5";
+import { IoLocationOutline, IoBedOutline, IoGolf } from "react-icons/io5";
 import { BiBath } from "react-icons/bi";
 import { LiaUserAstronautSolid } from "react-icons/lia";
 import { GrElevator } from "react-icons/gr";
-import { GiKitchenKnives,GiPowerGenerator } from "react-icons/gi";
+import { GiKitchenKnives, GiPowerGenerator } from "react-icons/gi";
 import { BsHouseDoor } from "react-icons/bs";
-import { MdOutlineLocalLaundryService,MdOutlineMicrowave, MdOutlineStore } from "react-icons/md";
+import { MdOutlineLocalLaundryService, MdOutlineMicrowave, MdOutlineStore } from "react-icons/md";
 import { CiLock } from "react-icons/ci";
 import { FaBottleWater } from "react-icons/fa6";
-import { TbAirConditioningDisabled,TbPool  } from "react-icons/tb";
+import { TbAirConditioningDisabled, TbPool } from "react-icons/tb";
 import { IoIosArrowBack, IoIosArrowForward } from "react-icons/io";
 import { LuRefrigerator } from "react-icons/lu";
 import DatePicker from 'react-datepicker';
@@ -49,7 +49,7 @@ const Listing = () => {
         const res = await fetch(`http://localhost:3500/listings/getlisting/${id}`);
         const data = await res.json();
         setListing(data);
-        dispatch(setImages(listing.imageurls));
+        dispatch(setImages(data.imageurls));
         setLoading(false);
       } catch (err) {
         setLoading(true);
@@ -162,7 +162,7 @@ const Listing = () => {
                     </div>
                     <div className='grid grid-cols-2 gap-3 mt-4'>
                       <div className='p-5 rounded-lg flex gap-3 border'>
-                        <TbAirConditioningDisabled  size={25} className='text-blue-900' />
+                        <TbAirConditioningDisabled size={25} className='text-blue-900' />
                         <h3> Air Conditioning </h3>
                       </div>
                       <div className='p-5 rounded-lg flex gap-3 border'>
@@ -172,7 +172,7 @@ const Listing = () => {
                     </div>
                     <div className='grid grid-cols-2 gap-3 mt-4'>
                       <div className='p-5 rounded-lg flex gap-3 border'>
-                        <FaBottleWater  size={25} className='text-blue-900' />
+                        <FaBottleWater size={25} className='text-blue-900' />
                         <h3> Water Reservoir </h3>
                       </div>
                       <div className='p-5 rounded-lg flex gap-3 border'>
@@ -182,11 +182,11 @@ const Listing = () => {
                     </div>
                     <div className='grid grid-cols-2 gap-3 mt-4'>
                       <div className='p-5 rounded-lg flex gap-3 border'>
-                        <TbPool  size={25} className='text-blue-900' />
+                        <TbPool size={25} className='text-blue-900' />
                         <h3> Swimming pool </h3>
                       </div>
                       <div className='p-5 rounded-lg flex gap-3 border'>
-                        < MdOutlineStore size={25} className='text-blue-900' />
+                        <MdOutlineStore size={25} className='text-blue-900' />
                         <h3> Convenient store </h3>
                       </div>
                     </div>
@@ -224,6 +224,13 @@ const Listing = () => {
                     </div>
                   </div>
                   <div className='border border-black border-b-[0.2px] my-5 border-opacity-10' />
+                  <div className="owner-details bg-white shadow-xl p-5 rounded-lg mt-5">
+                    <h3 className="text-xl font-semibold">Owner Details</h3>
+                    <p className="mt-2"><strong>Name:</strong> {listing.ownerName}</p>
+                    <p className="mt-2"><strong>Email:</strong> {listing.ownerEmail}</p>
+                    <p className="mt-2"><strong>Phone:</strong> {listing.ownerPhone}</p>
+                  </div>
+                  <div className='border border-black border-b-[0.2px] my-5 border-opacity-10' />
                   <div>
                     <h3 className='font-medium text-2xl'> Select date for appointment </h3>
                     <div className='flex flex-col gap-3'>
@@ -258,9 +265,9 @@ const Listing = () => {
             <div>
               {listing.typeOfPlace === 'sell' ? <p className='font-medium'> For sale : ${listing.regularPrice}</p> : <p className='font-medium'> Rent : <span> ${listing.regularPrice} per month </span></p>}
               <div>
-              {selectedDate && (
-                <p>Appointment Date: {selectedDate.toLocaleDateString()}</p>
-              )}
+                {selectedDate && (
+                  <p>Appointment Date: {selectedDate.toLocaleDateString()}</p>
+                )}
               </div>
             </div>
           </div>
@@ -278,14 +285,14 @@ const Listing = () => {
           <button onClick={() => setShowMore(false)}>
             <IoIosArrowBack size={20} />
           </button>
-          <p>
+          <div>
             <h3 className='text-2xl font-semibold my-5'>
               About the space
             </h3>
             Luxurious studio apartment with a private bathroom, kitchenette with workspace/dining area. The apartment is located in a sought after neighborhood close to the US Embassy in Accra. The apartment has modern amenities, high end fittings, contemporary decor including a chandelier that brightens up the apartment.
             Luxurious studio apartment with a private bathroom, kitchenette with workspace/dining area. The apartment is located in a sought after neighborhood close to the US Embassy in Accra. The apartment has modern amenities, high end fittings, contemporary decor including a chandelier that brightens up the apartment.
             Luxurious studio apartment with a private bathroom, kitchenette with workspace/dining area. The apartment is located in a sought after neighborhood close to the US Embassy in Accra. The apartment has modern amenities, high end fittings, contemporary decor including a chandelier that brightens up the apartment.
-          </p>
+          </div>
         </div>
       </div>
     </>
