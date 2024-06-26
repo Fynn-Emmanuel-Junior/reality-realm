@@ -261,7 +261,12 @@ const Listing = () => {
                       </div>
                     </div>
                     <div>
-                      <p className='mt-10 text-lg font-semibold'>Owner details</p>
+                      <p className='mt-10 mb-7 text-lg font-semibold'>Owner details</p>
+                      <div>
+                        <p>Response rate: 100%</p>
+                        <p>Response within an hour</p>
+                      </div>
+                      <button className='bg-black px-5 py-3 my-5 text-white rounded-lg font-medium'> Message Owner</button>
                     </div>
                   </div>
 
