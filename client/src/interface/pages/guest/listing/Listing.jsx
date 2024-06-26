@@ -25,6 +25,7 @@ import DatePicker from 'react-datepicker';
 import 'react-datepicker/dist/react-datepicker.css';
 import TopFooterContainer from '../../../components/pageComponents/TopFooterContainer';
 import profile from '../../../assets/profile.png';
+import { RxCross2 } from "react-icons/rx";
 
 const Listing = () => {
   const { id } = useParams();
@@ -36,6 +37,7 @@ const Listing = () => {
   const [isBooking, setIsBooking] = useState(false);
   const [error, setError] = useState("");
   const [showMore, setShowMore] = useState(false);
+  const [messageOwner,setMessageOwner] = useState(false);
   const navigate = useNavigate();
 
   const handleDateChange = (date) => {
@@ -266,7 +268,10 @@ const Listing = () => {
                         <p>Response rate: 100%</p>
                         <p>Response within an hour</p>
                       </div>
-                      <button className='bg-black px-5 py-3 my-5 text-white rounded-lg font-medium'> Message Owner</button>
+                      <button 
+                        className='bg-black px-5 py-3 my-5 text-white rounded-lg font-medium'
+                        onClick={() => setMessageOwner(true)}
+                      > Message Owner</button>
                     </div>
                   </div>
 
@@ -332,6 +337,25 @@ const Listing = () => {
             Luxurious studio apartment with a private bathroom, kitchenette with workspace/dining area. The apartment is located in a sought after neighborhood close to the US Embassy in Accra. The apartment has modern amenities, high end fittings, contemporary decor including a chandelier that brightens up the apartment.
             Luxurious studio apartment with a private bathroom, kitchenette with workspace/dining area. The apartment is located in a sought after neighborhood close to the US Embassy in Accra. The apartment has modern amenities, high end fittings, contemporary decor including a chandelier that brightens up the apartment.
             Luxurious studio apartment with a private bathroom, kitchenette with workspace/dining area. The apartment is located in a sought after neighborhood close to the US Embassy in Accra. The apartment has modern amenities, high end fittings, contemporary decor including a chandelier that brightens up the apartment.
+          </div>
+        </div>
+      </div>
+      <div className={`bottom-sheet ${messageOwner ? 'show' : ''}`}>
+        <div className="bottom-sheet-content">
+          <button onClick={() => setMessageOwner(false)}>
+            <RxCross2 size={20} />
+          </button>
+          <div>
+            <h3 className='text-lg font-semibold my-5'>
+             Message Owner {"Fynn Emmanuel"}
+            </h3>
+            <textarea 
+              className='border border-teal-700 focus:outline-none'
+            />
+             <button 
+                className='bg-black px-5 py-3 text-white rounded-lg font-medium'
+             > Message Owner</button>
+           
           </div>
         </div>
       </div>
