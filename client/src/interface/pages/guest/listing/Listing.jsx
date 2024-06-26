@@ -232,6 +232,8 @@ const Listing = () => {
                       <div>
                         <div>
                           <img src={profile} alt='profile_img' width={150} height={150}/>
+                          <h3 className='text-xl font-medium'>{"Fynn Emmanuel Junior"}</h3>
+                          <p className=''> Owner </p>
                         </div>
                         <div>
 
