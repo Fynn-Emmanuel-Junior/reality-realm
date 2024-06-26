@@ -13,6 +13,7 @@ import { BiBath } from "react-icons/bi";
 import { LiaUserAstronautSolid } from "react-icons/lia";
 import { GrElevator } from "react-icons/gr";
 import { GiKitchenKnives, GiPowerGenerator } from "react-icons/gi";
+import { FaUserShield } from "react-icons/fa";
 import { BsHouseDoor } from "react-icons/bs";
 import { MdOutlineLocalLaundryService, MdOutlineMicrowave, MdOutlineStore } from "react-icons/md";
 import { CiLock } from "react-icons/ci";
@@ -229,14 +230,34 @@ const Listing = () => {
                   <div>
                     <h3 className='text-xl font-semibold'> Meet the Owner </h3>
                     <div className="owner-details bg-white shadow-xl p-5 rounded-lg mt-5">
-                      <div>
+                      <div className='flex gap-5 items-start'>
                         <div>
                           <img src={profile} alt='profile_img' width={150} height={150}/>
                           <h3 className='text-xl font-medium'>{"Fynn Emmanuel Junior"}</h3>
                           <p className=''> Owner </p>
                         </div>
                         <div>
-
+                          <div>
+                            < FaUserShield size={35}/>
+                            <div>
+                              <h3 className='text-xl font-medium'>{"Verified"}</h3>
+                            </div>
+                          </div>
+                          <div className='border border-black border-b-[0.2px] my-5 border-opacity-10 w-full' />
+                          <div>
+                            <p className='text-lg'>6</p>
+                            <div>
+                              <h3 className='text-xl font-medium'>{"Reviews"}</h3>
+                            </div>
+                          </div>
+                          <div className='border border-black border-b-[0.2px] my-5 border-opacity-10 w-full' />
+                          <div>
+                            < FaUserShield size={35}/>
+                            <div>
+                              <h3 className='text-xl font-medium'>{"Verified"}</h3>
+                            </div>
+                          </div>
+                          <div className='border border-black border-b-[0.2px] my-5 border-opacity-10 w-full' />
                         </div>
                       </div>
                     </div>
