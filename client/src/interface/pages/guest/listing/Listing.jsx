@@ -23,6 +23,7 @@ import { LuRefrigerator } from "react-icons/lu";
 import DatePicker from 'react-datepicker';
 import 'react-datepicker/dist/react-datepicker.css';
 import TopFooterContainer from '../../../components/pageComponents/TopFooterContainer';
+import profile from '../../../assets/profile.png';
 
 const Listing = () => {
   const { id } = useParams();
@@ -224,11 +225,19 @@ const Listing = () => {
                     </div>
                   </div>
                   <div className='border border-black border-b-[0.2px] my-5 border-opacity-10' />
-                  <div className="owner-details bg-white shadow-xl p-5 rounded-lg mt-5">
-                    <h3 className="text-xl font-semibold">Owner Details</h3>
-                    <p className="mt-2"><strong>Name:</strong> {listing.ownerName}</p>
-                    <p className="mt-2"><strong>Email:</strong> {listing.ownerEmail}</p>
-                    <p className="mt-2"><strong>Phone:</strong> {listing.ownerPhone}</p>
+                  {/* Owner details*/}
+                  <div>
+                    <h3 className='text-xl font-semibold'> Meet the Owner </h3>
+                    <div className="owner-details bg-white shadow-xl p-5 rounded-lg mt-5">
+                      <div>
+                        <div>
+                          <img src={profile} alt='profile_img' width={150} height={150}/>
+                        </div>
+                        <div>
+
+                        </div>
+                      </div>
+                    </div>
                   </div>
                   <div className='border border-black border-b-[0.2px] my-5 border-opacity-10' />
                   <div>
