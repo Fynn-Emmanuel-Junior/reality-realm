@@ -238,7 +238,7 @@ const Listing = () => {
                         </div>
                         <div>
                           <div>
-                            < FaUserShield size={25}/>
+                            <FaUserShield size={25}/>
                             <div>
                               <h3 className='text-lg font-bold'>{"Verified"}</h3>
                             </div>
