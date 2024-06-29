@@ -1,7 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { useParams, useNavigate } from 'react-router-dom';
-import { useDispatch, useSelector } from 'react-redux';
-import { selectCurrentUser } from '../../../../logic/ReduxStore/features/users/usersSlice';
+import { useDispatch} from 'react-redux';
 import SearchNavBar from '../../../components/pageComponents/Search/SearchNavBar';
 import Navbar from '../../../components/pageComponents/smallScreens/Navbar';
 import Card from '../../../components/pageComponents/listing/Card';
@@ -30,11 +29,9 @@ import { RxCross2 } from "react-icons/rx";
 const Listing = () => {
   const { id } = useParams();
   const dispatch = useDispatch();
-  const currentUser = useSelector(selectCurrentUser);
   const [listing, setListing] = useState({});
   const [loading, setLoading] = useState(true);
   const [selectedDate, setSelectedDate] = useState(null);
-  const [isBooking, setIsBooking] = useState(false);
   const [error, setError] = useState("");
   const [showMore, setShowMore] = useState(false);
   const [messageOwner,setMessageOwner] = useState(false);
@@ -62,47 +59,8 @@ const Listing = () => {
     };
 
     fetchListing();
-  }, [id]);
+  }, []);
 
-  const handleAppointment = async () => {
-    let token = currentUser.AccessToken;
-
-    if (!token) {
-      await fetch(`http://localhost:3500/users/refresh`);
-    }
-
-    if (!selectedDate) {
-      setError('Please select an appointment date.');
-      return;
-    }
-
-    setIsBooking(true);
-    setError("");
-    try {
-      const response = await fetch(`http://localhost:3500/appointment/book`, {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-          'Authorization': `Bearer ${token}`
-        },
-        credentials: 'include',
-        body: JSON.stringify({
-          id: currentUser._id,
-          email: currentUser.email,
-          appointmentDate: selectedDate,
-        }),
-      });
-      const data = await response.json();
-      console.log(data);
-      if (data.statusCode === 200 && currentUser) {
-        navigate('/notifications');
-      }
-      setIsBooking(false);
-    } catch (err) {
-      setIsBooking(false);
-      throw new Error(err);
-    }
-  };
 
   return (
     <>
@@ -317,11 +275,10 @@ const Listing = () => {
             </div>
           </div>
           <button
-            onClick={handleAppointment}
-            disabled={isBooking}
+            onClick={() => navigate(`/booking/${id}`)}
             className='bg-pink-700 text-white py-2 mb-3 px-4 rounded mt-4'
           >
-            {isBooking ? 'Booking...' : 'Book Appointment'}
+            Book Appointment
           </button>
         </div>
       </TopFooterContainer>
