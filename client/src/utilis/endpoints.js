@@ -11,6 +11,7 @@ export const refreshUrl = `${developmentApi}/users/refresh`
 
 //listings endpoints
 export const listingUrl = `${developmentApi}/listings`
+export const getListingUrl = `${developmentApi}/listings/getlisting`
 
 //Otp endpoint
 

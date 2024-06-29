@@ -1,5 +1,7 @@
 import {
-    refreshUrl
+    refreshUrl,
+    listingUrl,
+    getListingUrl
 } from './endpoints';
 
 
@@ -16,4 +18,8 @@ export const refreshApi = async() => {
     } catch (err) {
         return err.message
     }
+}
+
+export const getListing = async(id) => {
+    return await fetch(`${getListingUrl}/${id}`);
 }

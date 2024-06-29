@@ -15,7 +15,12 @@ const Booking = () => {
         <hr />
         <div>
             <div className='w-11/12 mx-auto'>
+                <div>
+                    
+                </div>
+                <div>
 
+                </div>
             </div>
         </div>
     </div>
