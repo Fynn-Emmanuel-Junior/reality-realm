@@ -1,5 +1,5 @@
 import React,{useState,useEffect} from 'react'
-import { IoIosArrowBack } from "react-icons/io";
+import { IoIosArrowBack,IoIosStar } from "react-icons/io";
 import { useListing } from '../../../hooks/useListing';
 import {useParams} from 'react-router-dom';
 
@@ -28,12 +28,17 @@ const Booking = () => {
         </div>
         <hr />
         <div>
-            <div className='w-11/12 mx-auto'>
-                <div>
-                    <img src={listing?.imageurls[0]} alt='profile_img' width={300} height={100}/>
+            <div className='w-11/12 mx-auto flex items-center gap-3'>
+                <div className='w-36 h-32'>
+                    <img src={listing.imageurls[0]} alt='profile_img' className='w-full h-full rounded-2xl'/>
                 </div>
                 <div>
-
+                    <h3 className='font-semibold'>{listing.name}</h3>
+                    <div>{listing.description}</div>
+                    <div className='flex gap-1 items-center'>
+                        <IoIosStar size={20}/>
+                        <p>5.00(4)</p> 
+                    </div>
                 </div>
             </div>
         </div>
