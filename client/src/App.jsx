@@ -12,6 +12,7 @@ const ErrorPage = React.lazy(() => import('./interface/pages/guest/404Page/Error
 const Search = React.lazy(() => import('./interface/pages/guest/Search/Search'));
 const Contact = React.lazy(() => import('./interface/pages/guest/Contact/Contact'));
 const OtpPage = React.lazy(() => import('./interface/pages/guest/OtpPage/Otp'));
+const BookingPage = React.lazy(() => import('./interface/pages/guest/Booking/Booking'));
 
 const App = () => {
   return (
@@ -24,6 +25,7 @@ const App = () => {
         <Route path='/listing/:id' element={<Listing />}/>
         <Route path='/search' element={<Search />}/>
         <Route path='/contact' element={<Contact />}/>
+        <Route path='/booking/:id' element={<BookingPage />}/>
         <Route element={<ProtectedRoutes />}>
           <Route path='/profile' element={<Profile />}/>
         </Route>

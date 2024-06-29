@@ -350,11 +350,13 @@ const Listing = () => {
              Message Owner {"Fynn Emmanuel"}
             </h3>
             <textarea 
-              className='border border-teal-700 focus:outline-none'
+              className='border border-teal-700 focus:outline-none p-3 w-96'
             />
-             <button 
-                className='bg-black px-5 py-3 text-white rounded-lg font-medium'
-             > Message Owner</button>
+            <div className='mt-3'>
+              <button 
+                  className='bg-black px-5 py-3 text-white rounded-lg font-medium'
+              > Message Owner</button>
+            </div>
            
           </div>
         </div>
