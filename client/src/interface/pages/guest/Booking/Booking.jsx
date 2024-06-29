@@ -1,7 +1,21 @@
-import React from 'react'
+import React,{useState,useEffect} from 'react'
 import { IoIosArrowBack } from "react-icons/io";
+import { useListing } from '../../../hooks/useListing';
+import {useParams} from 'react-router-dom';
 
 const Booking = () => {
+    const {id} = useParams()
+    const {GetListing} = useListing();
+    const [listing,setListing] = useState();
+    console.log(listing)
+
+    useEffect(() => {
+        const fetch = async() => {
+            const data = await GetListing(id)
+            setListing(data);
+        }
+        fetch();
+    }, []);
   return (
     <div className='md:hidden'>
         <div>
@@ -16,7 +30,7 @@ const Booking = () => {
         <div>
             <div className='w-11/12 mx-auto'>
                 <div>
-                    
+                    <img src={listing?.imageurls[0]} alt='profile_img' width={300} height={100}/>
                 </div>
                 <div>
 

@@ -4,7 +4,9 @@ import {
 
 export const useListing = () => {
     const GetListing = async(id) => {
-        const respone = await getListing(id)
+        const response = await getListing(id);
+        const responseData = await response.json();
+        return responseData;
     }
     return {
         GetListing
