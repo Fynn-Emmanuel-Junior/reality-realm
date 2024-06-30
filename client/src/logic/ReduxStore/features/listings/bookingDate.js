@@ -15,4 +15,6 @@ const bookingDateSlice = createSlice({
 })
 
 export const {setBookingDate} = bookingDateSlice.actions;
+export const selectBookingDate = (state) => state.bookingDate.bookingDate;
+
 export default bookingDateSlice.reducer

@@ -4,6 +4,7 @@ import menuReducer from '../features/menu/menuSlice'
 import listingsReducer from '../features/listings/listingsSlice'
 import listingReducer from '../features/listings/listingSlice'
 import ImageReducer from '../features/listings/CarouselSlice'
+import bookingDateReducer from '../features/listings/bookingDate'
 import {persistReducer,persistStore} from 'redux-persist'
 import storage from 'redux-persist/lib/storage'
 
@@ -12,7 +13,9 @@ const rootReducer = combineReducers({
     listings: listingsReducer,
     menu: menuReducer,
     images: ImageReducer,
-    listing: listingReducer
+    listing: listingReducer,
+    bookingDate: bookingDateReducer,
+ 
 })
 
 const persistConfig =  {

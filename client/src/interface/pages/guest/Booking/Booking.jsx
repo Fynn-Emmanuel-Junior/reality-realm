@@ -3,11 +3,13 @@ import { IoIosArrowBack,IoIosStar } from "react-icons/io";
 import { useListing } from '../../../hooks/useListing';
 import {useParams} from 'react-router-dom';
 import { useSelector } from 'react-redux';
+import { selectBookingDate } from '../../../../logic/ReduxStore/features/listings/bookingDate';
 
 const Booking = () => {
     const {id} = useParams()
     const {GetListing} = useListing();
     const [listing,setListing] = useState();
+    const bookingDate = useSelector(selectBookingDate);
 
     useEffect(() => {
         const fetch = async() => {
