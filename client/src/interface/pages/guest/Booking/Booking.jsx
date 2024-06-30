@@ -2,12 +2,12 @@ import React,{useState,useEffect} from 'react'
 import { IoIosArrowBack,IoIosStar } from "react-icons/io";
 import { useListing } from '../../../hooks/useListing';
 import {useParams} from 'react-router-dom';
+import { useSelector } from 'react-redux';
 
 const Booking = () => {
     const {id} = useParams()
     const {GetListing} = useListing();
     const [listing,setListing] = useState();
-    console.log(listing)
 
     useEffect(() => {
         const fetch = async() => {

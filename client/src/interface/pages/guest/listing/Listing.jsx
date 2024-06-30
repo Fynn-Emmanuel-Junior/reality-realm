@@ -25,6 +25,7 @@ import 'react-datepicker/dist/react-datepicker.css';
 import TopFooterContainer from '../../../components/pageComponents/TopFooterContainer';
 import profile from '../../../assets/profile.png';
 import { RxCross2 } from "react-icons/rx";
+import { setBookingDate } from '../../../../logic/ReduxStore/features/listings/bookingDate';
 
 const Listing = () => {
   const { id } = useParams();
@@ -275,7 +276,10 @@ const Listing = () => {
             </div>
           </div>
           <button
-            onClick={() => navigate(`/booking/${id}`)}
+            onClick={() =>{
+              dispatch(setBookingDate(selectedDate));
+              navigate(`/booking/${id}`);
+            } }
             className='bg-pink-700 text-white py-2 mb-3 px-4 rounded mt-4'
           >
             Book Appointment
