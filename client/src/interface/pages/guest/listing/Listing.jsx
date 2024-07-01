@@ -244,8 +244,7 @@ const Listing = () => {
                       <button 
                         className='bg-black px-5 py-3 my-5 text-white rounded-lg font-medium'
                         onClick={() => setShowDatePicker(true)}
-                      > Select date</button>
-                      
+                      > Select date</button> 
                       {error && (
                         <p className='text-red-500'>{error}</p>
                       )}
@@ -275,7 +274,12 @@ const Listing = () => {
           <button
             onClick={() =>{
               dispatch(setBookingDate(selectedDate));
-              navigate(`/booking/${id}`);
+              if(selectedDate) {
+                navigate(`/booking/${id}`);
+              }
+              if(!selectedDate) {
+                setError('Please select an appointment date');
+              }
             } }
             className='bg-pink-700 text-white py-2 mb-3 px-4 rounded mt-4'
           >
