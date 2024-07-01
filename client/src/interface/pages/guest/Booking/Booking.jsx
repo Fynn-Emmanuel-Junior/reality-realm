@@ -7,6 +7,7 @@ import { useSelector, useDispatch } from 'react-redux';
 import { selectBookingDate, setBookingDate } from '../../../../logic/ReduxStore/features/listings/bookingDate';
 import DatePicker from '../../../components/customs/DatePicker';
 import { CSSTransition } from 'react-transition-group';
+import Footer from '../../../components/pageComponents/Footer';
 
 const Booking = () => {
     const { id } = useParams();
@@ -103,7 +104,15 @@ const Booking = () => {
                 <div>
                     <p className='text-xs'> By selecting the button ,you agree to <span className='text-blue-500'>Reality Realm terms , conditions</span> and  <span className='text-blue-500'> policy </span></p>
                 </div> 
-            </div>    
+                <button
+                    className='bg-pink-700 text-white py-2 mb-3 px-4 rounded mt-4 w-full'
+                >
+                    Book Appointment
+                </button>
+            </div> 
+            <footer className='mt-5'>
+              <Footer />
+            </footer>   
             <CSSTransition
                 in={showDatePicker}
                 timeout={300}
