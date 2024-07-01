@@ -30,7 +30,7 @@ const Booking = () => {
             setListing(data);
         };
         fetch();
-    }, [GetListing, id]);
+    }, []);
 
     return (
         <div className='md:hidden'>
@@ -69,6 +69,10 @@ const Booking = () => {
                     <div className='font-medium text-lg underline' onClick={() => setShowDatePicker(true)}>
                         Edit
                     </div>
+                </div>
+                <div className='mt-5'> 
+                    <p className='text-lg font-medium'>Price</p>
+                    <p>${listing?.regularPrice}</p>
                 </div>
             </div>
             <CSSTransition
