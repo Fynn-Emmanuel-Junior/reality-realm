@@ -125,6 +125,10 @@ const Booking = () => {
                     }
                 </div>
             </div>
+            <div className='bg-gray-200 w-full h-3' />
+            <div>
+                
+            </div>    
             <CSSTransition
                 in={showDatePicker}
                 timeout={300}
