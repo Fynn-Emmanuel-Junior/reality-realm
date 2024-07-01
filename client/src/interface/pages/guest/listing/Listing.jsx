@@ -242,12 +242,17 @@ const Listing = () => {
                     <div className='flex flex-col gap-3'>
                       <h2>Select Appointment Date:</h2>
                       <button 
-                        className='bg-black px-5 py-3 my-5 text-white rounded-lg font-medium'
+                        className='bg-black px-5 py-3 my-2 text-white rounded-lg font-medium'
                         onClick={() => setShowDatePicker(true)}
-                      > Select date</button> 
-                      {error && (
-                        <p className='text-red-500'>{error}</p>
-                      )}
+                      > Select date</button>
+                      <CSSTransition
+                          in={!!error}
+                          timeout={300}
+                          classNames="error"
+                          unmountOnExit
+                      >
+                        <p className='text-red-500 border border-red-600 rounded-md p-2'>{error}</p>
+                      </CSSTransition>
                     </div>
                   </div>
                 </div>
@@ -324,16 +329,16 @@ const Listing = () => {
         </div>
       </div>
       <CSSTransition
-                in={showDatePicker}
-                timeout={300}
-                classNames="date-picker"
-                unmountOnExit
-            >
-                <DatePicker
-                    onDateChange={handleDateChange}
-                    onClose={() => setShowDatePicker(false)}
-                />
-            </CSSTransition>
+        in={showDatePicker}
+        timeout={300}
+        classNames="date-picker"
+        unmountOnExit
+      >
+        <DatePicker
+            onDateChange={handleDateChange}
+            onClose={() => setShowDatePicker(false)}
+        />
+        </CSSTransition>
     </>
   );
 }
