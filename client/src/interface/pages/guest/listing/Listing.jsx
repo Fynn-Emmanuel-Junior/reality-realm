@@ -20,12 +20,13 @@ import { FaBottleWater } from "react-icons/fa6";
 import { TbAirConditioningDisabled, TbPool } from "react-icons/tb";
 import { IoIosArrowBack, IoIosArrowForward } from "react-icons/io";
 import { LuRefrigerator } from "react-icons/lu";
-import DatePicker from 'react-datepicker';
 import 'react-datepicker/dist/react-datepicker.css';
 import TopFooterContainer from '../../../components/pageComponents/TopFooterContainer';
 import profile from '../../../assets/profile.png';
 import { RxCross2 } from "react-icons/rx";
 import { setBookingDate } from '../../../../logic/ReduxStore/features/listings/bookingDate';
+import { CSSTransition } from 'react-transition-group';
+import DatePicker from '../../../components/customs/DatePicker';
 
 const Listing = () => {
   const { id } = useParams();
@@ -34,6 +35,7 @@ const Listing = () => {
   const [loading, setLoading] = useState(true);
   const [selectedDate, setSelectedDate] = useState(null);
   const [error, setError] = useState("");
+  const [showDatePicker,setShowDatePicker] = useState(false);
   const [showMore, setShowMore] = useState(false);
   const [messageOwner,setMessageOwner] = useState(false);
   const navigate = useNavigate();
@@ -239,16 +241,11 @@ const Listing = () => {
                     <h3 className='font-medium text-2xl'> Select date for appointment </h3>
                     <div className='flex flex-col gap-3'>
                       <h2>Select Appointment Date:</h2>
-                      <DatePicker
-                        selected={selectedDate}
-                        onChange={handleDateChange}
-                        dateFormat="MM/dd/yyyy"
-                        minDate={new Date()}
-                        isClearable
-                        showYearDropdown
-                        scrollableMonthYearDropdown
-                        className='border border-teal-600 w-full focus:outline-none rounded-sm'
-                      />
+                      <button 
+                        className='bg-black px-5 py-3 my-5 text-white rounded-lg font-medium'
+                        onClick={() => setShowDatePicker(true)}
+                      > Select date</button>
+                      
                       {error && (
                         <p className='text-red-500'>{error}</p>
                       )}
@@ -322,6 +319,17 @@ const Listing = () => {
           </div>
         </div>
       </div>
+      <CSSTransition
+                in={showDatePicker}
+                timeout={300}
+                classNames="date-picker"
+                unmountOnExit
+            >
+                <DatePicker
+                    onDateChange={handleDateChange}
+                    onClose={() => setShowDatePicker(false)}
+                />
+            </CSSTransition>
     </>
   );
 }
