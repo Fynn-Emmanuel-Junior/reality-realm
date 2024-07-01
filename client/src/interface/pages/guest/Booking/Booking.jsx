@@ -97,37 +97,12 @@ const Booking = () => {
                     <CgDanger />
                     <p>PLease ensure that this precautions are adhered to before meeting the owner of the place</p>
                 </div>
-                <div className='flex items-center justify-between'>
-                    <div className='mt-5'>
-                        <p className='text-lg font-medium'>Dates</p>
-                        <p>{new Date(bookingDate).toLocaleDateString()}</p>
-                    </div>
-                    <div className='font-medium text-lg underline' onClick={() => setShowDatePicker(true)}>
-                        Edit
-                    </div>
-                </div>
-                <div className='mt-5'> 
-                    <p className='text-lg font-medium'>Type of place</p>
-                    {
-                        listing?.typeOfPlace == 'sell' && <p>For Sale</p>
-                    }
-                    {
-                        listing?.typeOfPlace == 'rent' && <p>Rent</p>
-                    }
-                </div>
-                <div className='mt-5'> 
-                    <p className='text-lg font-medium'>Price</p>
-                    {
-                        listing?.typeOfPlace == 'sell' && <p>${listing?.regularPrice}</p>
-                    }
-                    {
-                        listing?.typeOfPlace == 'rent' && <p>${listing?.regularPrice} per month</p>
-                    }
-                </div>
             </div>
             <div className='bg-gray-200 w-full h-3' />
-            <div>
-                
+            <div className='w-11/12 mx-auto mt-3'>
+                <div>
+                    <p className='text-xs'> By selecting the button ,you agree to <span className='text-blue-500'>Reality Realm terms , conditions</span> and  <span className='text-blue-500'> policy </span></p>
+                </div> 
             </div>    
             <CSSTransition
                 in={showDatePicker}
