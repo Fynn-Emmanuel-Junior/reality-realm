@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { IoIosArrowBack, IoIosStar } from 'react-icons/io';
+import { IoIosArrowBack,IoIosCheckmark,IoIosStar } from 'react-icons/io';
 import { CgDanger } from "react-icons/cg";
 import { useListing } from '../../../hooks/useListing';
 import { useParams, useNavigate } from 'react-router-dom';
@@ -96,13 +96,31 @@ const Booking = () => {
                 <h3 className='font-semibold text-2xl'> Safety Precautions </h3>
                 <div className='text-red-500 border border-red-500 p-2 rounded-md mt-2'>
                     <CgDanger />
-                    <p>PLease ensure that this precautions are adhered to before meeting the owner of the place</p>
+                    <p>Please ensure that this precautions are adhered to before meeting the owner of the place</p>
                 </div>
+                <ul className='mt-5 py-3 border border-green-500 rounded-md'>
+                    <li className='flex items-center gap-2'>
+                        <IoIosCheckmark size={30} className='' />
+                        Make sure the place is clean and neat
+                    </li>
+                    <li className='flex items-center gap-2'>
+                        <IoIosCheckmark size={30} className='' />
+                        Make sure the place is clean and neat
+                    </li>
+                    <li className='flex items-center gap-2'>
+                        <IoIosCheckmark size={30} className='' />
+                        Make sure the place is clean and neat
+                    </li>
+                    <li className='flex items-center gap-2'>
+                        <IoIosCheckmark size={30} className='' />
+                        Make sure the place is clean and neat
+                    </li>
+                </ul>
             </div>
             <div className='bg-gray-200 w-full h-3' />
             <div className='w-11/12 mx-auto mt-3'>
                 <div>
-                    <p className='text-xs'> By selecting the button ,you agree to <span className='text-blue-500'>Reality Realm terms , conditions</span> and  <span className='text-blue-500'> policy </span></p>
+                    <p className='text-xs'> By selecting the button ,you agree to <span className='text-blue-500'>Reality Realm</span> <span className='text-blue-500'>terms</span> and <span className='text-blue-500'>conditions</span>  <span className='text-blue-500'> policy </span> and <span className='text-blue-500'>privacy policy</span></p>
                 </div> 
                 <button
                     className='bg-pink-700 text-white py-2 mb-3 px-4 rounded mt-4 w-full'
