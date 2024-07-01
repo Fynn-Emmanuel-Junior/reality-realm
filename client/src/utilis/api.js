@@ -1,7 +1,8 @@
 import {
     refreshUrl,
     listingUrl,
-    getListingUrl
+    getListingUrl,
+    bookingUrl
 } from './endpoints';
 
 
@@ -22,4 +23,8 @@ export const refreshApi = async() => {
 
 export const getListing = async(id) => {
     return await fetch(`${getListingUrl}/${id}`);
+}
+
+export const getBooking = async() => {
+    return await fetch(bookingUrl);
 }

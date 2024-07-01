@@ -1,5 +1,6 @@
 import {
-    getListing
+    getListing,
+    getBooking
 } from '../../utilis/api';
 
 export const useListing = () => {
@@ -8,7 +9,13 @@ export const useListing = () => {
         const responseData = await response.json();
         return responseData;
     }
+
+    const Booking = async() => {
+
+    }
+
     return {
-        GetListing
+        GetListing,
+        Booking
     }
 }

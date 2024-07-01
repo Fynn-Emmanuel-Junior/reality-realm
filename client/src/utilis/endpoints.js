@@ -18,3 +18,4 @@ export const getListingUrl = `${developmentApi}/listings/getlisting`
 //payment endpoint
 
 //appointment endpoint
+export const bookingUrl = `${developmentApi}/appointment/book`
