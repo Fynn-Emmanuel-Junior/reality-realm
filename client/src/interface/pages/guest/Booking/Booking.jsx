@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { IoIosArrowBack, IoIosStar } from 'react-icons/io';
+import { CgDanger } from "react-icons/cg";
 import { useListing } from '../../../hooks/useListing';
 import { useParams, useNavigate } from 'react-router-dom';
 import { useSelector, useDispatch } from 'react-redux';
@@ -71,8 +72,57 @@ const Booking = () => {
                     </div>
                 </div>
                 <div className='mt-5'> 
+                    <p className='text-lg font-medium'>Type of place</p>
+                    {
+                        listing?.typeOfPlace == 'sell' && <p>For Sale</p>
+                    }
+                    {
+                        listing?.typeOfPlace == 'rent' && <p>Rent</p>
+                    }
+                </div>
+                <div className='mt-5'> 
                     <p className='text-lg font-medium'>Price</p>
-                    <p>${listing?.regularPrice}</p>
+                    {
+                        listing?.typeOfPlace == 'sell' && <p>${listing?.regularPrice}</p>
+                    }
+                    {
+                        listing?.typeOfPlace == 'rent' && <p>${listing?.regularPrice} per month</p>
+                    }
+                </div>
+            </div>
+            <div className='bg-gray-200 w-full h-3' />
+            <div className='w-11/12 mx-auto my-7'>
+                <h3 className='font-semibold text-2xl'> Safety Precautions </h3>
+                <div className='text-red-500 border border-red-500 p-2 rounded-md mt-2'>
+                    <CgDanger />
+                    <p>PLease ensure that this precautions are adhered to before meeting the owner of the place</p>
+                </div>
+                <div className='flex items-center justify-between'>
+                    <div className='mt-5'>
+                        <p className='text-lg font-medium'>Dates</p>
+                        <p>{new Date(bookingDate).toLocaleDateString()}</p>
+                    </div>
+                    <div className='font-medium text-lg underline' onClick={() => setShowDatePicker(true)}>
+                        Edit
+                    </div>
+                </div>
+                <div className='mt-5'> 
+                    <p className='text-lg font-medium'>Type of place</p>
+                    {
+                        listing?.typeOfPlace == 'sell' && <p>For Sale</p>
+                    }
+                    {
+                        listing?.typeOfPlace == 'rent' && <p>Rent</p>
+                    }
+                </div>
+                <div className='mt-5'> 
+                    <p className='text-lg font-medium'>Price</p>
+                    {
+                        listing?.typeOfPlace == 'sell' && <p>${listing?.regularPrice}</p>
+                    }
+                    {
+                        listing?.typeOfPlace == 'rent' && <p>${listing?.regularPrice} per month</p>
+                    }
                 </div>
             </div>
             <CSSTransition
