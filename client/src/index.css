@@ -232,22 +232,26 @@ body{
 
 .menu-enter {
   opacity: 0;
-  transform: translateY(-20px);
+  transform: translateX(-100%);
 }
+
 .menu-enter-active {
   opacity: 1;
-  transform: translateY(0);
+  transform: translateX(0);
   transition: opacity 300ms, transform 300ms;
 }
+
 .menu-exit {
   opacity: 1;
-  transform: translateY(0);
+  transform: translateX(0);
 }
+
 .menu-exit-active {
   opacity: 0;
-  transform: translateY(-20px);
+  transform: translateX(-100%);
   transition: opacity 300ms, transform 300ms;
 }
+
 
 /* ErrorAnimation.css */
 .error-enter {

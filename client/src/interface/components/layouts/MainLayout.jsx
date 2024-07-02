@@ -12,6 +12,7 @@ import profile from '../../assets/profile.png'
 import { setMenu } from '../../../logic/ReduxStore/features/menu/menuSlice';
 import Footer from '../pageComponents/Footer';
 import { selectMenu } from '../../../logic/ReduxStore/features/menu/menuSlice';
+import { CSSTransition } from 'react-transition-group';
 
 
 function AutoDeleteParagraph({ text, delay }) {
@@ -19,32 +20,32 @@ function AutoDeleteParagraph({ text, delay }) {
 	const [isVisible, setIsVisible] = useState(true);
   
 	useEffect(() => {
-	  const interval = setInterval(() => {
+     const interval = setInterval(() => {
 		if (isVisible) {
-		  setIsVisible(false);
-		  setTimeout(() => {
+       setIsVisible(false);
+         setTimeout(() => {
 			setDisplayedText('');
-		  }, delay);
+       }, delay);
 		} else {
-		  if (displayedText.length < text.length) {
+			if (displayedText.length < text.length) {
 			setDisplayedText((prevText) => text.slice(0, prevText.length + 1));
-		  } else {
+		} else {
 			setIsVisible(true);
-		  }
 		}
-	  }, delay + 1000); // Adjust the total interval time (delay + additional time between repeats)
+		}
+	}, delay + 1000); // Adjust the total interval time (delay + additional time between repeats)
   
-	  return () => {
+	return () => {
 		clearInterval(interval);
-	  };
+	};
 	}, [isVisible, displayedText, text, delay]);
   
 	return (
-	  <div>
+	<div>
 		{isVisible && <h1 className="text-white font-medium xxs:text-xs xs:text-base md:text-2xl text-center">{text}</h1>
 		}
 		{!isVisible && <h1 className="text-white font-medium xxs:text-xs xs:text-base md:text-2xl text-center">{displayedText}</h1>}
-	  </div>
+      </div>
 	);
   }
 
@@ -133,7 +134,14 @@ const MainLayout = ({children}) => {
 			</div>
 			<>
 				{
-					open && <Menu open={open} setOpen={setOpen}/>
+					open && <CSSTransition
+					in={open}
+					timeout={300}
+					classNames="menu"
+					unmountOnExit
+				>
+					<Menu open={open} setOpen={setOpen} />
+				</CSSTransition>
 				}
 			</>
 			<div className='w-[95%] md:mx-auto absolute top-[9%] xs:top-[10.5%] sm:top-[14%] md:top-[15%] md-x:top-[13%] lg:top-[5%] xl:top-[20%] left-[50%] -translate-x-2/4 -translate-y-2/4'>
@@ -154,6 +162,7 @@ const MainLayout = ({children}) => {
 						</Link>
 					</div>
 				</div>
+				
 				<div className='w-full xxs:mt-[5%] xs:mb-[8%] md:mt-[10%] lg:mt-[50%] xl:mt-[20%]'>
 					<div className='md-x:mb-3'>
 						{/* <h1 className="text-white font-medium xxs:text-xs xs:text-base md:text-2xl text-center">
