@@ -1,5 +1,4 @@
 import PropTypes from 'prop-types'
-import Header from '../pageComponents/Header';
 import bg from '../../assets/bg3 (1).jpg'
 import { HiOutlineMenu } from "react-icons/hi";
 import { Link } from 'react-router-dom';
@@ -196,5 +195,11 @@ const MainLayout = ({children}) => {
 MainLayout.propTypes = {
     children: PropTypes.node,
   };
+
+  AutoDeleteParagraph.propTypes = {
+	text: PropTypes.string.isRequired,
+	delay: PropTypes.number.isRequired,
+  };
+  
 
 export default MainLayout
