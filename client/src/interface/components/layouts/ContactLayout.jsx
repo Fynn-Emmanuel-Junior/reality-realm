@@ -1,9 +1,7 @@
 import PropTypes from 'prop-types'
-import Header from '../pageComponents/Header';
 import bg from '../../assets/bg3 (2).jpg'
 import { HiOutlineMenu } from "react-icons/hi";
 import { Link } from 'react-router-dom';
-import { CiSearch } from "react-icons/ci";
 import { useState } from 'react'
 import Menu from '../pageComponents/Menu';
 import { useSelector } from 'react-redux'
@@ -93,7 +91,7 @@ const MainLayout = ({children}) => {
 				</div>
 				<div className='flex flex-col items-center w-full xxs:mt-[10%] xs:mb-[8%] md:mt-[10%] lg:mt-[45%] xl:mt-[13%] text-white'>
 					<p className='text-2xl xs:text-3xl md:text-4xl font-semibold text-center'> Get in touch with us for  more information </p>
-                    <p className='mt-2 sm:mt-4 text-sm xs:text-base text-center'> if you need help or have a question , we're here for you </p>
+                    <p className='mt-2 sm:mt-4 text-sm xs:text-base text-center'> if you need help or have a question , {"we're"} here for you </p>
 				</div>
 			</div>
 		</header>
