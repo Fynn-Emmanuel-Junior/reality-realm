@@ -1,9 +1,6 @@
-import {FaSearch} from 'react-icons/fa'
-import { Link,useNavigate } from 'react-router-dom'
+import { Link} from 'react-router-dom'
 import {useSelector} from 'react-redux'
 import { selectCurrentUser } from '../../../logic/ReduxStore/features/users/usersSlice'
-import { useState } from 'react'
-import { HiOutlineMenu } from "react-icons/hi";
 
 const Header = () => {
     const currentuser = useSelector(selectCurrentUser)
