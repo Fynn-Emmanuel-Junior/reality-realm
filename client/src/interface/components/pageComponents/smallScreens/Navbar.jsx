@@ -35,7 +35,7 @@ const Navbar = () => {
             <CSSTransition
                 in={open}
                 timeout={300}
-                classNames="menu"
+                classNames=""
                 unmountOnExit
             >
                 <Menu open={open} setOpen={setOpen} />
