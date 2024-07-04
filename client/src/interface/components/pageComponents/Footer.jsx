@@ -1,4 +1,3 @@
-import { FaFacebookF, FaTwitter, FaLinkedinIn,FaYoutube } from "react-icons/fa"
 import { TbWorld } from "react-icons/tb";
 
 const Footer = () => {
