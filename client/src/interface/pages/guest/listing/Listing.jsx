@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import { useEffect, useState } from 'react';
 import { useParams, useNavigate } from 'react-router-dom';
 import { useDispatch} from 'react-redux';
 import SearchNavBar from '../../../components/pageComponents/Search/SearchNavBar';
@@ -226,7 +226,7 @@ const Listing = () => {
                     </div>
                     <div>
                       <p 
-                        className='mt-10 mb-7 text-lg font-semibold'
+                        className='mt-10 mb-7 text-lg font-semibold underline'
                         onClick={() => setOwnerDetails(true)}
                       >Owner details</p>
                       <div>

@@ -8,6 +8,7 @@ import { selectBookingDate, setBookingDate } from '../../../../logic/ReduxStore/
 import DatePicker from '../../../components/customs/DatePicker';
 import { CSSTransition } from 'react-transition-group';
 import Footer from '../../../components/pageComponents/Footer';
+import { GoDotFill } from "react-icons/go";
 
 const Booking = () => {
     const { id } = useParams();
@@ -99,22 +100,39 @@ const Booking = () => {
                     <p>Please ensure that this precautions are adhered to before meeting the owner of the place</p>
                 </div>
                 <ul className='mt-5 py-3 border border-green-500 rounded-md'>
-                    <li className='flex items-center gap-2'>
-                        <IoIosCheckmark size={30} className='' />
-                        Make sure the place is clean and neat
-                    </li>
-                    <li className='flex items-center gap-2'>
-                        <IoIosCheckmark size={30} className='' />
-                        Make sure the place is clean and neat
-                    </li>
-                    <li className='flex items-center gap-2'>
-                        <IoIosCheckmark size={30} className='' />
-                        Make sure the place is clean and neat
-                    </li>
-                    <li className='flex items-center gap-2'>
-                        <IoIosCheckmark size={30} className='' />
-                        Make sure the place is clean and neat
-                    </li>
+                    <div>
+                        <li className='flex items-center gap-2'>
+                            <GoDotFill />
+                           <p className='font-bold '> Communicate Clearly</p>
+                        </li>
+                        <div className='flex flex-col gap-2'>
+                            <li className='flex items-center gap-2 ml-3 mt-1'>
+                                <IoIosCheckmark size={30}/>
+                            <p className='text-[13px]'> Have a thorough conversation with the owner through secure communication channels before meeting in person.</p>
+                            </li>
+                            <li className='flex items-center gap-2 ml-3'>
+                                <IoIosCheckmark size={30}/>
+                            <p className='text-[13px]'>Arrange the meeting during daylight hours and ensure someone knows about your appointment.</p>
+                            </li>
+                        </div>
+                    </div>
+                    <div>
+                        <li className='flex items-center gap-2'>
+                            <GoDotFill />
+                           <p className='font-bold '> Bring a friend </p>
+                        </li>
+                        <div className='flex flex-col gap-2 text-xs'>
+                            <li className='flex items-center gap-2 ml-3'>
+                                <IoIosCheckmark size={30}/>
+                                <p className='text-[13px]'> if possible, take a friend or family member with you to the meeting.</p>
+                            </li>
+                            <li className='flex items-center gap-2 ml-3'>
+                                <IoIosCheckmark size={30}/>
+                                <p className='text-[13px]'>Inform a trusted person about your meeting details, including time, location, and contact information of the house owner.</p>
+                            </li>
+                        </div>
+                    </div>
+                   
                 </ul>
             </div>
             <div className='bg-gray-200 w-full h-3' />
