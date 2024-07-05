@@ -145,6 +145,8 @@ const Listing = () => {
                   </div>
                   <div className='border border-black border-b-[0.2px] my-5 border-opacity-10' />
                   <div>
+                    <h3> House Loaction  </h3>
+                    {/*Put google map here*/}
 
                   </div>
                   <div className='border border-black border-b-[0.2px] my-5 border-opacity-10 w-full' />
