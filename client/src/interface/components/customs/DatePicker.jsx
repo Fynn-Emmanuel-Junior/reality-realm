@@ -60,7 +60,7 @@ const DatePicker = ({ selectedDate, onDateChange, onClose }) => {
         </div>
       </div>
       <div className="date-picker-footer">
-        <button className="clear-btn" onClick={() => onDateChange(null)}>Clear</button>
+        <button className="bg-black text-white w-36 rounded-lg" onClick={() => onDateChange(null)}>Clear date</button>
         <button className="save-btn" onClick={() => onClose()}>Save</button>
       </div>
     </div>
