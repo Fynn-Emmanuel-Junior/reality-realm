@@ -9,11 +9,13 @@ import DatePicker from '../../../components/customs/DatePicker';
 import { CSSTransition } from 'react-transition-group';
 import Footer from '../../../components/pageComponents/Footer';
 import { GoDotFill } from "react-icons/go";
+import { RxCross2 } from "react-icons/rx";
 
 const Booking = () => {
     const { id } = useParams();
     const { GetListing } = useListing();
     const [listing, setListing] = useState();
+    const [precautions,setPrecautions] = useState(false);
     const bookingDate = useSelector(selectBookingDate);
     const dispatch = useDispatch();
     const navigate = useNavigate();
@@ -99,7 +101,36 @@ const Booking = () => {
                     <CgDanger />
                     <p>Please ensure that this precautions are adhered to before meeting the owner of the place</p>
                 </div>
-                <ul className='mt-5 py-3 border border-green-500 rounded-md'>
+                <div className='mt-3'>
+                    <button 
+                        className='underline'
+                        onClick={() =>  setPrecautions(true)}
+                    >
+                        Read precautions
+                    </button>
+                </div>
+            </div>
+            <div className='bg-gray-200 w-full h-3' />
+            <div className='w-11/12 mx-auto mt-3'>
+                <div>
+                    <p className='text-xs'> By selecting the button ,you agree to <span className='text-blue-500'>Reality Realm</span> <span className='text-blue-500'>terms</span> and <span className='text-blue-500'>conditions</span>  <span className='text-blue-500'> policy </span> and <span className='text-blue-500'>privacy policy</span></p>
+                </div> 
+                <button
+                    className='bg-pink-700 text-white py-2 mb-3 px-4 rounded mt-4 w-full'
+                >
+                    Book Appointment
+                </button>
+            </div> 
+            <footer className='mt-5'>
+              <Footer />
+            </footer> 
+            <div className={`bottom-sheet ${precautions ? 'show' : ''}`}>
+                <div className="bottom-sheet-content">
+                <button onClick={() => setPrecautions(false)}>
+                    <RxCross2 size={20} />
+                </button>
+                <h3>Safety precautions</h3>
+                <ul className='mt-5 py-3 border border-green-500 rounded-md flex flex-col gap-2 px-2'>
                     <div>
                         <li className='flex items-center gap-2'>
                             <GoDotFill />
@@ -131,24 +162,26 @@ const Booking = () => {
                                 <p className='text-[13px]'>Inform a trusted person about your meeting details, including time, location, and contact information of the house owner.</p>
                             </li>
                         </div>
-                    </div>
-                   
+                    </div>  
+                    <div>
+                        <li className='flex items-center gap-2'>
+                            <GoDotFill />
+                           <p className='font-bold '> Bring a friend </p>
+                        </li>
+                        <div className='flex flex-col gap-2 text-xs'>
+                            <li className='flex items-center gap-2 ml-3'>
+                                <IoIosCheckmark size={30}/>
+                                <p className='text-[13px]'> if possible, take a friend or family member with you to the meeting.</p>
+                            </li>
+                            <li className='flex items-center gap-2 ml-3'>
+                                <IoIosCheckmark size={30}/>
+                                <p className='text-[13px]'>Inform a trusted person about your meeting details, including time, location, and contact information of the house owner.</p>
+                            </li>
+                        </div>
+                    </div> 
                 </ul>
-            </div>
-            <div className='bg-gray-200 w-full h-3' />
-            <div className='w-11/12 mx-auto mt-3'>
-                <div>
-                    <p className='text-xs'> By selecting the button ,you agree to <span className='text-blue-500'>Reality Realm</span> <span className='text-blue-500'>terms</span> and <span className='text-blue-500'>conditions</span>  <span className='text-blue-500'> policy </span> and <span className='text-blue-500'>privacy policy</span></p>
-                </div> 
-                <button
-                    className='bg-pink-700 text-white py-2 mb-3 px-4 rounded mt-4 w-full'
-                >
-                    Book Appointment
-                </button>
-            </div> 
-            <footer className='mt-5'>
-              <Footer />
-            </footer>   
+                </div>
+            </div>  
             <CSSTransition
                 in={showDatePicker}
                 timeout={300}
