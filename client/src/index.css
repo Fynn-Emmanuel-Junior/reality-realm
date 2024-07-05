@@ -186,7 +186,7 @@ body{
   .date-picker-day.selected {
     background: #007bff;
     color: white;
-    border-radius: 50%;
+    border-radius: 100%;
   }
   
   .date-picker-footer {
@@ -200,7 +200,7 @@ body{
     background: #007bff;
     color: white;
     border: none;
-    padding: 10px 20px;
+    padding: 10px 60px;
     border-radius: 5px;
     cursor: pointer;
     font-size: 16px;
