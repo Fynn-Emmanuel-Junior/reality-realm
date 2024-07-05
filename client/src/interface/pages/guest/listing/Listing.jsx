@@ -38,6 +38,7 @@ const Listing = () => {
   const [showDatePicker,setShowDatePicker] = useState(false);
   const [showMore, setShowMore] = useState(false);
   const [messageOwner,setMessageOwner] = useState(false);
+  const [ownerDetails,setOwnerDetails] = useState(false);
   const navigate = useNavigate();
 
   const handleDateChange = (date) => {
@@ -224,7 +225,10 @@ const Listing = () => {
                       </div>
                     </div>
                     <div>
-                      <p className='mt-10 mb-7 text-lg font-semibold'>Owner details</p>
+                      <p 
+                        className='mt-10 mb-7 text-lg font-semibold'
+                        onClick={() => setOwnerDetails(true)}
+                      >Owner details</p>
                       <div>
                         <p>Response rate: 100%</p>
                         <p>Response within an hour</p>
@@ -328,6 +332,21 @@ const Listing = () => {
           </div>
         </div>
       </div>
+      <div className={`bottom-sheet ${ownerDetails ? 'show' : ''}`}>
+        <div className="bottom-sheet-content">
+          <button onClick={() => setOwnerDetails(false)}>
+            <RxCross2 size={20} />
+          </button>
+          <div>
+            <h3 className='text-lg font-semibold my-5'>
+             Owner Details
+            </h3>
+            <textarea 
+              className='border border-teal-700 focus:outline-none p-3 w-96 rounded-lg'
+            />
+          </div>
+        </div>
+      </div>     
       <CSSTransition
         in={showDatePicker}
         timeout={300}
