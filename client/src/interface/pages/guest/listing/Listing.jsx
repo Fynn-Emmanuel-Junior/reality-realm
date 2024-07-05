@@ -192,12 +192,12 @@ const Listing = () => {
                   <div className='border border-black border-b-[0.2px] my-5 border-opacity-10' />
                   {/* Owner details*/}
                   <div>
-                    <h3 className='text-xl font-semibold'> Meet the Owner </h3>
+                    <h3 className='text-xl font-semibold'> Meet Host </h3>
                     <div className="owner-details bg-white shadow-xl p-5 rounded-lg mt-5">
                       <div className='flex gap-10 items-start'>
                         <div>
                           <img src={profile} alt='profile_img' width={150} height={150}/>
-                          <h3 className='text-xl font-bold'>{"Fynn Emmanuel Junior"}</h3>
+                          <h3 className='text-xl font-semibold'>{"Fynn Emmanuel Junior"}</h3>
                           <p className='text-center font-medium'> Owner </p>
                         </div>
                         <div>
@@ -318,7 +318,7 @@ const Listing = () => {
           </button>
           <div>
             <h3 className='text-lg font-semibold my-5'>
-             Message Owner {"Fynn Emmanuel"}
+             Message Host {"Fynn Emmanuel"}
             </h3>
             <textarea 
               className='border border-teal-700 focus:outline-none p-3 w-96 rounded-lg'
@@ -326,7 +326,7 @@ const Listing = () => {
             <div className='mt-3'>
               <button 
                   className='bg-black px-5 py-3 text-white rounded-lg font-medium'
-              > Message Owner</button>
+              > Message Host</button>
             </div>
            
           </div>
@@ -339,7 +339,7 @@ const Listing = () => {
           </button>
           <div>
             <h3 className='text-lg font-semibold my-5'>
-             Owner Details
+             Host Details
             </h3>
             <textarea 
               className='border border-teal-700 focus:outline-none p-3 w-96 rounded-lg'

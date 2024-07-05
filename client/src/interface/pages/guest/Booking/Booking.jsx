@@ -179,6 +179,54 @@ const Booking = () => {
                             </li>
                         </div>
                     </div> 
+                    <div>
+                        <li className='flex items-center gap-2'>
+                            <GoDotFill />
+                           <p className='font-semibold'> Check the Property </p>
+                        </li>
+                        <div className='flex flex-col gap-2 text-xs'>
+                            <li className='flex items-center gap-2 ml-3'>
+                                <IoIosCheckmark size={30}/>
+                                <p className='text-[13px]'>Thoroughly inspect the property and ask relevant questions about it. </p>
+                            </li>
+                            <li className='flex items-center gap-2 ml-3'>
+                                <IoIosCheckmark size={30}/>
+                                <p className='text-[13px]'>Avoid making any payments or signing documents during the first meeting.</p>
+                            </li>
+                        </div>
+                    </div>
+                    <div>
+                        <li className='flex items-center gap-2'>
+                            <GoDotFill />
+                           <p className='font-semibold'> Secure Payments </p>
+                        </li>
+                        <div className='flex flex-col gap-2 text-xs'>
+                            <li className='flex items-center gap-2 ml-3'>
+                                <IoIosCheckmark size={30}/>
+                                <p className='text-[13px]'>Never make cash payments; use traceable payment methods. </p>
+                            </li>
+                            <li className='flex items-center gap-2 ml-3'>
+                                <IoIosCheckmark size={30}/>
+                                <p className='text-[13px]'>Ensure all transactions and agreements are done through legal and secure means.</p>
+                            </li>
+                        </div>
+                    </div>
+                    <div>
+                        <li className='flex items-center gap-2'>
+                            <GoDotFill />
+                           <p className='font-semibold'> Use Secure Platforms </p>
+                        </li>
+                        <div className='flex flex-col gap-2 text-xs'>
+                            <li className='flex items-center gap-2 ml-3'>
+                                <IoIosCheckmark size={40}/>
+                                <p className='text-[13px]'>Utilize the secure messaging and payment options provided by your website or other reliable platforms.</p>
+                            </li>
+                            <li className='flex items-center gap-2 ml-3'>
+                                <IoIosCheckmark size={30}/>
+                                <p className='text-[13px]'>Report any suspicious activities or profiles to our support team</p>
+                            </li>
+                        </div>
+                    </div>
                 </ul>
                 </div>
             </div>  
