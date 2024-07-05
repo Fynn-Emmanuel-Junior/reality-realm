@@ -317,7 +317,7 @@ const Listing = () => {
              Message Owner {"Fynn Emmanuel"}
             </h3>
             <textarea 
-              className='border border-teal-700 focus:outline-none p-3 w-96'
+              className='border border-teal-700 focus:outline-none p-3 w-96 rounded-lg'
             />
             <div className='mt-3'>
               <button 

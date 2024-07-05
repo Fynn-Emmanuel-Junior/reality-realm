@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import { useState } from 'react';
 
 const DatePicker = ({ selectedDate, onDateChange, onClose }) => {
   const [currentDate, setCurrentDate] = useState(new Date());
