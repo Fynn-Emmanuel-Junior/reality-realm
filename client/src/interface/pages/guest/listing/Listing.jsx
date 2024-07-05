@@ -39,6 +39,7 @@ const Listing = () => {
   const [showMore, setShowMore] = useState(false);
   const [messageOwner,setMessageOwner] = useState(false);
   const [ownerDetails,setOwnerDetails] = useState(false);
+  const [amenities,setAmenities] = useState(false);
   const navigate = useNavigate();
 
   const handleDateChange = (date) => {
@@ -136,48 +137,17 @@ const Listing = () => {
                         <h3> Refrigerator </h3>
                       </div>
                     </div>
-                    <div className='grid grid-cols-2 gap-3 mt-4'>
-                      <div className='p-5 rounded-lg flex gap-3 border'>
-                        <FaBottleWater size={25} className='text-blue-900' />
-                        <h3> Water Reservoir </h3>
+                  </div>
+                  <div className='border border-black mt-3 rounded-md p-2'>
+                      <div className='flex flex-col items-center'>
+                        <button className='font-semibold' onClick={() => setAmenities(true)}> Show all amenities</button>
                       </div>
-                      <div className='p-5 rounded-lg flex gap-3 border'>
-                        <MdOutlineMicrowave size={25} className='text-blue-900' />
-                        <h3> Microwave </h3>
-                      </div>
-                    </div>
-                    <div className='grid grid-cols-2 gap-3 mt-4'>
-                      <div className='p-5 rounded-lg flex gap-3 border'>
-                        <TbPool size={25} className='text-blue-900' />
-                        <h3> Swimming pool </h3>
-                      </div>
-                      <div className='p-5 rounded-lg flex gap-3 border'>
-                        <MdOutlineStore size={25} className='text-blue-900' />
-                        <h3> Convenient store </h3>
-                      </div>
-                    </div>
-                    <div className='grid grid-cols-2 gap-3 mt-4'>
-                      <div className='p-5 rounded-lg flex gap-3 border'>
-                        <GiKitchenKnives size={25} className='text-blue-900' />
-                        <h3> Kitchen </h3>
-                      </div>
-                      <div className='p-5 rounded-lg flex gap-3 border'>
-                        <IoGolf size={25} className='text-blue-900' />
-                        <h3> Mini Golf </h3>
-                      </div>
-                    </div>
-                    <div className='grid grid-cols-2 gap-3 mt-4'>
-                      <div className='p-5 rounded-lg flex gap-3 border'>
-                        <MdOutlineLocalLaundryService size={25} className='text-blue-900' />
-                        <h3> Laundry Service </h3>
-                      </div>
-                      <div className='p-5 rounded-lg flex gap-3 border'>
-                        <CiLock size={25} className='text-blue-900' />
-                        <h3> Secure </h3>
-                      </div>
-                    </div>
                   </div>
                   <div className='border border-black border-b-[0.2px] my-5 border-opacity-10' />
+                  <div>
+
+                  </div>
+                  <div className='border border-black border-b-[0.2px] my-5 border-opacity-10 w-full' />
                   <div className="listing-details">
                     <p>
                       Luxurious studio apartment with a private bathroom, kitchenette with workspace/dining area. The apartment is located in a sought after neighborhood close to the US Embassy in Accra. The apartment has modern amenities, high end fittings, contemporary decor including a chandelier that brightens up the apartment.
@@ -226,10 +196,10 @@ const Listing = () => {
                     </div>
                     <div>
                       <p 
-                        className='mt-10 mb-7 text-lg font-semibold underline'
+                        className='mt-10 mb-7 text-lg border border-pink-600 w-1/3 text-center text-pink-600 rounded-md'
                         onClick={() => setOwnerDetails(true)}
-                      >Owner details</p>
-                      <div>
+                      >Owner details</p><hr />
+                      <div className='mt-3'>
                         <p>Response rate: 100%</p>
                         <p>Response within an hour</p>
                       </div>
@@ -346,7 +316,89 @@ const Listing = () => {
             />
           </div>
         </div>
-      </div>     
+      </div> 
+      <div className={`bottom-sheet ${amenities ? 'show' : ''}`}>
+        <div className="bottom-sheet-content">
+          <button onClick={() => setAmenities(false)}>
+            <IoIosArrowBack size={20} />
+          </button>
+          <div>
+            <div>
+                    <h2 className='text-2xl font-medium my-3'> Amenities </h2>
+                    <div className='flex gap-3 w-full'>
+                      <div className='border p-5 rounded-xl flex gap-3 w-1/2'>
+                        <LiaUserAstronautSolid size={25} className='text-blue-900' />
+                        <h3> Doorman </h3>
+                      </div>
+                      <div className='border p-5 rounded-xl flex gap-3 w-1/2'>
+                        <GrElevator size={25} className='text-blue-900' />
+                        <h3> Elevator </h3>
+                      </div>
+                    </div>
+                    <div className='grid grid-cols-2 gap-3 mt-4'>
+                      <div className='p-5 rounded-lg flex gap-3 border'>
+                        <GiPowerGenerator size={25} className='text-blue-900' />
+                        <h3> Generator </h3>
+                      </div>
+                      <div className='p-5 rounded-lg flex gap-3 border'>
+                        <BsHouseDoor size={25} className='text-blue-900' />
+                        <h3> Furnished </h3>
+                      </div>
+                    </div>
+                    <div className='grid grid-cols-2 gap-3 mt-4'>
+                      <div className='p-5 rounded-lg flex gap-3 border'>
+                        <TbAirConditioningDisabled size={25} className='text-blue-900' />
+                        <h3> Air Conditioning </h3>
+                      </div>
+                      <div className='p-5 rounded-lg flex gap-3 border'>
+                        <LuRefrigerator size={25} className='text-blue-900' />
+                        <h3> Refrigerator </h3>
+                      </div>
+                    </div>
+                    <div className='grid grid-cols-2 gap-3 mt-4'>
+                      <div className='p-5 rounded-lg flex gap-3 border'>
+                        <FaBottleWater size={25} className='text-blue-900' />
+                        <h3> Water Reservoir </h3>
+                      </div>
+                      <div className='p-5 rounded-lg flex gap-3 border'>
+                        <MdOutlineMicrowave size={25} className='text-blue-900' />
+                        <h3> Microwave </h3>
+                      </div>
+                    </div>
+                    <div className='grid grid-cols-2 gap-3 mt-4'>
+                      <div className='p-5 rounded-lg flex gap-3 border'>
+                        <TbPool size={25} className='text-blue-900' />
+                        <h3> Swimming pool </h3>
+                      </div>
+                      <div className='p-5 rounded-lg flex gap-3 border'>
+                        <MdOutlineStore size={25} className='text-blue-900' />
+                        <h3> Convenient store </h3>
+                      </div>
+                    </div>
+                    <div className='grid grid-cols-2 gap-3 mt-4'>
+                      <div className='p-5 rounded-lg flex gap-3 border'>
+                        <GiKitchenKnives size={25} className='text-blue-900' />
+                        <h3> Kitchen </h3>
+                      </div>
+                      <div className='p-5 rounded-lg flex gap-3 border'>
+                        <IoGolf size={25} className='text-blue-900' />
+                        <h3> Mini Golf </h3>
+                      </div>
+                    </div>
+                    <div className='grid grid-cols-2 gap-3 mt-4'>
+                      <div className='p-5 rounded-lg flex gap-3 border'>
+                        <MdOutlineLocalLaundryService size={25} className='text-blue-900' />
+                        <h3> Laundry Service </h3>
+                      </div>
+                      <div className='p-5 rounded-lg flex gap-3 border'>
+                        <CiLock size={25} className='text-blue-900' />
+                        <h3> Secure </h3>
+                      </div>
+                    </div>
+            </div>
+          </div>
+        </div>
+      </div>    
       <CSSTransition
         in={showDatePicker}
         timeout={300}
