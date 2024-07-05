@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import { useState, useEffect } from 'react';
 import { IoIosArrowBack,IoIosCheckmark,IoIosStar } from 'react-icons/io';
 import { CgDanger } from "react-icons/cg";
 import { useListing } from '../../../hooks/useListing';
