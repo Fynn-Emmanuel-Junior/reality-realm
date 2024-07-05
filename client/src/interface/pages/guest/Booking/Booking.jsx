@@ -103,7 +103,7 @@ const Booking = () => {
                 </div>
                 <div className='mt-3'>
                     <button 
-                        className='underline'
+                        className='underline font-semibold'
                         onClick={() =>  setPrecautions(true)}
                     >
                         Read precautions
@@ -129,20 +129,20 @@ const Booking = () => {
                 <button onClick={() => setPrecautions(false)}>
                     <RxCross2 size={20} />
                 </button>
-                <h3>Safety precautions</h3>
+                <h3 className='text-xl font-bold'>Safety precautions</h3>
                 <ul className='mt-5 py-3 border border-green-500 rounded-md flex flex-col gap-2 px-2'>
                     <div>
                         <li className='flex items-center gap-2'>
                             <GoDotFill />
-                           <p className='font-bold '> Communicate Clearly</p>
+                           <p className='font-semibold'> Communicate Clearly</p>
                         </li>
                         <div className='flex flex-col gap-2'>
                             <li className='flex items-center gap-2 ml-3 mt-1'>
-                                <IoIosCheckmark size={30}/>
+                                <IoIosCheckmark size={45}/>
                             <p className='text-[13px]'> Have a thorough conversation with the owner through secure communication channels before meeting in person.</p>
                             </li>
                             <li className='flex items-center gap-2 ml-3'>
-                                <IoIosCheckmark size={30}/>
+                                <IoIosCheckmark size={40}/>
                             <p className='text-[13px]'>Arrange the meeting during daylight hours and ensure someone knows about your appointment.</p>
                             </li>
                         </div>
@@ -150,7 +150,7 @@ const Booking = () => {
                     <div>
                         <li className='flex items-center gap-2'>
                             <GoDotFill />
-                           <p className='font-bold '> Bring a friend </p>
+                           <p className='font-semibold'> Bring a friend </p>
                         </li>
                         <div className='flex flex-col gap-2 text-xs'>
                             <li className='flex items-center gap-2 ml-3'>
@@ -158,7 +158,7 @@ const Booking = () => {
                                 <p className='text-[13px]'> if possible, take a friend or family member with you to the meeting.</p>
                             </li>
                             <li className='flex items-center gap-2 ml-3'>
-                                <IoIosCheckmark size={30}/>
+                                <IoIosCheckmark size={45}/>
                                 <p className='text-[13px]'>Inform a trusted person about your meeting details, including time, location, and contact information of the house owner.</p>
                             </li>
                         </div>
@@ -166,16 +166,16 @@ const Booking = () => {
                     <div>
                         <li className='flex items-center gap-2'>
                             <GoDotFill />
-                           <p className='font-bold '> Bring a friend </p>
+                           <p className='font-semibold'> Meet in Public </p>
                         </li>
                         <div className='flex flex-col gap-2 text-xs'>
                             <li className='flex items-center gap-2 ml-3'>
                                 <IoIosCheckmark size={30}/>
-                                <p className='text-[13px]'> if possible, take a friend or family member with you to the meeting.</p>
+                                <p className='text-[13px]'> For the first meeting, suggest a public place such as a cafe or a community center.</p>
                             </li>
                             <li className='flex items-center gap-2 ml-3'>
                                 <IoIosCheckmark size={30}/>
-                                <p className='text-[13px]'>Inform a trusted person about your meeting details, including time, location, and contact information of the house owner.</p>
+                                <p className='text-[13px]'>If meeting at the property, make sure someone knows your whereabouts and schedule.</p>
                             </li>
                         </div>
                     </div> 
