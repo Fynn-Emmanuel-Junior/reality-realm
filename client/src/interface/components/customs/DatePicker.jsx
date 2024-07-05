@@ -1,5 +1,6 @@
 import { useState } from 'react';
 
+// eslint-disable-next-line react/prop-types
 const DatePicker = ({ selectedDate, onDateChange, onClose }) => {
   const [currentDate, setCurrentDate] = useState(new Date());
 
@@ -49,6 +50,7 @@ const DatePicker = ({ selectedDate, onDateChange, onClose }) => {
           {calendarDays.map((day, index) => (
             <div
               key={index}
+              // eslint-disable-next-line react/prop-types
               className={`date-picker-day${day && selectedDate instanceof Date && day.toDateString() === selectedDate.toDateString() ? ' selected' : ''}`}
               onClick={() => day && handleDateClick(day)}
             >
