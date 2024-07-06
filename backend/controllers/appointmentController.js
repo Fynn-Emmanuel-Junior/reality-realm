@@ -5,8 +5,6 @@ export const bookAppointment = async (req, res) => {
     try {
         const { appointmentDate,email,id } = req.body;
 
-        console.log('hii')
-
         if (!appointmentDate) {
             return res.status(400).json({ message: 'Appointment date is required' });
         }

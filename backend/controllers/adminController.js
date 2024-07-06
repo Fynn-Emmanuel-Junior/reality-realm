@@ -6,7 +6,7 @@ import validator from 'validator';
 export const createAdminController = async (req, res) => {
     const { adminName, email, password, adminkey } = req.body;
 
-    if(adminkey !== 'RR10_REG_') return res.status(403).json({message: 'Unauthorized to create admin'});
+    if(adminkey !== process.env.ADMIN_KEY) return res.status(403).json({message: 'Unauthorized to create admin'});
 
     if (!validator.isEmail(email)) return res.status(400).json({ message: 'Email is not valid' });
     if (!validator.isStrongPassword(password)) return res.status(400).json({ message: 'Password is not strong enough' });
