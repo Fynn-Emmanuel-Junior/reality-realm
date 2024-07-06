@@ -72,7 +72,7 @@ const Listing = () => {
     <>
       <SearchNavBar />
       <Navbar />
-      <main className='w-screen lg:w-11/12'>
+      <main className='w-screen lg:w-11/12 md:mx-auto'>
         <div>
           {loading ? <ListingSkeleton /> : (
             <div>
