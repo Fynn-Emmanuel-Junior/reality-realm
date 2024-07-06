@@ -27,6 +27,7 @@ import { RxCross2 } from "react-icons/rx";
 import { setBookingDate } from '../../../../logic/ReduxStore/features/listings/bookingDate';
 import { CSSTransition } from 'react-transition-group';
 import DatePicker from '../../../components/customs/DatePicker';
+import { GoogleMap, LoadScript, Marker } from '@react-google-maps/api';
 
 const Listing = () => {
   const { id } = useParams();
@@ -71,7 +72,7 @@ const Listing = () => {
     <>
       <SearchNavBar />
       <Navbar />
-      <main className='w-screen lg:w-11/12 md:mx-auto'>
+      <main className='w-screen lg:w-11/12'>
         <div>
           {loading ? <ListingSkeleton /> : (
             <div>
@@ -138,14 +139,33 @@ const Listing = () => {
                       </div>
                     </div>
                   </div>
-                  <div className='border border-black mt-3 rounded-md p-2'>
+                  <div className='border border-pink-600  mt-3 rounded-md p-2'>
                       <div className='flex flex-col items-center'>
                         <button className='font-semibold' onClick={() => setAmenities(true)}> Show all amenities</button>
                       </div>
                   </div>
                   <div className='border border-black border-b-[0.2px] my-5 border-opacity-10' />
                   <div>
-                    <h3> House Loaction  </h3>
+                    <h3 className='font-semibold'> House location  </h3>
+                    <div style={{ height: '400px', width: '100%' }}>
+                      <LoadScript googleMapsApiKey="YOUR_GOOGLE_MAPS_API_KEY">
+                        <GoogleMap
+                          mapContainerStyle={{ height: '400px', width: '100%' }}
+                          center={{
+                            lat: listing.latitude || 0,
+                            lng: listing.longitude || 0,
+                          }}
+                          zoom={15}
+                        >
+                          <Marker
+                            position={{
+                              lat: listing.latitude || 0,
+                              lng: listing.longitude || 0,
+                            }}
+                          />
+                        </GoogleMap>
+                      </LoadScript>
+                    </div>
                     {/*Put google map here*/}
 
                   </div>
@@ -198,7 +218,7 @@ const Listing = () => {
                     </div>
                     <div>
                       <p 
-                        className='mt-10 mb-7 text-lg border border-pink-600 w-1/3 text-center text-pink-600 rounded-md'
+                        className='mt-10 mb-7 text-base border border-pink-600 w-1/3 text-center rounded-md'
                         onClick={() => setOwnerDetails(true)}
                       >Owner details</p><hr />
                       <div className='mt-3'>
@@ -240,7 +260,8 @@ const Listing = () => {
       <div className='mt-10'>
         {!loading && <Footer />}
       </div>
-      <TopFooterContainer>
+      {
+        !loading &&  <TopFooterContainer>
         <div className='flex items-center justify-between'>
           <div>
             <div>
@@ -268,6 +289,8 @@ const Listing = () => {
           </button>
         </div>
       </TopFooterContainer>
+      }
+     
       <div className={`bottom-sheet ${showMore ? 'show' : ''}`}>
         <div className="bottom-sheet-content">
           <button onClick={() => setShowMore(false)}>
