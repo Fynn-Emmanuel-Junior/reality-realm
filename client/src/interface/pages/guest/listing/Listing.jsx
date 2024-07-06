@@ -146,11 +146,11 @@ const Listing = () => {
                   </div>
                   <div className='border border-black border-b-[0.2px] my-5 border-opacity-10' />
                   <div>
-                    <h3 className='font-semibold'> House location  </h3>
-                    <div style={{ height: '400px', width: '100%' }}>
-                      <LoadScript googleMapsApiKey="YOUR_GOOGLE_MAPS_API_KEY">
+                    <h3 className='font-semibold'> Location  </h3>
+                    <div style={{ height: '250px', width: '100%' }}>
+                      <LoadScript googleMapsApiKey="AIzaSyCD1MCDn_UvMvD1HgF-cHn7AKBatD0szcw">
                         <GoogleMap
-                          mapContainerStyle={{ height: '400px', width: '100%' }}
+                          mapContainerStyle={{ height: '250px', width: '100%' }}
                           center={{
                             lat: listing.latitude || 0,
                             lng: listing.longitude || 0,
@@ -159,8 +159,8 @@ const Listing = () => {
                         >
                           <Marker
                             position={{
-                              lat: listing.latitude || 0,
-                              lng: listing.longitude || 0,
+                              lat: listing.latitude || 5.55602,
+                              lng: listing.longitude || -0.1969,
                             }}
                           />
                         </GoogleMap>
