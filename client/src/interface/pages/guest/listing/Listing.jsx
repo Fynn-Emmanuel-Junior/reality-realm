@@ -184,7 +184,7 @@ const Listing = () => {
                   {/* Owner details*/}
                   <div>
                     <h3 className='text-xl font-semibold'> Meet Host </h3>
-                    <div className="owner-details bg-white shadow-3xl p-5 rounded-3xl mt-5">
+                    <div className="sm:w-4/5 owner-details bg-white shadow-3xl p-5 rounded-3xl mt-5">
                       <div className='flex gap-10 items-start'>
                         <div>
                           <img src={profile} alt='profile_img' width={150} height={150}/>
