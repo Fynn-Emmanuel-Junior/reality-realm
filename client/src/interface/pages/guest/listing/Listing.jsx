@@ -216,10 +216,11 @@ const Listing = () => {
                       </div>
                     </div>
                     <div>
-                      <p 
-                        className='mt-10 mb-7 text-base border border-pink-600 w-1/3 text-center rounded-md'
-                        onClick={() => setOwnerDetails(true)}
-                      >Owner details</p>
+                      <div className="show-more-container">
+                        <button onClick={() => setOwnerDetails(true)} className="font-semibold underline">
+                          <span className='flex items-center mt-3'> Show more <IoIosArrowForward size={20} /></span>
+                        </button>
+                      </div>
                       <div className='mt-3'>
                         <p>Response rate: 100%</p>
                         <p>Response within an hour</p>
