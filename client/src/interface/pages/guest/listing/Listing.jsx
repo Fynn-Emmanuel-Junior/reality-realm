@@ -146,7 +146,7 @@ const Listing = () => {
                   </div>
                   <div className='border border-black border-b-[0.2px] my-5 border-opacity-10' />
                   <div>
-                    <h3 className='font-semibold'> Location  </h3>
+                    <h3 className='font-semibold mb-2'> Location  </h3>
                     <div style={{ height: '250px', width: '100%' }}>
                       <LoadScript googleMapsApiKey="AIzaSyCD1MCDn_UvMvD1HgF-cHn7AKBatD0szcw">
                         <GoogleMap
@@ -166,7 +166,6 @@ const Listing = () => {
                         </GoogleMap>
                       </LoadScript>
                     </div>
-                    {/*Put google map here*/}
 
                   </div>
                   <div className='border border-black border-b-[0.2px] my-5 border-opacity-10 w-full' />
