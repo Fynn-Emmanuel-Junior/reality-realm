@@ -145,6 +145,18 @@ const Listing = () => {
                       </div>
                   </div>
                   <div className='border border-black border-b-[0.2px] my-5 border-opacity-10' />
+                  <div className="listing-details">
+                    <p>
+                      Luxurious studio apartment with a private bathroom, kitchenette with workspace/dining area. The apartment is located in a sought after neighborhood close to the US Embassy in Accra. The apartment has modern amenities, high end fittings, contemporary decor including a chandelier that brightens up the apartment.
+                      ......
+                    </p>
+                    <div className="show-more-container">
+                      <button onClick={() => setShowMore(true)} className="font-semibold underline">
+                        <span className='flex items-center'> Show more <IoIosArrowForward size={20} /></span>
+                      </button>
+                    </div>
+                  </div>
+                  <div className='border border-black border-b-[0.2px] my-5 border-opacity-10' />
                   <div>
                     <h3 className='font-semibold mb-2'> Location  </h3>
                     <div style={{ height: '250px', width: '100%' }}>
@@ -169,18 +181,6 @@ const Listing = () => {
 
                   </div>
                   <div className='border border-black border-b-[0.2px] my-5 border-opacity-10 w-full' />
-                  <div className="listing-details">
-                    <p>
-                      Luxurious studio apartment with a private bathroom, kitchenette with workspace/dining area. The apartment is located in a sought after neighborhood close to the US Embassy in Accra. The apartment has modern amenities, high end fittings, contemporary decor including a chandelier that brightens up the apartment.
-                      ......
-                    </p>
-                    <div className="show-more-container">
-                      <button onClick={() => setShowMore(true)} className="font-semibold underline">
-                        <span className='flex items-center'> Show more <IoIosArrowForward size={20} /></span>
-                      </button>
-                    </div>
-                  </div>
-                  <div className='border border-black border-b-[0.2px] my-5 border-opacity-10' />
                   {/* Owner details*/}
                   <div>
                     <h3 className='text-xl font-semibold'> Meet Host </h3>
@@ -219,7 +219,7 @@ const Listing = () => {
                       <p 
                         className='mt-10 mb-7 text-base border border-pink-600 w-1/3 text-center rounded-md'
                         onClick={() => setOwnerDetails(true)}
-                      >Owner details</p><hr />
+                      >Owner details</p>
                       <div className='mt-3'>
                         <p>Response rate: 100%</p>
                         <p>Response within an hour</p>

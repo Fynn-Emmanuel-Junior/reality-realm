@@ -21,7 +21,7 @@ export default {
         '2xl': '1536px',
       },
       boxShadow: {
-        '3xl': '0px 0px 40px 5px rgba(0, 0, 0,0.2)',
+        '3xl': '0px 0px 40px 7px rgba(0, 0, 0,0.2)',
       }
     },  
     plugins: [
