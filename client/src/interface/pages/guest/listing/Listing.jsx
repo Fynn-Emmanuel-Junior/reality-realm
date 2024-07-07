@@ -45,7 +45,12 @@ const Listing = () => {
 
   const handleDateChange = (date) => {
     setSelectedDate(date);
-    setError("");
+    const today = new Date();
+    if (date < today) {
+      setError('Please select a future date.');
+    } else {
+      setError('');
+    }
   };
 
   useEffect(() => {
@@ -267,9 +272,11 @@ const Listing = () => {
             <div>
               {listing.typeOfPlace === 'sell' ? <p className='font-medium'> For sale : ${listing.regularPrice}</p> : <p className='font-medium'> Rent : <span> ${listing.regularPrice} per month </span></p>}
               <div>
-                {selectedDate && (
-                  <p>Appointment Date: {selectedDate.toLocaleDateString()}</p>
-                )}
+                {
+                  error ? '' :  (selectedDate && (
+                    <p>Appointment Date: {selectedDate.toLocaleDateString()}</p>
+                  ))
+                }
               </div>
             </div>
           </div>
