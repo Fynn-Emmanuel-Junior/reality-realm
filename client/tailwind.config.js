@@ -19,6 +19,9 @@ export default {
         'lg': '1024px',
         'xl': '1280px',
         '2xl': '1536px',
+      },
+      boxShadow: {
+        '3xl': '0px 0px 40px 5px rgba(0, 0, 0,0.1)',
       }
     },  
     plugins: [

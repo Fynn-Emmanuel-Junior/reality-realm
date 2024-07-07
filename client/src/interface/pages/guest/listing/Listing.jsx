@@ -150,7 +150,7 @@ const Listing = () => {
                     <div style={{ height: '250px', width: '100%' }}>
                       <LoadScript googleMapsApiKey="AIzaSyCD1MCDn_UvMvD1HgF-cHn7AKBatD0szcw">
                         <GoogleMap
-                          mapContainerStyle={{ height: '250px', width: '100%' }}
+                          mapContainerStyle={{ height: '250px', width: '100%',borderRadius: '20px' }}
                           center={{
                             lat: listing.latitude || 0,
                             lng: listing.longitude || 0,
@@ -184,32 +184,32 @@ const Listing = () => {
                   {/* Owner details*/}
                   <div>
                     <h3 className='text-xl font-semibold'> Meet Host </h3>
-                    <div className="owner-details bg-white shadow-xl p-5 rounded-lg mt-5">
+                    <div className="owner-details bg-white shadow-3xl p-5 rounded-3xl mt-5">
                       <div className='flex gap-10 items-start'>
                         <div>
                           <img src={profile} alt='profile_img' width={150} height={150}/>
-                          <h3 className='text-xl font-semibold'>{"Fynn Emmanuel Junior"}</h3>
+                          <h3 className='text-xl font-bold text-center'>{"Emmanuel"}</h3>
                           <p className='text-center font-medium'> Owner </p>
                         </div>
                         <div>
                           <div>
                             <FaUserShield size={25}/>
                             <div>
-                              <h3 className='text-lg font-bold'>{"Verified"}</h3>
+                              <h3 className='text-base'>{"Verified"}</h3>
                             </div>
                           </div>
                           <div className='border border-black border-b-[0.2px] my-5 border-opacity-10 w-full' />
                           <div>
-                            <p className='text-xl'>6</p>
+                            <p className='text-xl font-bold'>6</p>
                             <div>
-                              <h3 className='text-lg font-bold'>{"Reviews"}</h3>
+                              <h3 className='text-base'>{"Reviews"}</h3>
                             </div>
                           </div>
                           <div className='border border-black border-b-[0.2px] my-5 border-opacity-10 w-full' />
                           <div>
                             < FaUser size={25}/>
                             <div>
-                              <h3 className='text-lg font-bold'>{"10 months hosting"}</h3>
+                              <h3 className='text-base'>{"10 months hosting"}</h3>
                             </div>
                           </div>
                         </div>
