@@ -33,6 +33,12 @@
     "formik": "^2.4.6",
     "gulp": "^5.0.0",
     "gulp-beautify": "^3.0.0",
+    "gulp-cssbeautify": "^3.0.1",
+    "gulp-postcss": "^10.0.0",
+    "gulp-sass": "^5.1.0",
+    "gulp-sourcemaps": "^3.0.0",
+    "http-proxy-middleware": "^3.0.0",
+    "jwt-decode": "^4.0.0",
     "react": "^18.3.1",
     "react-apexcharts": "^1.4.1",
     "react-bootstrap": "^2.10.4",
@@ -67,6 +73,7 @@
     "eslint": "^8.57.0",
     "eslint-plugin-react-hooks": "^4.6.2",
     "eslint-plugin-react-refresh": "^0.4.7",
+    "sass": "^1.77.6",
     "typescript": "^5.2.2",
     "vite": "^5.3.1"
   }

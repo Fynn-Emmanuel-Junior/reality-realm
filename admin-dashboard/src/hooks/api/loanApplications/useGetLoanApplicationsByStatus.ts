@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import {getLoanApplicationByStatus as getLoanApplicationsApi} from '../../../utils/api';
 
-import { useAsync } from '@/hooks/api/useFetch';
+import { useAsync } from '../useFetch';
 import { LoanApplicationModel } from './IApplication';
 export const useGetLoanApplicationsByStatus = () => {
   const [data, setData] = useState<any>([]);

@@ -11,7 +11,7 @@ import { jwtDecode } from 'jwt-decode';
 import { loadFormData } from '../components/formData';
 import {useGetAuthenticatedUser} from './useGetAuthenticatedUser';
 import { useGetLoanApplicationsByStatus } from './api/loanApplications/useGetLoanApplicationsByStatus';
-import { setApprovals } from '@/redux/features/approvals/approvalsSlice';
+import { setApprovals } from '../redux/features/approvals/approvalsSlice';
 
 export const useSignIn = () => {
   const [isLoading, setIsLoading] = useState(false);
@@ -23,7 +23,7 @@ export const useSignIn = () => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
 
-  const signInUser = async (phonenumber: String, password: String): Promise<boolean | null> => {
+  const signInUser = async (phonenumber: string, password: string): Promise<boolean | null> => {
     setError(null);
     setIsLoading(true);
 
