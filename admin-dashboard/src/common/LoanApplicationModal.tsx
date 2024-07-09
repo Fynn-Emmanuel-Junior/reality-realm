@@ -1,5 +1,5 @@
 import { Button, Modal } from 'react-bootstrap';
-import { Basicwizard } from '@/pages/loansList/formwizarddata';
+import { Basicwizard } from '../pages/loansList/formwizarddata';
 
 // eslint-disable-next-line react/prop-types
 const LoanApplicationModal = ({selectedLoan, show, handleClose}) => {

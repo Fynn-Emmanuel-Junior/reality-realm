@@ -1,15 +1,16 @@
 import { Fragment} from "react";
 import { Col, Form, Row,Button } from 'react-bootstrap';
 import { Link} from "react-router-dom";
-import { imagesData } from '../../../common/commonimages';
-import { useSignIn } from "../../../hooks/useSignIn";
-import { Oval } from 'react-loader-spinner';
+import { useNavigate } from "react-router-dom";
+// import { useSignIn } from "../../../hooks/useSignIn";
+// import { Oval } from 'react-loader-spinner';
 import Validationerror from '../../../components/Validationerror';
 import { useFormik } from 'formik';
 import * as Yup from 'yup';
 
 const SignIn = () => {
-  const { signInUser,error,isLoading } = useSignIn();
+  // const { signInUser,error,isLoading } = useSignIn();
+  const navigate = useNavigate();
   const signInForm = useFormik({
     initialValues: {
       phonenumber: '',
@@ -19,8 +20,8 @@ const SignIn = () => {
       phonenumber: Yup.string().required('Please enter a valid phone number to continue.'),
       password: Yup.string().required('Password is required').min(5, 'Password must be at least 5 characters'),
     }),
-    onSubmit: (values) => {
-      signInUser(values.phonenumber, values.password);
+    onSubmit: () => {
+      navigate('/dashboard');
     },
   });
 
@@ -58,9 +59,9 @@ const SignIn = () => {
                                     className="panel-body tabs-menu-body border-0 p-3"
                                     id="tab5"
                                   >
-                                    {
+                                    {/* {
                                       error && <Validationerror title={error}/>
-                                    }
+                                    } */}
                                     <Form  onSubmit={signInForm.handleSubmit}>
                                       <Form.Group className="form-group">
                                         <Form.Label> Phone Number </Form.Label>{" "}
@@ -105,18 +106,7 @@ const SignIn = () => {
                                       >
                                         <div style={{display: 'flex',alignItems: 'center',flexDirection: 'column'}}>
                                           <span style={{ color: "white",textAlign: 'center' }}>
-                                            {isLoading ? (
-                                              <div style={{ display: "flex", flexDirection: "column", alignItems: "center" }}>
-                                                <Oval
-                                                  visible={true}
-                                                  height="30"
-                                                  width="30"
-                                                  color="#ffffff"
-                                                  wrapperStyle={{}}
-                                                  wrapperClass=""
-                                                />
-                                              </div>
-                                            ) : 'Sign in'}
+                                            Sign in
                                           </span>
                                         </div>
                                       </Button>

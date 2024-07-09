@@ -5,18 +5,9 @@ import { imagesData } from '../../common/commonimages';
 import * as Switcherdata from '../../common/switcherdata';
 import { FiUser } from 'react-icons/fi';
 import { useLogout } from '../../hooks/useLogout';
-import { useSelector } from 'react-redux';
-import { RootState } from '@/redux/app/store';
 
-interface ProfileData {
-  firstname: string;
-  surname: string;
-  role: string;
-  phoneNumber: string;
-}
 
 export default function Header() {
-  const LoggedInManagerData = useSelector((state: RootState) => state.profile.data) as ProfileData;
   
   useEffect(() => {
     Switcherdata.localStorageBackUp();
@@ -100,10 +91,10 @@ export default function Header() {
                           </div>
                           <div className="ms-3 my-auto">
                             <h6 className="tx-15 font-weight-semibold mb-0">
-                              {LoggedInManagerData.firstname + ' ' + LoggedInManagerData.surname}
+                            
                             </h6>
                             <span className="dropdown-title-text subtext op-6 tx-12">
-                              {LoggedInManagerData.role}
+                           
                             </span>
                           </div>
                         </div>

@@ -1,18 +1,16 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 
-import   { Fragment, useEffect } from "react";
+import   { Fragment, useEffect} from "react";
 import { MENUITEMS } from "../../common/sidemenu";
 import PerfectScrollbar from 'react-perfect-scrollbar';
 import { NavLink, useLocation } from "react-router-dom";
 import { imagesData } from "../../common/commonimages";
-import { useMenu } from "@/hooks/useMenu";
 const history:any = [];
 
 const Sidebar = () => {
   const location = useLocation();
-  const {menuitems, setMenuitems}= useMenu();
   // initial loading
   useEffect(() => {
-
     history.push(location.pathname);  // add  history to history  stack for current location.pathname to prevent multiple history calls innerWidth  and innerWidth  calls from  multiple users. This is important because the history stack is not always empty when the user clicks  the history       
     if (history.length > 2) {
       history.shift();
@@ -72,11 +70,10 @@ const Sidebar = () => {
       }
       return mainlevel;
     });
-    setMenuitems((arr:any) => [...arr]);
   }
   function setSidemenu() {
-    if (menuitems) {
-      menuitems.map((mainlevel:any) => {
+    if (MENUITEMS) {
+      MENUITEMS.map((mainlevel:any) => {
         if (mainlevel.Items) {
           mainlevel.Items.map((items:any) => {
             items.active = false;
@@ -119,7 +116,6 @@ const Sidebar = () => {
             return items;
           });
         }
-        setMenuitems((arr:any) => [...arr]);
         return mainlevel;
       });
     }
@@ -133,7 +129,7 @@ const Sidebar = () => {
   {
       // To show/hide the menu
       if (!item.active) {
-        menuitems.map((mainlevel:any) => {
+        MENUITEMS.map((mainlevel:any) => {
           if (mainlevel.Items) {
             mainlevel.Items.map((sublevel:any) => {
               sublevel.active = false;
@@ -183,8 +179,6 @@ const Sidebar = () => {
         item.active = !item.active;
       }
     }
-
-    setMenuitems((arr:any) => [...arr]);
   }
  
   //Hover effect
@@ -223,7 +217,7 @@ const Sidebar = () => {
           </div>
           <div className="main-sidemenu">
             <ul className="side-menu">
-              {menuitems.map((Item:any, itemi:any) => (
+              {MENUITEMS.map((Item:any, itemi:any) => (
                 <Fragment key={itemi + Math.random() * 100}>
                   <li className="side-item side-item-category">{Item.menutitle}</li>
                   {Item.Items.map((menuItem:any, i:any) => (

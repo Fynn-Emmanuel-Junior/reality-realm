@@ -57,13 +57,11 @@ const SignUp = () => {
                   <div className="main-card-signin d-md-flex">
                     <div className="wd-100p">
                       <div className="d-flex mb-4">
-                        <Link to={`${import.meta.env.BASE_URL}dashboard/dashboard1/`}>
-                          <img src={imagesData('favicon')} className="sign-favicon ht-40" alt="logo" />
-                        </Link>
+                        <h3 style={{fontWeight: 'bold',fontSize: '30px'}}>RealityRealm</h3>
                       </div>
                       <div>
                         <div className="main-signup-header">
-                          <div style={{ color: '#0141CF', fontSize: '25px', fontWeight: 600 }}>Get Started!</div>
+                          <div style={{ color: '#db2777', fontSize: '25px', fontWeight: 600 }}>Get Started!</div>
                           <h6 className="font-weight-normal mb-4 text-dark">
                             It's free to signup and only takes a minute.
                           </h6>
@@ -147,7 +145,7 @@ const SignUp = () => {
                             </FormGroup>
                             <Button
                               type="submit"
-                              style={{ backgroundColor: '#0141CF', padding: '8px', borderRadius: '5px', width: '100%' }}
+                              style={{ backgroundColor: '#db2777', padding: '8px', borderRadius: '5px', width: '100%',border: 'none' }}
                               disabled={loading}
                             >
                               <span style={{ color: 'white' }}>
