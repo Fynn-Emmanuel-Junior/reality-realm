@@ -1,5 +1,5 @@
 import { Fragment} from "react";
-import { Col, Form, Row } from 'react-bootstrap';
+import { Col, Form, Row,Button } from 'react-bootstrap';
 import { Link} from "react-router-dom";
 import { imagesData } from '../../../common/commonimages';
 import { useSignIn } from "../../../hooks/useSignIn";
@@ -61,7 +61,7 @@ const SignIn = () => {
                                     {
                                       error && <Validationerror title={error}/>
                                     }
-                                    <Form>
+                                    <Form  onSubmit={signInForm.handleSubmit}>
                                       <Form.Group className="form-group">
                                         <Form.Label> Phone Number </Form.Label>{" "}
                                         <Form.Control
@@ -99,9 +99,9 @@ const SignIn = () => {
                                         )}
                                       </Form.Group>
 
-                                      <div
-                                        style={{ backgroundColor: "#db2777", padding: "8px", borderRadius: "5px", width: '100%',cursor: 'pointer' }}
-                                        onClick={signInForm.handleSubmit}
+                                      <Button
+                                        style={{ backgroundColor: "#db2777", padding: "8px", borderRadius: "5px", width: '100%',cursor: 'pointer',border: 'none'}}
+                                        type='submit'
                                       >
                                         <div style={{display: 'flex',alignItems: 'center',flexDirection: 'column'}}>
                                           <span style={{ color: "white",textAlign: 'center' }}>
@@ -119,7 +119,7 @@ const SignIn = () => {
                                             ) : 'Sign in'}
                                           </span>
                                         </div>
-                                      </div>
+                                      </Button>
                                     </Form>
                                   </div>
                                 </div>
