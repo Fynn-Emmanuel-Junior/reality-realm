@@ -47,7 +47,7 @@ const SignIn = () => {
                         </div>
                         <div className="">
                           <div className="main-signup-header">
-                            <div style={{ color: "#0141CF", fontSize: "25px", fontWeight: 600 }}>Welcome back!</div>
+                            <div style={{ color: "#db2777", fontSize: "25px", fontWeight: 600 }}>Welcome back!</div>
                             <h6 className="font-weight-semibold mb-4">
                               Please sign in to continue.
                             </h6>
@@ -100,7 +100,7 @@ const SignIn = () => {
                                       </Form.Group>
 
                                       <div
-                                        style={{ backgroundColor: "#0141CF", padding: "8px", borderRadius: "5px", width: '100%',cursor: 'pointer' }}
+                                        style={{ backgroundColor: "#db2777", padding: "8px", borderRadius: "5px", width: '100%',cursor: 'pointer' }}
                                       >
                                         <div style={{display: 'flex',alignItems: 'center',flexDirection: 'column'}}>
                                           <span style={{ color: "white",textAlign: 'center' }}>
