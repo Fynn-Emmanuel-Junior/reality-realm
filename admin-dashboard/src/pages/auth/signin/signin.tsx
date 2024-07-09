@@ -99,26 +99,26 @@ const SignIn = () => {
                                         )}
                                       </Form.Group>
 
-                                      <Button
-                                        type="submit"
-                                        style={{ backgroundColor: "#0141CF", padding: "8px", borderRadius: "5px", width: '100%' }}
-                                        disabled={isLoading}
+                                      <div
+                                        style={{ backgroundColor: "#0141CF", padding: "8px", borderRadius: "5px", width: '100%',cursor: 'pointer' }}
                                       >
-                                        <span style={{ color: "white" }}>
-                                          {isLoading ? (
-                                            <div style={{ display: "flex", flexDirection: "column", alignItems: "center" }}>
-                                              <Oval
-                                                visible={true}
-                                                height="30"
-                                                width="30"
-                                                color="#ffffff"
-                                                wrapperStyle={{}}
-                                                wrapperClass=""
-                                              />
-                                            </div>
-                                          ) : 'Sign in'}
-                                        </span>
-                                      </Button>
+                                        <div style={{display: 'flex',alignItems: 'center',flexDirection: 'column'}}>
+                                          <span style={{ color: "white",textAlign: 'center' }}>
+                                            {isLoading ? (
+                                              <div style={{ display: "flex", flexDirection: "column", alignItems: "center" }}>
+                                                <Oval
+                                                  visible={true}
+                                                  height="30"
+                                                  width="30"
+                                                  color="#ffffff"
+                                                  wrapperStyle={{}}
+                                                  wrapperClass=""
+                                                />
+                                              </div>
+                                            ) : 'Sign in'}
+                                          </span>
+                                        </div>
+                                      </div>
                                     </Form>
                                   </div>
                                 </div>
