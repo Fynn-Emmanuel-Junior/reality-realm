@@ -43,11 +43,7 @@ const SignIn = () => {
                     <div className="main-card-signin d-md-flex">
                       <div className="wd-100p">
                         <div className="d-flex mb-4">
-                          <img
-                            src={imagesData('favicon')}
-                            className="sign-favicon ht-40"
-                            alt="logo"
-                          />
+                          <p style={{fontWeight: 'bold',fontSize: '30px'}}>RealityRealm</p>
                         </div>
                         <div className="">
                           <div className="main-signup-header">
