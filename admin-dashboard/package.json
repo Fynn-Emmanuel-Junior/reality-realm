@@ -26,7 +26,14 @@
     "react-router-dom": "^6.24.1",
     "react-select": "^5.8.0",
     "react-table": "^7.8.0",
-    "redux-persist": "^6.0.0"
+    "react-toastify": "^10.0.5",
+    "react-uploader": "^3.43.0",
+    "redux-persist": "^6.0.0",
+    "supertokens-auth-react": "^0.43.0",
+    "supertokens-web-js": "^0.12.0",
+    "uploader": "^3.48.3",
+    "validator": "^13.12.0",
+    "yet-another-react-lightbox": "^3.21.1"
   },
   "devDependencies": {
     "@types/react": "^18.3.3",
