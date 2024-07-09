@@ -18,7 +18,24 @@ export const MENUITEMS = [
       },
       {
         title: 'Customers',
-        icon: <LiaUserAstronautSolid size={15} color="#000000" />,
+        icon: <FiUsers size={15} color="#000000" />,
+        path: '/customer-list',
+        type: 'link',
+        selected: false,
+        active: false,
+        // children: [
+        //   {
+        //     path: '/customer-list',
+        //     type: 'link',
+        //     active: false,
+        //     selected: false,
+        //     title: 'Customer List',
+        //   },
+        // ],
+      },
+      {
+        title: 'Appointments',
+        icon: <FiUsers size={15} color="#000000" />,
         path: '/customer-list',
         type: 'link',
         selected: false,
@@ -50,32 +67,7 @@ export const MENUITEMS = [
         //   },
         // ],
       },
-      // {
-      //   title: "Other",
-      //   icon: (
-      //    <MdOutlineInventory size={15} color="#000000"/>
-      //   ),
-      //   type: "sub",
-      //   selected:false,
-      //   active:false,
-      //   children: [
-      //     {
-      //       title: "Smart Inventory",
-      //       type: "sub",
-      //       selected:false,
-      //       active:false,
-      //       children: [
-      //         {
-      //           path: '/distributors-list',
-      //           title: "View Distributors list",
-      //           type: "link",
-      //           active:false,
-      //           selected:false,
-      //         }
-      //       ],
-      //     },
-      //   ],
-      // }
+      
     ],
   },
 ];
