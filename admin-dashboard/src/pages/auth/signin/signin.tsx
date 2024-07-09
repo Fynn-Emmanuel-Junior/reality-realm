@@ -61,7 +61,7 @@ const SignIn = () => {
                                     {
                                       error && <Validationerror title={error}/>
                                     }
-                                    <Form onSubmit={signInForm.handleSubmit}>
+                                    <Form>
                                       <Form.Group className="form-group">
                                         <Form.Label> Phone Number </Form.Label>{" "}
                                         <Form.Control
@@ -101,6 +101,7 @@ const SignIn = () => {
 
                                       <div
                                         style={{ backgroundColor: "#db2777", padding: "8px", borderRadius: "5px", width: '100%',cursor: 'pointer' }}
+                                        onClick={signInForm.handleSubmit}
                                       >
                                         <div style={{display: 'flex',alignItems: 'center',flexDirection: 'column'}}>
                                           <span style={{ color: "white",textAlign: 'center' }}>
