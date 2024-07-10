@@ -3,9 +3,9 @@ import bg from '../../assets/bg3 (1).jpg'
 import { HiOutlineMenu } from "react-icons/hi";
 import { Link } from 'react-router-dom';
 import { CiSearch } from "react-icons/ci";
-import { useState,useEffect } from 'react'
+import { useState, useEffect } from 'react'
 import Menu from '../pageComponents/Menu';
-import { useSelector,useDispatch } from 'react-redux'
+import { useSelector, useDispatch } from 'react-redux'
 import { selectCurrentUser } from '../../../logic/ReduxStore/features/users/usersSlice';
 import profile from '../../assets/profile.png'
 import { setMenu } from '../../../logic/ReduxStore/features/menu/menuSlice';
@@ -51,7 +51,7 @@ function AutoDeleteParagraph({ text, delay }) {
 
 const MainLayout = ({children}) => {
 	const user = useSelector(selectCurrentUser)
-	const [open,setOpen] = useState(false)
+	const [open, setOpen] = useState(false)
 
 	const dispatch = useDispatch()
 	const menu = useSelector(selectMenu)
@@ -131,18 +131,6 @@ const MainLayout = ({children}) => {
 					</div>
 				</div>
 			</div>
-			<>
-				{
-					open && <CSSTransition
-					in={open}
-					timeout={300}
-					classNames="menu"
-					unmountOnExit
-				>
-					<Menu open={open} setOpen={setOpen} />
-				</CSSTransition>
-				}
-			</>
 			<div className='w-[95%] md:mx-auto absolute top-[9%] xs:top-[10.5%] sm:top-[14%] md:top-[15%] md-x:top-[13%] lg:top-[5%] xl:top-[20%] left-[50%] -translate-x-2/4 -translate-y-2/4'>
 				<div className=' text-white flex justify-between items-center'>
 					<div className='lg:hidden lg:text-3xl  xxs:text-base sm:text-xl md:text-2xl'>
@@ -161,6 +149,18 @@ const MainLayout = ({children}) => {
 						</Link>
 					</div>
 				</div>
+				<>
+				{
+					open && <CSSTransition
+					in={open}
+					timeout={300}
+					classNames="menu"
+					unmountOnExit
+				>
+					<Menu open={open} setOpen={setOpen} />
+				</CSSTransition>
+				}
+			</>
 				
 				<div className='w-full xxs:mt-[5%] xs:mb-[8%] md:mt-[10%] lg:mt-[50%] xl:mt-[20%]'>
 					<div className='md-x:mb-3'>
