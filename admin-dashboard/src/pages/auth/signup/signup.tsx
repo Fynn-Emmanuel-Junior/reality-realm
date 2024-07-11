@@ -35,7 +35,7 @@ const SignUp = () => {
         if(errror) {
           setError(errror);
         }
-        actions.resetForm();
+        setError(null);
       } catch (err) {
         console.error('Error submitting form:', err);
       } finally {
@@ -61,7 +61,7 @@ const SignUp = () => {
                       </div>
                       <div>
                         <div className="main-signup-header">
-                          {error && <Validationerror title={error} />}
+                          {errror && <Validationerror title={errror} />}
                           <Form onSubmit={signUpForm.handleSubmit}>
                           <FormGroup className="form-group">
                               <Form.Label>Name</Form.Label>

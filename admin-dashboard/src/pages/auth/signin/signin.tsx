@@ -2,22 +2,22 @@ import { Fragment} from "react";
 import { Col, Form, Row,Button } from 'react-bootstrap';
 import { Link} from "react-router-dom";
 import { useNavigate } from "react-router-dom";
-// import { useSignIn } from "../../../hooks/useSignIn";
-// import { Oval } from 'react-loader-spinner';
+import { useSignIn } from "../../../hooks/useSignIn";
+import { Oval } from 'react-loader-spinner';
 import Validationerror from '../../../components/Validationerror';
 import { useFormik } from 'formik';
 import * as Yup from 'yup';
 
 const SignIn = () => {
-  // const { signInUser,error,isLoading } = useSignIn();
+  const { signInUser,error,isLoading } = useSignIn();
   const navigate = useNavigate();
   const signInForm = useFormik({
     initialValues: {
-      phonenumber: '',
+      email: '',
       password: '',
     },
     validationSchema: Yup.object().shape({
-      phonenumber: Yup.string().required('Please enter a valid phone number to continue.'),
+      email: Yup.string().required('Email is required'),
       password: Yup.string().required('Password is required').min(5, 'Password must be at least 5 characters'),
     }),
     onSubmit: () => {
@@ -59,26 +59,26 @@ const SignIn = () => {
                                     className="panel-body tabs-menu-body border-0 p-3"
                                     id="tab5"
                                   >
-                                    {/* {
+                                    {
                                       error && <Validationerror title={error}/>
-                                    } */}
+                                    }
                                     <Form  onSubmit={signInForm.handleSubmit}>
                                       <Form.Group className="form-group">
-                                        <Form.Label> Phone Number </Form.Label>{" "}
+                                        <Form.Label> Email</Form.Label>{" "}
                                         <Form.Control
                                           className="form-control"
-                                          placeholder="Enter your phone number"
+                                          placeholder="Enter your email address"
                                           type="text"
-                                          value={signInForm.values.phonenumber}
-                                          onChange={signInForm.handleChange('phonenumber')}
-                                          onBlur={signInForm.handleBlur('phonenumber')}
-                                          isInvalid={signInForm.touched.phonenumber && !!signInForm.errors.phonenumber}
+                                          value={signInForm.values.email}
+                                          onChange={signInForm.handleChange('email')}
+                                          onBlur={signInForm.handleBlur('email')}
+                                          isInvalid={signInForm.touched.email && !!signInForm.errors.email}
                                         />
                                         {/* <Form.Control.Feedback type="invalid">
                                           {signInForm.errors.phonenumber}
                                         </Form.Control.Feedback> */}
-                                        {signInForm.touched.phonenumber && signInForm.errors.phonenumber && (
-                                          <Validationerror title={signInForm.errors.phonenumber} />
+                                        {signInForm.touched.email && signInForm.errors.email && (
+                                          <Validationerror title={signInForm.errors.email} />
                                         )}
                                       </Form.Group>
                                       <Form.Group className="form-group">
@@ -92,23 +92,33 @@ const SignIn = () => {
                                           onBlur={signInForm.handleBlur('password')}
                                           isInvalid={signInForm.touched.password && !!signInForm.errors.password}
                                         />
-                                        {/* <Form.Control.Feedback type="invalid">
+                                        <Form.Control.Feedback type="invalid">
                                           {signInForm.errors.password}
-                                        </Form.Control.Feedback> */}
+                                        </Form.Control.Feedback>
                                         {signInForm.touched.password && signInForm.errors.password && (
                                           <Validationerror title={signInForm.errors.password} />
                                         )}
                                       </Form.Group>
 
                                       <Button
-                                        style={{ backgroundColor: "#db2777", padding: "8px", borderRadius: "5px", width: '100%',cursor: 'pointer',border: 'none'}}
-                                        type='submit'
+                                        type="submit"
+                                        style={{ backgroundColor: "#0141CF", padding: "8px", borderRadius: "5px", width: '100%' }}
+                                        disabled={isLoading}
                                       >
-                                        <div style={{display: 'flex',alignItems: 'center',flexDirection: 'column'}}>
-                                          <span style={{ color: "white",textAlign: 'center' }}>
-                                            Sign in
-                                          </span>
-                                        </div>
+                                        <span style={{ color: "white" }}>
+                                          {isLoading ? (
+                                            <div style={{ display: "flex", flexDirection: "column", alignItems: "center" }}>
+                                              <Oval
+                                                visible={true}
+                                                height="30"
+                                                width="30"
+                                                color="#ffffff"
+                                                wrapperStyle={{}}
+                                                wrapperClass=""
+                                              />
+                                            </div>
+                                          ) : 'Sign in'}
+                                        </span>
                                       </Button>
                                     </Form>
                                   </div>
