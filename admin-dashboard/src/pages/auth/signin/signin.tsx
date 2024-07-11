@@ -1,7 +1,6 @@
 import { Fragment} from "react";
 import { Col, Form, Row,Button } from 'react-bootstrap';
 import { Link} from "react-router-dom";
-import { useNavigate } from "react-router-dom";
 import { useSignIn } from "../../../hooks/useSignIn";
 import { Oval } from 'react-loader-spinner';
 import Validationerror from '../../../components/Validationerror';
@@ -10,7 +9,6 @@ import * as Yup from 'yup';
 
 const SignIn = () => {
   const { signInUser,error,isLoading } = useSignIn();
-  const navigate = useNavigate();
   const signInForm = useFormik({
     initialValues: {
       email: '',
@@ -20,8 +18,9 @@ const SignIn = () => {
       email: Yup.string().required('Email is required'),
       password: Yup.string().required('Password is required').min(5, 'Password must be at least 5 characters'),
     }),
-    onSubmit: () => {
-      navigate('/dashboard');
+    onSubmit: (values) => {
+      signInUser(values.email, values.password);
+    
     },
   });
 
