@@ -46,7 +46,6 @@ const getUsers = async (req, res) => {
     }
 };
 
-
 const auth = async (req, res) => {
     const { email, password } = req.body;
     const foundUser = await UserModel.findOne({ email });

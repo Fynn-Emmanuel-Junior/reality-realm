@@ -42,7 +42,7 @@ export const loginAdminController = async (req, res) => {
 
     try {
         // Check if the admin exists
-        const admin = await AdminModel.findOne({ email });
+        const admin = await AdminModel.findOne({ email }).select('password');
         if (!admin) return res.status(401).json({ message: 'Invalid email or password' });
 
         // Check if the password matches
@@ -75,13 +75,11 @@ export const loginAdminController = async (req, res) => {
             secure: process.env.NODE_ENV !== 'development'
         });
 
-        // Send the response
-        const { _id,...rest } = admin;
 
         res.status(200).json({
             statusCode: 200,
             message: 'Login successful',
-            admin: { _id}
+            admin: {admin}
         });
     } catch (err) {
         res.status(500).json({ message: `Cannot login admin: ${err.message}` });
