@@ -51,9 +51,9 @@ export const MENUITEMS = [
         // ],
       },
       {
-        title: 'Guarantors',
+        title: 'Listings',
         icon: <LiaUserAstronautSolid size={15} color="#000000" />,
-        path: '/guarantor-list',
+        path: '/listings',
         type: 'link',
         selected: false,
         active: false,
