@@ -4,12 +4,14 @@ import { Button, Col, Form, FormGroup, Row } from 'react-bootstrap';
 import { Oval } from 'react-loader-spinner';
 import Validationerror from '../../../components/Validationerror';
 import { useFormik } from 'formik';
+import { useSignupRequest } from '../../../hooks/useSignupRequest';
 import * as Yup from 'yup';
 
 
 const SignUp = () => {
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState<string | null>(null);
+  const {sendSignupRequestUpdated,errror} = useSignupRequest();
 
   const signUpForm = useFormik({
     initialValues: {
@@ -28,15 +30,19 @@ const SignUp = () => {
       setLoading(true);
       setError(null);
 
-      // try {
-      
-      // } catch (err) {
-      //   console.error('Error submitting form:', err);
-      //   setError('An error occurred while submitting the form.');
-      // } finally {
-      //   setLoading(false);
-      //   actions.setSubmitting(false);
-      // }
+      try {
+        await sendSignupRequestUpdated(values);
+        if(errror) {
+          setError(errror);
+        }
+        actions.resetForm();
+      } catch (err) {
+        console.error('Error submitting form:', err);
+      } finally {
+        setError(errror);
+        setLoading(false);
+        actions.setSubmitting(false);
+      }
     },
   });
 

@@ -1,3 +1,4 @@
+import { signUp } from './../utils/api';
 import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 
@@ -14,18 +15,28 @@ export const useSignupRequest = () => {
 
       if (!formData) throw new Error('Form data not found');
 
-      const { email, password, super_admin_key} = formData;
+      const {name,email, password, super_admin_key} = formData;
 
       const responseSignUpUrl: any = await signUp({
+        adminName: name,
         email: email,
         password: password,
-        superAdminKey: super_admin_key,
+        adminkey: super_admin_key,
       });
 
-      if (!responseSignUpUrl.ok) {
-        setError('Signup request failed');
-        throw new Error('Signup request failed');
+      const jsonData = await responseSignUpUrl.json();
+      console.log(jsonData);
+      
+      if (jsonData.statusCode == 201) {
+        setError('');
+        navigate('/dashboard');
+      } else {
+        setError(jsonData.message);
       }
+
+      // setData(jsonData); // Uncomment this line if you want to store the response data for further use.
+
+     
 
     } catch (error) {
       setError((error as Error).message);
