@@ -9,7 +9,8 @@ import {
     getUser,
     sendOtpController,
     verifyOtpController,
-    refresh
+    refresh,
+    getUsers
 } from '../../controllers/userController.js';
 import { authMiddleware } from "../../middlewares/authMiddleware.js";
 
@@ -17,6 +18,7 @@ const router = express.Router();
 
 
 router.post('/register',register);
+router.get('/get-users',getUsers);
 router.post('/send',sendOtpController);
 router.post('/verify',verifyOtpController);
 router.post('/auth',auth);

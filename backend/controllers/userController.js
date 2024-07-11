@@ -37,6 +37,16 @@ const register = async (req, res) => {
     }
 };
 
+const getUsers = async (req, res) => {
+    try {
+        const users = await UserModel.find().select('-password');
+        res.json(users);
+    } catch (error) {
+        res.status(500).json({ message: error.message });
+    }
+};
+
+
 const auth = async (req, res) => {
     const { email, password } = req.body;
     const foundUser = await UserModel.findOne({ email });
@@ -345,6 +355,7 @@ const verifyOtpController = async (req, res) => {
 
 export {
     register,
+    getUsers,
     auth,
     google,
     update,
