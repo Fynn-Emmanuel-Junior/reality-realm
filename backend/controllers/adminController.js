@@ -6,10 +6,10 @@ import validator from 'validator';
 export const createAdminController = async (req, res) => {
     const { adminName, email, password, adminkey } = req.body;
 
-    if(adminkey !== process.env.ADMIN_KEY) return res.status(403).json({message: 'Unauthorized to create admin'});
+    if(adminkey != process.env.ADMIN_KEY) return res.status(403).json({message: 'Unauthorized to create admin'});
 
     if (!validator.isEmail(email)) return res.status(400).json({ message: 'Email is not valid' });
-    if (!validator.isStrongPassword(password)) return res.status(400).json({ message: 'Password is not strong enough' });
+    // if (!validator.isStrongPassword(password)) return res.status(400).json({ message: 'Password is not strong enough' });
 
     const CheckIfEmailExists = await AdminModel.findOne({ email });
     if (CheckIfEmailExists) return res.status(409).json({ message: "Admin already exists" });
@@ -30,7 +30,10 @@ export const createAdminController = async (req, res) => {
             message: 'Admin created',
         });
     } catch (err) {
-        res.status(500).json({ message: `Cannot create admin: ${err.message}` });
+        res.status(500).json({ 
+            statusCode: 500, 
+            message: `Cannot create admin: ${err.message}` 
+        });
     }
 };
 
@@ -79,7 +82,7 @@ export const loginAdminController = async (req, res) => {
         res.status(200).json({
             statusCode: 200,
             message: 'Login successful',
-            admin: {admin}
+            admin
         });
     } catch (err) {
         res.status(500).json({ message: `Cannot login admin: ${err.message}` });
