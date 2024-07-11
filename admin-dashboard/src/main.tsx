@@ -17,12 +17,11 @@ const CustomerProfile = React.lazy(() => import("./pages/customers/customerProfi
 const EditCustomer = React.lazy(() => import("./pages/customers/editcustomer"));
 const EditCustomerDetails = React.lazy(() => import("./pages/customers/editcustomer"));
 const Settings = React.lazy(() => import("./pages/settings/Settings"));
-const Products = React.lazy(() => import("./pages/smart inventory/products/ProductsList"));
-const EditProduct = React.lazy(() => import("./pages/smart inventory/products/EditProduct"));
 const Account = React.lazy(() => import("./pages/settings/Account"));
 const Password = React.lazy(() => import("./pages/settings/Password"));
 const Dashboard = React.lazy(() => import("./pages/dashboard/dashboard")); 
 const Listings = React.lazy(() => import("./pages/listings/ListingsList"));
+const Appointments = React.lazy(() => import("./pages/appointments/appointmentList"));
 
 const root = ReactDOM.createRoot(
   document.getElementById('root') as HTMLElement
@@ -47,10 +46,9 @@ root.render(
 										<Route path='account' element={<Account />} />
 										<Route path='password' element={<Password />} />
 									</Route>
-									<Route path='/products' element={<Products />} />
-									<Route path='/edit-product' element={<EditProduct />} />
 									<Route path='/edit-customer/:id' element={<EditCustomerDetails />} />
 									<Route path='/listings' element={<Listings />}/>
+									<Route path='/appointments' element={<Appointments />}/>
 								</Route>
 							</Route>
 						</Routes>
