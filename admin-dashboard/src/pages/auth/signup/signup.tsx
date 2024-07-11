@@ -68,40 +68,10 @@ const SignUp = () => {
                                 value={signUpForm.values.email}
                                 onChange={signUpForm.handleChange('firstname')}
                                 onBlur={signUpForm.handleBlur('firstname')}
-                                isInvalid={signUpForm.touched.firstname && !!signUpForm.errors.firstname}
+                                isInvalid={signUpForm.touched.email && !!signUpForm.errors.email}
                               />
-                              {signUpForm.touched.firstname && signUpForm.errors.firstname && (
-                                <Validationerror title={signUpForm.errors.firstname} />
-                              )}
-                            </FormGroup>
-                            <FormGroup className="form-group">
-                              <Form.Label>Surname</Form.Label>
-                              <Form.Control
-                                className="form-control"
-                                placeholder="Enter your surname"
-                                type="text"
-                                value={signUpForm.values.surname}
-                                onChange={signUpForm.handleChange('surname')}
-                                onBlur={signUpForm.handleBlur('surname')}
-                                isInvalid={signUpForm.touched.surname && !!signUpForm.errors.surname}
-                              />
-                              {signUpForm.touched.surname && signUpForm.errors.surname && (
-                                <Validationerror title={signUpForm.errors.surname} />
-                              )}
-                            </FormGroup>
-                            <FormGroup className="form-group">
-                              <Form.Label>Phone Number</Form.Label>
-                              <Form.Control
-                                className="form-control"
-                                placeholder="Enter your phone number"
-                                type="text"
-                                value={signUpForm.values.phoneNumber}
-                                onChange={signUpForm.handleChange('phoneNumber')}
-                                onBlur={signUpForm.handleBlur('phoneNumber')}
-                                isInvalid={signUpForm.touched.phoneNumber && !!signUpForm.errors.phoneNumber}
-                              />
-                              {signUpForm.touched.phoneNumber && signUpForm.errors.phoneNumber && (
-                                <Validationerror title={signUpForm.errors.phoneNumber} />
+                              {signUpForm.touched.email && signUpForm.errors.email && (
+                                <Validationerror title={signUpForm.errors.email} />
                               )}
                             </FormGroup>
                             <FormGroup className="form-group">
