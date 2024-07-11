@@ -36,7 +36,7 @@ export const MENUITEMS = [
       {
         title: 'Appointments',
         icon: <FiUsers size={15} color="#000000" />,
-        path: '/customer-list',
+        path: '/appointments',
         type: 'link',
         selected: false,
         active: false,

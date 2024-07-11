@@ -1,5 +1,5 @@
 import { Fragment } from 'react';
-import { UserList } from './guarantorTable';
+import { UserList } from './LIstingTable';
 import Pageheader from '../../layout/layoutcomponent/pageheader';
 
 const Userlist = () => {

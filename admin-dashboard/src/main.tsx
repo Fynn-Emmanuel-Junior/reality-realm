@@ -15,10 +15,6 @@ const Signup = React.lazy(() => import("./pages/auth/signup/signup"));
 const CustomerList = React.lazy(() => import("./pages/customers/customerlist"));
 const CustomerProfile = React.lazy(() => import("./pages/customers/customerProfile"));
 const EditCustomer = React.lazy(() => import("./pages/customers/editcustomer"));
-const DistributorsList = React.lazy(() => import("./pages/smart inventory/DistributorsList"));
-const AddDistributors = React.lazy(() => import("./pages/smart inventory/AddDistributors"));
-const EditDistributors = React.lazy(() => import("./pages/smart inventory/EditDistributors"));
-const DisableDistributors = React.lazy(() => import("./pages/smart inventory/DisableDistributors"));
 const EditCustomerDetails = React.lazy(() => import("./pages/customers/editcustomer"));
 const Settings = React.lazy(() => import("./pages/settings/Settings"));
 const Products = React.lazy(() => import("./pages/smart inventory/products/ProductsList"));
@@ -26,7 +22,7 @@ const EditProduct = React.lazy(() => import("./pages/smart inventory/products/Ed
 const Account = React.lazy(() => import("./pages/settings/Account"));
 const Password = React.lazy(() => import("./pages/settings/Password"));
 const Dashboard = React.lazy(() => import("./pages/dashboard/dashboard")); 
-const GuarantorList = React.lazy(() => import("./pages/guarantors/guarantorList"));
+const Listings = React.lazy(() => import("./pages/listings/ListingsList"));
 
 const root = ReactDOM.createRoot(
   document.getElementById('root') as HTMLElement
@@ -51,14 +47,10 @@ root.render(
 										<Route path='account' element={<Account />} />
 										<Route path='password' element={<Password />} />
 									</Route>
-									<Route path='/distributors-list' element={<DistributorsList />} />
-									<Route path='/add-distributors' element={<AddDistributors />} />
-									<Route path='/edit-distributors' element={<EditDistributors />} />
 									<Route path='/products' element={<Products />} />
 									<Route path='/edit-product' element={<EditProduct />} />
-									<Route path='/disable-distributors' element={<DisableDistributors />} />
 									<Route path='/edit-customer/:id' element={<EditCustomerDetails />} />
-									<Route path='/guarantor-list' element={<GuarantorList />}/>
+									<Route path='/listings' element={<Listings />}/>
 								</Route>
 							</Route>
 						</Routes>

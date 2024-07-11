@@ -1,8 +1,6 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState} from 'react';
 import { Card, Col, InputGroup, Row,OverlayTrigger,Tooltip} from 'react-bootstrap';
 import { useTable, useSortBy, useGlobalFilter, usePagination } from 'react-table';
-import { useGuarantors } from '@/hooks/useGuarantor';
-import GuarantorDetailsModal from '@/components/GuarantorDetailsModal';
 import Skeleton from '@mui/material/Skeleton';
 
 const GlobalFilter2 = ({ filter, setFilter }:any) => (
@@ -71,18 +69,10 @@ const createColumns = (handleShow) => [
 ];
 
 export const UserList = () => {
-  const { GetAllGuarantors, data } = useGuarantors();
   const [showModal, setShowModal] = useState(false);
   const [selectedData, setSelectedData] = useState(null);
   const [loading,setLoading] = useState(true);
 
-  useEffect(() => {
-    const fetchData = async () => {
-      await GetAllGuarantors();
-      setLoading(false);
-    };
-    fetchData();
-  }, []);
 
   const handleShow = (row) => {
     setSelectedData(row.original);
@@ -96,7 +86,7 @@ export const UserList = () => {
   const tableInstance = useTable(
     {
       columns,
-      data: data || [],
+      data:  [],
     },
     useGlobalFilter,
     useSortBy,
@@ -162,9 +152,9 @@ export const UserList = () => {
                     </tbody>
                   </table> :   <table {...getTableProps()} className="table table-bordered text-nowrap mb-0">
                     <thead>
-                      {headerGroups.map((headerGroup) => (
+                      {headerGroups.map((headerGroup: any) => (
                         <tr {...headerGroup.getHeaderGroupProps()} key={headerGroup.id}>
-                          {headerGroup.headers.map((column) => (
+                          {headerGroup.headers.map((column: any) => (
                             <th
                               {...column.getHeaderProps(column.getSortByToggleProps())}
                               className={column.className}
