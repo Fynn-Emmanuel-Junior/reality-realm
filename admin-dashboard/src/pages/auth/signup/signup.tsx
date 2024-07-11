@@ -60,14 +60,14 @@ const SignUp = () => {
                           {error && <Validationerror title={error} />}
                           <Form onSubmit={signUpForm.handleSubmit}>
                             <FormGroup className="form-group">
-                              <Form.Label>First Name</Form.Label>
+                              <Form.Label>Email</Form.Label>
                               <Form.Control
                                 className="form-control"
-                                placeholder="Enter your first name"
+                                placeholder="Enter your email address"
                                 type="text"
                                 value={signUpForm.values.email}
-                                onChange={signUpForm.handleChange('firstname')}
-                                onBlur={signUpForm.handleBlur('firstname')}
+                                onChange={signUpForm.handleChange('email')}
+                                onBlur={signUpForm.handleBlur('email')}
                                 isInvalid={signUpForm.touched.email && !!signUpForm.errors.email}
                               />
                               {signUpForm.touched.email && signUpForm.errors.email && (
