@@ -13,12 +13,14 @@ const SignUp = () => {
 
   const signUpForm = useFormik({
     initialValues: {
+      name: '',
       email: '',
       password: '',
       super_admin_key: '',
     },
     validationSchema: Yup.object().shape({
-      email: Yup.string().required('First name is required'),
+      name: Yup.string().required('Name is required'),
+      email: Yup.string().required('email is required'),
       password: Yup.string().required('Password is required').min(5, 'Password must be at least 5 characters'),
       super_admin_key: Yup.string().required('Super Admin Key is required'),
     }),
@@ -59,6 +61,21 @@ const SignUp = () => {
                           </h6>
                           {error && <Validationerror title={error} />}
                           <Form onSubmit={signUpForm.handleSubmit}>
+                          <FormGroup className="form-group">
+                              <Form.Label>Name</Form.Label>
+                              <Form.Control
+                                className="form-control"
+                                placeholder="Enter your name"
+                                type="text"
+                                value={signUpForm.values.name}
+                                onChange={signUpForm.handleChange('name')}
+                                onBlur={signUpForm.handleBlur('name')}
+                                isInvalid={signUpForm.touched.name && !!signUpForm.errors.name}
+                              />
+                              {signUpForm.touched.name && signUpForm.errors.name && (
+                                <Validationerror title={signUpForm.errors.name} />
+                              )}
+                            </FormGroup>
                             <FormGroup className="form-group">
                               <Form.Label>Email</Form.Label>
                               <Form.Control

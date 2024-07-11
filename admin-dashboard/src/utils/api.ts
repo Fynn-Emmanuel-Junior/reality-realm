@@ -3,8 +3,21 @@ import {
   updateUserProfileUrl,
   updateCustomerUrl,
   getCustomersUrl,
-  getCustomerDataUrl
+  getCustomerDataUrl,
+  signUpUrl
 } from './endpoints';
+
+export const signUp = async(data: any) => {
+  try {
+    const response = await fetch(signUpUrl, {
+      method: 'post',
+      body: JSON.stringify(data)
+    });
+    return response;
+  }catch(err) {
+  throw new Error('Failed to create admin');
+  }
+}
 
 export const getUser = async () => {
   return await fetch(getUserUrl);
