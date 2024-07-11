@@ -25,11 +25,10 @@ export const useSignupRequest = () => {
       });
 
       const jsonData = await responseSignUpUrl.json();
-      console.log(jsonData);
       
       if (jsonData.statusCode == 201) {
         setError('');
-        navigate('/dashboard');
+        navigate('/');
       } else {
         setError(jsonData.message);
       }

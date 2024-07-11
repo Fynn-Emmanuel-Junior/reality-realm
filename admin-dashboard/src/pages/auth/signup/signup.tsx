@@ -61,10 +61,6 @@ const SignUp = () => {
                       </div>
                       <div>
                         <div className="main-signup-header">
-                          <div style={{ color: '#db2777', fontSize: '25px', fontWeight: 600 }}>Get Started!</div>
-                          <h6 className="font-weight-normal mb-4 text-dark">
-                            It's free to signup and only takes a minute.
-                          </h6>
                           {error && <Validationerror title={error} />}
                           <Form onSubmit={signUpForm.handleSubmit}>
                           <FormGroup className="form-group">
