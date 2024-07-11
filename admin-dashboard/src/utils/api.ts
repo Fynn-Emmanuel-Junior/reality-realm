@@ -2,6 +2,7 @@ import {
   getUserUrl,
   updateUserProfileUrl,
   updateCustomerUrl,
+  getCustomersUrl,
   getCustomerDataUrl
 } from './endpoints';
 
@@ -18,7 +19,7 @@ export const updateUser = async (data: object) => {
 
 export const getCustomers = async () => {
   try {
-   const response = await fetch(getCustomerDataUrl);
+   const response = await fetch(getCustomersUrl);
     return response;
   } catch (error) {
     console.log(error);

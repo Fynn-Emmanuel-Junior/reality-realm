@@ -19,16 +19,9 @@ export const logoutUrl = `${apiUrl}/auth/signout`;
 export const getUserUrl = `${apiUrl}/customer/get-logged-in-user`;
 export const updateUserProfileUrl = `${apiUrl}/customer/update-user`;
 
-//Managers endpoints
-export const managerUrl = `${apiUrl}/manager`;
-export const getManagersUrl = `${apiUrl}/manager/managers`;
-export const updateManagerUrl = `${apiUrl}/manager`;
-
-//Loanproduct endpoints
-export const LoanProductUrl = `${apiUrl}/loans/product`;
 
 //Customer endpoints
-export const getCustomersUrl = `${apiUrl}/customer`;
+export const getCustomersUrl = `${apiUrl}/users`;
 export const createCustomersUrl = `${apiUrl}/dashboard/user`;
 export const deleteCustomerUrl = `${apiUrl}/dashboard/mobile/user`;
 export const updateCustomerUrl = `${apiUrl}/customer/manager-update-user`;
@@ -44,19 +37,3 @@ export const managerApprovesLoanUrl = `${apiUrl}/loans/application/manager-appro
 //Clients endpoints
 export const getUserByIdUrl = `${apiUrl}/customer/getUserById`;
 
-//Payments
-export const getUserLoanPaymentsUrl = `${apiUrl}/payment/get-user-loan-payments`;
-
-//Admin payments
-export const getAllLoanPaymentsUrl = `${apiUrl}/payment`;
-
-//Misc
-export const getFileUrl = `${apiUrl}/attachment/files/get-file`;
-export const getFileDataUrl = `${apiUrl}/attachment/files/get-file-data`;
-
-//Disbursements endpoints
-export const disbursementUrl = `${apiUrl}/payment/disbursements`;
-export const disbursepaymentUrl = `${apiUrl}/payment/makeMobileMoneyTransfer`;
-
-//Guarantor endpoints
-export const guarantorUrl = `${apiUrl}/guarantor`;
