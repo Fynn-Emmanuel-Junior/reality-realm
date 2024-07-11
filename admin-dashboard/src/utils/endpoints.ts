@@ -6,14 +6,10 @@ export const apiUrl = 'http://localhost:3500';
 
 //auth endpoints
 // export const sendOtpUrl = `${apiUrl}/sms/sendotp`;
-export const signUpUrl = `${apiUrl}/auth/signup`;
-export const verifyDetailsUrl = `${apiUrl}/customer/check_details`;
-export const refreshUrl = `${apiUrl}/auth/session/refresh`;
-export const apiBasePath = `${apiUrl}/auth`;
-export const createUserUrl = `${apiUrl}/manager/super-admin`;
+export const signUpUrl = `${apiUrl}/admin/create`;
 
 // Signin && Logout endpoints
-export const signInUrl = `${apiUrl}/auth/signin`;
+export const signInUrl = `${apiUrl}/admin/login`;
 export const logoutUrl = `${apiUrl}/auth/signout`;
 
 export const getUserUrl = `${apiUrl}/customer/get-logged-in-user`;
