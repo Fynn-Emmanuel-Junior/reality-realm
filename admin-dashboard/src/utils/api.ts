@@ -19,7 +19,7 @@ export const updateUser = async (data: object) => {
 
 export const getCustomers = async () => {
   try {
-   const response = await fetch(getCustomersUrl);
+   const response = await fetch(`${getCustomersUrl}/get-users`);
     return response;
   } catch (error) {
     console.log(error);

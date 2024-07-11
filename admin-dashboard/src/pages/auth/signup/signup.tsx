@@ -1,31 +1,24 @@
 import { Fragment, useState } from 'react';
 import { Link } from 'react-router-dom';
 import { Button, Col, Form, FormGroup, Row } from 'react-bootstrap';
-import { imagesData } from '../../../common/commonimages';
 import { Oval } from 'react-loader-spinner';
 import Validationerror from '../../../components/Validationerror';
-import { saveFormData } from '../../../components/formData';
 import { useFormik } from 'formik';
 import * as Yup from 'yup';
-import { useSignupRequest } from '../../../hooks/useSignupRequest';
+
 
 const SignUp = () => {
-  const { sendSignupRequestUpdated, errror } = useSignupRequest();
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState<string | null>(null);
 
   const signUpForm = useFormik({
     initialValues: {
-      firstname: '',
-      surname: '',
-      phoneNumber: '',
+      email: '',
       password: '',
       super_admin_key: '',
     },
     validationSchema: Yup.object().shape({
-      firstname: Yup.string().required('First name is required'),
-      surname: Yup.string().required('Surname is required'),
-      phoneNumber: Yup.string().required('Please enter a valid phone number to continue.'),
+      email: Yup.string().required('First name is required'),
       password: Yup.string().required('Password is required').min(5, 'Password must be at least 5 characters'),
       super_admin_key: Yup.string().required('Super Admin Key is required'),
     }),
@@ -33,16 +26,15 @@ const SignUp = () => {
       setLoading(true);
       setError(null);
 
-      try {
-        await saveFormData('formData', { ...values, role: 'SuperAdmin' });
-        await sendSignupRequestUpdated();
-      } catch (err) {
-        console.error('Error submitting form:', err);
-        setError('An error occurred while submitting the form.');
-      } finally {
-        setLoading(false);
-        actions.setSubmitting(false);
-      }
+      // try {
+      
+      // } catch (err) {
+      //   console.error('Error submitting form:', err);
+      //   setError('An error occurred while submitting the form.');
+      // } finally {
+      //   setLoading(false);
+      //   actions.setSubmitting(false);
+      // }
     },
   });
 
@@ -66,7 +58,6 @@ const SignUp = () => {
                             It's free to signup and only takes a minute.
                           </h6>
                           {error && <Validationerror title={error} />}
-                          {errror && <Validationerror title={errror} />}
                           <Form onSubmit={signUpForm.handleSubmit}>
                             <FormGroup className="form-group">
                               <Form.Label>First Name</Form.Label>
@@ -74,7 +65,7 @@ const SignUp = () => {
                                 className="form-control"
                                 placeholder="Enter your first name"
                                 type="text"
-                                value={signUpForm.values.firstname}
+                                value={signUpForm.values.email}
                                 onChange={signUpForm.handleChange('firstname')}
                                 onBlur={signUpForm.handleBlur('firstname')}
                                 isInvalid={signUpForm.touched.firstname && !!signUpForm.errors.firstname}
