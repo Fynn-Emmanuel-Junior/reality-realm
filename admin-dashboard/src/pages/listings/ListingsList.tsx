@@ -5,7 +5,7 @@ import Pageheader from '../../layout/layoutcomponent/pageheader';
 const Userlist = () => {
   return (
     <Fragment>
-      <Pageheader title="Guarantors" />
+      <Pageheader title="Listings" />
       <UserList />
     </Fragment>
   );

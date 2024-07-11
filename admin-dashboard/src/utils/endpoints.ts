@@ -1,5 +1,5 @@
 //TODO: move to .env
-export const apiUrl = 'https://ccf.smkservices.co/api/v1';
+export const apiUrl = 'http://localhost:3500';
 // export const apiUrl = 'http://localhost:3000/api/v1';
 // export const apiUrl = 'https://afasha.serveo.net/api/v1';
 //export const apiUrl = 'https://6072-41-210-146-120.ngrok-free.app/api/v1';
