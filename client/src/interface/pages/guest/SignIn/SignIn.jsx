@@ -128,7 +128,7 @@ const SignIn = () => {
 					<input 
 						type="text" 
 						placeholder="email"
-						className="border border-emerald-950  text-base p-3 pl-5 rounded-xl  focus:outline-none focus:border-teal-600"
+						className="border border-emerald-950  text-base p-3 pl-5 rounded-xl  focus:outline-none"
 						id="email"
 						name="email"
 						onChange={handleChange}
