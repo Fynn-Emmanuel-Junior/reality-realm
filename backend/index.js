@@ -29,7 +29,7 @@ app.use(express.urlencoded({ extended: true }));
 // Routes
 app.use('/users', usersRoutes);
 app.use('/listings', listingsRoutes);
-app.use('/appointment', appointmentRoutes);
+app.use('/appointment', appointmentRoutes); 
 app.use('/admin', adminRoutes);
  
 app.listen(PORT, async () => {
