@@ -14,7 +14,8 @@ const OAuth = () => {
 
     const handleGoogleClick = async () => {
         try { 
-        
+            const provider = new GoogleAuthProvider()
+            const auth = getAuth(app)
 
             const result = await signInWithPopup(auth,provider)
 
