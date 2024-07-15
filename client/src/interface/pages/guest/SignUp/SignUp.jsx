@@ -104,7 +104,7 @@ const SignUp = () => {
               name="firstname"
               onChange={handleChange}
             />
-            
+            {message && <div className="text-red-600 text-sm animate-message">Please fill all fields</div>}
             <input
               type="text"
               placeholder="surname"
