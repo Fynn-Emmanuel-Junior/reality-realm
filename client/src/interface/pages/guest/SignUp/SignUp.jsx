@@ -98,10 +98,28 @@ const SignUp = () => {
             {passwordExists && <div className="text-red-600">Wrong credentials!</div>}
             <input
               type="text"
-              placeholder="username"
+              placeholder="firstname"
               className="border border-emerald-950  text-sm p-3 pl-5 rounded-xl focus:outline-none"
-              id="username"
-              name="username"
+              id="firstname"
+              name="firstname"
+              onChange={handleChange}
+            />
+            
+            <input
+              type="text"
+              placeholder="surname"
+              className="border border-emerald-950  text-sm p-3 pl-5 rounded-xl focus:outline-none"
+              id="surname"
+              name="surname"
+              onChange={handleChange}
+            />
+            {message && <div className="text-red-600 text-sm animate-message">Please fill all fields</div>}
+            <input
+              type="text"
+              placeholder="phonenumber"
+              className="border border-emerald-950  text-sm p-3 pl-5 rounded-xl focus:outline-none"
+              id="phoneNumber"
+              name="phoneNumber"
               onChange={handleChange}
             />
             {message && <div className="text-red-600 text-sm animate-message">Please fill all fields</div>}
