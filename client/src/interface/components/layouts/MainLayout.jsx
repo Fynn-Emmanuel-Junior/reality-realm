@@ -124,7 +124,7 @@ const MainLayout = ({children}) => {
 							</Link>
 							<Link to='/profile'>
 								{
-									user ? <img src={profile} alt='profile_img' width={50} height={50}/> : 'Profile'
+									user && <img src={profile} alt='profile_img' width={50} height={50}/> 
 								}
 							</Link>
 						</div>
