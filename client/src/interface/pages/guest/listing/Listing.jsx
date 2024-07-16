@@ -169,8 +169,8 @@ const Listing = () => {
                         <GoogleMap
                           mapContainerStyle={{ height: '250px', width: '100%',borderRadius: '20px' }}
                           center={{
-                            lat: listing.latitude || 0,
-                            lng: listing.longitude || 0,
+                            lat: listing.latitude || 5.55602,
+                            lng: listing.longitude || -0.1969,
                           }}
                           zoom={15}
                         >
