@@ -81,10 +81,10 @@ const Listing = () => {
         <div>
           {loading ? <ListingSkeleton /> : (
             <div>
-              <div className='w-11/12 mx-auto md:hidden'>
+              <div className='w-11/12 mx-auto lg:hidden'>
                 <Card listing={listing} />
               </div>
-              <div className='flex flex-col md:hidden'>
+              <div className='flex flex-col lg:hidden'>
                 <div className='w-11/12 mx-auto'>
                   <h2 className='text-3xl font-medium'>{listing.name} <span className='text-lg'>{listing.description}</span></h2>
                   <h3 className='font-medium text-lg'>Entire serviced Apartment in Accra, Ghana</h3>
@@ -168,6 +168,7 @@ const Listing = () => {
                       <LoadScript googleMapsApiKey="AIzaSyCD1MCDn_UvMvD1HgF-cHn7AKBatD0szcw">
                         <GoogleMap
                           mapContainerStyle={{ height: '250px', width: '100%',borderRadius: '20px' }}
+                          className='md:h-[350px]'
                           center={{
                             lat: listing.latitude || 5.55602,
                             lng: listing.longitude || -0.1969,
@@ -258,6 +259,10 @@ const Listing = () => {
                   </div>
                 </div>
               </div>
+              {/* Listing for medium and big screens */}
+              {/* <div className='hidden md:inline md:w-11/12 md:mx-auto'>
+                <h3 className='mt-5 text-xl font-semibold border border-red-600'>{listing.name}</h3>
+              </div> */}
             </div>
           )}
         </div>
