@@ -38,7 +38,7 @@ const Booking = () => {
     }, []);
 
     return (
-        <div className='md:hidden'>
+        <div className='lg:hidden'>
             <div>
                 <div className='w-11/12 mx-auto'>
                     <header className='flex items-center gap-20 mt-5 pb-5'>
