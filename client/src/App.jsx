@@ -13,6 +13,8 @@ const Search = React.lazy(() => import('./interface/pages/guest/Search/Search'))
 const Contact = React.lazy(() => import('./interface/pages/guest/Contact/Contact'));
 const OtpPage = React.lazy(() => import('./interface/pages/guest/OtpPage/Otp'));
 const BookingPage = React.lazy(() => import('./interface/pages/guest/Booking/Booking'));
+const HostDetails = React.lazy(() => import('./interface/pages/guest/HostDetails/hostDetails'));
+const MessageHost = React.lazy(() => import('./interface/pages/guest/MessageHost/MessageHost'));
 
 const App = () => {
   return (
@@ -25,6 +27,8 @@ const App = () => {
         <Route path='/listing/:id' element={<Listing />}/>
         <Route path='/search' element={<Search />}/>
         <Route path='/contact' element={<Contact />}/>
+        <Route path='/hostdetails/:id' element={<HostDetails />}/>
+        <Route path='/messagehost/:id' element={<MessageHost />}/>
         <Route path='/booking/:id' element={<BookingPage />}/>
         <Route element={<ProtectedRoutes />}>
           <Route path='/profile' element={<Profile />}/>

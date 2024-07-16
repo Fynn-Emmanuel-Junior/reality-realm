@@ -274,7 +274,7 @@ const Listing = () => {
               <div>
                 {
                   error ? '' :  (selectedDate && (
-                    <p>Appointment Date: {selectedDate.toLocaleDateString()}</p>
+                    <p className='font-semibold'>Appointment Date: {selectedDate.toLocaleDateString()}</p>
                   ))
                 }
               </div>
