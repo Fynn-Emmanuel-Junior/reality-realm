@@ -144,7 +144,7 @@ const MainLayout = ({children}) => {
 					<div className='lg:hidden text-[10px] sm:text-sm uppercase md:text-lg'>
 						<Link to='/profile'>
 							{
-								user ? <img src={profile} alt='profile_img' width={50} height={50}/> : 'Profile'
+								user && <img src={profile} alt='profile_img' width={50} height={50}/>
 							}
 						</Link>
 					</div>
