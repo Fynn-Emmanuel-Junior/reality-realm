@@ -44,7 +44,7 @@ const Booking = () => {
                     <header className='flex items-center gap-20 mt-5 pb-5'>
                         <IoIosArrowBack size={20} onClick={goBack} />
                         <div className=' md:mx-auto'>
-                            <p className='font-semibold md:text-center'>Confirm and book appointment</p>
+                            <p className='font-semibold md:mr-14'>Confirm and book appointment</p>
                         </div>
                     </header>
                 </div>
