@@ -81,14 +81,20 @@ const Listing = () => {
         <div>
           {loading ? <ListingSkeleton /> : (
             <div>
-              <div className='w-11/12 mx-auto lg:hidden'>
+              <div className='w-11/12 mx-auto md:hidden'>
                 <Card listing={listing} />
               </div>
-              <div className='flex flex-col lg:hidden'>
+              {
+                /*Medium screens and above */
+                <div className='w-11/12 mx-auto hidden md:flex md:flex-col'>
+                  <h3 className='md:mt-3'>{listing.name}</h3>
+                </div>
+              }
+              <div className='flex flex-col'>
                 <div className='w-11/12 mx-auto'>
-                  <h2 className='text-3xl font-medium'>{listing.name} <span className='text-lg'>{listing.description}</span></h2>
-                  <h3 className='font-medium text-lg'>Entire serviced Apartment in Accra, Ghana</h3>
-                  <div className='flex items-center gap-3 mt-3'>
+                  <h2 className='inline md:hidden text-3xl font-medium'>{listing.name} <span className='text-lg'>{listing.description}</span></h2>
+                  <h3 className='inline md:hidden font-medium text-lg'>Entire serviced Apartment in Accra, Ghana</h3>
+                  <div className='flex md:hidden items-center gap-3 mt-3'>
                     <div className='flex items-center gap-1 mt-3'>
                       <div>
                         <IoLocationOutline size={25} color='#228B22' />
@@ -107,11 +113,11 @@ const Listing = () => {
                       </div>
                     </div>
                   </div>
-                  <div>
+                  <div className='inline md:hidden'>
                     {listing.typeOfPlace === 'sell' ? <p className='font-medium'> For sale : ${listing.regularPrice}</p> : <p className='font-medium'> Rent : <span> ${listing.regularPrice} per month </span></p>}
                   </div>
                   <div className='border border-black border-b-[0.5px] my-5 border-opacity-20' />
-                  <div>
+                  <div className='inline md:hidden '>
                     <h2 className='text-2xl font-medium my-3'> Amenities </h2>
                     <div className='flex gap-3 w-full'>
                       <div className='border p-5 rounded-xl flex gap-3 w-1/2'>
@@ -144,12 +150,16 @@ const Listing = () => {
                       </div>
                     </div>
                   </div>
-                  <div className='border border-pink-600  mt-3 rounded-md p-2'>
+                  <div className='border border-pink-600  mt-3 rounded-md p-2 inline md:hidden '>
                       <div className='flex flex-col items-center'>
                         <button className='font-semibold' onClick={() => setAmenities(true)}> Show all amenities</button>
                       </div>
                   </div>
                   <div className='border border-black border-b-[0.2px] my-5 border-opacity-10' />
+                  {/* Medium screens and above  */}
+                  <div>
+
+                  </div>
                   <div className="listing-details">
                     <p>
                       Luxurious studio apartment with a private bathroom, kitchenette with workspace/dining area. The apartment is located in a sought after neighborhood close to the US Embassy in Accra. The apartment has modern amenities, high end fittings, contemporary decor including a chandelier that brightens up the apartment.
