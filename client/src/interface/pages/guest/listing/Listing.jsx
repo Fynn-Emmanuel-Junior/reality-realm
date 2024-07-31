@@ -62,7 +62,7 @@ const Listing = () => {
         const data = await res.json();
         setListing(data);
         dispatch(setImages(data.imageurls));
-        setLoading(false);
+        setLoading(true);
       } catch (err) {
         setLoading(true);
         throw new Error('Cannot fetch listing');
