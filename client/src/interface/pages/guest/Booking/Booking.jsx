@@ -10,11 +10,13 @@ import { CSSTransition } from 'react-transition-group';
 import Footer from '../../../components/pageComponents/Footer';
 import { GoDotFill } from "react-icons/go";
 import { RxCross2 } from "react-icons/rx";
+import { RotatingLines } from 'react-loader-spinner'
 
 const Booking = () => {
     const { id } = useParams();
     const { GetListing } = useListing();
     const [listing, setListing] = useState();
+    const [loading,setLoading] = useState(true);
     const [precautions,setPrecautions] = useState(false);
     const bookingDate = useSelector(selectBookingDate);
     const dispatch = useDispatch();
@@ -32,6 +34,7 @@ const Booking = () => {
     useEffect(() => {
         const fetch = async () => {
             const data = await GetListing(id);
+            setLoading(false);
             setListing(data);
         };
         fetch();
@@ -39,7 +42,21 @@ const Booking = () => {
 
     return (
         <div className='lg:hidden'>
-            <div>
+            {
+                loading ? <div className='absolute top-[43%] left-[44%]'>
+                     <RotatingLines
+                visible={true}
+                height="70"
+                width="70"
+                color="#000000"
+                strokeWidth="5"
+                animationDuration="0.75"
+                ariaLabel="rotating-lines-loading"
+                wrapperStyle={{}}
+                wrapperClass=""
+                />
+                </div> : <>
+                     <div>
                 <div className='w-11/12 mx-auto'>
                     <header className='flex items-center gap-20 mt-5 pb-5'>
                         <IoIosArrowBack size={20} onClick={goBack} />
@@ -52,7 +69,7 @@ const Booking = () => {
             <hr />
             <div>
                 <div className='w-11/12 mx-auto flex items-center gap-3 my-7'>
-                    <div className='w-28 h-24'>
+                    <div className='w-28 md:w-80 md:h-60 h-24'>
                         <img src={listing?.imageurls[0]} alt='profile_img' className='w-full h-full rounded-2xl' />
                     </div>
                     <div>
@@ -161,7 +178,7 @@ const Booking = () => {
                             </li>
                             <li className='flex items-center gap-2 ml-3'>
                                 <IoIosCheckmark size={45}/>
-                                <p className='text-[13px]'>Inform a trusted person about your meeting details, including time, location, and contact information of the house owner.</p>
+                                <p className='text-[13px]'> Inform a trusted person about your meeting details, including time, location, and contact information of the house owner.</p>
                             </li>
                         </div>
                     </div>  
@@ -244,6 +261,10 @@ const Booking = () => {
                     onClose={() => setShowDatePicker(false)}
                 />
             </CSSTransition>
+                
+                </>
+            }
+           
         </div>
     );
 };
