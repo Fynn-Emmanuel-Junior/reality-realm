@@ -102,7 +102,7 @@ const Booking = () => {
                           classNames="error"
                           unmountOnExit
                         >
-                        <p className='text-red-500 border border-red-600 rounded-md p-2'>{error}</p>
+                        <p className='text-red-500 border border-red-600 rounded-md p-2 mt-2'>{error}</p>
                       </CSSTransition>
                     </div>
                     <div className='font-medium text-lg underline' onClick={() => setShowDatePicker(true)}>
