@@ -17,6 +17,7 @@ const Booking = () => {
     const { GetListing } = useListing();
     const [listing, setListing] = useState();
     const [loading,setLoading] = useState(true);
+    const [error,setError] = useState(false);
     const [precautions,setPrecautions] = useState(false);
     const bookingDate = useSelector(selectBookingDate);
     const dispatch = useDispatch();
@@ -28,6 +29,7 @@ const Booking = () => {
     };
 
     const handleDateChange = (date) => {
+        const today = new Date();
         dispatch(setBookingDate(date));
     };
 
