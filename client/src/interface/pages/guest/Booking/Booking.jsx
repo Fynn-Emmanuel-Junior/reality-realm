@@ -30,7 +30,12 @@ const Booking = () => {
 
     const handleDateChange = (date) => {
         const today = new Date();
-        dispatch(setBookingDate(date));
+        if(date < today) {
+            setError('Selected date is in the past');
+            return;
+        } else {
+            dispatch(setBookingDate(date));
+        }
     };
 
     useEffect(() => {
@@ -91,6 +96,14 @@ const Booking = () => {
                     <div className='mt-5'>
                         <p className='text-lg font-medium'>Dates</p>
                         <p>{new Date(bookingDate).toLocaleDateString()}</p>
+                        <CSSTransition
+                          in={!!error}
+                          timeout={300}
+                          classNames="error"
+                          unmountOnExit
+                        >
+                        <p className='text-red-500 border border-red-600 rounded-md p-2'>{error}</p>
+                      </CSSTransition>
                     </div>
                     <div className='font-medium text-lg underline' onClick={() => setShowDatePicker(true)}>
                         Edit
