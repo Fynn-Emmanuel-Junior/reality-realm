@@ -6,9 +6,9 @@ const ListingSkeleton = () => {
             <div className="w-full h-8 animate-pulse bg-stone-200 rounded-md my-5"/>	
         </div>
 
-        <div className='md:flex md:items-center md:justify-center md:gap-3 animate-pulse'>
+        <div className='lg:flex lg:items-center lg:justify-center lg:gap-3 animate-pulse'>
             <div className='w-full md:w-7/12 h-44 bg-stone-200 animate-pulse  rounded-lg md:rounded-l-lg' />
-            <div className='hidden md:w-5/12 md:h-44 md:grid md:grid-cols-2 md:gap-2 animate-pulse'>
+            <div className='hidden lg:w-5/12 lg:h-44 lg:grid lg:grid-cols-2 lg:gap-2 animate-pulse'>
                 <div className='bg-stone-200 rounded-l-lg h-20'/>
                 <div className='bg-stone-200 rounded-l-lg h-20'/>
                 <div className='bg-stone-200 rounded-l-lg h-20'/>
